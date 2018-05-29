@@ -25,7 +25,7 @@ namespace UpravljanjeNarudzbama
         public string ime { get; set; }
         public string prezime { get; set; }
         public string lozinka { get; set; }
-        public Nullable<int> razina_prava { get; set; }
+        public int razina_prava { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzbenica> Narudzbenica { get; set; }

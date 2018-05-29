@@ -9,18 +9,18 @@
           <Key>
             <PropertyRef Name="korisnikId" />
           </Key>
-          <Property Name="korisnikId" Type="int" Nullable="false" />
-          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" />
-          <Property Name="ime" Type="varchar" MaxLength="50" />
-          <Property Name="prezime" Type="varchar" MaxLength="50" />
-          <Property Name="lozinka" Type="varchar" MaxLength="50" />
-          <Property Name="razina_prava" Type="int" />
+          <Property Name="korisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="razina_prava" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materijal">
           <Key>
             <PropertyRef Name="materijalId" />
           </Key>
-          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="materijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="kolicina" Type="int" Nullable="false" />
         </EntityType>
@@ -28,7 +28,7 @@
           <Key>
             <PropertyRef Name="narudzbenicaId" />
           </Key>
-          <Property Name="narudzbenicaId" Type="int" Nullable="false" />
+          <Property Name="narudzbenicaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datum" Type="date" Nullable="false" />
           <Property Name="korisnikId" Type="int" Nullable="false" />
           <Property Name="partnerId" Type="int" Nullable="false" />
@@ -41,6 +41,20 @@
           <Property Name="narudzbenicaId" Type="int" Nullable="false" />
           <Property Name="materijalId" Type="int" Nullable="false" />
           <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view '18040_DB.dbo.narudzbenica_stavka_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="narudzbenica_stavka_view">
+          <Key>
+            <PropertyRef Name="materijalId" />
+            <PropertyRef Name="naziv" />
+            <PropertyRef Name="kolicina" />
+            <PropertyRef Name="narudzbenicaId" />
+          </Key>
+          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="narudzbenicaId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Narudzbenica_Korisnik">
           <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
@@ -83,6 +97,14 @@
           <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Narudzbenica" EntityType="Self.Narudzbenica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stavka_narudzbenice" EntityType="Self.Stavka_narudzbenice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="narudzbenica_stavka_view" EntityType="Self.narudzbenica_stavka_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [narudzbenica_stavka_view].[materijalId] AS [materijalId], 
+    [narudzbenica_stavka_view].[naziv] AS [naziv], 
+    [narudzbenica_stavka_view].[kolicina] AS [kolicina], 
+    [narudzbenica_stavka_view].[narudzbenicaId] AS [narudzbenicaId]
+    FROM [dbo].[narudzbenica_stavka_view] AS [narudzbenica_stavka_view]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Narudzbenica_Korisnik" Association="Self.FK_Narudzbenica_Korisnik">
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzbenica" EntitySet="Narudzbenica" />
@@ -117,17 +139,18 @@
             <End Role="Narudzbenica" EntitySet="Narudzbenica" />
             <End Role="Stavka_narudzbenice" EntitySet="Stavka_narudzbenice" />
           </AssociationSet>
+          <EntitySet Name="narudzbenica_stavka_view" EntityType="DBModel.narudzbenica_stavka_view" />
         </EntityContainer>
         <EntityType Name="Korisnik">
           <Key>
             <PropertyRef Name="korisnikId" />
           </Key>
           <Property Name="korisnikId" Type="Int32" Nullable="false" />
-          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="razina_prava" Type="Int32" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="razina_prava" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Korisnik" ToRole="Narudzbenica" />
         </EntityType>
         <EntityType Name="Materijal">
@@ -197,6 +220,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="narudzbenica_stavka_view">
+          <Key>
+            <PropertyRef Name="materijalId" />
+            <PropertyRef Name="naziv" />
+            <PropertyRef Name="kolicina" />
+            <PropertyRef Name="narudzbenicaId" />
+          </Key>
+          <Property Name="materijalId" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <Property Name="narudzbenicaId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -240,6 +275,16 @@
                 <ScalarProperty Name="kolicina" ColumnName="kolicina" />
                 <ScalarProperty Name="materijalId" ColumnName="materijalId" />
                 <ScalarProperty Name="narudzbenicaId" ColumnName="narudzbenicaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="narudzbenica_stavka_view">
+            <EntityTypeMapping TypeName="DBModel.narudzbenica_stavka_view">
+              <MappingFragment StoreEntitySet="narudzbenica_stavka_view">
+                <ScalarProperty Name="narudzbenicaId" ColumnName="narudzbenicaId" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
