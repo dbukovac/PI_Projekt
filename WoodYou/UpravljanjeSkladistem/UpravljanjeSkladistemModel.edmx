@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="razina_prava" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="materijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_partnera" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Primka">
+          <Key>
+            <PropertyRef Name="primkaId" />
+          </Key>
+          <Property Name="primkaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+          <Property Name="partnerId" Type="int" Nullable="false" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stavka_primke">
+          <Key>
+            <PropertyRef Name="primkaId" />
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="primkaId" Type="int" Nullable="false" />
+          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Primka_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Primka" Type="Self.Primka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="korisnikId" />
+            </Principal>
+            <Dependent Role="Primka">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Primka_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
+          <End Role="Primka" Type="Self.Primka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="partnerId" />
+            </Principal>
+            <Dependent Role="Primka">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_primke_Materijal">
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1" />
+          <End Role="Stavka_primke" Type="Self.Stavka_primke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="materijalId" />
+            </Principal>
+            <Dependent Role="Stavka_primke">
+              <PropertyRef Name="materijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_primke_Primka">
+          <End Role="Primka" Type="Self.Primka" Multiplicity="1" />
+          <End Role="Stavka_primke" Type="Self.Stavka_primke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Primka">
+              <PropertyRef Name="primkaId" />
+            </Principal>
+            <Dependent Role="Stavka_primke">
+              <PropertyRef Name="primkaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Primka" EntityType="Self.Primka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stavka_primke" EntityType="Self.Stavka_primke" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Primka_Korisnik" Association="Self.FK_Primka_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Primka" EntitySet="Primka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Primka_Partner" Association="Self.FK_Primka_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Primka" EntitySet="Primka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_primke_Materijal" Association="Self.FK_Stavka_primke_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="Stavka_primke" EntitySet="Stavka_primke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_primke_Primka" Association="Self.FK_Stavka_primke_Primka">
+            <End Role="Primka" EntitySet="Primka" />
+            <End Role="Stavka_primke" EntitySet="Stavka_primke" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="razina_prava" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Primka" Relationship="Self.FK_Primka_Korisnik" FromRole="Korisnik" ToRole="Primka" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="materijalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Stavka_primke" Relationship="Self.FK_Stavka_primke_Materijal" FromRole="Materijal" ToRole="Stavka_primke" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tip_partnera" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Primka" Relationship="Self.FK_Primka_Partner" FromRole="Partner" ToRole="Primka" />
+        </EntityType>
+        <EntityType Name="Primka">
+          <Key>
+            <PropertyRef Name="primkaId" />
+          </Key>
+          <Property Name="primkaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="partnerId" Type="Int32" Nullable="false" />
+          <Property Name="korisnikId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Primka_Korisnik" FromRole="Primka" ToRole="Korisnik" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK_Primka_Partner" FromRole="Primka" ToRole="Partner" />
+          <NavigationProperty Name="Stavka_primke" Relationship="Self.FK_Stavka_primke_Primka" FromRole="Primka" ToRole="Stavka_primke" />
+        </EntityType>
+        <EntityType Name="Stavka_primke">
+          <Key>
+            <PropertyRef Name="primkaId" />
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="primkaId" Type="Int32" Nullable="false" />
+          <Property Name="materijalId" Type="Int32" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materijal" Relationship="Self.FK_Stavka_primke_Materijal" FromRole="Stavka_primke" ToRole="Materijal" />
+          <NavigationProperty Name="Primka" Relationship="Self.FK_Stavka_primke_Primka" FromRole="Stavka_primke" ToRole="Primka" />
+        </EntityType>
+        <Association Name="FK_Primka_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Primka" Type="Self.Primka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="korisnikId" />
+            </Principal>
+            <Dependent Role="Primka">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_primke_Materijal">
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1" />
+          <End Role="Stavka_primke" Type="Self.Stavka_primke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="materijalId" />
+            </Principal>
+            <Dependent Role="Stavka_primke">
+              <PropertyRef Name="materijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Primka_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
+          <End Role="Primka" Type="Self.Primka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="partnerId" />
+            </Principal>
+            <Dependent Role="Primka">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_primke_Primka">
+          <End Role="Primka" Type="Self.Primka" Multiplicity="1" />
+          <End Role="Stavka_primke" Type="Self.Stavka_primke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Primka">
+              <PropertyRef Name="primkaId" />
+            </Principal>
+            <Dependent Role="Stavka_primke">
+              <PropertyRef Name="primkaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UpravljanjeSkladistemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+          <EntitySet Name="Materijal" EntityType="Self.Materijal" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" />
+          <EntitySet Name="Primka" EntityType="Self.Primka" />
+          <EntitySet Name="Stavka_primke" EntityType="Self.Stavka_primke" />
+          <AssociationSet Name="FK_Primka_Korisnik" Association="Self.FK_Primka_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Primka" EntitySet="Primka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_primke_Materijal" Association="Self.FK_Stavka_primke_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="Stavka_primke" EntitySet="Stavka_primke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Primka_Partner" Association="Self.FK_Primka_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Primka" EntitySet="Primka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_primke_Primka" Association="Self.FK_Stavka_primke_Primka">
+            <End Role="Primka" EntitySet="Primka" />
+            <End Role="Stavka_primke" EntitySet="Stavka_primke" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="UpravljanjeSkladistemEntities">
+          <EntitySetMapping Name="Korisnik">
+            <EntityTypeMapping TypeName="DBModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+                <ScalarProperty Name="korisnicko_ime" ColumnName="korisnicko_ime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="razina_prava" ColumnName="razina_prava" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materijal">
+            <EntityTypeMapping TypeName="DBModel.Materijal">
+              <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partner">
+            <EntityTypeMapping TypeName="DBModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="tip_partnera" ColumnName="tip_partnera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Primka">
+            <EntityTypeMapping TypeName="DBModel.Primka">
+              <MappingFragment StoreEntitySet="Primka">
+                <ScalarProperty Name="primkaId" ColumnName="primkaId" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stavka_primke">
+            <EntityTypeMapping TypeName="DBModel.Stavka_primke">
+              <MappingFragment StoreEntitySet="Stavka_primke">
+                <ScalarProperty Name="primkaId" ColumnName="primkaId" />
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
