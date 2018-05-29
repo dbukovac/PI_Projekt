@@ -36,6 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.fazeLabel = new System.Windows.Forms.Label();
             this.projektiLabel = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             // noviProjektButton
             // 
-            this.noviProjektButton.Location = new System.Drawing.Point(632, 350);
+            this.noviProjektButton.Location = new System.Drawing.Point(517, 350);
             this.noviProjektButton.Name = "noviProjektButton";
             this.noviProjektButton.Size = new System.Drawing.Size(75, 23);
             this.noviProjektButton.TabIndex = 2;
@@ -110,11 +111,21 @@
             this.projektiLabel.TabIndex = 7;
             this.projektiLabel.Text = "Projekti:";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(598, 350);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(109, 23);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "Pokreni projekt";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // PopisProjektiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 593);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.projektiLabel);
             this.Controls.Add(this.fazeLabel);
             this.Controls.Add(this.button1);
@@ -142,6 +153,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label fazeLabel;
         private System.Windows.Forms.Label projektiLabel;
+        private System.Windows.Forms.Button button4;
     }
 }
 
