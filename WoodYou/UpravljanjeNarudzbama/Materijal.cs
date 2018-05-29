@@ -26,5 +26,10 @@ namespace UpravljanjeNarudzbama
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
+
+        public override string ToString()
+        {
+            return this.naziv;
+        }
     }
 }

@@ -12,7 +12,6 @@
         <AssociationConnector Association="DBModel.FK_Narudzbenica_Korisnik" />
         <AssociationConnector Association="DBModel.FK_Stavka_narudzbenice_Materijal" />
         <AssociationConnector Association="DBModel.FK_Stavka_narudzbenice_Narudzbenica" />
-        <EntityTypeShape EntityType="DBModel.narudzbenica_stavka_view" Width="1.5" PointX="6.875" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

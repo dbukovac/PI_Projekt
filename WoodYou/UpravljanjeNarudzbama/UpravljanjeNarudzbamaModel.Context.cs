@@ -29,6 +29,5 @@ namespace UpravljanjeNarudzbama
         public virtual DbSet<Materijal> Materijal { get; set; }
         public virtual DbSet<Narudzbenica> Narudzbenica { get; set; }
         public virtual DbSet<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
-        public virtual DbSet<narudzbenica_stavka_view> narudzbenica_stavka_view { get; set; }
     }
 }
