@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" />
+          <Property Name="ime" Type="varchar" MaxLength="50" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" />
+          <Property Name="lozinka" Type="varchar" MaxLength="50" />
+          <Property Name="razina_prava" Type="int" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Narudzbenica">
+          <Key>
+            <PropertyRef Name="narudzbenicaId" />
+          </Key>
+          <Property Name="narudzbenicaId" Type="int" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="partnerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stavka_narudzbenice">
+          <Key>
+            <PropertyRef Name="narudzbenicaId" />
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="narudzbenicaId" Type="int" Nullable="false" />
+          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Narudzbenica_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Narudzbenica" Type="Self.Narudzbenica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="korisnikId" />
+            </Principal>
+            <Dependent Role="Narudzbenica">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_narudzbenice_Materijal">
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1" />
+          <End Role="Stavka_narudzbenice" Type="Self.Stavka_narudzbenice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="materijalId" />
+            </Principal>
+            <Dependent Role="Stavka_narudzbenice">
+              <PropertyRef Name="materijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_narudzbenice_Narudzbenica">
+          <End Role="Narudzbenica" Type="Self.Narudzbenica" Multiplicity="1" />
+          <End Role="Stavka_narudzbenice" Type="Self.Stavka_narudzbenice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Narudzbenica">
+              <PropertyRef Name="narudzbenicaId" />
+            </Principal>
+            <Dependent Role="Stavka_narudzbenice">
+              <PropertyRef Name="narudzbenicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Narudzbenica" EntityType="Self.Narudzbenica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stavka_narudzbenice" EntityType="Self.Stavka_narudzbenice" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Narudzbenica_Korisnik" Association="Self.FK_Narudzbenica_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Narudzbenica" EntitySet="Narudzbenica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_narudzbenice_Materijal" Association="Self.FK_Stavka_narudzbenice_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="Stavka_narudzbenice" EntitySet="Stavka_narudzbenice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_narudzbenice_Narudzbenica" Association="Self.FK_Stavka_narudzbenice_Narudzbenica">
+            <End Role="Narudzbenica" EntitySet="Narudzbenica" />
+            <End Role="Stavka_narudzbenice" EntitySet="Stavka_narudzbenice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UpravljanjeNarudzbamaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Korisnik" EntityType="DBModel.Korisnik" />
+          <EntitySet Name="Materijal" EntityType="DBModel.Materijal" />
+          <EntitySet Name="Narudzbenica" EntityType="DBModel.Narudzbenica" />
+          <EntitySet Name="Stavka_narudzbenice" EntityType="DBModel.Stavka_narudzbenice" />
+          <AssociationSet Name="FK_Narudzbenica_Korisnik" Association="DBModel.FK_Narudzbenica_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Narudzbenica" EntitySet="Narudzbenica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_narudzbenice_Materijal" Association="DBModel.FK_Stavka_narudzbenice_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="Stavka_narudzbenice" EntitySet="Stavka_narudzbenice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_narudzbenice_Narudzbenica" Association="DBModel.FK_Stavka_narudzbenice_Narudzbenica">
+            <End Role="Narudzbenica" EntitySet="Narudzbenica" />
+            <End Role="Stavka_narudzbenice" EntitySet="Stavka_narudzbenice" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="Int32" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="razina_prava" Type="Int32" />
+          <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Korisnik" ToRole="Narudzbenica" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="materijalId" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Materijal" FromRole="Materijal" ToRole="Stavka_narudzbenice" />
+        </EntityType>
+        <EntityType Name="Narudzbenica">
+          <Key>
+            <PropertyRef Name="narudzbenicaId" />
+          </Key>
+          <Property Name="narudzbenicaId" Type="Int32" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="korisnikId" Type="Int32" Nullable="false" />
+          <Property Name="partnerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Narudzbenica" ToRole="Korisnik" />
+          <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Narudzbenica" FromRole="Narudzbenica" ToRole="Stavka_narudzbenice" />
+        </EntityType>
+        <EntityType Name="Stavka_narudzbenice">
+          <Key>
+            <PropertyRef Name="narudzbenicaId" />
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="narudzbenicaId" Type="Int32" Nullable="false" />
+          <Property Name="materijalId" Type="Int32" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materijal" Relationship="DBModel.FK_Stavka_narudzbenice_Materijal" FromRole="Stavka_narudzbenice" ToRole="Materijal" />
+          <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Stavka_narudzbenice_Narudzbenica" FromRole="Stavka_narudzbenice" ToRole="Narudzbenica" />
+        </EntityType>
+        <Association Name="FK_Narudzbenica_Korisnik">
+          <End Type="DBModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="DBModel.Narudzbenica" Role="Narudzbenica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="korisnikId" />
+            </Principal>
+            <Dependent Role="Narudzbenica">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_narudzbenice_Materijal">
+          <End Type="DBModel.Materijal" Role="Materijal" Multiplicity="1" />
+          <End Type="DBModel.Stavka_narudzbenice" Role="Stavka_narudzbenice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="materijalId" />
+            </Principal>
+            <Dependent Role="Stavka_narudzbenice">
+              <PropertyRef Name="materijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_narudzbenice_Narudzbenica">
+          <End Type="DBModel.Narudzbenica" Role="Narudzbenica" Multiplicity="1" />
+          <End Type="DBModel.Stavka_narudzbenice" Role="Stavka_narudzbenice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Narudzbenica">
+              <PropertyRef Name="narudzbenicaId" />
+            </Principal>
+            <Dependent Role="Stavka_narudzbenice">
+              <PropertyRef Name="narudzbenicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="UpravljanjeNarudzbamaEntities">
+          <EntitySetMapping Name="Korisnik">
+            <EntityTypeMapping TypeName="DBModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="razina_prava" ColumnName="razina_prava" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="korisnicko_ime" ColumnName="korisnicko_ime" />
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materijal">
+            <EntityTypeMapping TypeName="DBModel.Materijal">
+              <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Narudzbenica">
+            <EntityTypeMapping TypeName="DBModel.Narudzbenica">
+              <MappingFragment StoreEntitySet="Narudzbenica">
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="narudzbenicaId" ColumnName="narudzbenicaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stavka_narudzbenice">
+            <EntityTypeMapping TypeName="DBModel.Stavka_narudzbenice">
+              <MappingFragment StoreEntitySet="Stavka_narudzbenice">
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
+                <ScalarProperty Name="narudzbenicaId" ColumnName="narudzbenicaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
