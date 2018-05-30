@@ -21,9 +21,11 @@ namespace UpravljanjeNarudzbama
         }
     
         public int narudzbenicaId { get; set; }
-        public System.DateTime datum { get; set; }
+        public System.DateTime datum_slanja { get; set; }
         public int korisnikId { get; set; }
         public int partnerId { get; set; }
+        public Nullable<System.DateTime> datum_zaprimanja { get; set; }
+        public Nullable<byte> zaprimljeno { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

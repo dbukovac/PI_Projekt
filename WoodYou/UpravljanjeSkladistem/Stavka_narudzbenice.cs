@@ -12,19 +12,13 @@ namespace UpravljanjeSkladistem
     using System;
     using System.Collections.Generic;
     
-    public partial class Materijal
+    public partial class Stavka_narudzbenice
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Materijal()
-        {
-            this.Stavka_narudzbenice = new HashSet<Stavka_narudzbenice>();
-        }
-    
+        public int narudzbenicaId { get; set; }
         public int materijalId { get; set; }
-        public string naziv { get; set; }
         public int kolicina { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
+        public virtual Materijal Materijal { get; set; }
+        public virtual Narudzbenica Narudzbenica { get; set; }
     }
 }

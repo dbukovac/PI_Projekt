@@ -9,18 +9,18 @@
           <Key>
             <PropertyRef Name="korisnikId" />
           </Key>
-          <Property Name="korisnikId" Type="int" Nullable="false" />
-          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" />
-          <Property Name="ime" Type="varchar" MaxLength="50" />
-          <Property Name="prezime" Type="varchar" MaxLength="50" />
-          <Property Name="lozinka" Type="varchar" MaxLength="50" />
-          <Property Name="razina_prava" Type="int" />
+          <Property Name="korisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materijal">
           <Key>
             <PropertyRef Name="materijalId" />
           </Key>
-          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="materijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="kolicina" Type="int" Nullable="false" />
         </EntityType>
@@ -28,10 +28,12 @@
           <Key>
             <PropertyRef Name="narudzbenicaId" />
           </Key>
-          <Property Name="narudzbenicaId" Type="int" Nullable="false" />
-          <Property Name="datum" Type="date" Nullable="false" />
+          <Property Name="narudzbenicaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datum_slanja" Type="date" Nullable="false" />
           <Property Name="korisnikId" Type="int" Nullable="false" />
           <Property Name="partnerId" Type="int" Nullable="false" />
+          <Property Name="datum_zaprimanja" Type="date" />
+          <Property Name="zaprimljeno" Type="tinyint" />
         </EntityType>
         <EntityType Name="Stavka_narudzbenice">
           <Key>
@@ -42,8 +44,35 @@
           <Property Name="materijalId" Type="int" Nullable="false" />
           <Property Name="kolicina" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Tip_korisnika">
+          <Key>
+            <PropertyRef Name="tip_korisnikaId" />
+          </Key>
+          <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view '18040_DB.dbo.narudzbenica_stavka_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <Association Name="FK_Korisnik_Tip_korisnika">
+          <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_korisnika">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Narudzbenica_Korisnik">
-          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Narudzbenica" Type="Self.Narudzbenica" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Korisnik">
@@ -55,7 +84,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Stavka_narudzbenice_Materijal">
-          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1" />
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Stavka_narudzbenice" Type="Self.Stavka_narudzbenice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Materijal">
@@ -67,7 +98,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Stavka_narudzbenice_Narudzbenica">
-          <End Role="Narudzbenica" Type="Self.Narudzbenica" Multiplicity="1" />
+          <End Role="Narudzbenica" Type="Self.Narudzbenica" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Stavka_narudzbenice" Type="Self.Stavka_narudzbenice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Narudzbenica">
@@ -83,6 +116,11 @@
           <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Narudzbenica" EntityType="Self.Narudzbenica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stavka_narudzbenice" EntityType="Self.Stavka_narudzbenice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_korisnika" EntityType="Self.Tip_korisnika" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
+            <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
           <AssociationSet Name="FK_Narudzbenica_Korisnik" Association="Self.FK_Narudzbenica_Korisnik">
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzbenica" EntitySet="Narudzbenica" />
@@ -105,6 +143,11 @@
           <EntitySet Name="Materijal" EntityType="DBModel.Materijal" />
           <EntitySet Name="Narudzbenica" EntityType="DBModel.Narudzbenica" />
           <EntitySet Name="Stavka_narudzbenice" EntityType="DBModel.Stavka_narudzbenice" />
+          <EntitySet Name="Tip_korisnika" EntityType="DBModel.Tip_korisnika" />
+          <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="DBModel.FK_Korisnik_Tip_korisnika">
+            <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
           <AssociationSet Name="FK_Narudzbenica_Korisnik" Association="DBModel.FK_Narudzbenica_Korisnik">
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzbenica" EntitySet="Narudzbenica" />
@@ -122,19 +165,20 @@
           <Key>
             <PropertyRef Name="korisnikId" />
           </Key>
-          <Property Name="korisnikId" Type="Int32" Nullable="false" />
-          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="razina_prava" Type="Int32" />
+          <Property Name="korisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnicko_ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lozinka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tip_korisnika" Relationship="DBModel.FK_Korisnik_Tip_korisnika" FromRole="Korisnik" ToRole="Tip_korisnika" />
           <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Korisnik" ToRole="Narudzbenica" />
         </EntityType>
         <EntityType Name="Materijal">
           <Key>
             <PropertyRef Name="materijalId" />
           </Key>
-          <Property Name="materijalId" Type="Int32" Nullable="false" />
+          <Property Name="materijalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="kolicina" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Materijal" FromRole="Materijal" ToRole="Stavka_narudzbenice" />
@@ -143,10 +187,12 @@
           <Key>
             <PropertyRef Name="narudzbenicaId" />
           </Key>
-          <Property Name="narudzbenicaId" Type="Int32" Nullable="false" />
-          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="narudzbenicaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datum_slanja" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="korisnikId" Type="Int32" Nullable="false" />
           <Property Name="partnerId" Type="Int32" Nullable="false" />
+          <Property Name="datum_zaprimanja" Type="DateTime" Precision="0" />
+          <Property Name="zaprimljeno" Type="Byte" />
           <NavigationProperty Name="Korisnik" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Narudzbenica" ToRole="Korisnik" />
           <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Narudzbenica" FromRole="Narudzbenica" ToRole="Stavka_narudzbenice" />
         </EntityType>
@@ -161,8 +207,32 @@
           <NavigationProperty Name="Materijal" Relationship="DBModel.FK_Stavka_narudzbenice_Materijal" FromRole="Stavka_narudzbenice" ToRole="Materijal" />
           <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Stavka_narudzbenice_Narudzbenica" FromRole="Stavka_narudzbenice" ToRole="Narudzbenica" />
         </EntityType>
+        <EntityType Name="Tip_korisnika">
+          <Key>
+            <PropertyRef Name="tip_korisnikaId" />
+          </Key>
+          <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Korisnik" Relationship="DBModel.FK_Korisnik_Tip_korisnika" FromRole="Tip_korisnika" ToRole="Korisnik" />
+        </EntityType>
+        <Association Name="FK_Korisnik_Tip_korisnika">
+          <End Type="DBModel.Tip_korisnika" Role="Tip_korisnika" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.Korisnik" Role="Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_korisnika">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Narudzbenica_Korisnik">
-          <End Type="DBModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="DBModel.Korisnik" Role="Korisnik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="DBModel.Narudzbenica" Role="Narudzbenica" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Korisnik">
@@ -174,7 +244,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Stavka_narudzbenice_Materijal">
-          <End Type="DBModel.Materijal" Role="Materijal" Multiplicity="1" />
+          <End Type="DBModel.Materijal" Role="Materijal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="DBModel.Stavka_narudzbenice" Role="Stavka_narudzbenice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Materijal">
@@ -186,7 +258,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Stavka_narudzbenice_Narudzbenica">
-          <End Type="DBModel.Narudzbenica" Role="Narudzbenica" Multiplicity="1" />
+          <End Type="DBModel.Narudzbenica" Role="Narudzbenica" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="DBModel.Stavka_narudzbenice" Role="Stavka_narudzbenice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Narudzbenica">
@@ -197,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -206,7 +280,7 @@
           <EntitySetMapping Name="Korisnik">
             <EntityTypeMapping TypeName="DBModel.Korisnik">
               <MappingFragment StoreEntitySet="Korisnik">
-                <ScalarProperty Name="razina_prava" ColumnName="razina_prava" />
+                <ScalarProperty Name="tip_korisnikaId" ColumnName="tip_korisnikaId" />
                 <ScalarProperty Name="lozinka" ColumnName="lozinka" />
                 <ScalarProperty Name="prezime" ColumnName="prezime" />
                 <ScalarProperty Name="ime" ColumnName="ime" />
@@ -227,9 +301,11 @@
           <EntitySetMapping Name="Narudzbenica">
             <EntityTypeMapping TypeName="DBModel.Narudzbenica">
               <MappingFragment StoreEntitySet="Narudzbenica">
+                <ScalarProperty Name="zaprimljeno" ColumnName="zaprimljeno" />
+                <ScalarProperty Name="datum_zaprimanja" ColumnName="datum_zaprimanja" />
                 <ScalarProperty Name="partnerId" ColumnName="partnerId" />
                 <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
-                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="datum_slanja" ColumnName="datum_slanja" />
                 <ScalarProperty Name="narudzbenicaId" ColumnName="narudzbenicaId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -240,6 +316,14 @@
                 <ScalarProperty Name="kolicina" ColumnName="kolicina" />
                 <ScalarProperty Name="materijalId" ColumnName="materijalId" />
                 <ScalarProperty Name="narudzbenicaId" ColumnName="narudzbenicaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_korisnika">
+            <EntityTypeMapping TypeName="DBModel.Tip_korisnika">
+              <MappingFragment StoreEntitySet="Tip_korisnika">
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="tip_korisnikaId" ColumnName="tip_korisnikaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UpravljanjeSkladistem
+namespace UpravljanjeNarudzbama
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Partner
+    public partial class Tip_korisnika
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Partner()
+        public Tip_korisnika()
         {
-            this.Narudzbenica = new HashSet<Narudzbenica>();
+            this.Korisnik = new HashSet<Korisnik>();
         }
     
-        public int partnerId { get; set; }
-        public string ime { get; set; }
-        public int OIB { get; set; }
-        public string adresa { get; set; }
-        public string tip_partnera { get; set; }
+        public int tip_korisnikaId { get; set; }
+        public string naziv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Narudzbenica> Narudzbenica { get; set; }
+        public virtual ICollection<Korisnik> Korisnik { get; set; }
     }
 }

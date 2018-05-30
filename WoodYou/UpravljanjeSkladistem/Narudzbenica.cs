@@ -12,21 +12,24 @@ namespace UpravljanjeSkladistem
     using System;
     using System.Collections.Generic;
     
-    public partial class Partner
+    public partial class Narudzbenica
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Partner()
+        public Narudzbenica()
         {
-            this.Narudzbenica = new HashSet<Narudzbenica>();
+            this.Stavka_narudzbenice = new HashSet<Stavka_narudzbenice>();
         }
     
+        public int narudzbenicaId { get; set; }
+        public System.DateTime datum_slanja { get; set; }
+        public int korisnikId { get; set; }
         public int partnerId { get; set; }
-        public string ime { get; set; }
-        public int OIB { get; set; }
-        public string adresa { get; set; }
-        public string tip_partnera { get; set; }
+        public Nullable<System.DateTime> datum_zaprimanja { get; set; }
+        public Nullable<byte> zaprimljeno { get; set; }
     
+        public virtual Korisnik Korisnik { get; set; }
+        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Narudzbenica> Narudzbenica { get; set; }
+        public virtual ICollection<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
     }
 }

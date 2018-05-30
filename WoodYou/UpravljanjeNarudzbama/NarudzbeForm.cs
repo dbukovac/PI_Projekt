@@ -20,22 +20,34 @@ namespace UpravljanjeNarudzbama
         private void PrikazNarudzbi()
         {
             BindingList<Narudzbenica> narudzbenice = null;
+            BindingList<Korisnik> korisnici = new BindingList<Korisnik>();
             using (var db = new UpravljanjeNarudzbamaEntities())
             {
                 narudzbenice = new BindingList<Narudzbenica>(db.Narudzbenica.ToList());
+                foreach(Narudzbenica narudzbenica in narudzbenice)
+                {
+                    korisnici.Add(narudzbenica.Korisnik);
+                }
             }
             narudzbenicaBindingSource.DataSource = narudzbenice;
+            korisnikBindingSource.DataSource = korisnici;
         }
 
         private void PrikazStavki(Narudzbenica narudzbenica)
         {
             BindingList<Stavka_narudzbenice> stavke = null;
-            using(var db = new UpravljanjeNarudzbamaEntities())
+            BindingList<Materijal> materijali = new BindingList<Materijal>();
+            using (var db = new UpravljanjeNarudzbamaEntities())
             {
                 db.Narudzbenica.Attach(narudzbenica);
-                stavke = new BindingList<Stavka_narudzbenice>(narudzbenica.Stavka_narudzbenice.ToList<Stavka_narudzbenice>());
+                stavke = new BindingList<Stavka_narudzbenice>(narudzbenica.Stavka_narudzbenice.ToList());
+                foreach(Stavka_narudzbenice stavka in stavke)
+                {
+                    materijali.Add(stavka.Materijal);
+                }
             }
             stavkanarudzbeniceBindingSource.DataSource = stavke;
+            materijalBindingSource.DataSource = materijali;
         }
 
         private void NarudzbeForm_Load(object sender, EventArgs e)
