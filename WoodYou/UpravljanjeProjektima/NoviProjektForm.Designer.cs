@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.nazivLabel = new System.Windows.Forms.Label();
             this.datumPocetkaLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tboxNaziv = new System.Windows.Forms.TextBox();
+            this.dtDatum = new System.Windows.Forms.DateTimePicker();
             this.spremiButton = new System.Windows.Forms.Button();
             this.odustaniButton = new System.Windows.Forms.Button();
+            this.cboxPartner = new System.Windows.Forms.ComboBox();
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nazivLabel
@@ -65,26 +68,19 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Klijent:";
             // 
-            // textBox2
+            // tboxNaziv
             // 
-            this.textBox2.Location = new System.Drawing.Point(135, 18);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.tboxNaziv.Location = new System.Drawing.Point(135, 18);
+            this.tboxNaziv.Name = "tboxNaziv";
+            this.tboxNaziv.Size = new System.Drawing.Size(100, 20);
+            this.tboxNaziv.TabIndex = 7;
             // 
-            // textBox4
+            // dtDatum
             // 
-            this.textBox4.Location = new System.Drawing.Point(135, 70);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 9;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(135, 44);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(136, 20);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dtDatum.Location = new System.Drawing.Point(135, 44);
+            this.dtDatum.Name = "dtDatum";
+            this.dtDatum.Size = new System.Drawing.Size(136, 20);
+            this.dtDatum.TabIndex = 10;
             // 
             // spremiButton
             // 
@@ -94,6 +90,7 @@
             this.spremiButton.TabIndex = 13;
             this.spremiButton.Text = "Spremi";
             this.spremiButton.UseVisualStyleBackColor = true;
+            this.spremiButton.Click += new System.EventHandler(this.spremiButton_Click);
             // 
             // odustaniButton
             // 
@@ -103,22 +100,40 @@
             this.odustaniButton.TabIndex = 14;
             this.odustaniButton.Text = "Odustani";
             this.odustaniButton.UseVisualStyleBackColor = true;
+            this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
+            // 
+            // cboxPartner
+            // 
+            this.cboxPartner.DataSource = this.partnerBindingSource;
+            this.cboxPartner.DisplayMember = "ime";
+            this.cboxPartner.FormattingEnabled = true;
+            this.cboxPartner.Location = new System.Drawing.Point(135, 70);
+            this.cboxPartner.Name = "cboxPartner";
+            this.cboxPartner.Size = new System.Drawing.Size(136, 21);
+            this.cboxPartner.TabIndex = 15;
+            this.cboxPartner.ValueMember = "partnerId";
+            // 
+            // partnerBindingSource
+            // 
+            this.partnerBindingSource.DataSource = typeof(UpravljanjeProjektima.Partner);
             // 
             // NoviProjektForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 153);
+            this.Controls.Add(this.cboxPartner);
             this.Controls.Add(this.odustaniButton);
             this.Controls.Add(this.spremiButton);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.dtDatum);
+            this.Controls.Add(this.tboxNaziv);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.datumPocetkaLabel);
             this.Controls.Add(this.nazivLabel);
             this.Name = "NoviProjektForm";
             this.Text = "Unos novog projekta";
+            this.Load += new System.EventHandler(this.NoviProjektForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,10 +143,11 @@
         private System.Windows.Forms.Label nazivLabel;
         private System.Windows.Forms.Label datumPocetkaLabel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox tboxNaziv;
+        private System.Windows.Forms.DateTimePicker dtDatum;
         private System.Windows.Forms.Button spremiButton;
         private System.Windows.Forms.Button odustaniButton;
+        private System.Windows.Forms.ComboBox cboxPartner;
+        private System.Windows.Forms.BindingSource partnerBindingSource;
     }
 }
