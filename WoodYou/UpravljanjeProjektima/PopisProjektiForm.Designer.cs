@@ -40,7 +40,7 @@
             this.pokreniProjektButton = new System.Windows.Forms.Button();
             this.izmjeniProjektButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.materijalDataGridView = new System.Windows.Forms.DataGridView();
             this.brisiMaterijalButton = new System.Windows.Forms.Button();
             this.dodajMaterijalButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +75,7 @@
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
@@ -125,6 +125,7 @@
             this.fazeDataGridView.Name = "fazeDataGridView";
             this.fazeDataGridView.Size = new System.Drawing.Size(354, 150);
             this.fazeDataGridView.TabIndex = 1;
+            this.fazeDataGridView.SelectionChanged += new System.EventHandler(this.fazeDataGridView_SelectionChanged);
             // 
             // noviProjektButton
             // 
@@ -213,21 +214,21 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Materijal:";
             // 
-            // dataGridView1
+            // materijalDataGridView
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.materijalDataGridView.AutoGenerateColumns = false;
+            this.materijalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.materijalDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.materijalIdDataGridViewTextBoxColumn,
             this.kolicinaDataGridViewTextBoxColumn,
             this.fazeprojektaDataGridViewTextBoxColumn2,
             this.materijalDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.fazaimamaterijalBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(462, 405);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(255, 150);
-            this.dataGridView1.TabIndex = 11;
+            this.materijalDataGridView.DataSource = this.fazaimamaterijalBindingSource;
+            this.materijalDataGridView.Location = new System.Drawing.Point(462, 405);
+            this.materijalDataGridView.Name = "materijalDataGridView";
+            this.materijalDataGridView.Size = new System.Drawing.Size(255, 150);
+            this.materijalDataGridView.TabIndex = 11;
             // 
             // brisiMaterijalButton
             // 
@@ -237,6 +238,7 @@
             this.brisiMaterijalButton.TabIndex = 14;
             this.brisiMaterijalButton.Text = "Briši materijal";
             this.brisiMaterijalButton.UseVisualStyleBackColor = true;
+            this.brisiMaterijalButton.Click += new System.EventHandler(this.brisiMaterijalButton_Click);
             // 
             // dodajMaterijalButton
             // 
@@ -246,6 +248,7 @@
             this.dodajMaterijalButton.TabIndex = 13;
             this.dodajMaterijalButton.Text = "Dodaj materijal";
             this.dodajMaterijalButton.UseVisualStyleBackColor = true;
+            this.dodajMaterijalButton.Click += new System.EventHandler(this.dodajMaterijalButton_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -442,7 +445,7 @@
             this.Controls.Add(this.brisiMaterijalButton);
             this.Controls.Add(this.dodajMaterijalButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.materijalDataGridView);
             this.Controls.Add(this.izmjeniProjektButton);
             this.Controls.Add(this.pokreniProjektButton);
             this.Controls.Add(this.projektiLabel);
@@ -458,7 +461,7 @@
             this.Load += new System.EventHandler(this.PopisProjektiForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).EndInit();
@@ -505,7 +508,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn trajanjeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fazeprojektaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView materijalDataGridView;
         private System.Windows.Forms.BindingSource materijalBindingSource;
         private System.Windows.Forms.BindingSource fazaimamaterijalBindingSource;
         private System.Windows.Forms.Button brisiMaterijalButton;

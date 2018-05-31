@@ -72,5 +72,23 @@ namespace UpravljanjeProjektima
             novaFazaforma.ShowDialog();
             PrikaziFaze();
         }
+
+        private void obrisiFazuButton_Click(object sender, EventArgs e)
+        {
+            Faza selektiranaFaza = fazaBindingSource.Current as Faza;
+            if(selektiranaFaza != null)
+            {
+                if (MessageBox.Show("Da li ste sigurni?", "Upozorenje!", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    using (var db = new UpravljanjeProjektimaEntities())
+                    {
+                        db.Faza.Attach(selektiranaFaza);
+                        db.Faza.Remove(selektiranaFaza);
+                        db.SaveChanges();
+                    }
+                    PrikaziFaze();
+                }
+            }
+        }
     }
 }

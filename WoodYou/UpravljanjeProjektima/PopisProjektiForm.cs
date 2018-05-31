@@ -21,34 +21,19 @@ namespace UpravljanjeProjektima
         {
             PrikaziProjekte();
             PrikaziFaze(projektBindingSource.Current as Projekt);
-            PrikaziMaterijal(projektBindingSource.Current as Projekt, fazaBindingSource.Current as Faza);
+            PrikaziMaterijal();
         }
 
-        private void PrikaziMaterijal(Projekt projekt, Faza faza)
+        private void PrikaziMaterijal()
         {
-            Faza selektiranaFaza = faza;
-            Projekt selektiraniProjekt = projekt;
-            Faze_projekta materijal = null;
+            materijalDataGridView.Rows.Clear();
+            Faze_projekta materijal = vratiFazuProjekta();
             BindingList<Faza_ima_materijal> listaMaterijala = null;
-            if(selektiranaFaza != null && selektiraniProjekt != null)
+            if(materijal != null)
             {
                 using (var db = new UpravljanjeProjektimaEntities())
                 {
-                    db.Projekt.Attach(selektiraniProjekt);
-                    db.Faza.Attach(selektiranaFaza);
-
-                    List<Faze_projekta> listaOdProjekta = new List<Faze_projekta>(selektiraniProjekt.Faze_projekta.ToList());
-                    List<Faze_projekta> listaOdFaze = new List<Faze_projekta>(selektiranaFaza.Faze_projekta.ToList());
-                    foreach (var P in listaOdProjekta)
-                    {
-                        foreach (var F in listaOdFaze)
-                        {
-                            if (P.id == F.id)
-                            {
-                                materijal = P;
-                            }
-                        }
-                    }
+                    db.Faze_projekta.Attach(materijal);
                     listaMaterijala = new BindingList<Faza_ima_materijal>(materijal.Faza_ima_materijal.ToList());
                 }
                 fazaimamaterijalBindingSource.DataSource = listaMaterijala;
@@ -126,10 +111,11 @@ namespace UpravljanjeProjektima
                         {
                             selektiraniProjekt.aktivan = 1;
                             db.SaveChanges();
+                            PrikaziProjekte();
                         }
                         else
                         {
-                            MessageBox.Show("Projekt je već pokrenut");
+                            MessageBox.Show("Projekt je već pokrenut ili nema postavljenih faza");
                         }
                     }
                 }
@@ -139,8 +125,9 @@ namespace UpravljanjeProjektima
         private void projektiDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             PrikaziFaze(projektBindingSource.Current as Projekt);
-            PrikaziMaterijal(projektBindingSource.Current as Projekt, fazaBindingSource.Current as Faza);
+            PrikaziMaterijal();
         }
+
 
         private void brisiProjektButton_Click(object sender, EventArgs e)
         {
@@ -179,13 +166,13 @@ namespace UpravljanjeProjektima
             }
         }
 
-        private void brisiFazuButton_Click(object sender, EventArgs e)
+        private Faze_projekta vratiFazuProjekta()
         {
-            if (MessageBox.Show("Da li ste sigurni?", "Upozorenje!", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            Faza selektiranaFaza = fazaBindingSource.Current as Faza;
+            Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            Faze_projekta vrati = null;
+            if (selektiranaFaza != null && selektiraniProjekt != null)
             {
-                Faza selektiranaFaza = fazaBindingSource.Current as Faza;
-                Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
-                Faze_projekta brisanje = null;
                 using (var db = new UpravljanjeProjektimaEntities())
                 {
                     db.Projekt.Attach(selektiraniProjekt);
@@ -199,16 +186,62 @@ namespace UpravljanjeProjektima
                         {
                             if (P.id == F.id)
                             {
-                                brisanje = P;
+                                vrati = P;
                             }
                         }
                     }
-                    db.Faze_projekta.Remove(brisanje);
+                }
+            }
+            return vrati;
+        }
+
+        private void brisiFazuButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Da li ste sigurni?", "Upozorenje!", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
+                using (var db = new UpravljanjeProjektimaEntities())
+                {
+                    db.Faze_projekta.Attach(selektiranaFazaProjekta);
+                    db.Faze_projekta.Remove(selektiranaFazaProjekta);
                     db.SaveChanges();
                 }
                 MessageBox.Show("Uspješno obrisana faza");
                 PrikaziFaze(projektBindingSource.Current as Projekt);
             }
+        }
+
+        private void dodajMaterijalButton_Click(object sender, EventArgs e)
+        {
+            Faza selektiranaFaza = fazaBindingSource.Current as Faza;
+            Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
+            if(selektiranaFazaProjekta != null)
+            {
+                PopisMaterijalaForm materijaliForma = new PopisMaterijalaForm(selektiranaFazaProjekta);
+                materijaliForma.ShowDialog();
+                PrikaziProjekte();
+            }
+        }
+
+        private void brisiMaterijalButton_Click(object sender, EventArgs e)
+        {
+            Faza_ima_materijal selektiranaFazaImaMaterijal = fazaimamaterijalBindingSource.Current as Faza_ima_materijal;
+            if(selektiranaFazaImaMaterijal != null)
+            {
+                using(var db = new UpravljanjeProjektimaEntities())
+                {
+                    db.Faza_ima_materijal.Attach(selektiranaFazaImaMaterijal);
+                    db.Faza_ima_materijal.Remove(selektiranaFazaImaMaterijal);
+                    db.SaveChanges();
+                }
+                PrikaziMaterijal();
+            }
+        }
+
+        private void fazeDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            PrikaziMaterijal();
         }
     }
 }
