@@ -35,6 +35,16 @@
           <Property Name="datum_zaprimanja" Type="date" />
           <Property Name="zaprimljeno" Type="tinyint" />
         </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_partnera" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
         <EntityType Name="Stavka_narudzbenice">
           <Key>
             <PropertyRef Name="narudzbenicaId" />
@@ -51,10 +61,6 @@
           <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view '18040_DB.dbo.narudzbenica_stavka_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <Association Name="FK_Korisnik_Tip_korisnika">
           <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -80,6 +86,20 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
             </Principal>
             <Dependent Role="Narudzbenica">
               <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Narudzbenica_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Narudzbenica" Type="Self.Narudzbenica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="partnerId" />
+            </Principal>
+            <Dependent Role="Narudzbenica">
+              <PropertyRef Name="partnerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -115,6 +135,7 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
           <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Narudzbenica" EntityType="Self.Narudzbenica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stavka_narudzbenice" EntityType="Self.Stavka_narudzbenice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tip_korisnika" EntityType="Self.Tip_korisnika" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
@@ -123,6 +144,10 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
           </AssociationSet>
           <AssociationSet Name="FK_Narudzbenica_Korisnik" Association="Self.FK_Narudzbenica_Korisnik">
             <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Narudzbenica" EntitySet="Narudzbenica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narudzbenica_Partner" Association="Self.FK_Narudzbenica_Partner">
+            <End Role="Partner" EntitySet="Partner" />
             <End Role="Narudzbenica" EntitySet="Narudzbenica" />
           </AssociationSet>
           <AssociationSet Name="FK_Stavka_narudzbenice_Materijal" Association="Self.FK_Stavka_narudzbenice_Materijal">
@@ -160,6 +185,11 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
             <End Role="Narudzbenica" EntitySet="Narudzbenica" />
             <End Role="Stavka_narudzbenice" EntitySet="Stavka_narudzbenice" />
           </AssociationSet>
+          <EntitySet Name="Partner" EntityType="DBModel.Partner" />
+          <AssociationSet Name="FK_Narudzbenica_Partner" Association="DBModel.FK_Narudzbenica_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Narudzbenica" EntitySet="Narudzbenica" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Korisnik">
           <Key>
@@ -195,6 +225,7 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
           <Property Name="zaprimljeno" Type="Byte" />
           <NavigationProperty Name="Korisnik" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Narudzbenica" ToRole="Korisnik" />
           <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Narudzbenica" FromRole="Narudzbenica" ToRole="Stavka_narudzbenice" />
+          <NavigationProperty Name="Partner" Relationship="DBModel.FK_Narudzbenica_Partner" FromRole="Narudzbenica" ToRole="Partner" />
         </EntityType>
         <EntityType Name="Stavka_narudzbenice">
           <Key>
@@ -271,6 +302,31 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="adresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tip_partnera" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Narudzbenica_Partner" FromRole="Partner" ToRole="Narudzbenica" />
+        </EntityType>
+        <Association Name="FK_Narudzbenica_Partner">
+          <End Type="DBModel.Partner" Role="Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.Narudzbenica" Role="Narudzbenica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="partnerId" />
+            </Principal>
+            <Dependent Role="Narudzbenica">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -324,6 +380,17 @@ warning 6002: The table/view '18040_DB.dbo.narudzbenicaStavkaView' does not have
               <MappingFragment StoreEntitySet="Tip_korisnika">
                 <ScalarProperty Name="naziv" ColumnName="naziv" />
                 <ScalarProperty Name="tip_korisnikaId" ColumnName="tip_korisnikaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partner">
+            <EntityTypeMapping TypeName="DBModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="tip_partnera" ColumnName="tip_partnera" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -30,5 +30,6 @@ namespace UpravljanjeNarudzbama
         public virtual DbSet<Narudzbenica> Narudzbenica { get; set; }
         public virtual DbSet<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
         public virtual DbSet<Tip_korisnika> Tip_korisnika { get; set; }
+        public virtual DbSet<Partner> Partner { get; set; }
     }
 }

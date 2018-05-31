@@ -37,6 +37,8 @@
             this.novaStavkaButton = new System.Windows.Forms.Button();
             this.narudzbenicaDataGridView = new System.Windows.Forms.DataGridView();
             this.stavka_narudzbeniceDataGridView = new System.Windows.Forms.DataGridView();
+            this.narudzbenicaLabel = new System.Windows.Forms.Label();
+            this.stavkeNarudzbeniceLabel = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -44,27 +46,29 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stavkanarudzbeniceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.narudzbenicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.narudzbenicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.narudzbenicaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavka_narudzbeniceDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavkanarudzbeniceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbenicaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // novaNarudzbaButton
             // 
-            this.novaNarudzbaButton.Location = new System.Drawing.Point(136, 254);
+            this.novaNarudzbaButton.Location = new System.Drawing.Point(249, 254);
             this.novaNarudzbaButton.Name = "novaNarudzbaButton";
             this.novaNarudzbaButton.Size = new System.Drawing.Size(103, 23);
             this.novaNarudzbaButton.TabIndex = 4;
@@ -73,7 +77,7 @@
             // 
             // urediNarudzbuButton
             // 
-            this.urediNarudzbuButton.Location = new System.Drawing.Point(245, 254);
+            this.urediNarudzbuButton.Location = new System.Drawing.Point(358, 254);
             this.urediNarudzbuButton.Name = "urediNarudzbuButton";
             this.urediNarudzbuButton.Size = new System.Drawing.Size(103, 23);
             this.urediNarudzbuButton.TabIndex = 5;
@@ -82,7 +86,7 @@
             // 
             // obrisiNarudzbuButton
             // 
-            this.obrisiNarudzbuButton.Location = new System.Drawing.Point(354, 254);
+            this.obrisiNarudzbuButton.Location = new System.Drawing.Point(467, 254);
             this.obrisiNarudzbuButton.Name = "obrisiNarudzbuButton";
             this.obrisiNarudzbuButton.Size = new System.Drawing.Size(103, 23);
             this.obrisiNarudzbuButton.TabIndex = 6;
@@ -91,7 +95,7 @@
             // 
             // obrisiStavkuButton
             // 
-            this.obrisiStavkuButton.Location = new System.Drawing.Point(354, 509);
+            this.obrisiStavkuButton.Location = new System.Drawing.Point(467, 520);
             this.obrisiStavkuButton.Name = "obrisiStavkuButton";
             this.obrisiStavkuButton.Size = new System.Drawing.Size(103, 23);
             this.obrisiStavkuButton.TabIndex = 9;
@@ -100,7 +104,7 @@
             // 
             // urediStavkuButton
             // 
-            this.urediStavkuButton.Location = new System.Drawing.Point(245, 509);
+            this.urediStavkuButton.Location = new System.Drawing.Point(358, 520);
             this.urediStavkuButton.Name = "urediStavkuButton";
             this.urediStavkuButton.Size = new System.Drawing.Size(103, 23);
             this.urediStavkuButton.TabIndex = 8;
@@ -109,7 +113,7 @@
             // 
             // novaStavkaButton
             // 
-            this.novaStavkaButton.Location = new System.Drawing.Point(136, 509);
+            this.novaStavkaButton.Location = new System.Drawing.Point(249, 520);
             this.novaStavkaButton.Name = "novaStavkaButton";
             this.novaStavkaButton.Size = new System.Drawing.Size(103, 23);
             this.novaStavkaButton.TabIndex = 7;
@@ -138,7 +142,8 @@
             this.narudzbenicaDataGridView.Location = new System.Drawing.Point(12, 28);
             this.narudzbenicaDataGridView.Name = "narudzbenicaDataGridView";
             this.narudzbenicaDataGridView.ReadOnly = true;
-            this.narudzbenicaDataGridView.Size = new System.Drawing.Size(445, 220);
+            this.narudzbenicaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.narudzbenicaDataGridView.Size = new System.Drawing.Size(558, 220);
             this.narudzbenicaDataGridView.TabIndex = 10;
             // 
             // stavka_narudzbeniceDataGridView
@@ -154,11 +159,30 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13});
             this.stavka_narudzbeniceDataGridView.DataSource = this.stavkanarudzbeniceBindingSource;
-            this.stavka_narudzbeniceDataGridView.Location = new System.Drawing.Point(12, 283);
+            this.stavka_narudzbeniceDataGridView.Location = new System.Drawing.Point(12, 294);
             this.stavka_narudzbeniceDataGridView.Name = "stavka_narudzbeniceDataGridView";
             this.stavka_narudzbeniceDataGridView.ReadOnly = true;
-            this.stavka_narudzbeniceDataGridView.Size = new System.Drawing.Size(445, 220);
+            this.stavka_narudzbeniceDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.stavka_narudzbeniceDataGridView.Size = new System.Drawing.Size(558, 220);
             this.stavka_narudzbeniceDataGridView.TabIndex = 10;
+            // 
+            // narudzbenicaLabel
+            // 
+            this.narudzbenicaLabel.AutoSize = true;
+            this.narudzbenicaLabel.Location = new System.Drawing.Point(9, 12);
+            this.narudzbenicaLabel.Name = "narudzbenicaLabel";
+            this.narudzbenicaLabel.Size = new System.Drawing.Size(73, 13);
+            this.narudzbenicaLabel.TabIndex = 11;
+            this.narudzbenicaLabel.Text = "Narudžbenica";
+            // 
+            // stavkeNarudzbeniceLabel
+            // 
+            this.stavkeNarudzbeniceLabel.AutoSize = true;
+            this.stavkeNarudzbeniceLabel.Location = new System.Drawing.Point(9, 278);
+            this.stavkeNarudzbeniceLabel.Name = "stavkeNarudzbeniceLabel";
+            this.stavkeNarudzbeniceLabel.Size = new System.Drawing.Size(108, 13);
+            this.stavkeNarudzbeniceLabel.TabIndex = 12;
+            this.stavkeNarudzbeniceLabel.Text = "Stavke narudžbenice";
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -174,12 +198,13 @@
             this.dataGridViewTextBoxColumn10.DataSource = this.materijalBindingSource;
             this.dataGridViewTextBoxColumn10.DisplayMember = "naziv";
             this.dataGridViewTextBoxColumn10.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.dataGridViewTextBoxColumn10.HeaderText = "materijalId";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Materijal";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn10.ValueMember = "materijalId";
+            this.dataGridViewTextBoxColumn10.Width = 130;
             // 
             // materijalBindingSource
             // 
@@ -188,7 +213,7 @@
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.DataPropertyName = "kolicina";
-            this.dataGridViewTextBoxColumn11.HeaderText = "kolicina";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Količina";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
@@ -212,6 +237,18 @@
             // 
             this.stavkanarudzbeniceBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Stavka_narudzbenice);
             // 
+            // korisnikBindingSource
+            // 
+            this.korisnikBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Korisnik);
+            // 
+            // partnerBindingSource
+            // 
+            this.partnerBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Partner);
+            // 
+            // narudzbenicaBindingSource
+            // 
+            this.narudzbenicaBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Narudzbenica);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "narudzbenicaId";
@@ -223,7 +260,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "datum_slanja";
-            this.dataGridViewTextBoxColumn2.HeaderText = "datum_slanja";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Datum slanja";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
@@ -233,38 +270,42 @@
             this.dataGridViewTextBoxColumn3.DataSource = this.korisnikBindingSource;
             this.dataGridViewTextBoxColumn3.DisplayMember = "korisnicko_ime";
             this.dataGridViewTextBoxColumn3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.dataGridViewTextBoxColumn3.HeaderText = "korisnikId";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Izdao korisnik";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn3.ValueMember = "korisnikId";
             // 
-            // korisnikBindingSource
-            // 
-            this.korisnikBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Korisnik);
-            // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "partnerId";
-            this.dataGridViewTextBoxColumn4.HeaderText = "partnerId";
+            this.dataGridViewTextBoxColumn4.DataSource = this.partnerBindingSource;
+            this.dataGridViewTextBoxColumn4.DisplayMember = "ime";
+            this.dataGridViewTextBoxColumn4.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Dobavljač";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn4.ValueMember = "partnerId";
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "datum_zaprimanja";
-            this.dataGridViewTextBoxColumn5.HeaderText = "datum_zaprimanja";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Datum zaprimanja";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 115;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "zaprimljeno";
-            this.dataGridViewTextBoxColumn6.HeaderText = "zaprimljeno";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Zaprimljeno?";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -282,15 +323,13 @@
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Visible = false;
             // 
-            // narudzbenicaBindingSource
-            // 
-            this.narudzbenicaBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Narudzbenica);
-            // 
             // NarudzbeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 538);
+            this.ClientSize = new System.Drawing.Size(578, 553);
+            this.Controls.Add(this.stavkeNarudzbeniceLabel);
+            this.Controls.Add(this.narudzbenicaLabel);
             this.Controls.Add(this.stavka_narudzbeniceDataGridView);
             this.Controls.Add(this.narudzbenicaDataGridView);
             this.Controls.Add(this.obrisiStavkuButton);
@@ -307,8 +346,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavkanarudzbeniceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbenicaBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -324,21 +365,24 @@
         private System.Windows.Forms.DataGridView narudzbenicaDataGridView;
         private System.Windows.Forms.BindingSource stavkanarudzbeniceBindingSource;
         private System.Windows.Forms.DataGridView stavka_narudzbeniceDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.BindingSource korisnikBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.BindingSource materijalBindingSource;
+        private System.Windows.Forms.BindingSource partnerBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.Label narudzbenicaLabel;
+        private System.Windows.Forms.Label stavkeNarudzbeniceLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }
 

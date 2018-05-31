@@ -21,15 +21,18 @@ namespace UpravljanjeNarudzbama
         {
             BindingList<Narudzbenica> narudzbenice = null;
             BindingList<Korisnik> korisnici = new BindingList<Korisnik>();
+            BindingList<Partner> partneri = new BindingList<Partner>();
             using (var db = new UpravljanjeNarudzbamaEntities())
             {
                 narudzbenice = new BindingList<Narudzbenica>(db.Narudzbenica.ToList());
                 foreach(Narudzbenica narudzbenica in narudzbenice)
                 {
                     korisnici.Add(narudzbenica.Korisnik);
+                    partneri.Add(narudzbenica.Partner);
                 }
             }
             narudzbenicaBindingSource.DataSource = narudzbenice;
+            partnerBindingSource.DataSource = partneri;
             korisnikBindingSource.DataSource = korisnici;
         }
 
