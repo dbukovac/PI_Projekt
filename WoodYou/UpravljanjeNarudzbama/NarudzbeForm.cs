@@ -16,14 +16,21 @@ namespace UpravljanjeNarudzbama
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda kojom se dohvaca lista narudzenice, 
+        /// korisnik koji je izdao narudzbenicu i dobavljac 
+        /// od kojeg su proizvodi naruceni.
+        /// </summary>
         private void PrikazNarudzbi()
         {
             BindingList<Narudzbenica> narudzbenice = null;
-            BindingList<Korisnik> korisnici = new BindingList<Korisnik>();
-            BindingList<Partner> partneri = new BindingList<Partner>();
+            BindingList<Partner> partneri = null;
+            BindingList<Korisnik> korisnici = null;
+
             using (var db = new UpravljanjeNarudzbamaEntities())
             {
+                korisnici = new BindingList<Korisnik>();
+                partneri = new BindingList<Partner>();
                 narudzbenice = new BindingList<Narudzbenica>(db.Narudzbenica.ToList());
                 foreach(Narudzbenica narudzbenica in narudzbenice)
                 {
@@ -35,13 +42,19 @@ namespace UpravljanjeNarudzbama
             partnerBindingSource.DataSource = partneri;
             korisnikBindingSource.DataSource = korisnici;
         }
-
+        /// <summary>
+        /// Metoda kojom se dohvacaju lista stavki 
+        /// narudzbenice i proizvod u stavki
+        /// </summary>
+        /// <param name="narudzbenica">Narudzbenica cije stavke zelimo prikazati</param>
         private void PrikazStavki(Narudzbenica narudzbenica)
         {
             BindingList<Stavka_narudzbenice> stavke = null;
-            BindingList<Materijal> materijali = new BindingList<Materijal>();
+            BindingList<Materijal> materijali = null;
+            
             using (var db = new UpravljanjeNarudzbamaEntities())
             {
+                materijali = new BindingList<Materijal>();
                 db.Narudzbenica.Attach(narudzbenica);
                 stavke = new BindingList<Stavka_narudzbenice>(narudzbenica.Stavka_narudzbenice.ToList());
                 foreach(Stavka_narudzbenice stavka in stavke)
@@ -66,6 +79,13 @@ namespace UpravljanjeNarudzbama
             {
                 PrikazStavki(narudzbenica);
             }
+        }
+
+        private void NovaNarudzbaButton_Click(object sender, EventArgs e)
+        {
+            NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm();
+            novaNarudzbenicaForm.ShowDialog(this);
+            PrikazNarudzbi();
         }
     }
 }

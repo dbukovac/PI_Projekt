@@ -32,8 +32,6 @@
           <Property Name="datum_slanja" Type="date" Nullable="false" />
           <Property Name="korisnikId" Type="int" Nullable="false" />
           <Property Name="partnerId" Type="int" Nullable="false" />
-          <Property Name="datum_zaprimanja" Type="date" />
-          <Property Name="zaprimljeno" Type="tinyint" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -221,8 +219,6 @@
           <Property Name="datum_slanja" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="korisnikId" Type="Int32" Nullable="false" />
           <Property Name="partnerId" Type="Int32" Nullable="false" />
-          <Property Name="datum_zaprimanja" Type="DateTime" Precision="0" />
-          <Property Name="zaprimljeno" Type="Byte" />
           <NavigationProperty Name="Korisnik" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Narudzbenica" ToRole="Korisnik" />
           <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Narudzbenica" FromRole="Narudzbenica" ToRole="Stavka_narudzbenice" />
           <NavigationProperty Name="Partner" Relationship="DBModel.FK_Narudzbenica_Partner" FromRole="Narudzbenica" ToRole="Partner" />
@@ -357,8 +353,6 @@
           <EntitySetMapping Name="Narudzbenica">
             <EntityTypeMapping TypeName="DBModel.Narudzbenica">
               <MappingFragment StoreEntitySet="Narudzbenica">
-                <ScalarProperty Name="zaprimljeno" ColumnName="zaprimljeno" />
-                <ScalarProperty Name="datum_zaprimanja" ColumnName="datum_zaprimanja" />
                 <ScalarProperty Name="partnerId" ColumnName="partnerId" />
                 <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
                 <ScalarProperty Name="datum_slanja" ColumnName="datum_slanja" />
