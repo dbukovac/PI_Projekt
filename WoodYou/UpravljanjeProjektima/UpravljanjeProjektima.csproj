@@ -148,7 +148,9 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Faza.datasource" />
+    <None Include="Properties\DataSources\Faza_ima_materijal.datasource" />
     <None Include="Properties\DataSources\Korisnik.datasource" />
+    <None Include="Properties\DataSources\Materijal.datasource" />
     <None Include="Properties\DataSources\Partner.datasource" />
     <None Include="Properties\DataSources\Projekt.datasource" />
     <None Include="Properties\Settings.settings">

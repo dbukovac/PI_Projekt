@@ -11,7 +11,7 @@
           </Key>
           <Property Name="fazaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cijena" Type="float" Nullable="false" />
+          <Property Name="cijena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="trajanje" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Faza_ima_materijal">
@@ -205,7 +205,7 @@
           </Key>
           <Property Name="fazaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cijena" Type="Double" Nullable="false" />
+          <Property Name="cijena" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="trajanje" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Faze_projekta" Relationship="Self.FK_Projekt_ima_fazu_Faza" FromRole="Faza" ToRole="Faze_projekta" />
         </EntityType>

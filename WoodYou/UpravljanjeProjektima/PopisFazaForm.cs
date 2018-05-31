@@ -58,5 +58,19 @@ namespace UpravljanjeProjektima
         {
             Close();
         }
+
+        private void novaFazaButton_Click(object sender, EventArgs e)
+        {
+            NovaFazaForm novaFazaforma = new NovaFazaForm();
+            novaFazaforma.ShowDialog();
+            PrikaziFaze();
+        }
+
+        private void izmjeniFazuButton_Click(object sender, EventArgs e)
+        {
+            NovaFazaForm novaFazaforma = new NovaFazaForm(fazaBindingSource.Current as Faza);
+            novaFazaforma.ShowDialog();
+            PrikaziFaze();
+        }
     }
 }

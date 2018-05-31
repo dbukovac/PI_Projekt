@@ -22,7 +22,7 @@ namespace UpravljanjeProjektima
     
         public int fazaId { get; set; }
         public string naziv { get; set; }
-        public double cijena { get; set; }
+        public decimal cijena { get; set; }
         public int trajanje { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

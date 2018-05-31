@@ -33,13 +33,14 @@
             this.fazeLabel = new System.Windows.Forms.Label();
             this.novaFazaButton = new System.Windows.Forms.Button();
             this.dodajFazuButton = new System.Windows.Forms.Button();
+            this.odustaniButton = new System.Windows.Forms.Button();
+            this.izmjeniFazuButton = new System.Windows.Forms.Button();
             this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.odustaniButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -71,12 +72,13 @@
             // 
             // novaFazaButton
             // 
-            this.novaFazaButton.Location = new System.Drawing.Point(146, 181);
+            this.novaFazaButton.Location = new System.Drawing.Point(65, 181);
             this.novaFazaButton.Name = "novaFazaButton";
             this.novaFazaButton.Size = new System.Drawing.Size(75, 23);
             this.novaFazaButton.TabIndex = 2;
             this.novaFazaButton.Text = "Kreiraj fazu";
             this.novaFazaButton.UseVisualStyleBackColor = true;
+            this.novaFazaButton.Click += new System.EventHandler(this.novaFazaButton_Click);
             // 
             // dodajFazuButton
             // 
@@ -87,6 +89,26 @@
             this.dodajFazuButton.Text = "Dodaj fazu";
             this.dodajFazuButton.UseVisualStyleBackColor = true;
             this.dodajFazuButton.Click += new System.EventHandler(this.dodajFazuButton_Click);
+            // 
+            // odustaniButton
+            // 
+            this.odustaniButton.Location = new System.Drawing.Point(308, 181);
+            this.odustaniButton.Name = "odustaniButton";
+            this.odustaniButton.Size = new System.Drawing.Size(75, 23);
+            this.odustaniButton.TabIndex = 6;
+            this.odustaniButton.Text = "Odustani";
+            this.odustaniButton.UseVisualStyleBackColor = true;
+            this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
+            // 
+            // izmjeniFazuButton
+            // 
+            this.izmjeniFazuButton.Location = new System.Drawing.Point(146, 181);
+            this.izmjeniFazuButton.Name = "izmjeniFazuButton";
+            this.izmjeniFazuButton.Size = new System.Drawing.Size(75, 23);
+            this.izmjeniFazuButton.TabIndex = 7;
+            this.izmjeniFazuButton.Text = "Izmjeni fazu";
+            this.izmjeniFazuButton.UseVisualStyleBackColor = true;
+            this.izmjeniFazuButton.Click += new System.EventHandler(this.izmjeniFazuButton_Click);
             // 
             // fazaIdDataGridViewTextBoxColumn
             // 
@@ -124,21 +146,12 @@
             // 
             this.fazaBindingSource.DataSource = typeof(UpravljanjeProjektima.Faza);
             // 
-            // odustaniButton
-            // 
-            this.odustaniButton.Location = new System.Drawing.Point(308, 181);
-            this.odustaniButton.Name = "odustaniButton";
-            this.odustaniButton.Size = new System.Drawing.Size(75, 23);
-            this.odustaniButton.TabIndex = 6;
-            this.odustaniButton.Text = "Dodaj fazu";
-            this.odustaniButton.UseVisualStyleBackColor = true;
-            this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
-            // 
             // PopisFazaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 212);
+            this.Controls.Add(this.izmjeniFazuButton);
             this.Controls.Add(this.odustaniButton);
             this.Controls.Add(this.dodajFazuButton);
             this.Controls.Add(this.novaFazaButton);
@@ -167,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fazeprojektaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fazaBindingSource;
         private System.Windows.Forms.Button odustaniButton;
+        private System.Windows.Forms.Button izmjeniFazuButton;
     }
 }

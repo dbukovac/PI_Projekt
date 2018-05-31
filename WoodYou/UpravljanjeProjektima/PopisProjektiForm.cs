@@ -21,6 +21,38 @@ namespace UpravljanjeProjektima
         {
             PrikaziProjekte();
             PrikaziFaze(projektBindingSource.Current as Projekt);
+            PrikaziMaterijal(projektBindingSource.Current as Projekt, fazaBindingSource.Current as Faza);
+        }
+
+        private void PrikaziMaterijal(Projekt projekt, Faza faza)
+        {
+            Faza selektiranaFaza = faza;
+            Projekt selektiraniProjekt = projekt;
+            Faze_projekta materijal = null;
+            BindingList<Faza_ima_materijal> listaMaterijala = null;
+            if(selektiranaFaza != null && selektiraniProjekt != null)
+            {
+                using (var db = new UpravljanjeProjektimaEntities())
+                {
+                    db.Projekt.Attach(selektiraniProjekt);
+                    db.Faza.Attach(selektiranaFaza);
+
+                    List<Faze_projekta> listaOdProjekta = new List<Faze_projekta>(selektiraniProjekt.Faze_projekta.ToList());
+                    List<Faze_projekta> listaOdFaze = new List<Faze_projekta>(selektiranaFaza.Faze_projekta.ToList());
+                    foreach (var P in listaOdProjekta)
+                    {
+                        foreach (var F in listaOdFaze)
+                        {
+                            if (P.id == F.id)
+                            {
+                                materijal = P;
+                            }
+                        }
+                    }
+                    listaMaterijala = new BindingList<Faza_ima_materijal>(materijal.Faza_ima_materijal.ToList());
+                }
+                fazaimamaterijalBindingSource.DataSource = listaMaterijala;
+            }
         }
 
         private void PrikaziProjekte()
@@ -107,6 +139,7 @@ namespace UpravljanjeProjektima
         private void projektiDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             PrikaziFaze(projektBindingSource.Current as Projekt);
+            PrikaziMaterijal(projektBindingSource.Current as Projekt, fazaBindingSource.Current as Faza);
         }
 
         private void brisiProjektButton_Click(object sender, EventArgs e)

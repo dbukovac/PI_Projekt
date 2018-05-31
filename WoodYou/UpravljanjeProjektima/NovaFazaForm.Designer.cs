@@ -28,119 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.fazeLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.fazeDataGridView = new System.Windows.Forms.DataGridView();
-            this.projektiLabel = new System.Windows.Forms.Label();
-            this.brisiProjektButton = new System.Windows.Forms.Button();
-            this.noviProjektButton = new System.Windows.Forms.Button();
-            this.projektiDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).BeginInit();
+            this.odustaniButton = new System.Windows.Forms.Button();
+            this.dodajFazuButton = new System.Windows.Forms.Button();
+            this.tboxNaziv = new System.Windows.Forms.TextBox();
+            this.tboxTrajanje = new System.Windows.Forms.TextBox();
+            this.tboxCijena = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.datumPocetkaLabel = new System.Windows.Forms.Label();
+            this.nazivLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // fazeLabel
+            // odustaniButton
             // 
-            this.fazeLabel.AutoSize = true;
-            this.fazeLabel.Location = new System.Drawing.Point(7, 18);
-            this.fazeLabel.Name = "fazeLabel";
-            this.fazeLabel.Size = new System.Drawing.Size(33, 13);
-            this.fazeLabel.TabIndex = 10;
-            this.fazeLabel.Text = "Faze:";
+            this.odustaniButton.Location = new System.Drawing.Point(182, 146);
+            this.odustaniButton.Name = "odustaniButton";
+            this.odustaniButton.Size = new System.Drawing.Size(75, 23);
+            this.odustaniButton.TabIndex = 9;
+            this.odustaniButton.Text = "Odustani";
+            this.odustaniButton.UseVisualStyleBackColor = true;
+            this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
             // 
-            // button1
+            // dodajFazuButton
             // 
-            this.button1.Location = new System.Drawing.Point(711, 190);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Briši fazu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.dodajFazuButton.Location = new System.Drawing.Point(101, 146);
+            this.dodajFazuButton.Name = "dodajFazuButton";
+            this.dodajFazuButton.Size = new System.Drawing.Size(75, 23);
+            this.dodajFazuButton.TabIndex = 8;
+            this.dodajFazuButton.Text = "Dodaj fazu";
+            this.dodajFazuButton.UseVisualStyleBackColor = true;
+            this.dodajFazuButton.Click += new System.EventHandler(this.dodajFazuButton_Click);
             // 
-            // button2
+            // tboxNaziv
             // 
-            this.button2.Location = new System.Drawing.Point(630, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Dodaj fazu";
-            this.button2.UseVisualStyleBackColor = true;
+            this.tboxNaziv.Location = new System.Drawing.Point(101, 41);
+            this.tboxNaziv.Name = "tboxNaziv";
+            this.tboxNaziv.Size = new System.Drawing.Size(135, 20);
+            this.tboxNaziv.TabIndex = 10;
             // 
-            // fazeDataGridView
+            // tboxTrajanje
             // 
-            this.fazeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.fazeDataGridView.Location = new System.Drawing.Point(10, 34);
-            this.fazeDataGridView.Name = "fazeDataGridView";
-            this.fazeDataGridView.Size = new System.Drawing.Size(776, 150);
-            this.fazeDataGridView.TabIndex = 7;
+            this.tboxTrajanje.Location = new System.Drawing.Point(101, 93);
+            this.tboxTrajanje.Name = "tboxTrajanje";
+            this.tboxTrajanje.Size = new System.Drawing.Size(135, 20);
+            this.tboxTrajanje.TabIndex = 11;
             // 
-            // projektiLabel
+            // tboxCijena
             // 
-            this.projektiLabel.AutoSize = true;
-            this.projektiLabel.Location = new System.Drawing.Point(12, 212);
-            this.projektiLabel.Name = "projektiLabel";
-            this.projektiLabel.Size = new System.Drawing.Size(49, 13);
-            this.projektiLabel.TabIndex = 14;
-            this.projektiLabel.Text = "Materijal:";
+            this.tboxCijena.Location = new System.Drawing.Point(101, 67);
+            this.tboxCijena.Name = "tboxCijena";
+            this.tboxCijena.Size = new System.Drawing.Size(135, 20);
+            this.tboxCijena.TabIndex = 12;
             // 
-            // brisiProjektButton
+            // label5
             // 
-            this.brisiProjektButton.Location = new System.Drawing.Point(702, 367);
-            this.brisiProjektButton.Name = "brisiProjektButton";
-            this.brisiProjektButton.Size = new System.Drawing.Size(86, 23);
-            this.brisiProjektButton.TabIndex = 13;
-            this.brisiProjektButton.Text = "Briši materijal";
-            this.brisiProjektButton.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Trajanje:";
             // 
-            // noviProjektButton
+            // datumPocetkaLabel
             // 
-            this.noviProjektButton.Location = new System.Drawing.Point(608, 367);
-            this.noviProjektButton.Name = "noviProjektButton";
-            this.noviProjektButton.Size = new System.Drawing.Size(88, 23);
-            this.noviProjektButton.TabIndex = 12;
-            this.noviProjektButton.Text = "Dodaj materijal";
-            this.noviProjektButton.UseVisualStyleBackColor = true;
+            this.datumPocetkaLabel.AutoSize = true;
+            this.datumPocetkaLabel.Location = new System.Drawing.Point(14, 67);
+            this.datumPocetkaLabel.Name = "datumPocetkaLabel";
+            this.datumPocetkaLabel.Size = new System.Drawing.Size(39, 13);
+            this.datumPocetkaLabel.TabIndex = 14;
+            this.datumPocetkaLabel.Text = "Cijena:";
             // 
-            // projektiDataGridView
+            // nazivLabel
             // 
-            this.projektiDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.projektiDataGridView.Location = new System.Drawing.Point(12, 228);
-            this.projektiDataGridView.Name = "projektiDataGridView";
-            this.projektiDataGridView.Size = new System.Drawing.Size(774, 133);
-            this.projektiDataGridView.TabIndex = 11;
+            this.nazivLabel.AutoSize = true;
+            this.nazivLabel.Location = new System.Drawing.Point(14, 41);
+            this.nazivLabel.Name = "nazivLabel";
+            this.nazivLabel.Size = new System.Drawing.Size(37, 13);
+            this.nazivLabel.TabIndex = 13;
+            this.nazivLabel.Text = "Naziv:";
             // 
             // NovaFazaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.projektiLabel);
-            this.Controls.Add(this.brisiProjektButton);
-            this.Controls.Add(this.noviProjektButton);
-            this.Controls.Add(this.projektiDataGridView);
-            this.Controls.Add(this.fazeLabel);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.fazeDataGridView);
+            this.ClientSize = new System.Drawing.Size(285, 191);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.datumPocetkaLabel);
+            this.Controls.Add(this.nazivLabel);
+            this.Controls.Add(this.tboxCijena);
+            this.Controls.Add(this.tboxTrajanje);
+            this.Controls.Add(this.tboxNaziv);
+            this.Controls.Add(this.odustaniButton);
+            this.Controls.Add(this.dodajFazuButton);
             this.Name = "NovaFazaForm";
             this.Text = "NovaFazaForm";
-            ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).EndInit();
+            this.Load += new System.EventHandler(this.NovaFazaForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label fazeLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView fazeDataGridView;
-        private System.Windows.Forms.Label projektiLabel;
-        private System.Windows.Forms.Button brisiProjektButton;
-        private System.Windows.Forms.Button noviProjektButton;
-        private System.Windows.Forms.DataGridView projektiDataGridView;
+        private System.Windows.Forms.Button odustaniButton;
+        private System.Windows.Forms.Button dodajFazuButton;
+        private System.Windows.Forms.TextBox tboxNaziv;
+        private System.Windows.Forms.TextBox tboxTrajanje;
+        private System.Windows.Forms.TextBox tboxCijena;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label datumPocetkaLabel;
+        private System.Windows.Forms.Label nazivLabel;
     }
 }
