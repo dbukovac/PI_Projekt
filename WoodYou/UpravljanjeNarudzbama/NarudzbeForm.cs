@@ -32,7 +32,7 @@ namespace UpravljanjeNarudzbama
                 korisnici = new BindingList<Korisnik>();
                 partneri = new BindingList<Partner>();
                 narudzbenice = new BindingList<Narudzbenica>(db.Narudzbenica.ToList());
-                foreach(Narudzbenica narudzbenica in narudzbenice)
+                foreach (Narudzbenica narudzbenica in narudzbenice)
                 {
                     korisnici.Add(narudzbenica.Korisnik);
                     partneri.Add(narudzbenica.Partner);
@@ -51,13 +51,13 @@ namespace UpravljanjeNarudzbama
         {
             BindingList<Stavka_narudzbenice> stavke = null;
             BindingList<Materijal> materijali = null;
-            
+
             using (var db = new UpravljanjeNarudzbamaEntities())
             {
                 materijali = new BindingList<Materijal>();
                 db.Narudzbenica.Attach(narudzbenica);
                 stavke = new BindingList<Stavka_narudzbenice>(narudzbenica.Stavka_narudzbenice.ToList());
-                foreach(Stavka_narudzbenice stavka in stavke)
+                foreach (Stavka_narudzbenice stavka in stavke)
                 {
                     materijali.Add(stavka.Materijal);
                 }
@@ -65,35 +65,86 @@ namespace UpravljanjeNarudzbama
             stavkanarudzbeniceBindingSource.DataSource = stavke;
             materijalBindingSource.DataSource = materijali;
         }
-
         private void NarudzbeForm_Load(object sender, EventArgs e)
         {
             PrikazNarudzbi();
-            PrikazStavki(narudzbenicaBindingSource.Current as Narudzbenica);
-        }
-
-        private void NarudzbeDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
-            if(narudzbenica != null)
+            if (narudzbenica != null)
             {
                 PrikazStavki(narudzbenica);
             }
         }
-
+        private void NarudzbeDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
+            if (narudzbenica != null)
+            {
+                PrikazStavki(narudzbenica);
+            }
+        }
         private void NovaNarudzbaButton_Click(object sender, EventArgs e)
         {
             NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm();
             novaNarudzbenicaForm.ShowDialog(this);
             PrikazNarudzbi();
         }
-
         private void UrediNarudzbuButton_Click(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
-            NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm(narudzbenica);
-            novaNarudzbenicaForm.ShowDialog(this);
-            PrikazNarudzbi();
+            if (narudzbenica != null)
+            {
+                NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm(narudzbenica);
+                novaNarudzbenicaForm.ShowDialog(this);
+                PrikazNarudzbi();
+            }
+        }
+        private void NovaStavkaButton_Click(object sender, EventArgs e)
+        {
+            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
+            if (narudzbenica != null)
+            {
+                NovaStavkaNarudzbeniceForm novaStavkaForm = new NovaStavkaNarudzbeniceForm(narudzbenica);
+                novaStavkaForm.ShowDialog(this);
+                PrikazNarudzbi();
+            }
+        }
+
+        private void ObrisiNarudzbuButton_Click(object sender, EventArgs e)
+        {
+            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
+            if (narudzbenica != null)
+            {
+                if (MessageBox.Show("Želite li zaista izbrisati narudžbenicu?", "Upozorenje!", MessageBoxButtons.YesNo)
+                    == System.Windows.Forms.DialogResult.Yes)
+                {
+                    using (var db = new UpravljanjeNarudzbamaEntities())
+                    {
+                        db.Narudzbenica.Attach(narudzbenica);
+                        db.Narudzbenica.Remove(narudzbenica);
+                        db.SaveChanges();
+                    }
+                    PrikazNarudzbi();
+                }
+            }
+        }
+        private void ObrisiStavkuButton_Click(object sender, EventArgs e)
+        {
+            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
+            Stavka_narudzbenice stavka = stavkanarudzbeniceBindingSource.Current as Stavka_narudzbenice;
+            if (stavka != null)
+            {
+                if (MessageBox.Show("Želite li zaista izbrisati stavku?", "Upozorenje!", MessageBoxButtons.YesNo)
+                    == System.Windows.Forms.DialogResult.Yes)
+                {
+                    using (var db = new UpravljanjeNarudzbamaEntities())
+                    {
+                        db.Stavka_narudzbenice.Attach(stavka);
+                        db.Stavka_narudzbenice.Remove(stavka);
+                        db.SaveChanges();
+                    }
+                    PrikazStavki(narudzbenica);
+                }
+            }
         }
     }
 }

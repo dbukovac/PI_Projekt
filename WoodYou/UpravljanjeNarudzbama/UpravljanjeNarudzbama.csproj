@@ -75,6 +75,12 @@
     <Compile Include="NovaNarudzbenicaForm.Designer.cs">
       <DependentUpon>NovaNarudzbenicaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NovaStavkaNarudzbeniceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaStavkaNarudzbeniceForm.Designer.cs">
+      <DependentUpon>NovaStavkaNarudzbeniceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partner.cs">
       <DependentUpon>UpravljanjeNarudzbamaModel.tt</DependentUpon>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NovaNarudzbenicaForm.resx">
       <DependentUpon>NovaNarudzbenicaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovaStavkaNarudzbeniceForm.resx">
+      <DependentUpon>NovaStavkaNarudzbeniceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
