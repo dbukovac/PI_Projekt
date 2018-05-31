@@ -82,6 +82,7 @@
             this.urediNarudzbuButton.TabIndex = 5;
             this.urediNarudzbuButton.Text = "Uredi narudžbu";
             this.urediNarudzbuButton.UseVisualStyleBackColor = true;
+            this.urediNarudzbuButton.Click += new System.EventHandler(this.UrediNarudzbuButton_Click);
             // 
             // obrisiNarudzbuButton
             // 

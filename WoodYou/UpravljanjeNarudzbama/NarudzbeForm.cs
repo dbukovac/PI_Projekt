@@ -87,5 +87,13 @@ namespace UpravljanjeNarudzbama
             novaNarudzbenicaForm.ShowDialog(this);
             PrikazNarudzbi();
         }
+
+        private void UrediNarudzbuButton_Click(object sender, EventArgs e)
+        {
+            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
+            NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm(narudzbenica);
+            novaNarudzbenicaForm.ShowDialog(this);
+            PrikazNarudzbi();
+        }
     }
 }

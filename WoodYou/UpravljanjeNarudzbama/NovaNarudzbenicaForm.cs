@@ -12,16 +12,32 @@ namespace UpravljanjeNarudzbama
 {
     public partial class NovaNarudzbenicaForm : Form
     {
+        private Narudzbenica trenutnaNarudzbenica = null;
         public NovaNarudzbenicaForm()
         {
             InitializeComponent();
         }
+        public NovaNarudzbenicaForm(Narudzbenica narudzbenica)
+        {
+            InitializeComponent();
+            this.trenutnaNarudzbenica = narudzbenica;
+        }
         private void NovaNarudzbenicaForm_Load(object sender, EventArgs e)
         {
-            datumSlanjaDateTimePicker.MinDate = DateTime.Now;
-            datumSlanjaDateTimePicker.MinDate = datumSlanjaDateTimePicker.MinDate.AddDays(-7);
-            datumSlanjaDateTimePicker.Value = DateTime.Now;
             DohvatiPartnere();
+            if (trenutnaNarudzbenica == null)
+            {
+                datumSlanjaDateTimePicker.MinDate = DateTime.Now;
+                datumSlanjaDateTimePicker.MinDate = datumSlanjaDateTimePicker.MinDate.AddDays(-7);
+                datumSlanjaDateTimePicker.Value = DateTime.Now;
+            }
+            else
+            {
+                this.Text = "Uređivanje narudžbenice";
+                datumSlanjaDateTimePicker.Value = trenutnaNarudzbenica.datum_slanja;
+                korisnikTextBox.Text = trenutnaNarudzbenica.Korisnik.korisnicko_ime;
+                partnerComboBox.SelectedValue = trenutnaNarudzbenica.partnerId;
+            }
         }
 
         private void DohvatiPartnere()
@@ -36,18 +52,29 @@ namespace UpravljanjeNarudzbama
 
         private void SpremiNarudzbuButton_Click(object sender, EventArgs e)
         {
+
             using (var db = new UpravljanjeNarudzbamaEntities())
             {
-                Narudzbenica narudzbenica = new Narudzbenica
+                if (trenutnaNarudzbenica == null)
                 {
-                    korisnikId = 2,
-                    partnerId = int.Parse(partnerComboBox.SelectedValue.ToString()),
-                    datum_slanja = datumSlanjaDateTimePicker.Value
-                };
-                db.Narudzbenica.Add(narudzbenica);
-                db.SaveChanges();
+                    Narudzbenica narudzbenica = new Narudzbenica
+                    {
+                        korisnikId = 2,
+                        partnerId = int.Parse(partnerComboBox.SelectedValue.ToString()),
+                        datum_slanja = datumSlanjaDateTimePicker.Value
+                    };
+                    db.Narudzbenica.Add(narudzbenica);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.Narudzbenica.Attach(trenutnaNarudzbenica);
+                    trenutnaNarudzbenica.datum_slanja = datumSlanjaDateTimePicker.Value;
+                    trenutnaNarudzbenica.partnerId = int.Parse(partnerComboBox.SelectedValue.ToString());
+                    db.SaveChanges();
+                }
             }
             Close();
-        }
+        } 
     }
 }
