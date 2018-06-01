@@ -68,11 +68,6 @@ namespace UpravljanjeNarudzbama
         private void NarudzbeForm_Load(object sender, EventArgs e)
         {
             PrikazNarudzbi();
-            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
-            if (narudzbenica != null)
-            {
-                PrikazStavki(narudzbenica);
-            }
         }
         private void NarudzbeDataGridView_SelectionChanged(object sender, EventArgs e)
         {

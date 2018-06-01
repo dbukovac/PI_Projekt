@@ -29,24 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dodajButton = new System.Windows.Forms.Button();
             this.materijaliLabel = new System.Windows.Forms.Label();
             this.kolicinaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.spremiButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
+            this.oduzmiButton = new System.Windows.Forms.Button();
+            this.dodaniMaterijalLabel = new System.Windows.Forms.Label();
+            this.dodaniMaterijalDataGridView = new System.Windows.Forms.DataGridView();
+            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dodaniMaterijalDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dodaniMaterijalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // materijalBindingSource
-            // 
-            this.materijalBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Materijal);
             // 
             // materijalDataGridView
             // 
@@ -65,6 +71,113 @@
             this.materijalDataGridView.ReadOnly = true;
             this.materijalDataGridView.Size = new System.Drawing.Size(293, 310);
             this.materijalDataGridView.TabIndex = 1;
+            // 
+            // dodajButton
+            // 
+            this.dodajButton.Location = new System.Drawing.Point(71, 338);
+            this.dodajButton.Name = "dodajButton";
+            this.dodajButton.Size = new System.Drawing.Size(75, 23);
+            this.dodajButton.TabIndex = 2;
+            this.dodajButton.Text = "Dodaj";
+            this.dodajButton.UseVisualStyleBackColor = true;
+            this.dodajButton.Click += new System.EventHandler(this.DodajButton_Click);
+            // 
+            // materijaliLabel
+            // 
+            this.materijaliLabel.AutoSize = true;
+            this.materijaliLabel.Location = new System.Drawing.Point(9, 9);
+            this.materijaliLabel.Name = "materijaliLabel";
+            this.materijaliLabel.Size = new System.Drawing.Size(48, 13);
+            this.materijaliLabel.TabIndex = 4;
+            this.materijaliLabel.Text = "Materijali";
+            // 
+            // kolicinaNumericUpDown
+            // 
+            this.kolicinaNumericUpDown.Location = new System.Drawing.Point(12, 341);
+            this.kolicinaNumericUpDown.Name = "kolicinaNumericUpDown";
+            this.kolicinaNumericUpDown.Size = new System.Drawing.Size(53, 20);
+            this.kolicinaNumericUpDown.TabIndex = 5;
+            // 
+            // spremiButton
+            // 
+            this.spremiButton.Location = new System.Drawing.Point(567, 369);
+            this.spremiButton.Name = "spremiButton";
+            this.spremiButton.Size = new System.Drawing.Size(75, 23);
+            this.spremiButton.TabIndex = 6;
+            this.spremiButton.Text = " Spremi";
+            this.spremiButton.UseVisualStyleBackColor = true;
+            this.spremiButton.Click += new System.EventHandler(this.SpremiButton_Click);
+            // 
+            // oduzmiButton
+            // 
+            this.oduzmiButton.Location = new System.Drawing.Point(351, 338);
+            this.oduzmiButton.Name = "oduzmiButton";
+            this.oduzmiButton.Size = new System.Drawing.Size(75, 23);
+            this.oduzmiButton.TabIndex = 8;
+            this.oduzmiButton.Text = "Briši";
+            this.oduzmiButton.UseVisualStyleBackColor = true;
+            // 
+            // dodaniMaterijalLabel
+            // 
+            this.dodaniMaterijalLabel.AutoSize = true;
+            this.dodaniMaterijalLabel.Location = new System.Drawing.Point(348, 9);
+            this.dodaniMaterijalLabel.Name = "dodaniMaterijalLabel";
+            this.dodaniMaterijalLabel.Size = new System.Drawing.Size(82, 13);
+            this.dodaniMaterijalLabel.TabIndex = 9;
+            this.dodaniMaterijalLabel.Text = "Dodani materijal";
+            // 
+            // dodaniMaterijalDataGridView
+            // 
+            this.dodaniMaterijalDataGridView.AllowUserToAddRows = false;
+            this.dodaniMaterijalDataGridView.AllowUserToDeleteRows = false;
+            this.dodaniMaterijalDataGridView.AutoGenerateColumns = false;
+            this.dodaniMaterijalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dodaniMaterijalDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.materijalIdDataGridViewTextBoxColumn,
+            this.nazivDataGridViewTextBoxColumn,
+            this.kolicinaDataGridViewTextBoxColumn,
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn});
+            this.dodaniMaterijalDataGridView.DataSource = this.dodaniMaterijalBindingSource;
+            this.dodaniMaterijalDataGridView.Location = new System.Drawing.Point(351, 25);
+            this.dodaniMaterijalDataGridView.Name = "dodaniMaterijalDataGridView";
+            this.dodaniMaterijalDataGridView.ReadOnly = true;
+            this.dodaniMaterijalDataGridView.Size = new System.Drawing.Size(293, 310);
+            this.dodaniMaterijalDataGridView.TabIndex = 10;
+            // 
+            // materijalIdDataGridViewTextBoxColumn
+            // 
+            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
+            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materijalIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nazivDataGridViewTextBoxColumn
+            // 
+            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
+            this.nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
+            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nazivDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // kolicinaDataGridViewTextBoxColumn
+            // 
+            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "Kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
+            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stavkanarudzbeniceDataGridViewTextBoxColumn
+            // 
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn.DataPropertyName = "Stavka_narudzbenice";
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn.HeaderText = "Stavka_narudzbenice";
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn.Name = "stavkanarudzbeniceDataGridViewTextBoxColumn";
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stavkanarudzbeniceDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dodaniMaterijalBindingSource
+            // 
+            this.dodaniMaterijalBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Materijal);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -97,47 +210,18 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Visible = false;
             // 
-            // dodajButton
+            // materijalBindingSource
             // 
-            this.dodajButton.Location = new System.Drawing.Point(71, 340);
-            this.dodajButton.Name = "dodajButton";
-            this.dodajButton.Size = new System.Drawing.Size(75, 23);
-            this.dodajButton.TabIndex = 2;
-            this.dodajButton.Text = "Dodaj";
-            this.dodajButton.UseVisualStyleBackColor = true;
-            this.dodajButton.Click += new System.EventHandler(this.DodajButton_Click);
-            // 
-            // materijaliLabel
-            // 
-            this.materijaliLabel.AutoSize = true;
-            this.materijaliLabel.Location = new System.Drawing.Point(9, 9);
-            this.materijaliLabel.Name = "materijaliLabel";
-            this.materijaliLabel.Size = new System.Drawing.Size(48, 13);
-            this.materijaliLabel.TabIndex = 4;
-            this.materijaliLabel.Text = "Materijali";
-            // 
-            // kolicinaNumericUpDown
-            // 
-            this.kolicinaNumericUpDown.Location = new System.Drawing.Point(12, 341);
-            this.kolicinaNumericUpDown.Name = "kolicinaNumericUpDown";
-            this.kolicinaNumericUpDown.Size = new System.Drawing.Size(53, 20);
-            this.kolicinaNumericUpDown.TabIndex = 5;
-            // 
-            // spremiButton
-            // 
-            this.spremiButton.Location = new System.Drawing.Point(230, 369);
-            this.spremiButton.Name = "spremiButton";
-            this.spremiButton.Size = new System.Drawing.Size(75, 23);
-            this.spremiButton.TabIndex = 6;
-            this.spremiButton.Text = " Spremi";
-            this.spremiButton.UseVisualStyleBackColor = true;
-            this.spremiButton.Click += new System.EventHandler(this.SpremiButton_Click);
+            this.materijalBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Materijal);
             // 
             // NovaStavkaNarudzbeniceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 404);
+            this.ClientSize = new System.Drawing.Size(654, 404);
+            this.Controls.Add(this.dodaniMaterijalDataGridView);
+            this.Controls.Add(this.dodaniMaterijalLabel);
+            this.Controls.Add(this.oduzmiButton);
             this.Controls.Add(this.spremiButton);
             this.Controls.Add(this.kolicinaNumericUpDown);
             this.Controls.Add(this.materijaliLabel);
@@ -146,9 +230,11 @@
             this.Name = "NovaStavkaNarudzbeniceForm";
             this.Text = "Nova stavka narudžbenice";
             this.Load += new System.EventHandler(this.NovaStavkaNarudzbenice_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dodaniMaterijalDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dodaniMaterijalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +252,13 @@
         private System.Windows.Forms.Label materijaliLabel;
         private System.Windows.Forms.NumericUpDown kolicinaNumericUpDown;
         private System.Windows.Forms.Button spremiButton;
+        private System.Windows.Forms.Button oduzmiButton;
+        private System.Windows.Forms.Label dodaniMaterijalLabel;
+        private System.Windows.Forms.DataGridView dodaniMaterijalDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materijalIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kolicinaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stavkanarudzbeniceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource dodaniMaterijalBindingSource;
     }
 }

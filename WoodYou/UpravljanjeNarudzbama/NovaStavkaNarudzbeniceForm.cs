@@ -14,6 +14,7 @@ namespace UpravljanjeNarudzbama
     {
         private Narudzbenica trenutnaNarudzbenica = null;
         private List<Stavka_narudzbenice> stavke = new List<Stavka_narudzbenice>();
+        private BindingList<Materijal> dodaniMaterijali = new BindingList<Materijal>();
         public NovaStavkaNarudzbeniceForm(Narudzbenica narudzbenica)
         {
             InitializeComponent();
@@ -37,16 +38,50 @@ namespace UpravljanjeNarudzbama
 
         private void DodajButton_Click(object sender, EventArgs e)
         {
-            Materijal materijal = materijalBindingSource.Current as Materijal;
-            if(materijal != null)
+            Materijal trenutniMaterijal = materijalBindingSource.Current as Materijal;
+            if(trenutniMaterijal != null)
             {
-                Stavka_narudzbenice stavka = new Stavka_narudzbenice
+                bool novaStavka = true;
+
+                foreach(Stavka_narudzbenice stavka in stavke)
                 {
-                    narudzbenicaId = trenutnaNarudzbenica.narudzbenicaId,
-                    materijalId = materijal.materijalId,
-                    kolicina = (int)kolicinaNumericUpDown.Value
-                };
-                stavke.Add(stavka);
+                    if(trenutniMaterijal.materijalId == stavka.materijalId)
+                    {
+                        novaStavka = false;
+                        stavka.kolicina += (int)kolicinaNumericUpDown.Value;
+                    }
+                }
+
+                if(novaStavka)
+                {
+                    Stavka_narudzbenice stavkaZaDodat = new Stavka_narudzbenice
+                    {
+                        narudzbenicaId = trenutnaNarudzbenica.narudzbenicaId,
+                        materijalId = trenutniMaterijal.materijalId,
+                        kolicina = (int)kolicinaNumericUpDown.Value
+                    };
+                    stavke.Add(stavkaZaDodat);
+                    Materijal dodaniMaterijal = new Materijal
+                    {
+                        materijalId = trenutniMaterijal.materijalId,
+                        naziv = trenutniMaterijal.naziv,
+                        kolicina = (int)kolicinaNumericUpDown.Value
+                    };
+                    dodaniMaterijali.Add(dodaniMaterijal);
+                    dodaniMaterijalBindingSource.DataSource = dodaniMaterijali;
+                }
+                else
+                {
+                    foreach (Materijal materijal in dodaniMaterijali)
+                    {
+                        if (trenutniMaterijal.materijalId == materijal.materijalId)
+                        {
+                            materijal.kolicina += (int)kolicinaNumericUpDown.Value;
+                        }
+                    }
+                    dodaniMaterijali.ResetBindings();
+                    dodaniMaterijalBindingSource.DataSource = dodaniMaterijali;
+                }
             }
         }
 
