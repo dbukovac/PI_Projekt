@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Faza">
+          <Key>
+            <PropertyRef Name="fazaId" />
+          </Key>
+          <Property Name="fazaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cijena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="trajanje" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faza_ima_materijal">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="materijalId" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faze_projekta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projektId" Type="int" Nullable="false" />
+          <Property Name="fazaId" Type="int" Nullable="false" />
+          <Property Name="zakljucano" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="materijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_partnera" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projekt">
+          <Key>
+            <PropertyRef Name="projektId" />
+          </Key>
+          <Property Name="projektId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="datum_pocetka" Type="date" Nullable="false" />
+          <Property Name="potrebno_vrijeme" Type="int" />
+          <Property Name="datum_zavrsetka" Type="date" />
+          <Property Name="datum_izdavanja_racuna" Type="date" />
+          <Property Name="ukupna_cijena" Type="float" />
+          <Property Name="cijena_bez_pdv" Type="float" />
+          <Property Name="iznos_pdv" Type="float" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="partnerId" Type="int" Nullable="false" />
+          <Property Name="gotovo" Type="tinyint" Nullable="false" />
+          <Property Name="aktivan" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Faza_ima_materijal_Faze_projekta">
+          <End Role="Faze_projekta" Type="Self.Faze_projekta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Faza_ima_materijal" Type="Self.Faza_ima_materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faze_projekta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Faza_ima_materijal">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faza_ima_materijal_Materijal">
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Faza_ima_materijal" Type="Self.Faza_ima_materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="materijalId" />
+            </Principal>
+            <Dependent Role="Faza_ima_materijal">
+              <PropertyRef Name="materijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_ima_fazu_Faza">
+          <End Role="Faza" Type="Self.Faza" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Faze_projekta" Type="Self.Faze_projekta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faza">
+              <PropertyRef Name="fazaId" />
+            </Principal>
+            <Dependent Role="Faze_projekta">
+              <PropertyRef Name="fazaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_ima_fazu_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Faze_projekta" Type="Self.Faze_projekta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="projektId" />
+            </Principal>
+            <Dependent Role="Faze_projekta">
+              <PropertyRef Name="projektId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="korisnikId" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="partnerId" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Faza" EntityType="Self.Faza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faza_ima_materijal" EntityType="Self.Faza_ima_materijal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faze_projekta" EntityType="Self.Faze_projekta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projekt" EntityType="Self.Projekt" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Faza_ima_materijal_Faze_projekta" Association="Self.FK_Faza_ima_materijal_Faze_projekta">
+            <End Role="Faze_projekta" EntitySet="Faze_projekta" />
+            <End Role="Faza_ima_materijal" EntitySet="Faza_ima_materijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faza_ima_materijal_Materijal" Association="Self.FK_Faza_ima_materijal_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="Faza_ima_materijal" EntitySet="Faza_ima_materijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_ima_fazu_Faza" Association="Self.FK_Projekt_ima_fazu_Faza">
+            <End Role="Faza" EntitySet="Faza" />
+            <End Role="Faze_projekta" EntitySet="Faze_projekta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_ima_fazu_Projekt" Association="Self.FK_Projekt_ima_fazu_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Faze_projekta" EntitySet="Faze_projekta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Korisnik" Association="Self.FK_Projekt_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Partner" Association="Self.FK_Projekt_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Korisnik" FromRole="Korisnik" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tip_partnera" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Partner" FromRole="Partner" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Projekt">
+          <Key>
+            <PropertyRef Name="projektId" />
+          </Key>
+          <Property Name="projektId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datum_pocetka" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="potrebno_vrijeme" Type="Int32" />
+          <Property Name="datum_zavrsetka" Type="DateTime" Precision="0" />
+          <Property Name="ukupna_cijena" Type="Double" />
+          <Property Name="cijena_bez_pdv" Type="Double" />
+          <Property Name="iznos_pdv" Type="Double" />
+          <Property Name="korisnikId" Type="Int32" Nullable="false" />
+          <Property Name="partnerId" Type="Int32" Nullable="false" />
+          <Property Name="gotovo" Type="Byte" Nullable="false" />
+          <Property Name="aktivan" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Projekt_Korisnik" FromRole="Projekt" ToRole="Korisnik" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK_Projekt_Partner" FromRole="Projekt" ToRole="Partner" />
+          <Property Name="datum_izdavanja_racuna" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Faze_projekta" Relationship="DBModel.FK_Projekt_ima_fazu_Projekt" FromRole="Projekt" ToRole="Faze_projekta" />
+        </EntityType>
+        <Association Name="FK_Projekt_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="korisnikId" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="partnerId" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IzdavanjeRacunEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" />
+          <EntitySet Name="Projekt" EntityType="Self.Projekt" />
+          <AssociationSet Name="FK_Projekt_Korisnik" Association="Self.FK_Projekt_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Partner" Association="Self.FK_Projekt_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <EntitySet Name="Faza" EntityType="DBModel.Faza" />
+          <EntitySet Name="Faza_ima_materijal" EntityType="DBModel.Faza_ima_materijal" />
+          <EntitySet Name="Faze_projekta" EntityType="DBModel.Faze_projekta" />
+          <EntitySet Name="Materijal" EntityType="DBModel.Materijal" />
+          <AssociationSet Name="FK_Projekt_ima_fazu_Faza" Association="DBModel.FK_Projekt_ima_fazu_Faza">
+            <End Role="Faza" EntitySet="Faza" />
+            <End Role="Faze_projekta" EntitySet="Faze_projekta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faza_ima_materijal_Faze_projekta" Association="DBModel.FK_Faza_ima_materijal_Faze_projekta">
+            <End Role="Faze_projekta" EntitySet="Faze_projekta" />
+            <End Role="Faza_ima_materijal" EntitySet="Faza_ima_materijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faza_ima_materijal_Materijal" Association="DBModel.FK_Faza_ima_materijal_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="Faza_ima_materijal" EntitySet="Faza_ima_materijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_ima_fazu_Projekt" Association="DBModel.FK_Projekt_ima_fazu_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Faze_projekta" EntitySet="Faze_projekta" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Faza">
+          <Key>
+            <PropertyRef Name="fazaId" />
+          </Key>
+          <Property Name="fazaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cijena" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="trajanje" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faze_projekta" Relationship="DBModel.FK_Projekt_ima_fazu_Faza" FromRole="Faza" ToRole="Faze_projekta" />
+        </EntityType>
+        <EntityType Name="Faza_ima_materijal">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="materijalId" Type="Int32" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faze_projekta" Relationship="DBModel.FK_Faza_ima_materijal_Faze_projekta" FromRole="Faza_ima_materijal" ToRole="Faze_projekta" />
+          <NavigationProperty Name="Materijal" Relationship="DBModel.FK_Faza_ima_materijal_Materijal" FromRole="Faza_ima_materijal" ToRole="Materijal" />
+        </EntityType>
+        <EntityType Name="Faze_projekta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projektId" Type="Int32" Nullable="false" />
+          <Property Name="fazaId" Type="Int32" Nullable="false" />
+          <Property Name="zakljucano" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Faza" Relationship="DBModel.FK_Projekt_ima_fazu_Faza" FromRole="Faze_projekta" ToRole="Faza" />
+          <NavigationProperty Name="Faza_ima_materijal" Relationship="DBModel.FK_Faza_ima_materijal_Faze_projekta" FromRole="Faze_projekta" ToRole="Faza_ima_materijal" />
+          <NavigationProperty Name="Projekt" Relationship="DBModel.FK_Projekt_ima_fazu_Projekt" FromRole="Faze_projekta" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="materijalId" />
+          </Key>
+          <Property Name="materijalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faza_ima_materijal" Relationship="DBModel.FK_Faza_ima_materijal_Materijal" FromRole="Materijal" ToRole="Faza_ima_materijal" />
+        </EntityType>
+        <Association Name="FK_Projekt_ima_fazu_Faza">
+          <End Type="DBModel.Faza" Role="Faza" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.Faze_projekta" Role="Faze_projekta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faza">
+              <PropertyRef Name="fazaId" />
+            </Principal>
+            <Dependent Role="Faze_projekta">
+              <PropertyRef Name="fazaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faza_ima_materijal_Faze_projekta">
+          <End Type="DBModel.Faze_projekta" Role="Faze_projekta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.Faza_ima_materijal" Role="Faza_ima_materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faze_projekta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Faza_ima_materijal">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faza_ima_materijal_Materijal">
+          <End Type="DBModel.Materijal" Role="Materijal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.Faza_ima_materijal" Role="Faza_ima_materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="materijalId" />
+            </Principal>
+            <Dependent Role="Faza_ima_materijal">
+              <PropertyRef Name="materijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_ima_fazu_Projekt">
+          <End Type="DBModel.Projekt" Role="Projekt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DBModel.Faze_projekta" Role="Faze_projekta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="projektId" />
+            </Principal>
+            <Dependent Role="Faze_projekta">
+              <PropertyRef Name="projektId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="IzdavanjeRacunEntities">
+          <EntitySetMapping Name="Korisnik">
+            <EntityTypeMapping TypeName="DBModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+                <ScalarProperty Name="korisnicko_ime" ColumnName="korisnicko_ime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="tip_korisnikaId" ColumnName="tip_korisnikaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partner">
+            <EntityTypeMapping TypeName="DBModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="tip_partnera" ColumnName="tip_partnera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projekt">
+            <EntityTypeMapping TypeName="DBModel.Projekt">
+              <MappingFragment StoreEntitySet="Projekt">
+                <ScalarProperty Name="datum_izdavanja_racuna" ColumnName="datum_izdavanja_racuna" />
+                <ScalarProperty Name="projektId" ColumnName="projektId" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="datum_pocetka" ColumnName="datum_pocetka" />
+                <ScalarProperty Name="potrebno_vrijeme" ColumnName="potrebno_vrijeme" />
+                <ScalarProperty Name="datum_zavrsetka" ColumnName="datum_zavrsetka" />
+                <ScalarProperty Name="ukupna_cijena" ColumnName="ukupna_cijena" />
+                <ScalarProperty Name="cijena_bez_pdv" ColumnName="cijena_bez_pdv" />
+                <ScalarProperty Name="iznos_pdv" ColumnName="iznos_pdv" />
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="gotovo" ColumnName="gotovo" />
+                <ScalarProperty Name="aktivan" ColumnName="aktivan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faza">
+            <EntityTypeMapping TypeName="DBModel.Faza">
+              <MappingFragment StoreEntitySet="Faza">
+                <ScalarProperty Name="trajanje" ColumnName="trajanje" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="fazaId" ColumnName="fazaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faza_ima_materijal">
+            <EntityTypeMapping TypeName="DBModel.Faza_ima_materijal">
+              <MappingFragment StoreEntitySet="Faza_ima_materijal">
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faze_projekta">
+            <EntityTypeMapping TypeName="DBModel.Faze_projekta">
+              <MappingFragment StoreEntitySet="Faze_projekta">
+                <ScalarProperty Name="zakljucano" ColumnName="zakljucano" />
+                <ScalarProperty Name="fazaId" ColumnName="fazaId" />
+                <ScalarProperty Name="projektId" ColumnName="projektId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materijal">
+            <EntityTypeMapping TypeName="DBModel.Materijal">
+              <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="materijalId" ColumnName="materijalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
