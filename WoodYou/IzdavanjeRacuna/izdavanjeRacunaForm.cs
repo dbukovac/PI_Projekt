@@ -70,7 +70,9 @@ namespace IzdavanjeRacuna
                     selektiraniProjekt.datum_izdavanja_racuna = DateTime.Now;
                     db.SaveChanges();
                 }
+                MessageBox.Show("Uspješno izdan račun");
             }
+            PrikaziRacune();
         }
     }
 }

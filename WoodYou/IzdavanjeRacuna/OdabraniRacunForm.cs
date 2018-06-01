@@ -38,6 +38,8 @@ namespace IzdavanjeRacuna
             tboxUkupnaCijena.Text = odabraniProjekt.ukupna_cijena.ToString();
             tboxIznosPdv.Text = odabraniProjekt.iznos_pdv.ToString();
             tboxCijenaBezPdv.Text = odabraniProjekt.cijena_bez_pdv.ToString();
+            tboxKorisnik.Text = odabraniProjekt.Korisnik.korisnicko_ime.ToString();
+            tboxPartner.Text = odabraniProjekt.Partner.ime.ToString();
         }
 
         private void PrikaziFaze(Projekt projekt)

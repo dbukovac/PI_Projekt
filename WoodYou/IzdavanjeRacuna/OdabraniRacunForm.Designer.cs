@@ -51,9 +51,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tboxDatumZavrsetka = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tboxPartner = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.tboxKorisnik = new System.Windows.Forms.TextBox();
             this.izadiButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tboxDatumIzdavanja = new System.Windows.Forms.TextBox();
@@ -67,6 +65,8 @@
             this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tboxPartner = new System.Windows.Forms.TextBox();
+            this.tboxKorisnik = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -299,14 +299,6 @@
             this.label11.TabIndex = 17;
             this.label11.Text = "Partner:";
             // 
-            // tboxPartner
-            // 
-            this.tboxPartner.Location = new System.Drawing.Point(101, 106);
-            this.tboxPartner.Name = "tboxPartner";
-            this.tboxPartner.ReadOnly = true;
-            this.tboxPartner.Size = new System.Drawing.Size(100, 20);
-            this.tboxPartner.TabIndex = 16;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -315,14 +307,6 @@
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 19;
             this.label12.Text = "Korisnik:";
-            // 
-            // tboxKorisnik
-            // 
-            this.tboxKorisnik.Location = new System.Drawing.Point(101, 80);
-            this.tboxKorisnik.Name = "tboxKorisnik";
-            this.tboxKorisnik.ReadOnly = true;
-            this.tboxKorisnik.Size = new System.Drawing.Size(100, 20);
-            this.tboxKorisnik.TabIndex = 18;
             // 
             // izadiButton
             // 
@@ -413,6 +397,22 @@
             // 
             this.fazaBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza);
             // 
+            // tboxPartner
+            // 
+            this.tboxPartner.Location = new System.Drawing.Point(101, 106);
+            this.tboxPartner.Name = "tboxPartner";
+            this.tboxPartner.ReadOnly = true;
+            this.tboxPartner.Size = new System.Drawing.Size(100, 20);
+            this.tboxPartner.TabIndex = 16;
+            // 
+            // tboxKorisnik
+            // 
+            this.tboxKorisnik.Location = new System.Drawing.Point(101, 80);
+            this.tboxKorisnik.Name = "tboxKorisnik";
+            this.tboxKorisnik.ReadOnly = true;
+            this.tboxKorisnik.Size = new System.Drawing.Size(100, 20);
+            this.tboxKorisnik.TabIndex = 18;
+            // 
             // OdabraniRacunForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,9 +447,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tboxKorisnik;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tboxPartner;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tboxIznosPdv;
         private System.Windows.Forms.Label label8;
@@ -479,5 +477,7 @@
         private System.Windows.Forms.Button izadiButton;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tboxDatumIzdavanja;
+        private System.Windows.Forms.TextBox tboxKorisnik;
+        private System.Windows.Forms.TextBox tboxPartner;
     }
 }
