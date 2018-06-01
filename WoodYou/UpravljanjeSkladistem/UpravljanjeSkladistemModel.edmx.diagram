@@ -5,15 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="264e100db3a349e7b36ed01e51049465" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Korisnik" Width="1.5" PointX="1.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Materijal" Width="1.5" PointX="6.875" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Partner" Width="1.5" PointX="4.125" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Stavka_narudzbenice" Width="1.5" PointX="7.125" PointY="1.625" IsExpanded="true" />
-        <AssociationConnector Association="DBModel.FK_Stavka_narudzbenice_Materijal" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DBModel.Narudzbenica" Width="1.5" PointX="2.25" PointY="0.625" />
-        <AssociationConnector Association="DBModel.FK_Narudzbenica_Korisnik" />
-        <AssociationConnector Association="DBModel.FK_Narudzbenica_Partner" />
-        <AssociationConnector Association="DBModel.FK_Stavka_narudzbenice_Narudzbenica" />
+        <EntityTypeShape EntityType="DBModel.Korisnik" Width="1.5" PointX="6" PointY="1.125" />
+        <EntityTypeShape EntityType="DBModel.Materijal" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="DBModel.Partner" Width="1.5" PointX="6" PointY="5.25" />
+        <EntityTypeShape EntityType="DBModel.Primka" Width="1.5" PointX="3.125" PointY="4.25" />
+        <EntityTypeShape EntityType="DBModel.Stavka_primke" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="DBModel.FK_Stavka_primke_Materijal" />
+        <AssociationConnector Association="DBModel.FK_Stavka_primke_Primka" />
+        <AssociationConnector Association="DBModel.FK_Primka_Korisnik" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DBModel.FK_Primka_Partner" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

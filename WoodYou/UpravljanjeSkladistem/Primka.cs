@@ -21,13 +21,13 @@ namespace UpravljanjeSkladistem
         }
     
         public int primkaId { get; set; }
-        public System.DateTime datum { get; set; }
-        public int partnerId { get; set; }
+        public System.DateTime datumPrimitka { get; set; }
         public int korisnikId { get; set; }
+        public int partnerId { get; set; }
     
-        public virtual Korisnik Korisnik { get; set; }
-        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka_primke> Stavka_primke { get; set; }
+        public virtual Korisnik Korisnik { get; set; }
+        public virtual Partner Partner { get; set; }
     }
 }

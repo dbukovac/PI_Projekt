@@ -28,7 +28,7 @@ namespace UpravljanjeSkladistem
         public virtual DbSet<Korisnik> Korisnik { get; set; }
         public virtual DbSet<Materijal> Materijal { get; set; }
         public virtual DbSet<Partner> Partner { get; set; }
-        public virtual DbSet<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
-        public virtual DbSet<Narudzbenica> Narudzbenica { get; set; }
+        public virtual DbSet<Primka> Primka { get; set; }
+        public virtual DbSet<Stavka_primke> Stavka_primke { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace UpravljanjeSkladistem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Materijal()
         {
-            this.Stavka_narudzbenice = new HashSet<Stavka_narudzbenice>();
+            this.Stavka_primke = new HashSet<Stavka_primke>();
         }
     
         public int materijalId { get; set; }
@@ -25,6 +25,6 @@ namespace UpravljanjeSkladistem
         public int kolicina { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stavka_narudzbenice> Stavka_narudzbenice { get; set; }
+        public virtual ICollection<Stavka_primke> Stavka_primke { get; set; }
     }
 }

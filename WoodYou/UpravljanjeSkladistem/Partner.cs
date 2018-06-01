@@ -17,7 +17,7 @@ namespace UpravljanjeSkladistem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Partner()
         {
-            this.Narudzbenica = new HashSet<Narudzbenica>();
+            this.Primka = new HashSet<Primka>();
         }
     
         public int partnerId { get; set; }
@@ -27,6 +27,6 @@ namespace UpravljanjeSkladistem
         public string tip_partnera { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Narudzbenica> Narudzbenica { get; set; }
+        public virtual ICollection<Primka> Primka { get; set; }
     }
 }
