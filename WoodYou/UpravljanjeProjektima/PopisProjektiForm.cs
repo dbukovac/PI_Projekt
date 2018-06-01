@@ -29,14 +29,20 @@ namespace UpravljanjeProjektima
             materijalDataGridView.Rows.Clear();
             Faze_projekta materijal = vratiFazuProjekta();
             BindingList<Faza_ima_materijal> listaMaterijala = null;
+            BindingList<Materijal> listaMaterijalId = new BindingList<Materijal>();
             if(materijal != null)
             {
                 using (var db = new UpravljanjeProjektimaEntities())
                 {
                     db.Faze_projekta.Attach(materijal);
                     listaMaterijala = new BindingList<Faza_ima_materijal>(materijal.Faza_ima_materijal.ToList());
+                    foreach (Faza_ima_materijal M  in listaMaterijala)
+                    {
+                        listaMaterijalId.Add(M.Materijal as Materijal);
+                    }
                 }
                 fazaimamaterijalBindingSource.DataSource = listaMaterijala;
+                materijalBindingSource.DataSource = listaMaterijalId;
             }
         }
 
@@ -45,17 +51,20 @@ namespace UpravljanjeProjektima
             projektiDataGridView.Rows.Clear();
             BindingList < Projekt > listaProjekta = null;
             BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
             using (var db = new UpravljanjeProjektimaEntities())
             {
                 listaProjekta = new BindingList<Projekt>(db.Projekt.ToList());
 
-                foreach(var K in listaProjekta)
+                foreach(var P in listaProjekta)
                 {
-                    listaKorisnika.Add(K.Korisnik as Korisnik);
+                    listaKorisnika.Add(P.Korisnik as Korisnik);
+                    listaPartnera.Add(P.Partner as Partner);
                 }
             }
             projektBindingSource.DataSource = listaProjekta;
             korisnikBindingSource.DataSource = listaKorisnika;
+            partnerBindingSource.DataSource = listaPartnera;
         }
 
         private void PrikaziFaze(Projekt projekt)
