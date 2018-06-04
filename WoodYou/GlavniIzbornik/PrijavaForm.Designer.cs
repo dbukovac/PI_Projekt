@@ -33,6 +33,7 @@
             this.LabelKorime = new System.Windows.Forms.Label();
             this.textBoxLozinka = new System.Windows.Forms.TextBox();
             this.textboxKorime = new System.Windows.Forms.TextBox();
+            this.postaviLozinkuButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPrijaviSe
@@ -43,6 +44,7 @@
             this.buttonPrijaviSe.TabIndex = 9;
             this.buttonPrijaviSe.Text = "Prijavi se";
             this.buttonPrijaviSe.UseVisualStyleBackColor = true;
+            this.buttonPrijaviSe.Click += new System.EventHandler(this.buttonPrijaviSe_Click);
             // 
             // LabelaLozinka
             // 
@@ -76,11 +78,22 @@
             this.textboxKorime.Size = new System.Drawing.Size(125, 20);
             this.textboxKorime.TabIndex = 5;
             // 
+            // postaviLozinkuButton
+            // 
+            this.postaviLozinkuButton.Location = new System.Drawing.Point(87, 226);
+            this.postaviLozinkuButton.Name = "postaviLozinkuButton";
+            this.postaviLozinkuButton.Size = new System.Drawing.Size(105, 23);
+            this.postaviLozinkuButton.TabIndex = 10;
+            this.postaviLozinkuButton.Text = "Postavi lozinku";
+            this.postaviLozinkuButton.UseVisualStyleBackColor = true;
+            this.postaviLozinkuButton.Click += new System.EventHandler(this.postaviLozinkuButton_Click);
+            // 
             // PrijavaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.postaviLozinkuButton);
             this.Controls.Add(this.buttonPrijaviSe);
             this.Controls.Add(this.LabelaLozinka);
             this.Controls.Add(this.LabelKorime);
@@ -100,6 +113,7 @@
         private System.Windows.Forms.Label LabelKorime;
         private System.Windows.Forms.TextBox textBoxLozinka;
         private System.Windows.Forms.TextBox textboxKorime;
+        private System.Windows.Forms.Button postaviLozinkuButton;
     }
 }
 

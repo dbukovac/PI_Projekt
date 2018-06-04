@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tip_korisnika">
+          <Key>
+            <PropertyRef Name="tip_korisnikaId" />
+          </Key>
+          <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Korisnik_Tip_korisnika">
+          <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_korisnika">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_korisnika" EntityType="Self.Tip_korisnika" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
+            <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="korisnikId" />
+          </Key>
+          <Property Name="korisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tip_korisnika" Relationship="Self.FK_Korisnik_Tip_korisnika" FromRole="Korisnik" ToRole="Tip_korisnika" />
+        </EntityType>
+        <EntityType Name="Tip_korisnika">
+          <Key>
+            <PropertyRef Name="tip_korisnikaId" />
+          </Key>
+          <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Korisnik_Tip_korisnika" FromRole="Tip_korisnika" ToRole="Korisnik" />
+        </EntityType>
+        <Association Name="FK_Korisnik_Tip_korisnika">
+          <End Role="Tip_korisnika" Type="Self.Tip_korisnika" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_korisnika">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="tip_korisnikaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GlavniIzbornikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+          <EntitySet Name="Tip_korisnika" EntityType="Self.Tip_korisnika" />
+          <AssociationSet Name="FK_Korisnik_Tip_korisnika" Association="Self.FK_Korisnik_Tip_korisnika">
+            <End Role="Tip_korisnika" EntitySet="Tip_korisnika" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="GlavniIzbornikEntities">
+          <EntitySetMapping Name="Korisnik">
+            <EntityTypeMapping TypeName="DBModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="korisnikId" ColumnName="korisnikId" />
+                <ScalarProperty Name="korisnicko_ime" ColumnName="korisnicko_ime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="tip_korisnikaId" ColumnName="tip_korisnikaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_korisnika">
+            <EntityTypeMapping TypeName="DBModel.Tip_korisnika">
+              <MappingFragment StoreEntitySet="Tip_korisnika">
+                <ScalarProperty Name="tip_korisnikaId" ColumnName="tip_korisnikaId" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

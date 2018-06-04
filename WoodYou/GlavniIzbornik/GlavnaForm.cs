@@ -12,9 +12,12 @@ namespace GlavniIzbornik
 {
     public partial class GlavnaForm : Form
     {
-        public GlavnaForm()
+        private Korisnik logirani_korisnik = null;
+
+        public GlavnaForm(Korisnik kor)
         {
             InitializeComponent();
+            logirani_korisnik = kor;
         }
     }
 }
