@@ -60,10 +60,10 @@
     <Compile Include="Materijal.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Narudzbenica.cs">
+    <Compile Include="Partner.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Partner.cs">
+    <Compile Include="Primka.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladisteForm.cs">
@@ -74,7 +74,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stavka_narudzbenice.cs">
+    <Compile Include="Stavka_primke.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UpravljanjeSkladistemModel.Context.cs">
@@ -101,7 +101,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SkladisteForm.resx">
+      <DependentUpon>SkladisteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Materijal.datasource" />
     <None Include="packages.config" />
+    <None Include="Partner.datasource" />
+    <None Include="Primka.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,6 +121,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UpravljanjeSkladistemModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Stavka_primke.datasource" />
     <None Include="UpravljanjeSkladistemModel.edmx.diagram">
       <DependentUpon>UpravljanjeSkladistemModel.edmx</DependentUpon>
     </None>

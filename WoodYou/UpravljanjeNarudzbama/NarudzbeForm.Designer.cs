@@ -333,7 +333,6 @@
         private System.Windows.Forms.Button obrisiNarudzbuButton;
         private System.Windows.Forms.Button obrisiStavkuButton;
         private System.Windows.Forms.Button novaStavkaButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datumDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource narudzbenicaBindingSource;
         private System.Windows.Forms.DataGridView narudzbenicaDataGridView;
         private System.Windows.Forms.BindingSource stavkanarudzbeniceBindingSource;
