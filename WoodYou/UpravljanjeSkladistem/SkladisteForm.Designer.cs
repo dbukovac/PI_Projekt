@@ -116,6 +116,7 @@
             this.primkeButton.TabIndex = 2;
             this.primkeButton.Text = "Primke";
             this.primkeButton.UseVisualStyleBackColor = true;
+            this.primkeButton.Click += new System.EventHandler(this.PrimkeButton_Click);
             // 
             // materijalLabel
             // 

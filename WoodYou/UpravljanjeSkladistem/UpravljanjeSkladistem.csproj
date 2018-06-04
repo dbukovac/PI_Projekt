@@ -66,6 +66,12 @@
     <Compile Include="Primka.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PrimkeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrimkeForm.Designer.cs">
+      <DependentUpon>PrimkeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladisteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UpravljanjeSkladistemModel.edmx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PrimkeForm.resx">
+      <DependentUpon>PrimkeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

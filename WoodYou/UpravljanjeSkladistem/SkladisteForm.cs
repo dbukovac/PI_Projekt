@@ -66,5 +66,11 @@ namespace UpravljanjeSkladistem
                 DohvatiMaterijale();
             }
         }
+
+        private void PrimkeButton_Click(object sender, EventArgs e)
+        {
+            PrimkeForm primkeForm = new PrimkeForm();
+            primkeForm.ShowDialog(this);
+        }
     }
 }
