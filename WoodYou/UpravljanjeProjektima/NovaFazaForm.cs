@@ -1,8 +1,11 @@
-﻿using System;
+﻿using QRCoder;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,8 @@ namespace UpravljanjeProjektima
     public partial class NovaFazaForm : Form
     {
         private Faza odabranaFaza = null;
+
+        private string imeIzmjenjeneSlikeFaze = null;
 
         public NovaFazaForm()
         {
@@ -32,6 +37,8 @@ namespace UpravljanjeProjektima
                 tboxNaziv.Text = odabranaFaza.naziv.ToString();
                 tboxCijena.Text = odabranaFaza.cijena.ToString();
                 tboxTrajanje.Text = odabranaFaza.trajanje.ToString();
+
+                imeIzmjenjeneSlikeFaze = odabranaFaza.naziv.ToString();
             }
         }
 
@@ -55,6 +62,11 @@ namespace UpravljanjeProjektima
                     db.Faza.Add(novaFaza);
                     db.SaveChanges();
                 }
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(tboxNaziv.Text, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+                Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                qrCodeImage.Save(tboxNaziv.Text + ".jpeg", ImageFormat.Jpeg);
                 MessageBox.Show("Faza uspješno dodana");
             }
             else
@@ -66,6 +78,16 @@ namespace UpravljanjeProjektima
                     odabranaFaza.cijena = decimal.Parse(tboxCijena.Text.ToString());
                     odabranaFaza.trajanje = int.Parse(tboxTrajanje.Text.ToString());
                     db.SaveChanges();
+                }
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(tboxNaziv.Text, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+                Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                qrCodeImage.Save(tboxNaziv.Text + ".jpeg", ImageFormat.Jpeg);
+
+                if (File.Exists(imeIzmjenjeneSlikeFaze+".jpeg"))
+                {
+                    File.Delete(imeIzmjenjeneSlikeFaze + ".jpeg");
                 }
                 Close();
             }
