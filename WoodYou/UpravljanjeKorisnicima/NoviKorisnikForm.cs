@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Hash;
 
 namespace UpravljanjeKorisnicima
 {
@@ -59,7 +60,7 @@ namespace UpravljanjeKorisnicima
                         ime = tboxIme.Text,
                         prezime = tboxPrezime.Text,
                         korisnicko_ime = tboxKorime.Text,
-                        lozinka = "x",
+                        lozinka = HashKlasa.Hash(tboxLozinka.Text),
                         tip_korisnikaId = int.Parse(cboxTip.SelectedValue.ToString())
                     };
                     db.Korisnik.Add(noviKorisnik);
@@ -73,7 +74,7 @@ namespace UpravljanjeKorisnicima
                     db.Korisnik.Attach(odabraniKorisnik);
                     odabraniKorisnik.ime = tboxIme.Text;
                     odabraniKorisnik.prezime = tboxPrezime.Text;
-                    odabraniKorisnik.lozinka = "x";
+                    odabraniKorisnik.lozinka = HashKlasa.Hash(tboxLozinka.Text);
                     odabraniKorisnik.korisnicko_ime = tboxKorime.Text;
                     odabraniKorisnik.tip_korisnikaId = int.Parse(cboxTip.SelectedValue.ToString());
                     db.SaveChanges();

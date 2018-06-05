@@ -33,12 +33,11 @@
             this.LabelKorime = new System.Windows.Forms.Label();
             this.textBoxLozinka = new System.Windows.Forms.TextBox();
             this.textboxKorime = new System.Windows.Forms.TextBox();
-            this.postaviLozinkuButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPrijaviSe
             // 
-            this.buttonPrijaviSe.Location = new System.Drawing.Point(98, 178);
+            this.buttonPrijaviSe.Location = new System.Drawing.Point(97, 163);
             this.buttonPrijaviSe.Name = "buttonPrijaviSe";
             this.buttonPrijaviSe.Size = new System.Drawing.Size(75, 23);
             this.buttonPrijaviSe.TabIndex = 9;
@@ -49,7 +48,7 @@
             // LabelaLozinka
             // 
             this.LabelaLozinka.AutoSize = true;
-            this.LabelaLozinka.Location = new System.Drawing.Point(75, 122);
+            this.LabelaLozinka.Location = new System.Drawing.Point(75, 104);
             this.LabelaLozinka.Name = "LabelaLozinka";
             this.LabelaLozinka.Size = new System.Drawing.Size(44, 13);
             this.LabelaLozinka.TabIndex = 8;
@@ -66,7 +65,7 @@
             // 
             // textBoxLozinka
             // 
-            this.textBoxLozinka.Location = new System.Drawing.Point(78, 138);
+            this.textBoxLozinka.Location = new System.Drawing.Point(78, 120);
             this.textBoxLozinka.Name = "textBoxLozinka";
             this.textBoxLozinka.Size = new System.Drawing.Size(125, 20);
             this.textBoxLozinka.TabIndex = 6;
@@ -78,22 +77,11 @@
             this.textboxKorime.Size = new System.Drawing.Size(125, 20);
             this.textboxKorime.TabIndex = 5;
             // 
-            // postaviLozinkuButton
-            // 
-            this.postaviLozinkuButton.Location = new System.Drawing.Point(87, 226);
-            this.postaviLozinkuButton.Name = "postaviLozinkuButton";
-            this.postaviLozinkuButton.Size = new System.Drawing.Size(105, 23);
-            this.postaviLozinkuButton.TabIndex = 10;
-            this.postaviLozinkuButton.Text = "Postavi lozinku";
-            this.postaviLozinkuButton.UseVisualStyleBackColor = true;
-            this.postaviLozinkuButton.Click += new System.EventHandler(this.postaviLozinkuButton_Click);
-            // 
             // PrijavaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.postaviLozinkuButton);
+            this.ClientSize = new System.Drawing.Size(284, 239);
             this.Controls.Add(this.buttonPrijaviSe);
             this.Controls.Add(this.LabelaLozinka);
             this.Controls.Add(this.LabelKorime);
@@ -113,7 +101,6 @@
         private System.Windows.Forms.Label LabelKorime;
         private System.Windows.Forms.TextBox textBoxLozinka;
         private System.Windows.Forms.TextBox textboxKorime;
-        private System.Windows.Forms.Button postaviLozinkuButton;
     }
 }
 

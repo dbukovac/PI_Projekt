@@ -21,7 +21,6 @@ namespace GlavniIzbornik
 
         private void buttonPrijaviSe_Click(object sender, EventArgs e)
         {
-            HashKlasa hash = new HashKlasa();
             Korisnik logirani_korisnik = null;
 
             using(var db = new GlavniIzbornikEntities())
@@ -49,34 +48,6 @@ namespace GlavniIzbornik
             else
             {
                 MessageBox.Show("Nesupješna prijava");
-            }
-        }
-
-        private void postaviLozinkuButton_Click(object sender, EventArgs e)
-        {
-            HashKlasa hash = new HashKlasa();
-            bool provjera = false;
-            using(var db = new GlavniIzbornikEntities())
-            {
-                List<Korisnik> listaKorisnika = new List<Korisnik>(db.Korisnik.ToList());
-                foreach (var kor in listaKorisnika)
-                {
-                    if (kor.korisnicko_ime == textboxKorime.Text)
-                    {
-                        db.Korisnik.Attach(kor);
-                        kor.lozinka = HashKlasa.Hash(textBoxLozinka.Text);
-                        db.SaveChanges();
-                        provjera = true;
-                    }
-                }
-            }
-            if(provjera == true)
-            {
-                MessageBox.Show("Uspješno postavljanje lozinke");
-            }
-            else
-            {
-                MessageBox.Show("Neuspješno postavljanje lozinke");
             }
         }
     }
