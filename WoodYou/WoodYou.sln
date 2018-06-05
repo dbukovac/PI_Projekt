@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrikazStatistike", "PrikazS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpravljanjePoslovnimPartnerima", "UpravljanjePoslovnimPartnerima\UpravljanjePoslovnimPartnerima.csproj", "{E63F177D-3079-4176-8F36-82DA7D6E06CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpravljanjeKorisnicima", "UpravljanjeKorisnicima\UpravljanjeKorisnicima.csproj", "{24A66A28-E957-4C5A-ADBB-A5BB3F9D2D28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E63F177D-3079-4176-8F36-82DA7D6E06CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E63F177D-3079-4176-8F36-82DA7D6E06CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E63F177D-3079-4176-8F36-82DA7D6E06CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A66A28-E957-4C5A-ADBB-A5BB3F9D2D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A66A28-E957-4C5A-ADBB-A5BB3F9D2D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A66A28-E957-4C5A-ADBB-A5BB3F9D2D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A66A28-E957-4C5A-ADBB-A5BB3F9D2D28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
