@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hash;
+using System.Xml.Linq;
 
 namespace UpravljanjeKorisnicima
 {
     public partial class NoviKorisnikForm : Form
     {
         private Korisnik odabraniKorisnik = null;
+
+        private string staroKorime = null;
 
         public NoviKorisnikForm()
         {
@@ -39,8 +42,10 @@ namespace UpravljanjeKorisnicima
                 tboxIme.Text = odabraniKorisnik.ime;
                 tboxKorime.Text = odabraniKorisnik.korisnicko_ime;
                 tboxPrezime.Text = odabraniKorisnik.prezime;
-                tboxLozinka.Text = "x";
+                tboxLozinka.Text = dohvatiLozinku(odabraniKorisnik.korisnicko_ime);
                 cboxTip.Text = odabraniKorisnik.Tip_korisnika.naziv;
+
+                staroKorime = odabraniKorisnik.korisnicko_ime;
             }
         }
 
@@ -66,6 +71,7 @@ namespace UpravljanjeKorisnicima
                     db.Korisnik.Add(noviKorisnik);
                     db.SaveChanges();
                 }
+                kreirajZapis(tboxKorime.Text, tboxLozinka.Text);
             }
             else
             {
@@ -79,8 +85,50 @@ namespace UpravljanjeKorisnicima
                     odabraniKorisnik.tip_korisnikaId = int.Parse(cboxTip.SelectedValue.ToString());
                     db.SaveChanges();
                 }
+                spremiLozinku(staroKorime, tboxLozinka.Text, tboxKorime.Text);
             }
             MessageBox.Show("Uspješno dodan korisnik");
+        }
+        
+
+        private void spremiLozinku(string staroKorime, string lozinka, string novoKorime)
+        {
+            XDocument doc = XDocument.Load("C:/Users/Danko/Git/WoodYou/UpravljanjeKorisnicima/Lozinke.xml");
+            foreach (var korisnik in doc.Descendants("korisnik"))
+            {
+                if ((string)korisnik.Attribute("korisnicko_ime") == staroKorime)
+                {
+                    korisnik.SetAttributeValue("lozinka", lozinka);
+                    korisnik.SetAttributeValue("korisnicko_ime", novoKorime);
+                }
+            }
+            doc.Save("C:/Users/Danko/Git/WoodYou/UpravljanjeKorisnicima/Lozinke.xml");
+        }
+
+        private string dohvatiLozinku(string korime)
+        {
+            string izlaz = "";
+            XDocument doc = XDocument.Load("C:/Users/Danko/Git/WoodYou/UpravljanjeKorisnicima/Lozinke.xml");
+            foreach (var korisnik in doc.Elements("korisnici"))
+            {
+                foreach (var atributi in korisnik.Descendants("korisnik"))
+                {
+                    if ((string)atributi.Attribute("korisnicko_ime") == korime)
+                    {
+                        izlaz = (string)atributi.Attribute("lozinka");
+                    }
+                }
+            }
+            return izlaz;
+        }
+
+        private void kreirajZapis(string korime, string lozinka)
+        {
+            XDocument doc = XDocument.Load("C:/Users/Danko/Git/WoodYou/UpravljanjeKorisnicima/Lozinke.xml");
+            XElement korisnik = new XElement("korisnik", new XAttribute("korisnicko_ime", korime), new XAttribute("lozinka", lozinka));
+            XElement pozicija = doc.Element("korisnici");
+            pozicija.Add(korisnik);
+            doc.Save("C:/Users/Danko/Git/WoodYou/UpravljanjeKorisnicima/Lozinke.xml");
         }
     }
 }

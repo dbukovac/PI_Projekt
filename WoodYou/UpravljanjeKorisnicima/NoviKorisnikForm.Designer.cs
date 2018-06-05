@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tboxKorime = new System.Windows.Forms.TextBox();
             this.cboxTip = new System.Windows.Forms.ComboBox();
+            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.spremiButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,13 +42,13 @@
             this.tboxLozinka = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.odustaniButton = new System.Windows.Forms.Button();
-            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tipkorisnikaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tboxKorime
             // 
             this.tboxKorime.Location = new System.Drawing.Point(114, 35);
+            this.tboxKorime.Multiline = true;
             this.tboxKorime.Name = "tboxKorime";
             this.tboxKorime.Size = new System.Drawing.Size(161, 20);
             this.tboxKorime.TabIndex = 0;
@@ -62,6 +63,10 @@
             this.cboxTip.Size = new System.Drawing.Size(110, 21);
             this.cboxTip.TabIndex = 1;
             this.cboxTip.ValueMember = "tip_korisnikaId";
+            // 
+            // tipkorisnikaBindingSource
+            // 
+            this.tipkorisnikaBindingSource.DataSource = typeof(UpravljanjeKorisnicima.Tip_korisnika);
             // 
             // spremiButton
             // 
@@ -148,10 +153,6 @@
             this.odustaniButton.Text = "Odustani";
             this.odustaniButton.UseVisualStyleBackColor = true;
             this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
-            // 
-            // tipkorisnikaBindingSource
-            // 
-            this.tipkorisnikaBindingSource.DataSource = typeof(UpravljanjeKorisnicima.Tip_korisnika);
             // 
             // NoviKorisnikForm
             // 

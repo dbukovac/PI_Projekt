@@ -131,6 +131,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lozinke.xml" />
     <Content Include="UpravljanjeKorisnicimaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UpravljanjeKorisnicimaModel.Context.cs</LastGenOutput>
