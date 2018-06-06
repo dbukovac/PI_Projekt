@@ -22,6 +22,28 @@ namespace IzdavanjeRacuna
             PrikaziRacune();
         }
 
+        private void generirajPrazniKorisnik(BindingList<Korisnik> lista)
+        {
+            Korisnik prazniKorisnik = new Korisnik
+            {
+                korisnicko_ime = "nema",
+                korisnikId = 0
+            };
+            lista.Add(prazniKorisnik);
+            korisnikBindingSource.DataSource = lista;
+        }
+
+        private void generirajPrazniPartner(BindingList<Partner> lista)
+        {
+            Partner prazniPartner = new Partner
+            {
+                partnerId = 0,
+                ime = "nema"
+            };
+            lista.Add(prazniPartner);
+            partnerBindingSource.DataSource = lista;
+        }
+
         private void PrikaziRacune()
         {
             BindingList<Projekt> Projekti = null;
@@ -45,15 +67,32 @@ namespace IzdavanjeRacuna
                 }
             }
             projektBindingSource.DataSource = listaProjekta;
-            korisnikBindingSource.DataSource = listaKorisnika;
-            partnerBindingSource.DataSource = listaPartnera;
+            if(listaKorisnika.Count > 0)
+            {
+                korisnikBindingSource.DataSource = listaKorisnika;
+            }
+            else
+            {
+                generirajPrazniKorisnik(listaKorisnika);
+            }
+            if(listaPartnera.Count > 0)
+            {
+                partnerBindingSource.DataSource = listaPartnera;
+            }
+            else
+            {
+                generirajPrazniPartner(listaPartnera);
+            }
         }
 
         private void pregledRačunaButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
-            OdabraniRacunForm forma = new OdabraniRacunForm(selektiraniProjekt);
-            forma.ShowDialog();
+            if(selektiraniProjekt != null)
+            {
+                OdabraniRacunForm forma = new OdabraniRacunForm(selektiraniProjekt);
+                forma.ShowDialog();
+            }
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)
