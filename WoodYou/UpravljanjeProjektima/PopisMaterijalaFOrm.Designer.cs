@@ -32,12 +32,12 @@
             this.dodajMaterijalButton = new System.Windows.Forms.Button();
             this.fazeLabel = new System.Windows.Forms.Label();
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
-            this.tboxKolicina = new System.Windows.Forms.TextBox();
             this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazaimamaterijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tboxKolicina = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.odustaniButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
@@ -74,22 +74,18 @@
             this.fazaimamaterijalDataGridViewTextBoxColumn});
             this.materijalDataGridView.DataSource = this.materijalBindingSource;
             this.materijalDataGridView.Location = new System.Drawing.Point(12, 22);
+            this.materijalDataGridView.MultiSelect = false;
             this.materijalDataGridView.Name = "materijalDataGridView";
+            this.materijalDataGridView.ReadOnly = true;
             this.materijalDataGridView.Size = new System.Drawing.Size(256, 186);
             this.materijalDataGridView.TabIndex = 6;
-            // 
-            // tboxKolicina
-            // 
-            this.tboxKolicina.Location = new System.Drawing.Point(289, 78);
-            this.tboxKolicina.Name = "tboxKolicina";
-            this.tboxKolicina.Size = new System.Drawing.Size(107, 20);
-            this.tboxKolicina.TabIndex = 10;
             // 
             // materijalIdDataGridViewTextBoxColumn
             // 
             this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
             this.materijalIdDataGridViewTextBoxColumn.HeaderText = "materijalId";
             this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
+            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.materijalIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // nazivDataGridViewTextBoxColumn
@@ -97,23 +93,33 @@
             this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
             this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
             this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // kolicinaDataGridViewTextBoxColumn
             // 
             this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
             this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina na skladištu";
             this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
+            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fazaimamaterijalDataGridViewTextBoxColumn
             // 
             this.fazaimamaterijalDataGridViewTextBoxColumn.DataPropertyName = "Faza_ima_materijal";
             this.fazaimamaterijalDataGridViewTextBoxColumn.HeaderText = "Faza_ima_materijal";
             this.fazaimamaterijalDataGridViewTextBoxColumn.Name = "fazaimamaterijalDataGridViewTextBoxColumn";
+            this.fazaimamaterijalDataGridViewTextBoxColumn.ReadOnly = true;
             this.fazaimamaterijalDataGridViewTextBoxColumn.Visible = false;
             // 
             // materijalBindingSource
             // 
             this.materijalBindingSource.DataSource = typeof(UpravljanjeProjektima.Materijal);
+            // 
+            // tboxKolicina
+            // 
+            this.tboxKolicina.Location = new System.Drawing.Point(289, 78);
+            this.tboxKolicina.Name = "tboxKolicina";
+            this.tboxKolicina.Size = new System.Drawing.Size(107, 20);
+            this.tboxKolicina.TabIndex = 10;
             // 
             // label1
             // 

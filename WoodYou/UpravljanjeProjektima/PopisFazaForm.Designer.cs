@@ -58,7 +58,9 @@
             this.fazeprojektaDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.fazaBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(15, 25);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(395, 150);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -67,6 +69,7 @@
             this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
             this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
             this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
+            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.fazaIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // nazivDataGridViewTextBoxColumn
@@ -74,24 +77,28 @@
             this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
             this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
             this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // cijenaDataGridViewTextBoxColumn
             // 
             this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
             this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
             this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
+            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // trajanjeDataGridViewTextBoxColumn
             // 
             this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
             this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
             this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
+            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fazeprojektaDataGridViewTextBoxColumn
             // 
             this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
             this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
             this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
+            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
             this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
             // 
             // fazaBindingSource
