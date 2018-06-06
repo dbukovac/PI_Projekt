@@ -37,7 +37,7 @@ namespace UpravljanjeProjektima
             {
                 tboxNaziv.Text = odabraniProjekt.ime.ToString();
                 dtDatum.Text = odabraniProjekt.datum_pocetka.ToString();
-                cboxPartner.Text = odabraniProjekt.partnerId.ToString();
+                cboxPartner.Text = odabraniProjekt.Partner.ime;
             }
         }
 

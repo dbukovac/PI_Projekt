@@ -17,7 +17,7 @@ namespace UpravljanjeProjektima
     {
         private Faza odabranaFaza = null;
 
-        private string imeIzmjenjeneSlikeFaze = null;
+        private string staroImeFaze = null;
 
         public NovaFazaForm()
         {
@@ -38,13 +38,33 @@ namespace UpravljanjeProjektima
                 tboxCijena.Text = odabranaFaza.cijena.ToString();
                 tboxTrajanje.Text = odabranaFaza.trajanje.ToString();
 
-                imeIzmjenjeneSlikeFaze = odabranaFaza.naziv.ToString();
+                staroImeFaze = odabranaFaza.naziv.ToString();
             }
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void generirajQRKod(string naziv)
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(naziv, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            qrCodeImage.Save(naziv + ".jpeg", ImageFormat.Jpeg);
+            MessageBox.Show("Generiran novi QR kod");
+        }
+
+        private void zamijeniQRKod(string naziv)
+        {
+            generirajQRKod(naziv);
+
+            if (File.Exists(staroImeFaze + ".jpeg"))
+            {
+                File.Delete(staroImeFaze + ".jpeg");
+            }
         }
 
         private void dodajFazuButton_Click(object sender, EventArgs e)
@@ -62,12 +82,7 @@ namespace UpravljanjeProjektima
                     db.Faza.Add(novaFaza);
                     db.SaveChanges();
                 }
-                QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(tboxNaziv.Text, QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new QRCode(qrCodeData);
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                qrCodeImage.Save(tboxNaziv.Text + ".jpeg", ImageFormat.Jpeg);
-                MessageBox.Show("Faza uspješno dodana");
+                generirajQRKod(tboxNaziv.Text);
             }
             else
             {
@@ -79,16 +94,12 @@ namespace UpravljanjeProjektima
                     odabranaFaza.trajanje = int.Parse(tboxTrajanje.Text.ToString());
                     db.SaveChanges();
                 }
-                QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(tboxNaziv.Text, QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new QRCode(qrCodeData);
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                qrCodeImage.Save(tboxNaziv.Text + ".jpeg", ImageFormat.Jpeg);
 
-                if (File.Exists(imeIzmjenjeneSlikeFaze+".jpeg"))
+                if(tboxNaziv.Text != staroImeFaze)
                 {
-                    File.Delete(imeIzmjenjeneSlikeFaze + ".jpeg");
+                    zamijeniQRKod(tboxNaziv.Text);
                 }
+
                 Close();
             }
         }

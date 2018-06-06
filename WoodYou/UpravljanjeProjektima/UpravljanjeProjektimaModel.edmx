@@ -40,7 +40,7 @@
           <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materijal">
@@ -70,6 +70,7 @@
           <Property Name="datum_pocetka" Type="date" Nullable="false" />
           <Property Name="potrebno_vrijeme" Type="int" />
           <Property Name="datum_zavrsetka" Type="date" />
+          <Property Name="datum_izdavanja_racuna" Type="date" />
           <Property Name="ukupna_cijena" Type="float" />
           <Property Name="cijena_bez_pdv" Type="float" />
           <Property Name="iznos_pdv" Type="float" />
@@ -240,7 +241,7 @@
           <Property Name="korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Korisnik" FromRole="Korisnik" ToRole="Projekt" />
         </EntityType>
@@ -283,6 +284,7 @@
           <NavigationProperty Name="Faze_projekta" Relationship="Self.FK_Projekt_ima_fazu_Projekt" FromRole="Projekt" ToRole="Faze_projekta" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Projekt_Korisnik" FromRole="Projekt" ToRole="Korisnik" />
           <NavigationProperty Name="Partner" Relationship="Self.FK_Projekt_Partner" FromRole="Projekt" ToRole="Partner" />
+          <Property Name="datum_izdavanja_racuna" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_Projekt_ima_fazu_Faza">
           <End Role="Faza" Type="Self.Faza" Multiplicity="1">
@@ -471,6 +473,7 @@
           <EntitySetMapping Name="Projekt">
             <EntityTypeMapping TypeName="DBModel.Projekt">
               <MappingFragment StoreEntitySet="Projekt">
+                <ScalarProperty Name="datum_izdavanja_racuna" ColumnName="datum_izdavanja_racuna" />
                 <ScalarProperty Name="projektId" ColumnName="projektId" />
                 <ScalarProperty Name="ime" ColumnName="ime" />
                 <ScalarProperty Name="datum_pocetka" ColumnName="datum_pocetka" />
