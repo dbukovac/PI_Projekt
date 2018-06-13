@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ProjektidataGridView = new System.Windows.Forms.DataGridView();
             this.projektIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,17 +39,19 @@
             this.cijenabezpdvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iznospdvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource();
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partnerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.partnerBindingSource = new System.Windows.Forms.BindingSource();
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gotovoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aktivanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partnerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.projektBindingSource = new System.Windows.Forms.BindingSource();
+            this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.izdajRacunButton = new System.Windows.Forms.Button();
             this.pregledRačunaButton = new System.Windows.Forms.Button();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ProjektidataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -75,7 +78,7 @@
             this.korisnikDataGridViewTextBoxColumn,
             this.partnerDataGridViewTextBoxColumn});
             this.ProjektidataGridView.DataSource = this.projektBindingSource;
-            this.ProjektidataGridView.Location = new System.Drawing.Point(12, 27);
+            this.ProjektidataGridView.Location = new System.Drawing.Point(12, 50);
             this.ProjektidataGridView.MultiSelect = false;
             this.ProjektidataGridView.Name = "ProjektidataGridView";
             this.ProjektidataGridView.ReadOnly = true;
@@ -214,7 +217,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 11);
+            this.label1.Location = new System.Drawing.Point(9, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 1;
@@ -222,7 +225,7 @@
             // 
             // izdajRacunButton
             // 
-            this.izdajRacunButton.Location = new System.Drawing.Point(457, 268);
+            this.izdajRacunButton.Location = new System.Drawing.Point(457, 291);
             this.izdajRacunButton.Name = "izdajRacunButton";
             this.izdajRacunButton.Size = new System.Drawing.Size(75, 23);
             this.izdajRacunButton.TabIndex = 2;
@@ -232,7 +235,7 @@
             // 
             // pregledRačunaButton
             // 
-            this.pregledRačunaButton.Location = new System.Drawing.Point(538, 268);
+            this.pregledRačunaButton.Location = new System.Drawing.Point(538, 291);
             this.pregledRačunaButton.Name = "pregledRačunaButton";
             this.pregledRačunaButton.Size = new System.Drawing.Size(127, 23);
             this.pregledRačunaButton.TabIndex = 3;
@@ -240,11 +243,30 @@
             this.pregledRačunaButton.UseVisualStyleBackColor = true;
             this.pregledRačunaButton.Click += new System.EventHandler(this.pregledRačunaButton_Click);
             // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(538, 12);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(127, 20);
+            this.tboxPretrazi.TabIndex = 4;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(412, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
             // IzdavanjeRacunaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 303);
+            this.ClientSize = new System.Drawing.Size(673, 320);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tboxPretrazi);
             this.Controls.Add(this.pregledRačunaButton);
             this.Controls.Add(this.izdajRacunButton);
             this.Controls.Add(this.label1);
@@ -284,6 +306,8 @@
         private System.Windows.Forms.BindingSource projektBindingSource;
         private System.Windows.Forms.Button izdajRacunButton;
         private System.Windows.Forms.Button pregledRačunaButton;
+        private System.Windows.Forms.TextBox tboxPretrazi;
+        private System.Windows.Forms.Label label2;
     }
 }
 

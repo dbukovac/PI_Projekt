@@ -252,5 +252,31 @@ namespace UpravljanjeProjektima
         {
             PrikaziMaterijal();
         }
+
+        private void tboxPretrazi_TextChanged(object sender, EventArgs e)
+        {
+            projektiDataGridView.Rows.Clear();
+            BindingList<Projekt> listaProjekta = null;
+            BindingList<Projekt> bindingListaProjekta = new BindingList<Projekt>();
+            BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
+            using (var db = new UpravljanjeProjektimaEntities())
+            {
+                listaProjekta = new BindingList<Projekt>(db.Projekt.ToList());
+
+                foreach (var P in listaProjekta)
+                {
+                    if(P.ime.ToLower().Contains(tboxPretrazi.Text))
+                    {
+                        bindingListaProjekta.Add(P);
+                        listaKorisnika.Add(P.Korisnik as Korisnik);
+                        listaPartnera.Add(P.Partner as Partner);
+                    }
+                }
+            }
+            projektBindingSource.DataSource = bindingListaProjekta;
+            korisnikBindingSource.DataSource = listaKorisnika;
+            partnerBindingSource.DataSource = listaPartnera;
+        }
     }
 }

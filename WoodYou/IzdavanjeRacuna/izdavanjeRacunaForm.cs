@@ -74,5 +74,38 @@ namespace IzdavanjeRacuna
             }
             PrikaziRacune();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            BindingList<Projekt> Projekti = null;
+            BindingList<Projekt> listaProjekta = new BindingList<Projekt>();
+            BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
+            using (var db = new IzdavanjeRacunEntities())
+            {
+                Projekti = new BindingList<Projekt>(db.Projekt.ToList());
+                foreach (Projekt p in Projekti)
+                {
+                    if (p.datum_zavrsetka != null)
+                    {
+                        if (p.aktivan == 1 && p.datum_zavrsetka < DateTime.Now && p.gotovo == 0)
+                        {
+                            if(p.ime.ToLower().Contains(tboxPretrazi.Text))
+                            {
+                                listaProjekta.Add(p);
+                            }
+                        }
+                    }
+                }
+                foreach (Projekt P in listaProjekta)
+                {
+                    listaKorisnika.Add(P.Korisnik as Korisnik);
+                    listaPartnera.Add(P.Partner as Partner);
+                }
+            }
+            projektBindingSource.DataSource = listaProjekta;
+            korisnikBindingSource.DataSource = listaKorisnika;
+            partnerBindingSource.DataSource = listaPartnera;
+        }
     }
 }

@@ -99,5 +99,49 @@ namespace IzdavanjeRacuna
         {
             Close();
         }
+
+        private void tboxPretrazi_TextChanged(object sender, EventArgs e)
+        {
+            BindingList<Projekt> Projekti = null;
+            BindingList<Projekt> listaProjekta = new BindingList<Projekt>();
+            BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
+            using (var db = new IzdavanjeRacunEntities())
+            {
+                Projekti = new BindingList<Projekt>(db.Projekt.ToList());
+                foreach (Projekt p in Projekti)
+                {
+                    if (p.datum_izdavanja_racuna != null)
+                    {
+                        if(p.ime.ToLower().Contains(tboxPretrazi.Text))
+                        {
+                            listaProjekta.Add(p);
+                        }
+                    }
+                }
+                foreach (Projekt P in listaProjekta)
+                {
+                    listaKorisnika.Add(P.Korisnik as Korisnik);
+                    listaPartnera.Add(P.Partner as Partner);
+                }
+            }
+            projektBindingSource.DataSource = listaProjekta;
+            if (listaKorisnika.Count > 0)
+            {
+                korisnikBindingSource.DataSource = listaKorisnika;
+            }
+            else
+            {
+                generirajPrazniKorisnik(listaKorisnika);
+            }
+            if (listaPartnera.Count > 0)
+            {
+                partnerBindingSource.DataSource = listaPartnera;
+            }
+            else
+            {
+                generirajPrazniPartner(listaPartnera);
+            }
+        }
     }
 }

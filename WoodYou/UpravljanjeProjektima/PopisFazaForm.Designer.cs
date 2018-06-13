@@ -42,6 +42,8 @@
             this.odustaniButton = new System.Windows.Forms.Button();
             this.izmjeniFazuButton = new System.Windows.Forms.Button();
             this.obrisiFazuButton = new System.Windows.Forms.Button();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,7 @@
             this.trajanjeDataGridViewTextBoxColumn,
             this.fazeprojektaDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.fazaBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 25);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 48);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -108,7 +110,7 @@
             // fazeLabel
             // 
             this.fazeLabel.AutoSize = true;
-            this.fazeLabel.Location = new System.Drawing.Point(12, 9);
+            this.fazeLabel.Location = new System.Drawing.Point(9, 32);
             this.fazeLabel.Name = "fazeLabel";
             this.fazeLabel.Size = new System.Drawing.Size(33, 13);
             this.fazeLabel.TabIndex = 1;
@@ -116,7 +118,7 @@
             // 
             // novaFazaButton
             // 
-            this.novaFazaButton.Location = new System.Drawing.Point(12, 181);
+            this.novaFazaButton.Location = new System.Drawing.Point(9, 204);
             this.novaFazaButton.Name = "novaFazaButton";
             this.novaFazaButton.Size = new System.Drawing.Size(75, 23);
             this.novaFazaButton.TabIndex = 2;
@@ -126,7 +128,7 @@
             // 
             // dodajFazuButton
             // 
-            this.dodajFazuButton.Location = new System.Drawing.Point(255, 181);
+            this.dodajFazuButton.Location = new System.Drawing.Point(252, 204);
             this.dodajFazuButton.Name = "dodajFazuButton";
             this.dodajFazuButton.Size = new System.Drawing.Size(75, 23);
             this.dodajFazuButton.TabIndex = 5;
@@ -136,7 +138,7 @@
             // 
             // odustaniButton
             // 
-            this.odustaniButton.Location = new System.Drawing.Point(335, 181);
+            this.odustaniButton.Location = new System.Drawing.Point(332, 204);
             this.odustaniButton.Name = "odustaniButton";
             this.odustaniButton.Size = new System.Drawing.Size(75, 23);
             this.odustaniButton.TabIndex = 6;
@@ -146,7 +148,7 @@
             // 
             // izmjeniFazuButton
             // 
-            this.izmjeniFazuButton.Location = new System.Drawing.Point(93, 181);
+            this.izmjeniFazuButton.Location = new System.Drawing.Point(90, 204);
             this.izmjeniFazuButton.Name = "izmjeniFazuButton";
             this.izmjeniFazuButton.Size = new System.Drawing.Size(75, 23);
             this.izmjeniFazuButton.TabIndex = 7;
@@ -156,7 +158,7 @@
             // 
             // obrisiFazuButton
             // 
-            this.obrisiFazuButton.Location = new System.Drawing.Point(174, 181);
+            this.obrisiFazuButton.Location = new System.Drawing.Point(171, 204);
             this.obrisiFazuButton.Name = "obrisiFazuButton";
             this.obrisiFazuButton.Size = new System.Drawing.Size(75, 23);
             this.obrisiFazuButton.TabIndex = 8;
@@ -164,11 +166,30 @@
             this.obrisiFazuButton.UseVisualStyleBackColor = true;
             this.obrisiFazuButton.Click += new System.EventHandler(this.obrisiFazuButton_Click);
             // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(263, 12);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(144, 20);
+            this.tboxPretrazi.TabIndex = 18;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(137, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
             // PopisFazaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 212);
+            this.ClientSize = new System.Drawing.Size(440, 234);
+            this.Controls.Add(this.tboxPretrazi);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.obrisiFazuButton);
             this.Controls.Add(this.izmjeniFazuButton);
             this.Controls.Add(this.odustaniButton);
@@ -201,5 +222,7 @@
         private System.Windows.Forms.Button odustaniButton;
         private System.Windows.Forms.Button izmjeniFazuButton;
         private System.Windows.Forms.Button obrisiFazuButton;
+        private System.Windows.Forms.TextBox tboxPretrazi;
+        private System.Windows.Forms.Label label2;
     }
 }

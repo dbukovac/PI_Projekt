@@ -90,5 +90,24 @@ namespace UpravljanjeProjektima
                 }
             }
         }
+
+        private void tboxPretrazi_TextChanged(object sender, EventArgs e)
+        {
+            BindingList<Faza> listaFaza = null;
+            BindingList<Faza> bindingListaFaza = new BindingList<Faza>();
+            using (var db = new UpravljanjeProjektimaEntities())
+            {
+                listaFaza = new BindingList<Faza>(db.Faza.ToList());
+
+                foreach (var F in listaFaza)
+                {
+                    if(F.naziv.ToLower().Contains(tboxPretrazi.Text))
+                    {
+                        bindingListaFaza.Add(F);
+                    }
+                }
+            }
+            fazaBindingSource.DataSource = bindingListaFaza;
+        }
     }
 }

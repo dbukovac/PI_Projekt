@@ -74,5 +74,26 @@ namespace UpravljanjePoslovnimPartnerima
                 PrikaziPartnere();
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            BindingList<Partner> listaPartnera = null;
+            BindingList<Partner> bindingListaPartnera = new BindingList<Partner>();
+            BindingList<Tip_partnera> listaTipova = new BindingList<Tip_partnera>();
+            using (var db = new UpravljanjePoslovnimPartnerimaEntities())
+            {
+                listaPartnera = new BindingList<Partner>(db.Partner.ToList());
+                foreach (var P in listaPartnera)
+                {
+                    if(P.ime.ToLower().Contains(tboxPretrazi.Text))
+                    {
+                        bindingListaPartnera.Add(P);
+                        listaTipova.Add(P.Tip_partnera1 as Tip_partnera);
+                    }
+                }
+            }
+            partnerBindingSource.DataSource = bindingListaPartnera;
+            tippartneraBindingSource.DataSource = listaTipova;
+        }
     }
 }

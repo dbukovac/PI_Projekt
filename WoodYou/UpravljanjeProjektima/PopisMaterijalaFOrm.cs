@@ -35,24 +35,50 @@ namespace UpravljanjeProjektima
             Materijal selektiranMaterijal = materijalBindingSource.Current as Materijal;
             if(selektiranMaterijal != null)
             {
-                using (var db = new UpravljanjeProjektimaEntities())
+                if(selektiranMaterijal.kolicina > int.Parse(tboxKolicina.Text.ToString()))
                 {
-                    Faza_ima_materijal noviMaterijalFaza = new Faza_ima_materijal
+                    using (var db = new UpravljanjeProjektimaEntities())
                     {
-                        id = odabranaFazaProjekta.id,
-                        materijalId = selektiranMaterijal.materijalId,
-                        kolicina = int.Parse(tboxKolicina.Text.ToString()),
-                    };
-                    db.Faza_ima_materijal.Add(noviMaterijalFaza);
-                    db.SaveChanges();
+                        Faza_ima_materijal noviMaterijalFaza = new Faza_ima_materijal
+                        {
+                            id = odabranaFazaProjekta.id,
+                            materijalId = selektiranMaterijal.materijalId,
+                            kolicina = int.Parse(tboxKolicina.Text.ToString()),
+                        };
+                        db.Faza_ima_materijal.Add(noviMaterijalFaza);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Uspješno dodan materijal");
                 }
-                MessageBox.Show("Uspješno dodan materijal");
+                else
+                {
+                    MessageBox.Show("Nema toliko traženog materijala na skladištu");
+                }
             }
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tboxPretrazi_TextChanged(object sender, EventArgs e)
+        {
+            BindingList<Materijal> listaMaterijala = null;
+            BindingList<Materijal> bindingListaMaterijala = new BindingList<Materijal>();
+            using (var db = new UpravljanjeProjektimaEntities())
+            {
+                listaMaterijala = new BindingList<Materijal>(db.Materijal.ToList());
+
+                foreach (var M in listaMaterijala)
+                {
+                    if(M.naziv.ToLower().Contains(tboxPretrazi.Text))
+                    {
+                        bindingListaMaterijala.Add(M);
+                    }
+                }
+            }
+            materijalBindingSource.DataSource = bindingListaMaterijala;
         }
     }
 }

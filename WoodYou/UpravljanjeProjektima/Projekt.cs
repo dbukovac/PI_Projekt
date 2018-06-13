@@ -33,6 +33,7 @@ namespace UpravljanjeProjektima
         public byte gotovo { get; set; }
         public byte aktivan { get; set; }
         public Nullable<System.DateTime> datum_izdavanja_racuna { get; set; }
+        public string kod { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Faze_projekta> Faze_projekta { get; set; }

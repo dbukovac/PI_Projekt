@@ -42,6 +42,8 @@
             this.noviPartnerbutton = new System.Windows.Forms.Button();
             this.obrisiButton = new System.Windows.Forms.Button();
             this.urediButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.poslPartneriDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tippartneraBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -59,7 +61,7 @@
             this.tippartneraDataGridViewTextBoxColumn,
             this.tippartnera1DataGridViewTextBoxColumn});
             this.poslPartneriDataGrid.DataSource = this.partnerBindingSource;
-            this.poslPartneriDataGrid.Location = new System.Drawing.Point(15, 25);
+            this.poslPartneriDataGrid.Location = new System.Drawing.Point(12, 60);
             this.poslPartneriDataGrid.MultiSelect = false;
             this.poslPartneriDataGrid.Name = "poslPartneriDataGrid";
             this.poslPartneriDataGrid.ReadOnly = true;
@@ -127,7 +129,7 @@
             // poslPartneriLabel
             // 
             this.poslPartneriLabel.AutoSize = true;
-            this.poslPartneriLabel.Location = new System.Drawing.Point(12, 9);
+            this.poslPartneriLabel.Location = new System.Drawing.Point(9, 44);
             this.poslPartneriLabel.Name = "poslPartneriLabel";
             this.poslPartneriLabel.Size = new System.Drawing.Size(88, 13);
             this.poslPartneriLabel.TabIndex = 1;
@@ -135,7 +137,7 @@
             // 
             // noviPartnerbutton
             // 
-            this.noviPartnerbutton.Location = new System.Drawing.Point(232, 181);
+            this.noviPartnerbutton.Location = new System.Drawing.Point(229, 216);
             this.noviPartnerbutton.Name = "noviPartnerbutton";
             this.noviPartnerbutton.Size = new System.Drawing.Size(75, 23);
             this.noviPartnerbutton.TabIndex = 2;
@@ -145,7 +147,7 @@
             // 
             // obrisiButton
             // 
-            this.obrisiButton.Location = new System.Drawing.Point(394, 181);
+            this.obrisiButton.Location = new System.Drawing.Point(391, 216);
             this.obrisiButton.Name = "obrisiButton";
             this.obrisiButton.Size = new System.Drawing.Size(75, 23);
             this.obrisiButton.TabIndex = 3;
@@ -155,7 +157,7 @@
             // 
             // urediButton
             // 
-            this.urediButton.Location = new System.Drawing.Point(313, 181);
+            this.urediButton.Location = new System.Drawing.Point(310, 216);
             this.urediButton.Name = "urediButton";
             this.urediButton.Size = new System.Drawing.Size(75, 23);
             this.urediButton.TabIndex = 4;
@@ -163,11 +165,30 @@
             this.urediButton.UseVisualStyleBackColor = true;
             this.urediButton.Click += new System.EventHandler(this.urediButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(214, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Pretraživanje po nazivu:";
+            // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(340, 23);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(126, 20);
+            this.tboxPretrazi.TabIndex = 6;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // PoslovniPartneriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 218);
+            this.ClientSize = new System.Drawing.Size(487, 246);
+            this.Controls.Add(this.tboxPretrazi);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.urediButton);
             this.Controls.Add(this.obrisiButton);
             this.Controls.Add(this.noviPartnerbutton);
@@ -199,6 +220,8 @@
         private System.Windows.Forms.BindingSource tippartneraBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn tippartnera1DataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource partnerBindingSource;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tboxPretrazi;
     }
 }
 

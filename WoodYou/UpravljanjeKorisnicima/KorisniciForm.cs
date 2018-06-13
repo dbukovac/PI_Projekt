@@ -74,5 +74,26 @@ namespace UpravljanjeKorisnicima
                 PrikaziKorisnike();
             }
         }
+
+        private void tboxPretrazi_TextChanged(object sender, EventArgs e)
+        {
+            BindingList<Korisnik> listaKorisnika = null;
+            BindingList<Korisnik> bindingListaKorisnika = new BindingList<Korisnik>();
+            BindingList<Tip_korisnika> listaTipova = new BindingList<Tip_korisnika>();
+            using (var db = new UpravljanjeKorisnicimaEntities())
+            {
+                listaKorisnika = new BindingList<Korisnik>(db.Korisnik.ToList());
+                foreach (Korisnik kor in listaKorisnika)
+                {
+                    if(kor.ime.ToLower().Contains(tboxPretrazi.Text))
+                    {
+                        bindingListaKorisnika.Add(kor);
+                        listaTipova.Add(kor.Tip_korisnika);
+                    }
+                }
+            }
+            korisnikBindingSource.DataSource = bindingListaKorisnika;
+            tipkorisnikaBindingSource.DataSource = listaTipova;
+        }
     }
 }

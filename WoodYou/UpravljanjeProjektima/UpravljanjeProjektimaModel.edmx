@@ -78,6 +78,7 @@
           <Property Name="partnerId" Type="int" Nullable="false" />
           <Property Name="gotovo" Type="tinyint" Nullable="false" />
           <Property Name="aktivan" Type="tinyint" Nullable="false" />
+          <Property Name="kod" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Faza_ima_materijal_Faze_projekta">
           <End Role="Faze_projekta" Type="Self.Faze_projekta" Multiplicity="1">
@@ -285,6 +286,7 @@
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Projekt_Korisnik" FromRole="Projekt" ToRole="Korisnik" />
           <NavigationProperty Name="Partner" Relationship="Self.FK_Projekt_Partner" FromRole="Projekt" ToRole="Partner" />
           <Property Name="datum_izdavanja_racuna" Type="DateTime" Precision="0" />
+          <Property Name="kod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Projekt_ima_fazu_Faza">
           <End Role="Faza" Type="Self.Faza" Multiplicity="1">
@@ -473,6 +475,7 @@
           <EntitySetMapping Name="Projekt">
             <EntityTypeMapping TypeName="DBModel.Projekt">
               <MappingFragment StoreEntitySet="Projekt">
+                <ScalarProperty Name="kod" ColumnName="kod" />
                 <ScalarProperty Name="datum_izdavanja_racuna" ColumnName="datum_izdavanja_racuna" />
                 <ScalarProperty Name="projektId" ColumnName="projektId" />
                 <ScalarProperty Name="ime" ColumnName="ime" />

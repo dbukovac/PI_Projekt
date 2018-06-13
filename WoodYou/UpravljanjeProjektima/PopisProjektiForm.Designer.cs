@@ -32,6 +32,7 @@
             this.projektiDataGridView = new System.Windows.Forms.DataGridView();
             this.projektIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumpocetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.potrebnovrijemeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumzavrsetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +76,8 @@
             this.brisiMaterijalButton = new System.Windows.Forms.Button();
             this.dodajMaterijalButton = new System.Windows.Forms.Button();
             this.korisnikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -94,6 +97,7 @@
             this.projektiDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.projektIdDataGridViewTextBoxColumn,
             this.imeDataGridViewTextBoxColumn,
+            this.kod,
             this.datumpocetkaDataGridViewTextBoxColumn,
             this.potrebnovrijemeDataGridViewTextBoxColumn,
             this.datumzavrsetkaDataGridViewTextBoxColumn,
@@ -108,11 +112,11 @@
             this.korisnikDataGridViewTextBoxColumn,
             this.partnerDataGridViewTextBoxColumn});
             this.projektiDataGridView.DataSource = this.projektBindingSource;
-            this.projektiDataGridView.Location = new System.Drawing.Point(12, 22);
+            this.projektiDataGridView.Location = new System.Drawing.Point(12, 49);
             this.projektiDataGridView.MultiSelect = false;
             this.projektiDataGridView.Name = "projektiDataGridView";
             this.projektiDataGridView.ReadOnly = true;
-            this.projektiDataGridView.Size = new System.Drawing.Size(1251, 322);
+            this.projektiDataGridView.Size = new System.Drawing.Size(1148, 322);
             this.projektiDataGridView.TabIndex = 0;
             this.projektiDataGridView.SelectionChanged += new System.EventHandler(this.projektiDataGridView_SelectionChanged);
             // 
@@ -129,6 +133,13 @@
             this.imeDataGridViewTextBoxColumn.HeaderText = "ime";
             this.imeDataGridViewTextBoxColumn.Name = "imeDataGridViewTextBoxColumn";
             this.imeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kod
+            // 
+            this.kod.DataPropertyName = "kod";
+            this.kod.HeaderText = "kod";
+            this.kod.Name = "kod";
+            this.kod.ReadOnly = true;
             // 
             // datumpocetkaDataGridViewTextBoxColumn
             // 
@@ -164,6 +175,7 @@
             this.cijenabezpdvDataGridViewTextBoxColumn.HeaderText = "cijena bez pdv";
             this.cijenabezpdvDataGridViewTextBoxColumn.Name = "cijenabezpdvDataGridViewTextBoxColumn";
             this.cijenabezpdvDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cijenabezpdvDataGridViewTextBoxColumn.Visible = false;
             // 
             // iznospdvDataGridViewTextBoxColumn
             // 
@@ -171,6 +183,7 @@
             this.iznospdvDataGridViewTextBoxColumn.HeaderText = "iznos pdv";
             this.iznospdvDataGridViewTextBoxColumn.Name = "iznospdvDataGridViewTextBoxColumn";
             this.iznospdvDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iznospdvDataGridViewTextBoxColumn.Visible = false;
             // 
             // korisnikIdDataGridViewTextBoxColumn
             // 
@@ -310,7 +323,7 @@
             // 
             // noviProjektButton
             // 
-            this.noviProjektButton.Location = new System.Drawing.Point(884, 350);
+            this.noviProjektButton.Location = new System.Drawing.Point(781, 377);
             this.noviProjektButton.Name = "noviProjektButton";
             this.noviProjektButton.Size = new System.Drawing.Size(75, 23);
             this.noviProjektButton.TabIndex = 2;
@@ -320,7 +333,7 @@
             // 
             // brisiProjektButton
             // 
-            this.brisiProjektButton.Location = new System.Drawing.Point(1188, 350);
+            this.brisiProjektButton.Location = new System.Drawing.Point(1085, 377);
             this.brisiProjektButton.Name = "brisiProjektButton";
             this.brisiProjektButton.Size = new System.Drawing.Size(75, 23);
             this.brisiProjektButton.TabIndex = 3;
@@ -360,7 +373,7 @@
             // projektiLabel
             // 
             this.projektiLabel.AutoSize = true;
-            this.projektiLabel.Location = new System.Drawing.Point(9, 6);
+            this.projektiLabel.Location = new System.Drawing.Point(9, 33);
             this.projektiLabel.Name = "projektiLabel";
             this.projektiLabel.Size = new System.Drawing.Size(45, 13);
             this.projektiLabel.TabIndex = 7;
@@ -368,7 +381,7 @@
             // 
             // pokreniProjektButton
             // 
-            this.pokreniProjektButton.Location = new System.Drawing.Point(1073, 350);
+            this.pokreniProjektButton.Location = new System.Drawing.Point(970, 377);
             this.pokreniProjektButton.Name = "pokreniProjektButton";
             this.pokreniProjektButton.Size = new System.Drawing.Size(109, 23);
             this.pokreniProjektButton.TabIndex = 9;
@@ -378,7 +391,7 @@
             // 
             // izmjeniProjektButton
             // 
-            this.izmjeniProjektButton.Location = new System.Drawing.Point(965, 350);
+            this.izmjeniProjektButton.Location = new System.Drawing.Point(862, 377);
             this.izmjeniProjektButton.Name = "izmjeniProjektButton";
             this.izmjeniProjektButton.Size = new System.Drawing.Size(98, 23);
             this.izmjeniProjektButton.TabIndex = 10;
@@ -489,11 +502,30 @@
             // 
             this.korisnikBindingSource1.DataSource = typeof(UpravljanjeProjektima.Korisnik);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(890, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(1016, 12);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(144, 20);
+            this.tboxPretrazi.TabIndex = 16;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
+            // 
             // PopisProjektiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 593);
+            this.ClientSize = new System.Drawing.Size(1179, 593);
+            this.Controls.Add(this.tboxPretrazi);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.brisiMaterijalButton);
             this.Controls.Add(this.dodajMaterijalButton);
             this.Controls.Add(this.label1);
@@ -561,6 +593,7 @@
         private System.Windows.Forms.BindingSource korisnikBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn projektIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn imeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumpocetkaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn potrebnovrijemeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumzavrsetkaDataGridViewTextBoxColumn;
@@ -574,6 +607,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fazeprojektaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn korisnikDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn partnerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tboxPretrazi;
     }
 }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.korisnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnickoimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -35,13 +36,15 @@
             this.prezimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lozinkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipkorisnikaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource();
+            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipkorisnikaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource();
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.noviButton = new System.Windows.Forms.Button();
             this.izmjeniButton = new System.Windows.Forms.Button();
             this.obrisiButton = new System.Windows.Forms.Button();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipkorisnikaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
@@ -60,7 +63,7 @@
             this.tipkorisnikaIdDataGridViewTextBoxColumn,
             this.tipkorisnikaDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.korisnikBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 25);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 56);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -136,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 1;
@@ -144,7 +147,7 @@
             // 
             // noviButton
             // 
-            this.noviButton.Location = new System.Drawing.Point(231, 229);
+            this.noviButton.Location = new System.Drawing.Point(231, 260);
             this.noviButton.Name = "noviButton";
             this.noviButton.Size = new System.Drawing.Size(69, 23);
             this.noviButton.TabIndex = 2;
@@ -154,7 +157,7 @@
             // 
             // izmjeniButton
             // 
-            this.izmjeniButton.Location = new System.Drawing.Point(306, 229);
+            this.izmjeniButton.Location = new System.Drawing.Point(306, 260);
             this.izmjeniButton.Name = "izmjeniButton";
             this.izmjeniButton.Size = new System.Drawing.Size(75, 23);
             this.izmjeniButton.TabIndex = 3;
@@ -164,7 +167,7 @@
             // 
             // obrisiButton
             // 
-            this.obrisiButton.Location = new System.Drawing.Point(387, 229);
+            this.obrisiButton.Location = new System.Drawing.Point(387, 260);
             this.obrisiButton.Name = "obrisiButton";
             this.obrisiButton.Size = new System.Drawing.Size(75, 23);
             this.obrisiButton.TabIndex = 4;
@@ -172,11 +175,30 @@
             this.obrisiButton.UseVisualStyleBackColor = true;
             this.obrisiButton.Click += new System.EventHandler(this.obrisiButton_Click);
             // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(336, 12);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(126, 20);
+            this.tboxPretrazi.TabIndex = 8;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(210, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
             // KorisniciForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 264);
+            this.ClientSize = new System.Drawing.Size(479, 290);
+            this.Controls.Add(this.tboxPretrazi);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.obrisiButton);
             this.Controls.Add(this.izmjeniButton);
             this.Controls.Add(this.noviButton);
@@ -209,6 +231,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lozinkaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn tipkorisnikaIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipkorisnikaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox tboxPretrazi;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -24,6 +24,18 @@ namespace UpravljanjeProjektima
             odabraniProjekt = projekt;
         }
 
+        public string GenerirajKod(int duzina)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < duzina--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
+        }
+
         private void NoviProjektForm_Load(object sender, EventArgs e)
         {
             BindingList<Partner> listaPartnera = null;
@@ -60,6 +72,7 @@ namespace UpravljanjeProjektima
                         datum_zavrsetka = null,
                         korisnikId = 3,
                         potrebno_vrijeme = 0,
+                        kod = GenerirajKod(6),
                     };
                     db.Projekt.Add(noviProjekt);
                     db.SaveChanges();
