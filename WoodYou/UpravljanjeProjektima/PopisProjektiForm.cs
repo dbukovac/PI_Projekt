@@ -224,12 +224,19 @@ namespace UpravljanjeProjektima
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
-            Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
-            if(selektiranaFazaProjekta != null)
+            if(selektiraniProjekt.gotovo != 1)
             {
-                PopisMaterijalaForm materijaliForma = new PopisMaterijalaForm(selektiranaFazaProjekta);
-                materijaliForma.ShowDialog();
-                PrikaziProjekte();
+                Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
+                if (selektiranaFazaProjekta != null)
+                {
+                    PopisMaterijalaForm materijaliForma = new PopisMaterijalaForm(selektiranaFazaProjekta);
+                    materijaliForma.ShowDialog();
+                    PrikaziProjekte();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Projekt je završen!");
             }
         }
 
