@@ -67,6 +67,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tboxBrojRacuna = new System.Windows.Forms.TextBox();
             this.izadiButton = new System.Windows.Forms.Button();
+            this.printajButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
@@ -158,6 +159,7 @@
             this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.materijalIdDataGridViewTextBoxColumn.HeaderText = "materijalId";
             this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
+            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
@@ -171,6 +173,7 @@
             this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
             this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
             this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
+            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fazaimamaterijalBindingSource
             // 
@@ -422,11 +425,22 @@
             this.izadiButton.UseVisualStyleBackColor = true;
             this.izadiButton.Click += new System.EventHandler(this.izadiButton_Click);
             // 
+            // printajButton
+            // 
+            this.printajButton.Location = new System.Drawing.Point(607, 364);
+            this.printajButton.Name = "printajButton";
+            this.printajButton.Size = new System.Drawing.Size(75, 23);
+            this.printajButton.TabIndex = 6;
+            this.printajButton.Text = "Printaj";
+            this.printajButton.UseVisualStyleBackColor = true;
+            this.printajButton.Click += new System.EventHandler(this.printajButton_Click);
+            // 
             // OdabraniRacunForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 390);
+            this.Controls.Add(this.printajButton);
             this.Controls.Add(this.izadiButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -488,5 +502,6 @@
         private System.Windows.Forms.TextBox tboxDatumIzdavanja;
         private System.Windows.Forms.TextBox tboxKorisnik;
         private System.Windows.Forms.TextBox tboxPartner;
+        private System.Windows.Forms.Button printajButton;
     }
 }

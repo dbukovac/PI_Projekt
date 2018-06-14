@@ -121,5 +121,11 @@ namespace IzdavanjeRacuna
         {
             Close();
         }
+
+        private void printajButton_Click(object sender, EventArgs e)
+        {
+            RacunReportForm forma = new RacunReportForm(odabraniProjekt);
+            forma.ShowDialog();
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace IzdavanjeRacuna
         public byte gotovo { get; set; }
         public byte aktivan { get; set; }
         public Nullable<System.DateTime> datum_izdavanja_racuna { get; set; }
+        public string kod { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
         public virtual Partner Partner { get; set; }
