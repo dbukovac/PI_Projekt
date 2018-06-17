@@ -44,7 +44,26 @@ namespace IzdavanjeRacuna
             partnerBindingSource.DataSource = lista;
         }
 
-        private void PrikaziRacune()
+        private bool ProvjeriZavrsenostFaza(Projekt projekt)
+        {
+            List<Faze_projekta> listaFaza = null;
+            bool zavrseno = true;
+            using (var db = new IzdavanjeRacunEntities())
+            {
+                db.Projekt.Attach(projekt);
+                listaFaza = new List<Faze_projekta>(projekt.Faze_projekta.ToList());
+                foreach (var F in listaFaza)
+                {
+                    if(F.zakljucano == 0)
+                    {
+                        zavrseno = false;
+                    }
+                }
+            }
+            return zavrseno;
+        }
+
+        private BindingList<Projekt> PrikaziRacune()
         {
             BindingList<Projekt> Projekti = null;
             BindingList<Projekt> listaProjekta = new BindingList<Projekt>();
@@ -55,12 +74,9 @@ namespace IzdavanjeRacuna
                 Projekti = new BindingList<Projekt>(db.Projekt.ToList());
                 foreach (Projekt p in Projekti)
                 {
-                    if(p.datum_zavrsetka != null)
+                    if(p.aktivan == 1 && p.gotovo == 0 && ProvjeriZavrsenostFaza(p) == true)
                     {
-                        if (p.aktivan == 1 && p.datum_zavrsetka < DateTime.Now && p.gotovo == 0)
-                        {
-                            listaProjekta.Add(p);
-                        }
+                        listaProjekta.Add(p);
                     }
                 }
                 foreach (Projekt P in listaProjekta)
@@ -86,6 +102,7 @@ namespace IzdavanjeRacuna
             {
                 generirajPrazniPartner(listaPartnera);
             }
+            return listaProjekta;
         }
 
         private void pregledRačunaButton_Click(object sender, EventArgs e)
@@ -96,19 +113,24 @@ namespace IzdavanjeRacuna
 
         private void izdajRacunButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Da li ste sigurni?", "Upozorenje!", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            if (selektiraniProjekt != null)
             {
-                Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
-                using (var db = new IzdavanjeRacunEntities())
+                if (MessageBox.Show("Da li ste sigurni?", "Upozorenje!", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    db.Projekt.Attach(selektiraniProjekt);
-                    selektiraniProjekt.gotovo = 1;
-                    selektiraniProjekt.datum_izdavanja_racuna = DateTime.Now;
-                    db.SaveChanges();
+                    using (var db = new IzdavanjeRacunEntities())
+                    {
+                        db.Projekt.Attach(selektiraniProjekt);
+                        selektiraniProjekt.gotovo = 1;
+                        selektiraniProjekt.datum_izdavanja_racuna = DateTime.Now;
+                        db.SaveChanges();
+                    }
+                    RacunReportForm forma = new RacunReportForm(selektiraniProjekt);
+                    forma.ShowDialog();
+                    MessageBox.Show("Uspješno izdan račun");
                 }
-                MessageBox.Show("Uspješno izdan račun");
+                PrikaziRacune();
             }
-            PrikaziRacune();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -142,6 +164,52 @@ namespace IzdavanjeRacuna
             projektBindingSource.DataSource = listaProjekta;
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
+        }
+
+        private void predracunButton_Click(object sender, EventArgs e)
+        {
+            Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            if (selektiraniProjekt != null)
+            {
+                RacunReportForm forma = new RacunReportForm(selektiraniProjekt);
+                forma.ShowDialog();
+            }
+        }
+
+        private void PretraziPoDatumu()
+        {
+            ProjektidataGridView.Rows.Clear();
+            BindingList<Projekt> listaProjekta = PrikaziRacune();
+            BindingList<Projekt> bindingListaProjekta = new BindingList<Projekt>();
+            BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
+            foreach (var P in listaProjekta)
+            {
+                if (P.datum_pocetka > dtProjekti1.Value && P.datum_pocetka < dtProjekti2.Value)
+                {
+                    bindingListaProjekta.Add(P);
+                    listaKorisnika.Add(P.Korisnik as Korisnik);
+                    listaPartnera.Add(P.Partner as Partner);
+                }
+            }
+            projektBindingSource.DataSource = bindingListaProjekta;
+            korisnikBindingSource.DataSource = listaKorisnika;
+            partnerBindingSource.DataSource = listaPartnera;
+        }
+
+        private void dtProjekti1_ValueChanged(object sender, EventArgs e)
+        {
+            PretraziPoDatumu();
+        }
+
+        private void dtProjekti2_ValueChanged(object sender, EventArgs e)
+        {
+            PretraziPoDatumu();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            PrikaziRacune();
         }
     }
 }

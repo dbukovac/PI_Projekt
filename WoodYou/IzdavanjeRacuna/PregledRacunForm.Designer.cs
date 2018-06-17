@@ -32,6 +32,9 @@
             this.pregledRačunaButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ProjektidataGridView = new System.Windows.Forms.DataGridView();
+            this.odustaniButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
             this.projektIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumpocetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +53,12 @@
             this.korisnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partnerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.odustaniButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtProjekti2 = new System.Windows.Forms.DateTimePicker();
+            this.dtProjekti1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.ProjektidataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -105,6 +111,33 @@
             this.ProjektidataGridView.ReadOnly = true;
             this.ProjektidataGridView.Size = new System.Drawing.Size(855, 235);
             this.ProjektidataGridView.TabIndex = 4;
+            // 
+            // odustaniButton
+            // 
+            this.odustaniButton.Location = new System.Drawing.Point(766, 293);
+            this.odustaniButton.Name = "odustaniButton";
+            this.odustaniButton.Size = new System.Drawing.Size(101, 23);
+            this.odustaniButton.TabIndex = 8;
+            this.odustaniButton.Text = "Odustani";
+            this.odustaniButton.UseVisualStyleBackColor = true;
+            this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(84, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(210, 25);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(127, 20);
+            this.tboxPretrazi.TabIndex = 9;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
             // 
             // projektIdDataGridViewTextBoxColumn
             // 
@@ -242,38 +275,67 @@
             // 
             this.projektBindingSource.DataSource = typeof(IzdavanjeRacuna.Projekt);
             // 
-            // odustaniButton
+            // resetButton
             // 
-            this.odustaniButton.Location = new System.Drawing.Point(766, 293);
-            this.odustaniButton.Name = "odustaniButton";
-            this.odustaniButton.Size = new System.Drawing.Size(101, 23);
-            this.odustaniButton.TabIndex = 8;
-            this.odustaniButton.Text = "Odustani";
-            this.odustaniButton.UseVisualStyleBackColor = true;
-            this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
+            this.resetButton.Location = new System.Drawing.Point(817, 23);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(50, 23);
+            this.resetButton.TabIndex = 34;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(614, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Pretraživanje po nazivu:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(674, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Do:";
             // 
-            // tboxPretrazi
+            // label4
             // 
-            this.tboxPretrazi.Location = new System.Drawing.Point(740, 12);
-            this.tboxPretrazi.Name = "tboxPretrazi";
-            this.tboxPretrazi.Size = new System.Drawing.Size(127, 20);
-            this.tboxPretrazi.TabIndex = 9;
-            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(539, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Od:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(395, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Pretraživanje po datumu:";
+            // 
+            // dtProjekti2
+            // 
+            this.dtProjekti2.Location = new System.Drawing.Point(677, 25);
+            this.dtProjekti2.Name = "dtProjekti2";
+            this.dtProjekti2.Size = new System.Drawing.Size(134, 20);
+            this.dtProjekti2.TabIndex = 30;
+            // 
+            // dtProjekti1
+            // 
+            this.dtProjekti1.Location = new System.Drawing.Point(537, 25);
+            this.dtProjekti1.Name = "dtProjekti1";
+            this.dtProjekti1.Size = new System.Drawing.Size(134, 20);
+            this.dtProjekti1.TabIndex = 29;
             // 
             // PregledRacunForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 324);
+            this.Controls.Add(this.resetButton);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtProjekti2);
+            this.Controls.Add(this.dtProjekti1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tboxPretrazi);
             this.Controls.Add(this.odustaniButton);
@@ -318,5 +380,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn partnerDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tboxPretrazi;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtProjekti2;
+        private System.Windows.Forms.DateTimePicker dtProjekti1;
     }
 }

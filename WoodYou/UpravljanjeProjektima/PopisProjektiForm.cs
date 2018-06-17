@@ -119,6 +119,10 @@ namespace UpravljanjeProjektima
                         if(selektiraniProjekt.aktivan == 0 && selektiraniProjekt.Faze_projekta.Count > 0)
                         {
                             selektiraniProjekt.aktivan = 1;
+                            selektiraniProjekt.datum_pocetka = DateTime.Today;
+                            DateTime datum = (DateTime)selektiraniProjekt.datum_zavrsetka;
+                            datum.AddDays((double)selektiraniProjekt.potrebno_vrijeme);
+                            selektiraniProjekt.datum_zavrsetka = datum;
                             db.SaveChanges();
                             PrikaziProjekte();
                         }
@@ -206,17 +210,25 @@ namespace UpravljanjeProjektima
 
         private void brisiFazuButton_Click(object sender, EventArgs e)
         {
+            Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
             if (MessageBox.Show("Da li ste sigurni?", "Upozorenje!", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
-                using (var db = new UpravljanjeProjektimaEntities())
+                if (selektiraniProjekt.gotovo != 1)
                 {
-                    db.Faze_projekta.Attach(selektiranaFazaProjekta);
-                    db.Faze_projekta.Remove(selektiranaFazaProjekta);
-                    db.SaveChanges();
+                    Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
+                    using (var db = new UpravljanjeProjektimaEntities())
+                    {
+                        db.Faze_projekta.Attach(selektiranaFazaProjekta);
+                        db.Faze_projekta.Remove(selektiranaFazaProjekta);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Uspješno obrisana faza");
+                    PrikaziFaze(projektBindingSource.Current as Projekt);
                 }
-                MessageBox.Show("Uspješno obrisana faza");
-                PrikaziFaze(projektBindingSource.Current as Projekt);
+                else
+                {
+                    MessageBox.Show("Projekt je završen!");
+                }
             }
         }
 
@@ -243,15 +255,23 @@ namespace UpravljanjeProjektima
         private void brisiMaterijalButton_Click(object sender, EventArgs e)
         {
             Faza_ima_materijal selektiranaFazaImaMaterijal = fazaimamaterijalBindingSource.Current as Faza_ima_materijal;
-            if(selektiranaFazaImaMaterijal != null)
+            Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            if (selektiraniProjekt.gotovo != 1)
             {
-                using(var db = new UpravljanjeProjektimaEntities())
+                if (selektiranaFazaImaMaterijal != null)
                 {
-                    db.Faza_ima_materijal.Attach(selektiranaFazaImaMaterijal);
-                    db.Faza_ima_materijal.Remove(selektiranaFazaImaMaterijal);
-                    db.SaveChanges();
+                    using (var db = new UpravljanjeProjektimaEntities())
+                    {
+                        db.Faza_ima_materijal.Attach(selektiranaFazaImaMaterijal);
+                        db.Faza_ima_materijal.Remove(selektiranaFazaImaMaterijal);
+                        db.SaveChanges();
+                    }
+                    PrikaziMaterijal();
                 }
-                PrikaziMaterijal();
+            }
+            else
+            {
+                MessageBox.Show("Projekt je završen!");
             }
         }
 
@@ -284,6 +304,47 @@ namespace UpravljanjeProjektima
             projektBindingSource.DataSource = bindingListaProjekta;
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
+        }
+
+        private void PretraziPoDatumu()
+        {
+            projektiDataGridView.Rows.Clear();
+            BindingList<Projekt> listaProjekta = null;
+            BindingList<Projekt> bindingListaProjekta = new BindingList<Projekt>();
+            BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
+            using (var db = new UpravljanjeProjektimaEntities())
+            {
+                listaProjekta = new BindingList<Projekt>(db.Projekt.ToList());
+
+                foreach (var P in listaProjekta)
+                {
+                    if (P.datum_pocetka > dtProjekti1.Value && P.datum_pocetka < dtProjekti2.Value)
+                    {
+                        bindingListaProjekta.Add(P);
+                        listaKorisnika.Add(P.Korisnik as Korisnik);
+                        listaPartnera.Add(P.Partner as Partner);
+                    }
+                }
+            }
+            projektBindingSource.DataSource = bindingListaProjekta;
+            korisnikBindingSource.DataSource = listaKorisnika;
+            partnerBindingSource.DataSource = listaPartnera;
+        }
+
+        private void dtProjekti1_ValueChanged(object sender, EventArgs e)
+        {
+            PretraziPoDatumu();
+        }
+
+        private void dtProjekti2_ValueChanged(object sender, EventArgs e)
+        {
+            PretraziPoDatumu();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            PrikaziProjekte();
         }
     }
 }

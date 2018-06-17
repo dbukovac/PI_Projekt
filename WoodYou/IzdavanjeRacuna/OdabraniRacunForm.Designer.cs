@@ -30,17 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.fazeDataGridView = new System.Windows.Forms.DataGridView();
-            this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
-            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -68,12 +58,22 @@
             this.tboxBrojRacuna = new System.Windows.Forms.TextBox();
             this.izadiButton = new System.Windows.Forms.Button();
             this.printajButton = new System.Windows.Forms.Button();
+            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // fazeDataGridView
@@ -95,47 +95,6 @@
             this.fazeDataGridView.TabIndex = 0;
             this.fazeDataGridView.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // fazaIdDataGridViewTextBoxColumn
-            // 
-            this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
-            this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
-            this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
-            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fazaIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nazivDataGridViewTextBoxColumn
-            // 
-            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
-            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
-            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
-            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cijenaDataGridViewTextBoxColumn
-            // 
-            this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
-            this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
-            this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
-            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // trajanjeDataGridViewTextBoxColumn
-            // 
-            this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
-            this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
-            this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
-            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fazeprojektaDataGridViewTextBoxColumn
-            // 
-            this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
-            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // fazaBindingSource
-            // 
-            this.fazaBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza);
-            // 
             // materijalDataGridView
             // 
             this.materijalDataGridView.AutoGenerateColumns = false;
@@ -150,34 +109,6 @@
             this.materijalDataGridView.ReadOnly = true;
             this.materijalDataGridView.Size = new System.Drawing.Size(254, 150);
             this.materijalDataGridView.TabIndex = 1;
-            // 
-            // materijalIdDataGridViewTextBoxColumn
-            // 
-            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn.DataSource = this.materijalBindingSource;
-            this.materijalIdDataGridViewTextBoxColumn.DisplayMember = "naziv";
-            this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
-            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
-            // 
-            // materijalBindingSource
-            // 
-            this.materijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Materijal);
-            // 
-            // kolicinaDataGridViewTextBoxColumn
-            // 
-            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
-            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fazaimamaterijalBindingSource
-            // 
-            this.fazaimamaterijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza_ima_materijal);
             // 
             // label1
             // 
@@ -221,9 +152,9 @@
             this.groupBox1.Controls.Add(this.tboxNaziv);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tboxBrojRacuna);
-            this.groupBox1.Location = new System.Drawing.Point(65, 12);
+            this.groupBox1.Location = new System.Drawing.Point(53, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(649, 159);
+            this.groupBox1.Size = new System.Drawing.Size(687, 159);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Odabrani projekt";
@@ -231,7 +162,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(210, 109);
+            this.label13.Location = new System.Drawing.Point(203, 109);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(125, 13);
             this.label13.TabIndex = 21;
@@ -239,10 +170,10 @@
             // 
             // tboxDatumIzdavanja
             // 
-            this.tboxDatumIzdavanja.Location = new System.Drawing.Point(341, 106);
+            this.tboxDatumIzdavanja.Location = new System.Drawing.Point(334, 106);
             this.tboxDatumIzdavanja.Name = "tboxDatumIzdavanja";
             this.tboxDatumIzdavanja.ReadOnly = true;
-            this.tboxDatumIzdavanja.Size = new System.Drawing.Size(100, 20);
+            this.tboxDatumIzdavanja.Size = new System.Drawing.Size(126, 20);
             this.tboxDatumIzdavanja.TabIndex = 20;
             // 
             // label12
@@ -282,7 +213,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(472, 83);
+            this.label7.Location = new System.Drawing.Point(498, 83);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 15;
@@ -290,7 +221,7 @@
             // 
             // tboxIznosPdv
             // 
-            this.tboxIznosPdv.Location = new System.Drawing.Point(543, 80);
+            this.tboxIznosPdv.Location = new System.Drawing.Point(569, 80);
             this.tboxIznosPdv.Name = "tboxIznosPdv";
             this.tboxIznosPdv.ReadOnly = true;
             this.tboxIznosPdv.Size = new System.Drawing.Size(100, 20);
@@ -299,7 +230,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(448, 57);
+            this.label8.Location = new System.Drawing.Point(474, 57);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 13;
@@ -307,7 +238,7 @@
             // 
             // tboxCijenaBezPdv
             // 
-            this.tboxCijenaBezPdv.Location = new System.Drawing.Point(543, 54);
+            this.tboxCijenaBezPdv.Location = new System.Drawing.Point(569, 54);
             this.tboxCijenaBezPdv.Name = "tboxCijenaBezPdv";
             this.tboxCijenaBezPdv.ReadOnly = true;
             this.tboxCijenaBezPdv.Size = new System.Drawing.Size(100, 20);
@@ -316,7 +247,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(458, 31);
+            this.label9.Location = new System.Drawing.Point(484, 31);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 13);
             this.label9.TabIndex = 11;
@@ -324,7 +255,7 @@
             // 
             // tboxUkupnaCijena
             // 
-            this.tboxUkupnaCijena.Location = new System.Drawing.Point(543, 28);
+            this.tboxUkupnaCijena.Location = new System.Drawing.Point(569, 28);
             this.tboxUkupnaCijena.Name = "tboxUkupnaCijena";
             this.tboxUkupnaCijena.ReadOnly = true;
             this.tboxUkupnaCijena.Size = new System.Drawing.Size(100, 20);
@@ -333,7 +264,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(245, 83);
+            this.label10.Location = new System.Drawing.Point(238, 83);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 13);
             this.label10.TabIndex = 9;
@@ -341,16 +272,16 @@
             // 
             // tboxDatumZavrsetka
             // 
-            this.tboxDatumZavrsetka.Location = new System.Drawing.Point(341, 80);
+            this.tboxDatumZavrsetka.Location = new System.Drawing.Point(334, 80);
             this.tboxDatumZavrsetka.Name = "tboxDatumZavrsetka";
             this.tboxDatumZavrsetka.ReadOnly = true;
-            this.tboxDatumZavrsetka.Size = new System.Drawing.Size(100, 20);
+            this.tboxDatumZavrsetka.Size = new System.Drawing.Size(126, 20);
             this.tboxDatumZavrsetka.TabIndex = 8;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(246, 57);
+            this.label6.Location = new System.Drawing.Point(239, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 7;
@@ -358,16 +289,16 @@
             // 
             // tboxPotrebnoVrijeme
             // 
-            this.tboxPotrebnoVrijeme.Location = new System.Drawing.Point(341, 54);
+            this.tboxPotrebnoVrijeme.Location = new System.Drawing.Point(334, 54);
             this.tboxPotrebnoVrijeme.Name = "tboxPotrebnoVrijeme";
             this.tboxPotrebnoVrijeme.ReadOnly = true;
-            this.tboxPotrebnoVrijeme.Size = new System.Drawing.Size(100, 20);
+            this.tboxPotrebnoVrijeme.Size = new System.Drawing.Size(126, 20);
             this.tboxPotrebnoVrijeme.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(252, 31);
+            this.label5.Location = new System.Drawing.Point(245, 31);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 5;
@@ -375,10 +306,10 @@
             // 
             // tboxDatumPocetka
             // 
-            this.tboxDatumPocetka.Location = new System.Drawing.Point(341, 28);
+            this.tboxDatumPocetka.Location = new System.Drawing.Point(334, 28);
             this.tboxDatumPocetka.Name = "tboxDatumPocetka";
             this.tboxDatumPocetka.ReadOnly = true;
-            this.tboxDatumPocetka.Size = new System.Drawing.Size(100, 20);
+            this.tboxDatumPocetka.Size = new System.Drawing.Size(126, 20);
             this.tboxDatumPocetka.TabIndex = 4;
             // 
             // label4
@@ -435,6 +366,75 @@
             this.printajButton.UseVisualStyleBackColor = true;
             this.printajButton.Click += new System.EventHandler(this.printajButton_Click);
             // 
+            // materijalIdDataGridViewTextBoxColumn
+            // 
+            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn.DataSource = this.materijalBindingSource;
+            this.materijalIdDataGridViewTextBoxColumn.DisplayMember = "naziv";
+            this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
+            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
+            // 
+            // materijalBindingSource
+            // 
+            this.materijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Materijal);
+            // 
+            // kolicinaDataGridViewTextBoxColumn
+            // 
+            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
+            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fazaimamaterijalBindingSource
+            // 
+            this.fazaimamaterijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza_ima_materijal);
+            // 
+            // fazaIdDataGridViewTextBoxColumn
+            // 
+            this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
+            this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
+            this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
+            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fazaIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nazivDataGridViewTextBoxColumn
+            // 
+            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
+            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
+            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cijenaDataGridViewTextBoxColumn
+            // 
+            this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
+            this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
+            this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
+            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // trajanjeDataGridViewTextBoxColumn
+            // 
+            this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
+            this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
+            this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
+            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fazeprojektaDataGridViewTextBoxColumn
+            // 
+            this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
+            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // fazaBindingSource
+            // 
+            this.fazaBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza);
+            // 
             // OdabraniRacunForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,12 +451,12 @@
             this.Text = "OdabraniRacunForm";
             this.Load += new System.EventHandler(this.OdabraniRacunForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

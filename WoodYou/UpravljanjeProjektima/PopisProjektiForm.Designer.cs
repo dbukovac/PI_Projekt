@@ -30,9 +30,42 @@
         {
             this.components = new System.ComponentModel.Container();
             this.projektiDataGridView = new System.Windows.Forms.DataGridView();
+            this.fazeDataGridView = new System.Windows.Forms.DataGridView();
+            this.noviProjektButton = new System.Windows.Forms.Button();
+            this.brisiProjektButton = new System.Windows.Forms.Button();
+            this.brisiFazuButton = new System.Windows.Forms.Button();
+            this.dodajFazuButton = new System.Windows.Forms.Button();
+            this.fazeLabel = new System.Windows.Forms.Label();
+            this.projektiLabel = new System.Windows.Forms.Label();
+            this.pokreniProjektButton = new System.Windows.Forms.Button();
+            this.izmjeniProjektButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.materijalDataGridView = new System.Windows.Forms.DataGridView();
+            this.brisiMaterijalButton = new System.Windows.Forms.Button();
+            this.dodajMaterijalButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtProjekti1 = new System.Windows.Forms.DateTimePicker();
+            this.dtProjekti2 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazeprojektaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazeprojektaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.projektIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumpocetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.potrebnovrijemeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumzavrsetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,44 +82,17 @@
             this.korisnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partnerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fazeDataGridView = new System.Windows.Forms.DataGridView();
-            this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazeprojektaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.noviProjektButton = new System.Windows.Forms.Button();
-            this.brisiProjektButton = new System.Windows.Forms.Button();
-            this.brisiFazuButton = new System.Windows.Forms.Button();
-            this.dodajFazuButton = new System.Windows.Forms.Button();
-            this.fazeLabel = new System.Windows.Forms.Label();
-            this.projektiLabel = new System.Windows.Forms.Label();
-            this.pokreniProjektButton = new System.Windows.Forms.Button();
-            this.izmjeniProjektButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.materijalDataGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazeprojektaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.brisiMaterijalButton = new System.Windows.Forms.Button();
-            this.dodajMaterijalButton = new System.Windows.Forms.Button();
             this.korisnikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.resetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projektBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projektBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,147 +126,6 @@
             this.projektiDataGridView.TabIndex = 0;
             this.projektiDataGridView.SelectionChanged += new System.EventHandler(this.projektiDataGridView_SelectionChanged);
             // 
-            // projektIdDataGridViewTextBoxColumn
-            // 
-            this.projektIdDataGridViewTextBoxColumn.DataPropertyName = "projektId";
-            this.projektIdDataGridViewTextBoxColumn.HeaderText = "projektId";
-            this.projektIdDataGridViewTextBoxColumn.Name = "projektIdDataGridViewTextBoxColumn";
-            this.projektIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // imeDataGridViewTextBoxColumn
-            // 
-            this.imeDataGridViewTextBoxColumn.DataPropertyName = "ime";
-            this.imeDataGridViewTextBoxColumn.HeaderText = "ime";
-            this.imeDataGridViewTextBoxColumn.Name = "imeDataGridViewTextBoxColumn";
-            this.imeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kod
-            // 
-            this.kod.DataPropertyName = "kod";
-            this.kod.HeaderText = "kod";
-            this.kod.Name = "kod";
-            this.kod.ReadOnly = true;
-            // 
-            // datumpocetkaDataGridViewTextBoxColumn
-            // 
-            this.datumpocetkaDataGridViewTextBoxColumn.DataPropertyName = "datum_pocetka";
-            this.datumpocetkaDataGridViewTextBoxColumn.HeaderText = "datum pocetka";
-            this.datumpocetkaDataGridViewTextBoxColumn.Name = "datumpocetkaDataGridViewTextBoxColumn";
-            this.datumpocetkaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // potrebnovrijemeDataGridViewTextBoxColumn
-            // 
-            this.potrebnovrijemeDataGridViewTextBoxColumn.DataPropertyName = "potrebno_vrijeme";
-            this.potrebnovrijemeDataGridViewTextBoxColumn.HeaderText = "potrebno vrijeme";
-            this.potrebnovrijemeDataGridViewTextBoxColumn.Name = "potrebnovrijemeDataGridViewTextBoxColumn";
-            this.potrebnovrijemeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datumzavrsetkaDataGridViewTextBoxColumn
-            // 
-            this.datumzavrsetkaDataGridViewTextBoxColumn.DataPropertyName = "datum_zavrsetka";
-            this.datumzavrsetkaDataGridViewTextBoxColumn.HeaderText = "datum zavrsetka";
-            this.datumzavrsetkaDataGridViewTextBoxColumn.Name = "datumzavrsetkaDataGridViewTextBoxColumn";
-            this.datumzavrsetkaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ukupnacijenaDataGridViewTextBoxColumn
-            // 
-            this.ukupnacijenaDataGridViewTextBoxColumn.DataPropertyName = "ukupna_cijena";
-            this.ukupnacijenaDataGridViewTextBoxColumn.HeaderText = "ukupna cijena";
-            this.ukupnacijenaDataGridViewTextBoxColumn.Name = "ukupnacijenaDataGridViewTextBoxColumn";
-            this.ukupnacijenaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cijenabezpdvDataGridViewTextBoxColumn
-            // 
-            this.cijenabezpdvDataGridViewTextBoxColumn.DataPropertyName = "cijena_bez_pdv";
-            this.cijenabezpdvDataGridViewTextBoxColumn.HeaderText = "cijena bez pdv";
-            this.cijenabezpdvDataGridViewTextBoxColumn.Name = "cijenabezpdvDataGridViewTextBoxColumn";
-            this.cijenabezpdvDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cijenabezpdvDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // iznospdvDataGridViewTextBoxColumn
-            // 
-            this.iznospdvDataGridViewTextBoxColumn.DataPropertyName = "iznos_pdv";
-            this.iznospdvDataGridViewTextBoxColumn.HeaderText = "iznos pdv";
-            this.iznospdvDataGridViewTextBoxColumn.Name = "iznospdvDataGridViewTextBoxColumn";
-            this.iznospdvDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iznospdvDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // korisnikIdDataGridViewTextBoxColumn
-            // 
-            this.korisnikIdDataGridViewTextBoxColumn.DataPropertyName = "korisnikId";
-            this.korisnikIdDataGridViewTextBoxColumn.DataSource = this.korisnikBindingSource;
-            this.korisnikIdDataGridViewTextBoxColumn.DisplayMember = "korisnicko_ime";
-            this.korisnikIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.korisnikIdDataGridViewTextBoxColumn.HeaderText = "korisnik";
-            this.korisnikIdDataGridViewTextBoxColumn.Name = "korisnikIdDataGridViewTextBoxColumn";
-            this.korisnikIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.korisnikIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.korisnikIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.korisnikIdDataGridViewTextBoxColumn.ValueMember = "korisnikId";
-            // 
-            // korisnikBindingSource
-            // 
-            this.korisnikBindingSource.DataSource = typeof(UpravljanjeProjektima.Korisnik);
-            // 
-            // partnerIdDataGridViewTextBoxColumn
-            // 
-            this.partnerIdDataGridViewTextBoxColumn.DataPropertyName = "partnerId";
-            this.partnerIdDataGridViewTextBoxColumn.DataSource = this.partnerBindingSource;
-            this.partnerIdDataGridViewTextBoxColumn.DisplayMember = "ime";
-            this.partnerIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.partnerIdDataGridViewTextBoxColumn.HeaderText = "partner";
-            this.partnerIdDataGridViewTextBoxColumn.Name = "partnerIdDataGridViewTextBoxColumn";
-            this.partnerIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.partnerIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.partnerIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.partnerIdDataGridViewTextBoxColumn.ValueMember = "partnerId";
-            // 
-            // partnerBindingSource
-            // 
-            this.partnerBindingSource.DataSource = typeof(UpravljanjeProjektima.Partner);
-            // 
-            // gotovoDataGridViewTextBoxColumn
-            // 
-            this.gotovoDataGridViewTextBoxColumn.DataPropertyName = "gotovo";
-            this.gotovoDataGridViewTextBoxColumn.HeaderText = "gotovo";
-            this.gotovoDataGridViewTextBoxColumn.Name = "gotovoDataGridViewTextBoxColumn";
-            this.gotovoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aktivanDataGridViewTextBoxColumn
-            // 
-            this.aktivanDataGridViewTextBoxColumn.DataPropertyName = "aktivan";
-            this.aktivanDataGridViewTextBoxColumn.HeaderText = "aktivan";
-            this.aktivanDataGridViewTextBoxColumn.Name = "aktivanDataGridViewTextBoxColumn";
-            this.aktivanDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fazeprojektaDataGridViewTextBoxColumn
-            // 
-            this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
-            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // korisnikDataGridViewTextBoxColumn
-            // 
-            this.korisnikDataGridViewTextBoxColumn.DataPropertyName = "Korisnik";
-            this.korisnikDataGridViewTextBoxColumn.HeaderText = "Korisnik";
-            this.korisnikDataGridViewTextBoxColumn.Name = "korisnikDataGridViewTextBoxColumn";
-            this.korisnikDataGridViewTextBoxColumn.ReadOnly = true;
-            this.korisnikDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // partnerDataGridViewTextBoxColumn
-            // 
-            this.partnerDataGridViewTextBoxColumn.DataPropertyName = "Partner";
-            this.partnerDataGridViewTextBoxColumn.HeaderText = "Partner";
-            this.partnerDataGridViewTextBoxColumn.Name = "partnerDataGridViewTextBoxColumn";
-            this.partnerDataGridViewTextBoxColumn.ReadOnly = true;
-            this.partnerDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // projektBindingSource
-            // 
-            this.projektBindingSource.DataSource = typeof(UpravljanjeProjektima.Projekt);
-            // 
             // fazeDataGridView
             // 
             this.fazeDataGridView.AutoGenerateColumns = false;
@@ -279,47 +144,6 @@
             this.fazeDataGridView.Size = new System.Drawing.Size(354, 150);
             this.fazeDataGridView.TabIndex = 1;
             this.fazeDataGridView.SelectionChanged += new System.EventHandler(this.fazeDataGridView_SelectionChanged);
-            // 
-            // fazaIdDataGridViewTextBoxColumn
-            // 
-            this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
-            this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
-            this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
-            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fazaIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nazivDataGridViewTextBoxColumn
-            // 
-            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
-            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
-            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
-            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cijenaDataGridViewTextBoxColumn
-            // 
-            this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
-            this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
-            this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
-            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // trajanjeDataGridViewTextBoxColumn
-            // 
-            this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
-            this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
-            this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
-            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fazeprojektaDataGridViewTextBoxColumn1
-            // 
-            this.fazeprojektaDataGridViewTextBoxColumn1.DataPropertyName = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn1.HeaderText = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn1.Name = "fazeprojektaDataGridViewTextBoxColumn1";
-            this.fazeprojektaDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.fazeprojektaDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // fazaBindingSource
-            // 
-            this.fazaBindingSource.DataSource = typeof(UpravljanjeProjektima.Faza);
             // 
             // noviProjektButton
             // 
@@ -426,6 +250,93 @@
             this.materijalDataGridView.Size = new System.Drawing.Size(255, 150);
             this.materijalDataGridView.TabIndex = 11;
             // 
+            // brisiMaterijalButton
+            // 
+            this.brisiMaterijalButton.Location = new System.Drawing.Point(627, 561);
+            this.brisiMaterijalButton.Name = "brisiMaterijalButton";
+            this.brisiMaterijalButton.Size = new System.Drawing.Size(90, 23);
+            this.brisiMaterijalButton.TabIndex = 14;
+            this.brisiMaterijalButton.Text = "Briši materijal";
+            this.brisiMaterijalButton.UseVisualStyleBackColor = true;
+            this.brisiMaterijalButton.Click += new System.EventHandler(this.brisiMaterijalButton_Click);
+            // 
+            // dodajMaterijalButton
+            // 
+            this.dodajMaterijalButton.Location = new System.Drawing.Point(527, 561);
+            this.dodajMaterijalButton.Name = "dodajMaterijalButton";
+            this.dodajMaterijalButton.Size = new System.Drawing.Size(94, 23);
+            this.dodajMaterijalButton.TabIndex = 13;
+            this.dodajMaterijalButton.Text = "Dodaj materijal";
+            this.dodajMaterijalButton.UseVisualStyleBackColor = true;
+            this.dodajMaterijalButton.Click += new System.EventHandler(this.dodajMaterijalButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(379, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(505, 17);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(144, 20);
+            this.tboxPretrazi.TabIndex = 16;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
+            // 
+            // kod
+            // 
+            this.kod.DataPropertyName = "kod";
+            this.kod.HeaderText = "kod";
+            this.kod.Name = "kod";
+            this.kod.ReadOnly = true;
+            // 
+            // dtProjekti1
+            // 
+            this.dtProjekti1.Location = new System.Drawing.Point(830, 17);
+            this.dtProjekti1.Name = "dtProjekti1";
+            this.dtProjekti1.Size = new System.Drawing.Size(134, 20);
+            this.dtProjekti1.TabIndex = 17;
+            this.dtProjekti1.ValueChanged += new System.EventHandler(this.dtProjekti1_ValueChanged);
+            // 
+            // dtProjekti2
+            // 
+            this.dtProjekti2.Location = new System.Drawing.Point(970, 17);
+            this.dtProjekti2.Name = "dtProjekti2";
+            this.dtProjekti2.Size = new System.Drawing.Size(134, 20);
+            this.dtProjekti2.TabIndex = 18;
+            this.dtProjekti2.ValueChanged += new System.EventHandler(this.dtProjekti2_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(688, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Pretraživanje po datumu:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(832, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Od:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(967, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Do:";
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -478,52 +389,206 @@
             // 
             this.fazaimamaterijalBindingSource.DataSource = typeof(UpravljanjeProjektima.Faza_ima_materijal);
             // 
-            // brisiMaterijalButton
+            // fazaIdDataGridViewTextBoxColumn
             // 
-            this.brisiMaterijalButton.Location = new System.Drawing.Point(627, 561);
-            this.brisiMaterijalButton.Name = "brisiMaterijalButton";
-            this.brisiMaterijalButton.Size = new System.Drawing.Size(90, 23);
-            this.brisiMaterijalButton.TabIndex = 14;
-            this.brisiMaterijalButton.Text = "Briši materijal";
-            this.brisiMaterijalButton.UseVisualStyleBackColor = true;
-            this.brisiMaterijalButton.Click += new System.EventHandler(this.brisiMaterijalButton_Click);
+            this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
+            this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
+            this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
+            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fazaIdDataGridViewTextBoxColumn.Visible = false;
             // 
-            // dodajMaterijalButton
+            // nazivDataGridViewTextBoxColumn
             // 
-            this.dodajMaterijalButton.Location = new System.Drawing.Point(527, 561);
-            this.dodajMaterijalButton.Name = "dodajMaterijalButton";
-            this.dodajMaterijalButton.Size = new System.Drawing.Size(94, 23);
-            this.dodajMaterijalButton.TabIndex = 13;
-            this.dodajMaterijalButton.Text = "Dodaj materijal";
-            this.dodajMaterijalButton.UseVisualStyleBackColor = true;
-            this.dodajMaterijalButton.Click += new System.EventHandler(this.dodajMaterijalButton_Click);
+            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
+            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
+            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cijenaDataGridViewTextBoxColumn
+            // 
+            this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
+            this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
+            this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
+            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // trajanjeDataGridViewTextBoxColumn
+            // 
+            this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
+            this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
+            this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
+            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fazeprojektaDataGridViewTextBoxColumn1
+            // 
+            this.fazeprojektaDataGridViewTextBoxColumn1.DataPropertyName = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn1.HeaderText = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn1.Name = "fazeprojektaDataGridViewTextBoxColumn1";
+            this.fazeprojektaDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.fazeprojektaDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // fazaBindingSource
+            // 
+            this.fazaBindingSource.DataSource = typeof(UpravljanjeProjektima.Faza);
+            // 
+            // projektIdDataGridViewTextBoxColumn
+            // 
+            this.projektIdDataGridViewTextBoxColumn.DataPropertyName = "projektId";
+            this.projektIdDataGridViewTextBoxColumn.HeaderText = "projektId";
+            this.projektIdDataGridViewTextBoxColumn.Name = "projektIdDataGridViewTextBoxColumn";
+            this.projektIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // imeDataGridViewTextBoxColumn
+            // 
+            this.imeDataGridViewTextBoxColumn.DataPropertyName = "ime";
+            this.imeDataGridViewTextBoxColumn.HeaderText = "ime";
+            this.imeDataGridViewTextBoxColumn.Name = "imeDataGridViewTextBoxColumn";
+            this.imeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datumpocetkaDataGridViewTextBoxColumn
+            // 
+            this.datumpocetkaDataGridViewTextBoxColumn.DataPropertyName = "datum_pocetka";
+            this.datumpocetkaDataGridViewTextBoxColumn.HeaderText = "datum pocetka";
+            this.datumpocetkaDataGridViewTextBoxColumn.Name = "datumpocetkaDataGridViewTextBoxColumn";
+            this.datumpocetkaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // potrebnovrijemeDataGridViewTextBoxColumn
+            // 
+            this.potrebnovrijemeDataGridViewTextBoxColumn.DataPropertyName = "potrebno_vrijeme";
+            this.potrebnovrijemeDataGridViewTextBoxColumn.HeaderText = "potrebno vrijeme";
+            this.potrebnovrijemeDataGridViewTextBoxColumn.Name = "potrebnovrijemeDataGridViewTextBoxColumn";
+            this.potrebnovrijemeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datumzavrsetkaDataGridViewTextBoxColumn
+            // 
+            this.datumzavrsetkaDataGridViewTextBoxColumn.DataPropertyName = "datum_zavrsetka";
+            this.datumzavrsetkaDataGridViewTextBoxColumn.HeaderText = "datum zavrsetka";
+            this.datumzavrsetkaDataGridViewTextBoxColumn.Name = "datumzavrsetkaDataGridViewTextBoxColumn";
+            this.datumzavrsetkaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ukupnacijenaDataGridViewTextBoxColumn
+            // 
+            this.ukupnacijenaDataGridViewTextBoxColumn.DataPropertyName = "ukupna_cijena";
+            this.ukupnacijenaDataGridViewTextBoxColumn.HeaderText = "ukupna cijena";
+            this.ukupnacijenaDataGridViewTextBoxColumn.Name = "ukupnacijenaDataGridViewTextBoxColumn";
+            this.ukupnacijenaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cijenabezpdvDataGridViewTextBoxColumn
+            // 
+            this.cijenabezpdvDataGridViewTextBoxColumn.DataPropertyName = "cijena_bez_pdv";
+            this.cijenabezpdvDataGridViewTextBoxColumn.HeaderText = "cijena bez pdv";
+            this.cijenabezpdvDataGridViewTextBoxColumn.Name = "cijenabezpdvDataGridViewTextBoxColumn";
+            this.cijenabezpdvDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cijenabezpdvDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // iznospdvDataGridViewTextBoxColumn
+            // 
+            this.iznospdvDataGridViewTextBoxColumn.DataPropertyName = "iznos_pdv";
+            this.iznospdvDataGridViewTextBoxColumn.HeaderText = "iznos pdv";
+            this.iznospdvDataGridViewTextBoxColumn.Name = "iznospdvDataGridViewTextBoxColumn";
+            this.iznospdvDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iznospdvDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // korisnikIdDataGridViewTextBoxColumn
+            // 
+            this.korisnikIdDataGridViewTextBoxColumn.DataPropertyName = "korisnikId";
+            this.korisnikIdDataGridViewTextBoxColumn.DataSource = this.korisnikBindingSource;
+            this.korisnikIdDataGridViewTextBoxColumn.DisplayMember = "korisnicko_ime";
+            this.korisnikIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.korisnikIdDataGridViewTextBoxColumn.HeaderText = "korisnik";
+            this.korisnikIdDataGridViewTextBoxColumn.Name = "korisnikIdDataGridViewTextBoxColumn";
+            this.korisnikIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.korisnikIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.korisnikIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.korisnikIdDataGridViewTextBoxColumn.ValueMember = "korisnikId";
+            // 
+            // korisnikBindingSource
+            // 
+            this.korisnikBindingSource.DataSource = typeof(UpravljanjeProjektima.Korisnik);
+            // 
+            // partnerIdDataGridViewTextBoxColumn
+            // 
+            this.partnerIdDataGridViewTextBoxColumn.DataPropertyName = "partnerId";
+            this.partnerIdDataGridViewTextBoxColumn.DataSource = this.partnerBindingSource;
+            this.partnerIdDataGridViewTextBoxColumn.DisplayMember = "ime";
+            this.partnerIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.partnerIdDataGridViewTextBoxColumn.HeaderText = "partner";
+            this.partnerIdDataGridViewTextBoxColumn.Name = "partnerIdDataGridViewTextBoxColumn";
+            this.partnerIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.partnerIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.partnerIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.partnerIdDataGridViewTextBoxColumn.ValueMember = "partnerId";
+            // 
+            // partnerBindingSource
+            // 
+            this.partnerBindingSource.DataSource = typeof(UpravljanjeProjektima.Partner);
+            // 
+            // gotovoDataGridViewTextBoxColumn
+            // 
+            this.gotovoDataGridViewTextBoxColumn.DataPropertyName = "gotovo";
+            this.gotovoDataGridViewTextBoxColumn.HeaderText = "Izdan račun";
+            this.gotovoDataGridViewTextBoxColumn.Name = "gotovoDataGridViewTextBoxColumn";
+            this.gotovoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aktivanDataGridViewTextBoxColumn
+            // 
+            this.aktivanDataGridViewTextBoxColumn.DataPropertyName = "aktivan";
+            this.aktivanDataGridViewTextBoxColumn.HeaderText = "Pokrenut";
+            this.aktivanDataGridViewTextBoxColumn.Name = "aktivanDataGridViewTextBoxColumn";
+            this.aktivanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fazeprojektaDataGridViewTextBoxColumn
+            // 
+            this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
+            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // korisnikDataGridViewTextBoxColumn
+            // 
+            this.korisnikDataGridViewTextBoxColumn.DataPropertyName = "Korisnik";
+            this.korisnikDataGridViewTextBoxColumn.HeaderText = "Korisnik";
+            this.korisnikDataGridViewTextBoxColumn.Name = "korisnikDataGridViewTextBoxColumn";
+            this.korisnikDataGridViewTextBoxColumn.ReadOnly = true;
+            this.korisnikDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // partnerDataGridViewTextBoxColumn
+            // 
+            this.partnerDataGridViewTextBoxColumn.DataPropertyName = "Partner";
+            this.partnerDataGridViewTextBoxColumn.HeaderText = "Partner";
+            this.partnerDataGridViewTextBoxColumn.Name = "partnerDataGridViewTextBoxColumn";
+            this.partnerDataGridViewTextBoxColumn.ReadOnly = true;
+            this.partnerDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // projektBindingSource
+            // 
+            this.projektBindingSource.DataSource = typeof(UpravljanjeProjektima.Projekt);
             // 
             // korisnikBindingSource1
             // 
             this.korisnikBindingSource1.DataSource = typeof(UpravljanjeProjektima.Korisnik);
             // 
-            // label2
+            // resetButton
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(890, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Pretraživanje po nazivu:";
-            // 
-            // tboxPretrazi
-            // 
-            this.tboxPretrazi.Location = new System.Drawing.Point(1016, 12);
-            this.tboxPretrazi.Name = "tboxPretrazi";
-            this.tboxPretrazi.Size = new System.Drawing.Size(144, 20);
-            this.tboxPretrazi.TabIndex = 16;
-            this.tboxPretrazi.TextChanged += new System.EventHandler(this.tboxPretrazi_TextChanged);
+            this.resetButton.Location = new System.Drawing.Point(1110, 15);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(50, 23);
+            this.resetButton.TabIndex = 22;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // PopisProjektiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 593);
+            this.Controls.Add(this.resetButton);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtProjekti2);
+            this.Controls.Add(this.dtProjekti1);
             this.Controls.Add(this.tboxPretrazi);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.brisiMaterijalButton);
@@ -544,14 +609,14 @@
             this.Text = "Pregled projekata";
             this.Load += new System.EventHandler(this.PopisProjektiForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.projektiDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projektBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projektBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -591,6 +656,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn materijalDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource partnerBindingSource;
         private System.Windows.Forms.BindingSource korisnikBindingSource1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tboxPretrazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn projektIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn imeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kod;
@@ -607,8 +674,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fazeprojektaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn korisnikDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn partnerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tboxPretrazi;
+        private System.Windows.Forms.DateTimePicker dtProjekti1;
+        private System.Windows.Forms.DateTimePicker dtProjekti2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 

@@ -37,21 +37,28 @@ namespace UpravljanjeProjektima
 
         private void dodajFazuButton_Click(object sender, EventArgs e)
         {
-            Faza selektiranaFaza = fazaBindingSource.Current as Faza;
-            using (var db = new UpravljanjeProjektimaEntities())
+            if(odabraniProjekt.gotovo != 1)
             {
-                db.Faza.Attach(selektiranaFaza);
-                db.Projekt.Attach(odabraniProjekt);
-                Faze_projekta novaFazaProjekta = new Faze_projekta
+                Faza selektiranaFaza = fazaBindingSource.Current as Faza;
+                using (var db = new UpravljanjeProjektimaEntities())
                 {
-                    fazaId = selektiranaFaza.fazaId,
-                    projektId = odabraniProjekt.projektId,
-                    zakljucano = 0,
-                };
-                db.Faze_projekta.Add(novaFazaProjekta);
-                db.SaveChanges();
+                    db.Faza.Attach(selektiranaFaza);
+                    db.Projekt.Attach(odabraniProjekt);
+                    Faze_projekta novaFazaProjekta = new Faze_projekta
+                    {
+                        fazaId = selektiranaFaza.fazaId,
+                        projektId = odabraniProjekt.projektId,
+                        zakljucano = 0,
+                    };
+                    db.Faze_projekta.Add(novaFazaProjekta);
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Uspješno dodana faza");
             }
-            MessageBox.Show("Uspješno dodana faza");
+            else
+            {
+                MessageBox.Show("Projekt je završen!");
+            }
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)

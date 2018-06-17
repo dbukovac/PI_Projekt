@@ -44,7 +44,7 @@ namespace IzdavanjeRacuna
             partnerBindingSource.DataSource = lista;
         }
 
-        private void PrikaziRacune()
+        private BindingList<Projekt> PrikaziRacune()
         {
             BindingList<Projekt> Projekti = null;
             BindingList<Projekt> listaProjekta = new BindingList<Projekt>();
@@ -83,6 +83,7 @@ namespace IzdavanjeRacuna
             {
                 generirajPrazniPartner(listaPartnera);
             }
+            return listaProjekta;
         }
 
         private void pregledRačunaButton_Click(object sender, EventArgs e)
@@ -142,6 +143,42 @@ namespace IzdavanjeRacuna
             {
                 generirajPrazniPartner(listaPartnera);
             }
+        }
+
+        private void PretraziPoDatumu()
+        {
+            ProjektidataGridView.Rows.Clear();
+            BindingList<Projekt> listaProjekta = PrikaziRacune();
+            BindingList<Projekt> bindingListaProjekta = new BindingList<Projekt>();
+            BindingList<Korisnik> listaKorisnika = new BindingList<Korisnik>();
+            BindingList<Partner> listaPartnera = new BindingList<Partner>();
+            foreach (var P in listaProjekta)
+            {
+                if (P.datum_pocetka > dtProjekti1.Value && P.datum_pocetka < dtProjekti2.Value)
+                {
+                    bindingListaProjekta.Add(P);
+                    listaKorisnika.Add(P.Korisnik as Korisnik);
+                    listaPartnera.Add(P.Partner as Partner);
+                }
+            }
+            projektBindingSource.DataSource = bindingListaProjekta;
+            korisnikBindingSource.DataSource = listaKorisnika;
+            partnerBindingSource.DataSource = listaPartnera;
+        }
+
+        private void dtProjekti1_ValueChanged(object sender, EventArgs e)
+        {
+            PretraziPoDatumu();
+        }
+
+        private void dtProjekti2_ValueChanged(object sender, EventArgs e)
+        {
+            PretraziPoDatumu();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            PrikaziRacune();
         }
     }
 }
