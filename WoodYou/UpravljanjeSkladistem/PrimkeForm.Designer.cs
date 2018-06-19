@@ -32,8 +32,10 @@
             this.primkaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +43,8 @@
             this.primkeLabel = new System.Windows.Forms.Label();
             this.stavka_primkeDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +53,14 @@
             this.novaPrimkaButton = new System.Windows.Forms.Button();
             this.brisiPrimkuButton = new System.Windows.Forms.Button();
             this.urediPrimkuButton = new System.Windows.Forms.Button();
+            this.brisiStavkuButton = new System.Windows.Forms.Button();
+            this.novaStavkaButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.primkaDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.primkaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavka_primkeDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavka_primkeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,16 +105,36 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "korisnikId";
+            this.dataGridViewTextBoxColumn3.DataSource = this.korisnikBindingSource;
+            this.dataGridViewTextBoxColumn3.DisplayMember = "korisnicko_ime";
+            this.dataGridViewTextBoxColumn3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.dataGridViewTextBoxColumn3.HeaderText = "Korisnik";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn3.ValueMember = "korisnikId";
+            // 
+            // korisnikBindingSource
+            // 
+            this.korisnikBindingSource.DataSource = typeof(UpravljanjeSkladistem.Korisnik);
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "partnerId";
+            this.dataGridViewTextBoxColumn4.DataSource = this.partnerBindingSource;
+            this.dataGridViewTextBoxColumn4.DisplayMember = "ime";
+            this.dataGridViewTextBoxColumn4.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.dataGridViewTextBoxColumn4.HeaderText = "Partner";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn4.ValueMember = "partnerId";
+            // 
+            // partnerBindingSource
+            // 
+            this.partnerBindingSource.DataSource = typeof(UpravljanjeSkladistem.Partner);
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -122,6 +150,7 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "Korisnik";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn6.Visible = false;
             // 
             // dataGridViewTextBoxColumn7
@@ -130,6 +159,7 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Partner";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn7.Visible = false;
             // 
             // primkaBindingSource
@@ -176,9 +206,19 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "materijalId";
+            this.dataGridViewTextBoxColumn9.DataSource = this.materijalBindingSource;
+            this.dataGridViewTextBoxColumn9.DisplayMember = "naziv";
+            this.dataGridViewTextBoxColumn9.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.dataGridViewTextBoxColumn9.HeaderText = "Materijal";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn9.ValueMember = "materijalId";
+            // 
+            // materijalBindingSource
+            // 
+            this.materijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -193,6 +233,7 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Materijal";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn11.Visible = false;
             this.dataGridViewTextBoxColumn11.Width = 150;
             // 
@@ -225,6 +266,7 @@
             this.novaPrimkaButton.TabIndex = 4;
             this.novaPrimkaButton.Text = "Nova primka";
             this.novaPrimkaButton.UseVisualStyleBackColor = true;
+            this.novaPrimkaButton.Click += new System.EventHandler(this.NovaPrimkaButton_Click);
             // 
             // brisiPrimkuButton
             // 
@@ -244,12 +286,36 @@
             this.urediPrimkuButton.TabIndex = 6;
             this.urediPrimkuButton.Text = "Uredi primku";
             this.urediPrimkuButton.UseVisualStyleBackColor = true;
+            this.urediPrimkuButton.Click += new System.EventHandler(this.UrediPrimkuButton_Click);
+            // 
+            // brisiStavkuButton
+            // 
+            this.brisiStavkuButton.Location = new System.Drawing.Point(551, 321);
+            this.brisiStavkuButton.Name = "brisiStavkuButton";
+            this.brisiStavkuButton.Size = new System.Drawing.Size(110, 23);
+            this.brisiStavkuButton.TabIndex = 8;
+            this.brisiStavkuButton.Text = "Briši stavke primke";
+            this.brisiStavkuButton.UseVisualStyleBackColor = true;
+            this.brisiStavkuButton.Click += new System.EventHandler(this.BrisiStavkuButton_Click);
+            // 
+            // novaStavkaButton
+            // 
+            this.novaStavkaButton.Location = new System.Drawing.Point(435, 321);
+            this.novaStavkaButton.Name = "novaStavkaButton";
+            this.novaStavkaButton.Size = new System.Drawing.Size(110, 23);
+            this.novaStavkaButton.TabIndex = 7;
+            this.novaStavkaButton.Text = "Nova stavka primke";
+            this.novaStavkaButton.UseVisualStyleBackColor = true;
+            this.novaStavkaButton.Click += new System.EventHandler(this.NovaStavkaButton_Click);
             // 
             // PrimkeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(676, 353);
+            this.Controls.Add(this.brisiStavkuButton);
+            this.Controls.Add(this.novaStavkaButton);
             this.Controls.Add(this.urediPrimkuButton);
             this.Controls.Add(this.brisiPrimkuButton);
             this.Controls.Add(this.novaPrimkaButton);
@@ -261,8 +327,11 @@
             this.Text = "Prikaz primki";
             this.Load += new System.EventHandler(this.PrimkeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.primkaDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.primkaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavka_primkeDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stavka_primkeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,24 +342,29 @@
 
         private System.Windows.Forms.BindingSource primkaBindingSource;
         private System.Windows.Forms.DataGridView primkaDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Label primkeLabel;
         private System.Windows.Forms.BindingSource stavka_primkeBindingSource;
         private System.Windows.Forms.DataGridView stavka_primkeDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Label materijalLabel;
         private System.Windows.Forms.Button novaPrimkaButton;
         private System.Windows.Forms.Button brisiPrimkuButton;
         private System.Windows.Forms.Button urediPrimkuButton;
+        private System.Windows.Forms.BindingSource korisnikBindingSource;
+        private System.Windows.Forms.BindingSource partnerBindingSource;
+        private System.Windows.Forms.BindingSource materijalBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.Button brisiStavkuButton;
+        private System.Windows.Forms.Button novaStavkaButton;
     }
 }

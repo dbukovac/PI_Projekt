@@ -13,7 +13,7 @@
           <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materijal">
@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="primkaId" />
           </Key>
-          <Property Name="primkaId" Type="int" Nullable="false" />
+          <Property Name="primkaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datumPrimitka" Type="date" Nullable="false" />
           <Property Name="korisnikId" Type="int" Nullable="false" />
           <Property Name="partnerId" Type="int" Nullable="false" />
@@ -158,7 +158,7 @@
           <Property Name="korisnicko_ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lozinka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lozinka" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Primka" Relationship="DBModel.FK_Primka_Korisnik" FromRole="Korisnik" ToRole="Primka" />
         </EntityType>

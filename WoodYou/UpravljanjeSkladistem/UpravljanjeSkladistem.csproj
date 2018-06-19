@@ -60,6 +60,18 @@
     <Compile Include="Materijal.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NovaPrimkaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaPrimkaForm.Designer.cs">
+      <DependentUpon>NovaPrimkaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NovaStavkaPrimkeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaStavkaPrimkeForm.Designer.cs">
+      <DependentUpon>NovaStavkaPrimkeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partner.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
@@ -98,6 +110,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UpravljanjeSkladistemModel.edmx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NovaPrimkaForm.resx">
+      <DependentUpon>NovaPrimkaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovaStavkaPrimkeForm.resx">
+      <DependentUpon>NovaStavkaPrimkeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PrimkeForm.resx">
       <DependentUpon>PrimkeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +131,7 @@
     <EmbeddedResource Include="SkladisteForm.resx">
       <DependentUpon>SkladisteForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Korisnik.datasource" />
     <None Include="Materijal.datasource" />
     <None Include="packages.config" />
     <None Include="Partner.datasource" />
