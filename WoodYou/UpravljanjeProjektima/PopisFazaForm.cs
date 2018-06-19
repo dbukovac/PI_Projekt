@@ -13,11 +13,13 @@ namespace UpravljanjeProjektima
     public partial class PopisFazaForm : Form
     {
         private Projekt odabraniProjekt = null;
+        private BindingList<Faza> listaFaza = null;
 
-        public PopisFazaForm(Projekt projekt)
+        public PopisFazaForm(Projekt projekt, BindingList<Faza> lista)
         {
             InitializeComponent();
             odabraniProjekt = projekt;
+            listaFaza = lista;
         }
 
         private void PopisFazaForm_Load(object sender, EventArgs e)
@@ -37,13 +39,13 @@ namespace UpravljanjeProjektima
 
         private void dodajFazuButton_Click(object sender, EventArgs e)
         {
-            if(odabraniProjekt.gotovo != 1)
+            Faza selektiranaFaza = fazaBindingSource.Current as Faza;
+            if (odabraniProjekt.gotovo != 1)
             {
-                Faza selektiranaFaza = fazaBindingSource.Current as Faza;
                 using (var db = new UpravljanjeProjektimaEntities())
                 {
-                    db.Faza.Attach(selektiranaFaza);
-                    db.Projekt.Attach(odabraniProjekt);
+                    //db.Faza.Attach(selektiranaFaza);
+                    //db.Projekt.Attach(odabraniProjekt);
                     Faze_projekta novaFazaProjekta = new Faze_projekta
                     {
                         fazaId = selektiranaFaza.fazaId,

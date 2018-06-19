@@ -171,10 +171,12 @@ namespace UpravljanjeProjektima
         private void dodajFazuButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            BindingList<Faza> listaFaza = (BindingList<Faza>)fazaBindingSource.DataSource;
             if(selektiraniProjekt != null)
             {
-                PopisFazaForm popisFazaforma = new PopisFazaForm(selektiraniProjekt);
+                PopisFazaForm popisFazaforma = new PopisFazaForm(selektiraniProjekt, listaFaza);
                 popisFazaforma.ShowDialog();
+                PrikaziProjekte();
                 PrikaziFaze(selektiraniProjekt);
             }
         }
@@ -193,6 +195,7 @@ namespace UpravljanjeProjektima
 
                     List<Faze_projekta> listaOdProjekta = new List<Faze_projekta>(selektiraniProjekt.Faze_projekta.ToList());
                     List<Faze_projekta> listaOdFaze = new List<Faze_projekta>(selektiranaFaza.Faze_projekta.ToList());
+
                     foreach (var P in listaOdProjekta)
                     {
                         foreach (var F in listaOdFaze)
@@ -236,12 +239,13 @@ namespace UpravljanjeProjektima
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
+            BindingList<Materijal> listaMaterijala = (BindingList<Materijal>)materijalBindingSource.DataSource;
             if(selektiraniProjekt.gotovo != 1)
             {
                 Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
                 if (selektiranaFazaProjekta != null)
                 {
-                    PopisMaterijalaForm materijaliForma = new PopisMaterijalaForm(selektiranaFazaProjekta);
+                    PopisMaterijalaForm materijaliForma = new PopisMaterijalaForm(selektiranaFazaProjekta, listaMaterijala);
                     materijaliForma.ShowDialog();
                     PrikaziProjekte();
                 }

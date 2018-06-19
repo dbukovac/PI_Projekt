@@ -13,28 +13,36 @@ namespace UpravljanjeProjektima
     public partial class PopisMaterijalaForm : Form
     {
         Faze_projekta odabranaFazaProjekta = null;
+        BindingList<Materijal> listaM = null;
 
-        public PopisMaterijalaForm(Faze_projekta faze_Projekta)
+        public PopisMaterijalaForm(Faze_projekta faze_Projekta, BindingList<Materijal> lista)
         {
             InitializeComponent();
             odabranaFazaProjekta = faze_Projekta;
+            listaM = lista;
         }
 
-        private void PopisMaterijalaForm_Load(object sender, EventArgs e)
+        private void PrikaziMaterijal()
         {
             BindingList<Materijal> listaMaterijala = null;
-            using(var db = new UpravljanjeProjektimaEntities())
+            using (var db = new UpravljanjeProjektimaEntities())
             {
                 listaMaterijala = new BindingList<Materijal>(db.Materijal.ToList());
             }
             materijalBindingSource.DataSource = listaMaterijala;
         }
 
+        private void PopisMaterijalaForm_Load(object sender, EventArgs e)
+        {
+            PrikaziMaterijal();
+        }
+
         private void dodajMaterijalButton_Click(object sender, EventArgs e)
         {
             Materijal selektiranMaterijal = materijalBindingSource.Current as Materijal;
-            if(selektiranMaterijal != null)
+            if(selektiranMaterijal != null && listaM.SingleOrDefault(x => x.materijalId == selektiranMaterijal.materijalId)==null)
             {
+                listaM.Add(selektiranMaterijal);
                 if(selektiranMaterijal.kolicina > int.Parse(tboxKolicina.Text.ToString()))
                 {
                     using (var db = new UpravljanjeProjektimaEntities())
@@ -55,6 +63,11 @@ namespace UpravljanjeProjektima
                     MessageBox.Show("Nema toliko traženog materijala na skladištu");
                 }
             }
+            else
+            {
+                MessageBox.Show("Taj materijal je već dodan na fazu!");
+            }
+            PrikaziMaterijal();
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)
