@@ -38,7 +38,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms">
+    <Reference Include="Microsoft.ReportViewer.Design">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -46,6 +50,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -128,6 +133,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportFaze.rdlc" />
+    <EmbeddedResource Include="ReportPartneri.rdlc" />
+    <EmbeddedResource Include="ReportKorisnici.rdlc" />
+    <EmbeddedResource Include="ReportMaterijal.rdlc" />
+    <EmbeddedResource Include="ReportPrazni.rdlc" />
+    <EmbeddedResource Include="ReportNarudzbenice.rdlc" />
+    <EmbeddedResource Include="ReportPrimke.rdlc" />
     <EmbeddedResource Include="ReportProjekti.rdlc" />
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
@@ -141,12 +153,17 @@
       <DependentUpon>PrikazSttistikeModel.edmx</DependentUpon>
     </None>
     <None Include="Properties\DataSources\Faza.datasource" />
+    <None Include="Properties\DataSources\Faza_ima_materijal.datasource" />
     <None Include="Properties\DataSources\Korisnik.datasource" />
     <None Include="Properties\DataSources\Materijal.datasource" />
     <None Include="Properties\DataSources\Narudzbenica.datasource" />
     <None Include="Properties\DataSources\Partner.datasource" />
     <None Include="Properties\DataSources\Primka.datasource" />
     <None Include="Properties\DataSources\Projekt.datasource" />
+    <None Include="Properties\DataSources\Stavka_narudzbenice.datasource" />
+    <None Include="Properties\DataSources\Stavka_primke.datasource" />
+    <None Include="Properties\DataSources\Tip_korisnika.datasource" />
+    <None Include="Properties\DataSources\Tip_partnera.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
