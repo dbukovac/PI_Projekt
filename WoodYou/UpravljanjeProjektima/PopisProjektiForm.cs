@@ -27,7 +27,7 @@ namespace UpravljanjeProjektima
         private void PrikaziMaterijal()
         {
             materijalDataGridView.Rows.Clear();
-            Faze_projekta materijal = vratiFazuProjekta();
+            Faze_projekta materijal = vratiFazuProjekta(1);
             BindingList<Faza_ima_materijal> listaMaterijala = null;
             BindingList<Materijal> listaMaterijalId = new BindingList<Materijal>();
             if(materijal != null)
@@ -176,12 +176,12 @@ namespace UpravljanjeProjektima
             {
                 PopisFazaForm popisFazaforma = new PopisFazaForm(selektiraniProjekt, listaFaza);
                 popisFazaforma.ShowDialog();
-                PrikaziProjekte();
                 PrikaziFaze(selektiraniProjekt);
+                PrikaziProjekte();
             }
         }
 
-        private Faze_projekta vratiFazuProjekta()
+        private Faze_projekta vratiFazuProjekta(int kontroler)
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -203,6 +203,10 @@ namespace UpravljanjeProjektima
                             if (P.id == F.id)
                             {
                                 vrati = P;
+                                if(kontroler == 1)
+                                {
+                                    return vrati;
+                                }
                             }
                         }
                     }
@@ -218,7 +222,7 @@ namespace UpravljanjeProjektima
             {
                 if (selektiraniProjekt.gotovo != 1)
                 {
-                    Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
+                    Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta(0);
                     using (var db = new UpravljanjeProjektimaEntities())
                     {
                         db.Faze_projekta.Attach(selektiranaFazaProjekta);
@@ -242,7 +246,7 @@ namespace UpravljanjeProjektima
             BindingList<Materijal> listaMaterijala = (BindingList<Materijal>)materijalBindingSource.DataSource;
             if(selektiraniProjekt.gotovo != 1)
             {
-                Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta();
+                Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta(1);
                 if (selektiranaFazaProjekta != null)
                 {
                     PopisMaterijalaForm materijaliForma = new PopisMaterijalaForm(selektiranaFazaProjekta, listaMaterijala);
