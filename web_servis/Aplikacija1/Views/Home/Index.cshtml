@@ -1,0 +1,55 @@
+﻿@{
+
+    if (IsPost)
+    {
+        string kod = Request.Form["kod"];
+        int ID = 999;
+        string ime = "";
+        float brojac = 0;
+        float ukupno = 0;
+        var projekt = new Aplikacija1.Models.Projekt();
+        using (var db = new Aplikacija1.Models.ServisEntities())
+        {
+            List<Aplikacija1.Models.Projekt> lista = new List<Aplikacija1.Models.Projekt>(db.Projekt.ToList());
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].kod == kod)
+                {
+                    ID = lista[i].projektId;
+                    ime = lista[i].ime;
+                    projekt = lista[i];
+                }
+            }
+            List<Aplikacija1.Models.Faze_projekta> listaFaza = projekt.Faze_projekta.ToList();
+            ukupno = listaFaza.Count;
+            for (int i = 0; i < ukupno; i++)
+            {
+                if (listaFaza[i].zakljucano == 1)
+                {
+                    brojac++;
+                }
+            }
+        }
+
+        float postotak = (brojac / ukupno) * 100;
+
+
+        <text>
+            Vaš projekt: <br />
+            Naziv : @ime <br />
+            Rješenost: @brojac / @ukupno <br />
+            Postotak: @postotak% <br />
+        </text>
+
+        <table border='1' cellpadding='0' cellSpacing='0' bgColor='Red'>
+            <tr>
+                <td width='100'><img src='~/Resources/bar.png' width=@postotak height='10'></td>
+            </tr>
+        </table>
+        <br />
+    }
+}
+<form method="post">
+    <input type="text" name="kod" />
+    <input type="submit" name="submit" />
+</form>
