@@ -71,6 +71,7 @@ namespace UpravljanjeSkladistem
         {
             PrimkeForm primkeForm = new PrimkeForm();
             primkeForm.ShowDialog(this);
+            DohvatiMaterijale();
         }
     }
 }

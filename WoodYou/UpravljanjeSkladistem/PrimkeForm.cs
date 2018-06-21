@@ -12,6 +12,9 @@ namespace UpravljanjeSkladistem
 {
     public partial class PrimkeForm : Form
     {
+        BindingList<Materijal> materijali = null;
+        BindingList<Stavka_primke> stavke = null;
+
         public PrimkeForm()
         {
             InitializeComponent();
@@ -40,8 +43,6 @@ namespace UpravljanjeSkladistem
         
         private void PrikazStavki(Primka primka)
         {
-            BindingList<Stavka_primke> stavke = null;
-            BindingList<Materijal> materijali = null;
             using(var db = new UpraljanjeSkladistemEntities())
             {
                 db.Primka.Attach(primka);
@@ -56,6 +57,29 @@ namespace UpravljanjeSkladistem
             materijalBindingSource.DataSource = materijali;
         }
 
+        private void DohvatiMaterijale()
+        {
+            
+            using (var db = new UpraljanjeSkladistemEntities())
+            {
+                materijali = new BindingList<Materijal>(db.Materijal.ToList());
+            }
+        }
+
+        private bool ProvjeraSkladista(Stavka_primke stavka)
+        {
+            DohvatiMaterijale();
+            if (stavka != null)
+            {
+                Materijal materijal = materijali.SingleOrDefault(m => m.materijalId == stavka.materijalId);
+                if(materijal != null && materijal.kolicina >= stavka.kolicina)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void PrimkeForm_Load(object sender, EventArgs e)
         {
             PrikazPrimki();
@@ -64,6 +88,7 @@ namespace UpravljanjeSkladistem
             {
                 PrikazStavki(primka);
             }
+            materijali = new BindingList<Materijal>();
         }
 
         private void PrimkaDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -81,20 +106,27 @@ namespace UpravljanjeSkladistem
             if (primka != null)
             {
                 if(MessageBox.Show("Želite li zaista izbrisati primku?", "Upozorenje!", MessageBoxButtons.YesNo)
-                    == System.Windows.Forms.DialogResult.Yes)
+                    == DialogResult.Yes)
                 {
-                    using (var db = new UpraljanjeSkladistemEntities())
+                    if(stavke.Count == 0)
                     {
-                        db.Primka.Attach(primka);
-                        db.Primka.Remove(primka);
-                        db.SaveChanges();
-                    }
+                        using (var db = new UpraljanjeSkladistemEntities())
+                        {
+                            db.Primka.Attach(primka);
+                            db.Primka.Remove(primka);
+                            db.SaveChanges();
+                        }
 
-                    PrikazPrimki();
-                    primka = primkaBindingSource.Current as Primka;
-                    if (primka != null)
+                        PrikazPrimki();
+                        primka = primkaBindingSource.Current as Primka;
+                        if (primka != null)
+                        {
+                            PrikazStavki(primka);
+                        }
+                    }
+                    else
                     {
-                        PrikazStavki(primka);
+                        MessageBox.Show("Nije moguće obrisati primku sa stavkama!", "Greška!");
                     }
                 }
             }
@@ -131,11 +163,18 @@ namespace UpravljanjeSkladistem
                 if (MessageBox.Show("Želite li zaista izbrisati stavku?", "Upozorenje!", MessageBoxButtons.YesNo)
                     == System.Windows.Forms.DialogResult.Yes)
                 {
-                    using (var db = new UpraljanjeSkladistemEntities())
+                    if(ProvjeraSkladista(trenutnaStavka))
                     {
-                        db.Stavka_primke.Attach(trenutnaStavka);
-                        db.Stavka_primke.Remove(trenutnaStavka);
-                        db.SaveChanges();
+                        using (var db = new UpraljanjeSkladistemEntities())
+                        {
+                            db.Stavka_primke.Attach(trenutnaStavka);
+                            db.Stavka_primke.Remove(trenutnaStavka);
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nema dovoljno materijala na skladištu za brisanje stavke!", "Greška!");
                     }
                 }
             }
