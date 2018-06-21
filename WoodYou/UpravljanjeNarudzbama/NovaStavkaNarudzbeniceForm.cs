@@ -13,8 +13,6 @@ namespace UpravljanjeNarudzbama
     public partial class NovaStavkaNarudzbeniceForm : Form
     {
         private Narudzbenica trenutnaNarudzbenica = null;
-        private List<Stavka_narudzbenice> stavke = new List<Stavka_narudzbenice>();
-        private BindingList<Materijal> dodaniMaterijali = new BindingList<Materijal>();
         public NovaStavkaNarudzbeniceForm(Narudzbenica narudzbenica)
         {
             InitializeComponent();
@@ -31,9 +29,22 @@ namespace UpravljanjeNarudzbama
             materijalBindingSource.DataSource = materijali;
         }
 
+        private void PrikaziStavke()
+        {
+            BindingList<Stavka_narudzbenice> stavke = null;
+            using (var db = new UpravljanjeNarudzbamaEntities())
+            {
+                db.Narudzbenica.Attach(trenutnaNarudzbenica);
+                db.Entry(trenutnaNarudzbenica).Collection(n => n.Stavka_narudzbenice).Load();
+                stavke = new BindingList<Stavka_narudzbenice>(trenutnaNarudzbenica.Stavka_narudzbenice.ToList());
+            }
+            stavkanarudzbeniceBindingSource.DataSource = stavke;
+        }
+
         private void NovaStavkaNarudzbenice_Load(object sender, EventArgs e)
         {
             PrikaziMaterijal();
+            PrikaziStavke();
         }
 
         private void DodajButton_Click(object sender, EventArgs e)
@@ -41,60 +52,64 @@ namespace UpravljanjeNarudzbama
             Materijal trenutniMaterijal = materijalBindingSource.Current as Materijal;
             if(trenutniMaterijal != null)
             {
-                bool novaStavka = true;
+                int dodanaKolicina = (int)kolicinaNumericUpDown.Value;
+                if (dodanaKolicina != 0)
+                {
+                    bool novaStavka = true;
 
-                foreach(Stavka_narudzbenice stavka in stavke)
-                {
-                    if(trenutniMaterijal.materijalId == stavka.materijalId)
+                    foreach (Stavka_narudzbenice stavka in stavkanarudzbeniceBindingSource)
                     {
-                        novaStavka = false;
-                        stavka.kolicina += (int)kolicinaNumericUpDown.Value;
-                    }
-                }
-
-                if(novaStavka)
-                {
-                    Stavka_narudzbenice stavkaZaDodat = new Stavka_narudzbenice
-                    {
-                        narudzbenicaId = trenutnaNarudzbenica.narudzbenicaId,
-                        materijalId = trenutniMaterijal.materijalId,
-                        kolicina = (int)kolicinaNumericUpDown.Value
-                    };
-                    stavke.Add(stavkaZaDodat);
-                    Materijal dodaniMaterijal = new Materijal
-                    {
-                        materijalId = trenutniMaterijal.materijalId,
-                        naziv = trenutniMaterijal.naziv,
-                        kolicina = (int)kolicinaNumericUpDown.Value
-                    };
-                    dodaniMaterijali.Add(dodaniMaterijal);
-                    dodaniMaterijalBindingSource.DataSource = dodaniMaterijali;
-                }
-                else
-                {
-                    foreach (Materijal materijal in dodaniMaterijali)
-                    {
-                        if (trenutniMaterijal.materijalId == materijal.materijalId)
+                        if (trenutniMaterijal.materijalId == stavka.materijalId)
                         {
-                            materijal.kolicina += (int)kolicinaNumericUpDown.Value;
+                            novaStavka = false;
                         }
                     }
-                    dodaniMaterijali.ResetBindings();
-                    dodaniMaterijalBindingSource.DataSource = dodaniMaterijali;
+
+                    if (novaStavka)
+                    {
+                        using (var db = new UpravljanjeNarudzbamaEntities())
+                        {
+                            Stavka_narudzbenice stavkaZaDodat = new Stavka_narudzbenice
+                            {
+                                narudzbenicaId = trenutnaNarudzbenica.narudzbenicaId,
+                                materijalId = trenutniMaterijal.materijalId,
+                                kolicina = dodanaKolicina
+                            };
+                            db.Stavka_narudzbenice.Add(stavkaZaDodat);
+                            db.SaveChanges();
+                        }
+                        PrikaziStavke();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ne možete dodati istu stavku na narudžbenicu!", "Greška");
+                    }
+                }
+            }
+        }
+
+        private void BrisiMaterijalButton_Click(object sender, EventArgs e)
+        {
+            Stavka_narudzbenice trenutnaStavka = stavkanarudzbeniceBindingSource.Current as Stavka_narudzbenice;
+            if (trenutnaStavka != null)
+            {
+                if (MessageBox.Show("Želite li zaista obrisati stavku narudzbenice?", "Upozorenje", MessageBoxButtons.YesNo)
+                    == DialogResult.Yes)
+                {
+
+                    using (var db = new UpravljanjeNarudzbamaEntities())
+                    {
+                        db.Stavka_narudzbenice.Attach(trenutnaStavka);
+                        db.Stavka_narudzbenice.Remove(trenutnaStavka);
+                        db.SaveChanges();
+                    }
+                    PrikaziStavke();
                 }
             }
         }
 
         private void SpremiButton_Click(object sender, EventArgs e)
         {
-            foreach(Stavka_narudzbenice stavka in stavke)
-            {
-                using (var db = new UpravljanjeNarudzbamaEntities())
-                {
-                    db.Stavka_narudzbenice.Add(stavka);
-                    db.SaveChanges();
-                }
-            }
             Close();          
         }
     }
