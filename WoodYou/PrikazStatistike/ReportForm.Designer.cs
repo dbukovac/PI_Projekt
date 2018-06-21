@@ -43,6 +43,11 @@
             this.cboxIzbor = new System.Windows.Forms.ComboBox();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtProjekti2 = new System.Windows.Forms.DateTimePicker();
+            this.dtProjekti1 = new System.Windows.Forms.DateTimePicker();
             this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -78,7 +83,7 @@
             "Narudzbenice",
             "Korisnici",
             "Poslovni partneri"});
-            this.cboxIzbor.Location = new System.Drawing.Point(836, 12);
+            this.cboxIzbor.Location = new System.Drawing.Point(836, 22);
             this.cboxIzbor.Name = "cboxIzbor";
             this.cboxIzbor.Size = new System.Drawing.Size(121, 21);
             this.cboxIzbor.TabIndex = 1;
@@ -120,7 +125,7 @@
             this.reportViewer.LocalReport.DataSources.Add(reportDataSource21);
             this.reportViewer.LocalReport.DataSources.Add(reportDataSource22);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "PrikazStatistike.ReportPrazni.rdlc";
-            this.reportViewer.Location = new System.Drawing.Point(12, 41);
+            this.reportViewer.Location = new System.Drawing.Point(12, 51);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
             this.reportViewer.Size = new System.Drawing.Size(945, 246);
@@ -129,11 +134,52 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(740, 15);
+            this.label1.Location = new System.Drawing.Point(740, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Odabir kategorije:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(519, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Do:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(384, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Od:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(252, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Pretraživanje po datumu:";
+            // 
+            // dtProjekti2
+            // 
+            this.dtProjekti2.Location = new System.Drawing.Point(522, 25);
+            this.dtProjekti2.Name = "dtProjekti2";
+            this.dtProjekti2.Size = new System.Drawing.Size(134, 20);
+            this.dtProjekti2.TabIndex = 24;
+            // 
+            // dtProjekti1
+            // 
+            this.dtProjekti1.Location = new System.Drawing.Point(382, 25);
+            this.dtProjekti1.Name = "dtProjekti1";
+            this.dtProjekti1.Size = new System.Drawing.Size(134, 20);
+            this.dtProjekti1.TabIndex = 23;
             // 
             // projektBindingSource
             // 
@@ -183,7 +229,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 306);
+            this.ClientSize = new System.Drawing.Size(969, 318);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtProjekti2);
+            this.Controls.Add(this.dtProjekti1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reportViewer);
             this.Controls.Add(this.cboxIzbor);
@@ -221,6 +272,11 @@
         private System.Windows.Forms.BindingSource tipkorisnikaBindingSource;
         private System.Windows.Forms.BindingSource tippartneraBindingSource;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtProjekti2;
+        private System.Windows.Forms.DateTimePicker dtProjekti1;
     }
 }
 

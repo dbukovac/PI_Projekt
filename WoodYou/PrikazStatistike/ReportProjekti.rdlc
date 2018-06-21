@@ -9,10 +9,13 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
+              <Width>1.52104cm</Width>
+            </TablixColumn>
+            <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.76458cm</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -29,13 +32,47 @@
                           <TextRuns>
                             <TextRun>
                               <Value>ime</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>kod</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -59,7 +96,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>datum pocetka</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -81,21 +120,23 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>datum zavrsetka</Value>
-                              <Style />
+                              <Value>potrebno vrijeme</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -145,6 +186,36 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="kod">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!kod.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>kod</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="datum_pocetka">
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -174,20 +245,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="datum_zavrsetka">
+                    <Textbox Name="potrebno_vrijeme">
+                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!datum_zavrsetka.Value</Value>
+                              <Value>=Fields!potrebno_vrijeme.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>datum_zavrsetka</rd:DefaultName>
+                      <rd:DefaultName>potrebno_vrijeme</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -210,6 +282,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -229,7 +302,7 @@
         <Top>0.63183cm</Top>
         <Left>0.76412cm</Left>
         <Height>2.1525cm</Height>
-        <Width>7.76458cm</Width>
+        <Width>9.02104cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -266,7 +339,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>cijena bez pdv</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -296,7 +371,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>iznos pdv</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -326,7 +403,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>ukupna cijena</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -356,7 +435,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>datum izdavanja racuna</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -521,7 +602,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetProjekt</DataSetName>
         <Top>0.63183cm</Top>
-        <Left>13.5287cm</Left>
+        <Left>14.78516cm</Left>
         <Height>2.1525cm</Height>
         <Width>10.52917cm</Width>
         <ZIndex>1</ZIndex>
@@ -552,7 +633,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Korisnik</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -627,7 +710,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetKorisnici</DataSetName>
         <Top>0.63183cm</Top>
-        <Left>8.5287cm</Left>
+        <Left>9.78516cm</Left>
         <Height>2.1525cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -658,7 +741,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Partner</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -734,7 +819,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetPartner</DataSetName>
         <Top>0.63183cm</Top>
-        <Left>11.0287cm</Left>
+        <Left>12.28516cm</Left>
         <Height>2.1525cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>3</ZIndex>
@@ -748,7 +833,7 @@
     <Height>3.91911in</Height>
     <Style />
   </Body>
-  <Width>11.39868in</Width>
+  <Width>10.45586in</Width>
   <Page>
     <PageHeader>
       <Height>2.59292cm</Height>
@@ -804,7 +889,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.68474cm</Top>
-          <Left>8.14474cm</Left>
+          <Left>7.19224cm</Left>
           <Height>1.18208cm</Height>
           <Width>5.38396cm</Width>
           <ZIndex>1</ZIndex>
@@ -835,8 +920,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.68474cm</Top>
-          <Left>17.45683cm</Left>
+          <Top>0.76412cm</Top>
+          <Left>15.76412cm</Left>
           <Height>1.18208cm</Height>
           <Width>4.0875cm</Width>
           <ZIndex>2</ZIndex>
@@ -866,10 +951,40 @@
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>1.3462cm</Top>
-          <Left>24.55016cm</Left>
+          <Left>21.79849cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Datum:</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox14</rd:DefaultName>
+          <Top>0.76412cm</Top>
+          <Left>21.79849cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.5cm</Width>
+          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

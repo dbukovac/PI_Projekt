@@ -29,7 +29,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>ime</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -59,7 +61,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>OIB</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -89,7 +93,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>adresa</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -229,7 +235,7 @@
         <Top>1.08162cm</Top>
         <Left>1.95526cm</Left>
         <Height>1.2cm</Height>
-        <Width>10.38396cm</Width>
+        <Width>10.38395cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -257,7 +263,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>tip partnera</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -350,7 +358,7 @@
   <Width>9.52467in</Width>
   <Page>
     <PageHeader>
-      <Height>2.54cm</Height>
+      <Height>2.68414cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -403,7 +411,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.64961cm</Top>
-          <Left>6.95526cm</Left>
+          <Left>4.97088cm</Left>
           <Height>1.18208cm</Height>
           <Width>5.38396cm</Width>
           <ZIndex>1</ZIndex>
@@ -435,7 +443,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.64961cm</Top>
-          <Left>14.36438cm</Left>
+          <Left>10.7925cm</Left>
           <Height>1.18208cm</Height>
           <Width>3.53188cm</Width>
           <ZIndex>2</ZIndex>
@@ -465,10 +473,40 @@
           </Paragraphs>
           <rd:DefaultName>Textbox38</rd:DefaultName>
           <Top>1.29039cm</Top>
-          <Left>20.211cm</Left>
+          <Left>14.99871cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Datum:</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox14</rd:DefaultName>
+          <Top>0.69039cm</Top>
+          <Left>14.99871cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.5cm</Width>
+          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

@@ -193,7 +193,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.33583cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.35197cm</Width>
@@ -213,7 +213,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Primka</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -243,7 +245,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Datum primitka</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -350,9 +354,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetPrimka</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>1.61395cm</Left>
+            <Left>0.42333cm</Left>
             <Height>1.2cm</Height>
-            <Width>6.85197cm</Width>
+            <Width>5.6878cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -380,7 +384,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Korisnik</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -456,7 +462,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetKorisnici</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>16.46863cm</Left>
+            <Left>14.19209cm</Left>
             <Height>1.2cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>1</ZIndex>
@@ -470,7 +476,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.00271cm</Width>
+                  <Width>3.08095cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -487,7 +493,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Partner</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -563,9 +571,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetPartner</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>13.46592cm</Left>
+            <Left>11.11113cm</Left>
             <Height>1.2cm</Height>
-            <Width>3.00271cm</Width>
+            <Width>3.08095cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -594,7 +602,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>kolicina</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -670,7 +680,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetStavkaPrimke</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>10.96592cm</Left>
+            <Left>8.61113cm</Left>
             <Height>1.2cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>3</ZIndex>
@@ -701,7 +711,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Materijal</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -777,7 +789,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetMaterijal</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>8.46592cm</Left>
+            <Left>6.11113cm</Left>
             <Height>1.2cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>4</ZIndex>
@@ -1112,7 +1124,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Chart Title</Caption>
+                <Caption>Količina primke</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -1145,7 +1157,7 @@
             <Top>3.72745cm</Top>
             <Left>1.61395cm</Left>
             <Height>6.66688cm</Height>
-            <Width>16.85197cm</Width>
+            <Width>15.18509cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -1163,7 +1175,7 @@
       <Width>8.83717in</Width>
       <Page>
         <PageHeader>
-          <Height>2.54cm</Height>
+          <Height>3.41919cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1184,7 +1196,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.70831cm</Top>
+              <Top>1.34938cm</Top>
               <Left>0.42333cm</Left>
               <Height>1.18208cm</Height>
               <Width>3.69062cm</Width>
@@ -1215,8 +1227,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.70831cm</Top>
-              <Left>6.69067cm</Left>
+              <Top>1.34937cm</Top>
+              <Left>4.39134cm</Left>
               <Height>1.18208cm</Height>
               <Width>5.38396cm</Width>
               <ZIndex>1</ZIndex>
@@ -1247,8 +1259,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.70831cm</Top>
-              <Left>14.09979cm</Left>
+              <Top>1.34937cm</Top>
+              <Left>10.26333cm</Left>
               <Height>1.18208cm</Height>
               <Width>3.53188cm</Width>
               <ZIndex>2</ZIndex>
@@ -1277,11 +1289,41 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>
-              <Top>1.29039cm</Top>
-              <Left>19.54954cm</Left>
+              <Top>1.94938cm</Top>
+              <Left>14.29904cm</Left>
               <Height>0.6cm</Height>
               <Width>2.5cm</Width>
               <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox14">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Datum:</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox14</rd:DefaultName>
+              <Top>1.34938cm</Top>
+              <Left>14.29904cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>

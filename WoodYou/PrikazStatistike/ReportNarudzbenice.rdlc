@@ -210,7 +210,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Korisnik</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -233,7 +235,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.12917cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -286,8 +288,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetKorisnici</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>15.96592cm</Left>
-            <Height>1.2cm</Height>
+            <Left>13.30655cm</Left>
+            <Height>1.72917cm</Height>
             <Width>2.5cm</Width>
             <Style>
               <Border>
@@ -316,7 +318,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Partner</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -339,7 +343,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.12917cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -392,8 +396,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetPartner</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>13.46592cm</Left>
-            <Height>1.2cm</Height>
+            <Left>10.80655cm</Left>
+            <Height>1.72917cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -423,7 +427,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Materijal</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -446,7 +452,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.12917cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -499,8 +505,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetMaterijal</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>8.46592cm</Left>
-            <Height>1.2cm</Height>
+            <Left>5.80655cm</Left>
+            <Height>1.72917cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
@@ -513,10 +519,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.55292cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.32562cm</Width>
+                  <Width>2.79104cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -533,7 +539,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>narudzbenica</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -563,7 +571,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>datum slanja</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -586,7 +596,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.12917cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -670,9 +680,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetNarudzbenica</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>1.6403cm</Left>
-            <Height>1.2cm</Height>
-            <Width>6.82562cm</Width>
+            <Left>0.46259cm</Left>
+            <Height>1.72917cm</Height>
+            <Width>5.34395cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -701,7 +711,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>kolicina</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -724,7 +736,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.12917cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -777,8 +789,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetStavkaNarudzbenice</DataSetName>
             <Top>1.3462cm</Top>
-            <Left>10.96592cm</Left>
-            <Height>1.2cm</Height>
+            <Left>8.30655cm</Left>
+            <Height>1.72917cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
@@ -1142,10 +1154,10 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSetStavkaNarudzbenice</DataSetName>
-            <Top>3.19828cm</Top>
-            <Left>1.6403cm</Left>
+            <Top>3.54224cm</Top>
+            <Left>0.42333cm</Left>
             <Height>6.66688cm</Height>
-            <Width>16.85197cm</Width>
+            <Width>15.92604cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -1216,7 +1228,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>0.70831cm</Top>
-              <Left>6.69067cm</Left>
+              <Left>4.40425cm</Left>
               <Height>1.18208cm</Height>
               <Width>5.38396cm</Width>
               <ZIndex>1</ZIndex>
@@ -1247,8 +1259,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.70831cm</Top>
-              <Left>13.80875cm</Left>
+              <Top>0.69039cm</Top>
+              <Left>10.10458cm</Left>
               <Height>1.18208cm</Height>
               <Width>4.65717cm</Width>
               <ZIndex>2</ZIndex>
@@ -1277,11 +1289,41 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>
-              <Top>1.29039cm</Top>
-              <Left>19.54954cm</Left>
+              <Top>1.27247cm</Top>
+              <Left>15.131cm</Left>
               <Height>0.6cm</Height>
               <Width>2.5cm</Width>
               <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox14">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Datum:</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox14</rd:DefaultName>
+              <Top>0.67247cm</Top>
+              <Left>15.131cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>

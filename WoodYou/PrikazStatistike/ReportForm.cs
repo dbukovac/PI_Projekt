@@ -67,15 +67,20 @@ namespace PrikazStatistike
         {
             if (cboxIzbor.Text == "Projekti")
             {
+                BindingList<Projekt> projekts = new BindingList<Projekt>();
                 BindingList<Korisnik> korisniks = new BindingList<Korisnik>();
                 BindingList<Partner> partners = new BindingList<Partner>();
                 ZatvoriSve();
-                projektBindingSource.DataSource = listaProjekta;
                 foreach (var P in listaProjekta)
                 {
-                    korisniks.Add(P.Korisnik);
-                    partners.Add(P.Partner);
+                    if (P.datum_pocetka > dtProjekti1.Value && P.datum_pocetka < dtProjekti2.Value)
+                    {
+                        projekts.Add(P);
+                        korisniks.Add(P.Korisnik);
+                        partners.Add(P.Partner);
+                    }
                 }
+                projektBindingSource.DataSource = projekts;
                 partnerBindingSource.DataSource = partners;
                 korisnikBindingSource.DataSource = korisniks;
                 //reportViewer.Reset();
@@ -105,15 +110,20 @@ namespace PrikazStatistike
                 BindingList<Partner> partners = new BindingList<Partner>();
                 BindingList<Materijal> materijals = new BindingList<Materijal>();
                 BindingList<Primka> primkas = new BindingList<Primka>();
+                BindingList<Stavka_primke> stavkas_p = new BindingList<Stavka_primke>();
                 ZatvoriSve();
-                stavkaprimkeBindingSource.DataSource = listaStavkiPrimke;
                 foreach (var P in listaStavkiPrimke)
                 {
-                    korisniks.Add(P.Primka.Korisnik);
-                    partners.Add(P.Primka.Partner);
-                    primkas.Add(P.Primka);
-                    materijals.Add(P.Materijal);
+                    if(P.Primka.datumPrimitka > dtProjekti1.Value && P.Primka.datumPrimitka < dtProjekti2.Value)
+                    {
+                        stavkas_p.Add(P);
+                        korisniks.Add(P.Primka.Korisnik);
+                        partners.Add(P.Primka.Partner);
+                        primkas.Add(P.Primka);
+                        materijals.Add(P.Materijal);
+                    }
                 }
+                stavkaprimkeBindingSource.DataSource = stavkas_p;
                 korisnikBindingSource.DataSource = korisniks;
                 partnerBindingSource.DataSource = partners;
                 materijalBindingSource.DataSource = materijals;
@@ -126,15 +136,20 @@ namespace PrikazStatistike
                 BindingList<Partner> partners = new BindingList<Partner>();
                 BindingList<Materijal> materijals = new BindingList<Materijal>();
                 BindingList<Narudzbenica> narudzbenicas = new BindingList<Narudzbenica>();
+                BindingList<Stavka_narudzbenice> stavkas_n = new BindingList<Stavka_narudzbenice>();
                 ZatvoriSve();
-                stavkanarudzbeniceBindingSource.DataSource = listaStavkiNarudzbenica;
                 foreach (var P in listaStavkiNarudzbenica)
                 {
-                    korisniks.Add(P.Narudzbenica.Korisnik);
-                    partners.Add(P.Narudzbenica.Partner);
-                    narudzbenicas.Add(P.Narudzbenica);
-                    materijals.Add(P.Materijal);
+                    if (P.Narudzbenica.datum_slanja > dtProjekti1.Value && P.Narudzbenica.datum_slanja < dtProjekti2.Value)
+                    {
+                        stavkas_n.Add(P);
+                        korisniks.Add(P.Narudzbenica.Korisnik);
+                        partners.Add(P.Narudzbenica.Partner);
+                        narudzbenicas.Add(P.Narudzbenica);
+                        materijals.Add(P.Materijal);
+                    }
                 }
+                stavkanarudzbeniceBindingSource.DataSource = stavkas_n;
                 korisnikBindingSource.DataSource = korisniks;
                 partnerBindingSource.DataSource = partners;
                 materijalBindingSource.DataSource = materijals;

@@ -921,6 +921,7 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>LightGrey</BackgroundColor>
       </Style>
     </PageHeader>
     <PageHeight>29.7cm</PageHeight>
