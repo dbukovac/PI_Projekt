@@ -64,7 +64,7 @@ namespace IzdavanjeRacuna
 
         private void PrikaziMaterijal()
         {
-            Faze_projekta materijal = vratiFazuProjekta();
+            Faze_projekta materijal = vratiFazuProjekta(1);
             BindingList<Faza_ima_materijal> listaMaterijala = null;
             BindingList<Materijal> listaMaterijalId = new BindingList<Materijal>();
             if (materijal != null)
@@ -83,7 +83,7 @@ namespace IzdavanjeRacuna
             }
         }
 
-        private Faze_projekta vratiFazuProjekta()
+        private Faze_projekta vratiFazuProjekta(int kontroler)
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
             Projekt selektiraniProjekt = odabraniProjekt;
@@ -104,6 +104,10 @@ namespace IzdavanjeRacuna
                             if (P.id == F.id)
                             {
                                 vrati = P;
+                                if (kontroler == 1)
+                                {
+                                    return vrati;
+                                }
                             }
                         }
                     }

@@ -120,9 +120,8 @@ namespace UpravljanjeProjektima
                         {
                             selektiraniProjekt.aktivan = 1;
                             selektiraniProjekt.datum_pocetka = DateTime.Today;
-                            DateTime datum = (DateTime)selektiraniProjekt.datum_zavrsetka;
-                            datum.AddDays((double)selektiraniProjekt.potrebno_vrijeme);
-                            selektiraniProjekt.datum_zavrsetka = datum;
+                            DateTime datum = DateTime.Today;
+                            selektiraniProjekt.datum_zavrsetka = datum.AddDays((double)selektiraniProjekt.potrebno_vrijeme);
                             db.SaveChanges();
                             PrikaziProjekte();
                         }

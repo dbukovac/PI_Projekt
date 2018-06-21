@@ -22,7 +22,7 @@ namespace UpravljanjeProjektima
     
         public int partnerId { get; set; }
         public string ime { get; set; }
-        public int OIB { get; set; }
+        public string OIB { get; set; }
         public string adresa { get; set; }
         public string tip_partnera { get; set; }
     

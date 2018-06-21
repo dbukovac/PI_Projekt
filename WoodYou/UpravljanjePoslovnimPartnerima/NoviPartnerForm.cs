@@ -52,15 +52,23 @@ namespace UpravljanjePoslovnimPartnerima
             {
                 using(var db = new UpravljanjePoslovnimPartnerimaEntities())
                 {
-                    Partner noviPartner = new Partner
+                    int OIB;
+                    if (!int.TryParse(tboxOIB.Text, out OIB) && tboxOIB.Text.Length == 11)
                     {
-                        ime = tboxIme.Text,
-                        adresa = tboxAdresa.Text,
-                        OIB = int.Parse(tboxOIB.Text),
-                        tip_partnera = cboxTip.SelectedValue.ToString(),
-                    };
-                    db.Partner.Add(noviPartner);
-                    db.SaveChanges();
+                        Partner noviPartner = new Partner
+                        {
+                            ime = tboxIme.Text,
+                            adresa = tboxAdresa.Text,
+                            OIB = tboxOIB.Text,
+                            tip_partnera = cboxTip.SelectedValue.ToString(),
+                        };
+                        db.Partner.Add(noviPartner);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("OIB sadrži nedopuštene znakove");
+                    }
                 }
             }
             else
@@ -70,7 +78,7 @@ namespace UpravljanjePoslovnimPartnerima
                     db.Partner.Attach(odabraniPartner);
                     odabraniPartner.ime = tboxIme.Text;
                     odabraniPartner.adresa = tboxAdresa.Text;
-                    odabraniPartner.OIB = int.Parse(tboxOIB.Text);
+                    odabraniPartner.OIB = tboxOIB.Text;
                     odabraniPartner.tip_partnera = cboxTip.SelectedValue.ToString();
                 }
             }

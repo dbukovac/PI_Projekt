@@ -43,7 +43,7 @@ namespace UpravljanjeProjektima
             if(selektiranMaterijal != null && listaM.SingleOrDefault(x => x.materijalId == selektiranMaterijal.materijalId)==null)
             {
                 listaM.Add(selektiranMaterijal);
-                if(selektiranMaterijal.kolicina > int.Parse(tboxKolicina.Text.ToString()))
+                if(selektiranMaterijal.kolicina > (int)numKolicina.Value)
                 {
                     using (var db = new UpravljanjeProjektimaEntities())
                     {
@@ -51,7 +51,7 @@ namespace UpravljanjeProjektima
                         {
                             id = odabranaFazaProjekta.id,
                             materijalId = selektiranMaterijal.materijalId,
-                            kolicina = int.Parse(tboxKolicina.Text.ToString()),
+                            kolicina = (int)numKolicina.Value,
                         };
                         db.Faza_ima_materijal.Add(noviMaterijalFaza);
                         db.SaveChanges();

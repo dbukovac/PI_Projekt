@@ -57,7 +57,7 @@
           </Key>
           <Property Name="partnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="OIB" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tip_partnera" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
@@ -219,7 +219,7 @@
           </Key>
           <Property Name="partnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="OIB" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tip_partnera" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Partner" FromRole="Partner" ToRole="Projekt" />

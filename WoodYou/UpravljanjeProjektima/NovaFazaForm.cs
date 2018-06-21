@@ -35,8 +35,8 @@ namespace UpravljanjeProjektima
             if(odabranaFaza != null)
             {
                 tboxNaziv.Text = odabranaFaza.naziv.ToString();
-                tboxCijena.Text = odabranaFaza.cijena.ToString();
-                tboxTrajanje.Text = odabranaFaza.trajanje.ToString();
+                numCijena.Value = odabranaFaza.cijena;
+                numTrajanje.Value = odabranaFaza.trajanje;
 
                 staroImeFaze = odabranaFaza.naziv.ToString();
             }
@@ -76,8 +76,8 @@ namespace UpravljanjeProjektima
                     Faza novaFaza = new Faza
                     {
                         naziv = tboxNaziv.Text,
-                        cijena = decimal.Parse(tboxCijena.Text.ToString()),
-                        trajanje = int.Parse(tboxTrajanje.Text.ToString()),
+                        cijena = numCijena.Value,
+                        trajanje = (int)numTrajanje.Value,
                     };
                     db.Faza.Add(novaFaza);
                     db.SaveChanges();
@@ -90,8 +90,8 @@ namespace UpravljanjeProjektima
                 {
                     db.Faza.Attach(odabranaFaza);
                     odabranaFaza.naziv = tboxNaziv.Text.ToString();
-                    odabranaFaza.cijena = decimal.Parse(tboxCijena.Text.ToString());
-                    odabranaFaza.trajanje = int.Parse(tboxTrajanje.Text.ToString());
+                    odabranaFaza.cijena = numCijena.Value;
+                    odabranaFaza.trajanje = (int)numTrajanje.Value;
                     db.SaveChanges();
                 }
 

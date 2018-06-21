@@ -37,13 +37,14 @@
             this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazaimamaterijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tboxKolicina = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.odustaniButton = new System.Windows.Forms.Button();
             this.tboxPretrazi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.numKolicina = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).BeginInit();
             this.SuspendLayout();
             // 
             // dodajMaterijalButton
@@ -116,13 +117,6 @@
             // 
             this.materijalBindingSource.DataSource = typeof(UpravljanjeProjektima.Materijal);
             // 
-            // tboxKolicina
-            // 
-            this.tboxKolicina.Location = new System.Drawing.Point(289, 100);
-            this.tboxKolicina.Name = "tboxKolicina";
-            this.tboxKolicina.Size = new System.Drawing.Size(107, 20);
-            this.tboxKolicina.TabIndex = 10;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -159,16 +153,23 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Pretraživanje po nazivu:";
             // 
+            // numKolicina
+            // 
+            this.numKolicina.Location = new System.Drawing.Point(289, 100);
+            this.numKolicina.Name = "numKolicina";
+            this.numKolicina.Size = new System.Drawing.Size(107, 20);
+            this.numKolicina.TabIndex = 21;
+            // 
             // PopisMaterijalaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(426, 220);
+            this.Controls.Add(this.numKolicina);
             this.Controls.Add(this.tboxPretrazi);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.odustaniButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tboxKolicina);
             this.Controls.Add(this.dodajMaterijalButton);
             this.Controls.Add(this.fazeLabel);
             this.Controls.Add(this.materijalDataGridView);
@@ -177,6 +178,7 @@
             this.Load += new System.EventHandler(this.PopisMaterijalaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,10 +194,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolicinaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fazaimamaterijalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox tboxKolicina;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button odustaniButton;
         private System.Windows.Forms.TextBox tboxPretrazi;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numKolicina;
     }
 }

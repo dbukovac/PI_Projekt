@@ -48,16 +48,12 @@ namespace IzdavanjeRacuna
         {
             List<Faze_projekta> listaFaza = null;
             bool zavrseno = true;
-            using (var db = new IzdavanjeRacunEntities())
+            listaFaza = new List<Faze_projekta>(projekt.Faze_projekta.ToList());
+            foreach (var F in listaFaza)
             {
-                db.Projekt.Attach(projekt);
-                listaFaza = new List<Faze_projekta>(projekt.Faze_projekta.ToList());
-                foreach (var F in listaFaza)
+                if(F.zakljucano == 0)
                 {
-                    if(F.zakljucano == 0)
-                    {
-                        zavrseno = false;
-                    }
+                    zavrseno = false;
                 }
             }
             return zavrseno;
