@@ -37,17 +37,18 @@
             // 
             // buttonPrijaviSe
             // 
-            this.buttonPrijaviSe.Location = new System.Drawing.Point(98, 178);
+            this.buttonPrijaviSe.Location = new System.Drawing.Point(97, 163);
             this.buttonPrijaviSe.Name = "buttonPrijaviSe";
             this.buttonPrijaviSe.Size = new System.Drawing.Size(75, 23);
             this.buttonPrijaviSe.TabIndex = 9;
             this.buttonPrijaviSe.Text = "Prijavi se";
             this.buttonPrijaviSe.UseVisualStyleBackColor = true;
+            this.buttonPrijaviSe.Click += new System.EventHandler(this.buttonPrijaviSe_Click);
             // 
             // LabelaLozinka
             // 
             this.LabelaLozinka.AutoSize = true;
-            this.LabelaLozinka.Location = new System.Drawing.Point(75, 122);
+            this.LabelaLozinka.Location = new System.Drawing.Point(75, 104);
             this.LabelaLozinka.Name = "LabelaLozinka";
             this.LabelaLozinka.Size = new System.Drawing.Size(44, 13);
             this.LabelaLozinka.TabIndex = 8;
@@ -64,7 +65,7 @@
             // 
             // textBoxLozinka
             // 
-            this.textBoxLozinka.Location = new System.Drawing.Point(78, 138);
+            this.textBoxLozinka.Location = new System.Drawing.Point(78, 120);
             this.textBoxLozinka.Name = "textBoxLozinka";
             this.textBoxLozinka.Size = new System.Drawing.Size(125, 20);
             this.textBoxLozinka.TabIndex = 6;
@@ -80,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 239);
             this.Controls.Add(this.buttonPrijaviSe);
             this.Controls.Add(this.LabelaLozinka);
             this.Controls.Add(this.LabelKorime);

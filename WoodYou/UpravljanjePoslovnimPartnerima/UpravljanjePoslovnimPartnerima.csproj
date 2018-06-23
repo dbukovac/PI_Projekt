@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoviPartnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoviPartnerForm.Designer.cs">
+      <DependentUpon>NoviPartnerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partner.cs">
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PoslovniPartneriForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +71,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tip_partnera.cs">
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpravljanjePoslovnimPartnerimaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpravljanjePoslovnimPartnerimaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpravljanjePoslovnimPartnerimaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.edmx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="NoviPartnerForm.resx">
+      <DependentUpon>NoviPartnerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PoslovniPartneriForm.resx">
       <DependentUpon>PoslovniPartneriForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,6 +104,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Partner.datasource" />
+    <None Include="Properties\DataSources\Tip_partnera.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,9 +116,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="UpravljanjePoslovnimPartnerimaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UpravljanjePoslovnimPartnerimaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UpravljanjePoslovnimPartnerimaModel.edmx.diagram">
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UpravljanjePoslovnimPartnerimaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpravljanjePoslovnimPartnerimaModel.Context.cs</LastGenOutput>
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="UpravljanjePoslovnimPartnerimaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UpravljanjePoslovnimPartnerimaModel.edmx</DependentUpon>
+      <LastGenOutput>UpravljanjePoslovnimPartnerimaModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

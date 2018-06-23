@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <Height>2in</Height>
+    <Style />
+  </Body>
+  <Width>6.5in</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>2cm</LeftMargin>
+    <RightMargin>2cm</RightMargin>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="PrikazStatistike">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>f43bb06c-d3fe-4b91-9821-4c19ca0c6827</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSetProjekt">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="aktivan">
+          <DataField>aktivan</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="cijena_bez_pdv">
+          <DataField>cijena_bez_pdv</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="datum_izdavanja_racuna">
+          <DataField>datum_izdavanja_racuna</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="datum_pocetka">
+          <DataField>datum_pocetka</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="datum_zavrsetka">
+          <DataField>datum_zavrsetka</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="gotovo">
+          <DataField>gotovo</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="ime">
+          <DataField>ime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="iznos_pdv">
+          <DataField>iznos_pdv</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="kod">
+          <DataField>kod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Korisnik">
+          <DataField>Korisnik</DataField>
+          <rd:TypeName>PrikazStatistike.Korisnik</rd:TypeName>
+        </Field>
+        <Field Name="korisnikId">
+          <DataField>korisnikId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Partner">
+          <DataField>Partner</DataField>
+          <rd:TypeName>PrikazStatistike.Partner</rd:TypeName>
+        </Field>
+        <Field Name="partnerId">
+          <DataField>partnerId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="potrebno_vrijeme">
+          <DataField>potrebno_vrijeme</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="projektId">
+          <DataField>projektId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ukupna_cijena">
+          <DataField>ukupna_cijena</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Projekt</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Projekt, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetFaze">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="cijena">
+          <DataField>cijena</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="fazaId">
+          <DataField>fazaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="naziv">
+          <DataField>naziv</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="trajanje">
+          <DataField>trajanje</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Faza</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Faza, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetKorisnici">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ime">
+          <DataField>ime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="korisnicko_ime">
+          <DataField>korisnicko_ime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="korisnikId">
+          <DataField>korisnikId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="lozinka">
+          <DataField>lozinka</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="prezime">
+          <DataField>prezime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tip_korisnika">
+          <DataField>Tip_korisnika</DataField>
+          <rd:TypeName>PrikazStatistike.Tip_korisnika</rd:TypeName>
+        </Field>
+        <Field Name="tip_korisnikaId">
+          <DataField>tip_korisnikaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Korisnik</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Korisnik, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetPartner">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="adresa">
+          <DataField>adresa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ime">
+          <DataField>ime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OIB">
+          <DataField>OIB</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="partnerId">
+          <DataField>partnerId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tip_partnera">
+          <DataField>tip_partnera</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tip_partnera1">
+          <DataField>Tip_partnera1</DataField>
+          <rd:TypeName>PrikazStatistike.Tip_partnera</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Partner</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Partner, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetMaterijal">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="kolicina">
+          <DataField>kolicina</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="materijalId">
+          <DataField>materijalId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="naziv">
+          <DataField>naziv</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Materijal</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Materijal, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetPrimka">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="datumPrimitka">
+          <DataField>datumPrimitka</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Korisnik">
+          <DataField>Korisnik</DataField>
+          <rd:TypeName>PrikazStatistike.Korisnik</rd:TypeName>
+        </Field>
+        <Field Name="korisnikId">
+          <DataField>korisnikId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Partner">
+          <DataField>Partner</DataField>
+          <rd:TypeName>PrikazStatistike.Partner</rd:TypeName>
+        </Field>
+        <Field Name="partnerId">
+          <DataField>partnerId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="primkaId">
+          <DataField>primkaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Primka</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Primka, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetStavkaPrimke">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="kolicina">
+          <DataField>kolicina</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Materijal">
+          <DataField>Materijal</DataField>
+          <rd:TypeName>PrikazStatistike.Materijal</rd:TypeName>
+        </Field>
+        <Field Name="materijalId">
+          <DataField>materijalId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Primka">
+          <DataField>Primka</DataField>
+          <rd:TypeName>PrikazStatistike.Primka</rd:TypeName>
+        </Field>
+        <Field Name="primkaId">
+          <DataField>primkaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Primka</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Stavka_primke</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>PrikazStatistike.Primka, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetStavkaNarudzbenice">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="kolicina">
+          <DataField>kolicina</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Materijal">
+          <DataField>Materijal</DataField>
+          <rd:TypeName>PrikazStatistike.Materijal</rd:TypeName>
+        </Field>
+        <Field Name="materijalId">
+          <DataField>materijalId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Narudzbenica">
+          <DataField>Narudzbenica</DataField>
+          <rd:TypeName>PrikazStatistike.Narudzbenica</rd:TypeName>
+        </Field>
+        <Field Name="narudzbenicaId">
+          <DataField>narudzbenicaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Stavka_narudzbenice</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Stavka_narudzbenice, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetNarudzbenica">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="datum_slanja">
+          <DataField>datum_slanja</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Korisnik">
+          <DataField>Korisnik</DataField>
+          <rd:TypeName>PrikazStatistike.Korisnik</rd:TypeName>
+        </Field>
+        <Field Name="korisnikId">
+          <DataField>korisnikId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="narudzbenicaId">
+          <DataField>narudzbenicaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Partner">
+          <DataField>Partner</DataField>
+          <rd:TypeName>PrikazStatistike.Partner</rd:TypeName>
+        </Field>
+        <Field Name="partnerId">
+          <DataField>partnerId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Narudzbenica</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Narudzbenica, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetTipKorisnika">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="naziv">
+          <DataField>naziv</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tip_korisnikaId">
+          <DataField>tip_korisnikaId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Tip_korisnika</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Tip_korisnika, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSetTipPartnera">
+      <Query>
+        <DataSourceName>PrikazStatistike</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="kljuc">
+          <DataField>kljuc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="naziv">
+          <DataField>naziv</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>PrikazStatistike</rd:DataSetName>
+        <rd:TableName>Tip_partnera</rd:TableName>
+        <rd:ObjectDataSourceType>PrikazStatistike.Tip_partnera, PrikazStatistike, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>b8bbb5cf-9b80-4cd5-abf7-b4f17bbaaecf</rd:ReportID>
+</Report>

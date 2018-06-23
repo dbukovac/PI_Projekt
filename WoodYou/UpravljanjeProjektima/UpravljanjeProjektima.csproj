@@ -32,8 +32,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,19 +58,52 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.3\lib\net40\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Faza.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Faza_ima_materijal.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Faze_projekta.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnik.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Materijal.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NovaFazaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaFazaForm.Designer.cs">
+      <DependentUpon>NovaFazaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NoviProjektForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NoviProjektForm.Designer.cs">
       <DependentUpon>NoviProjektForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Partner.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PopisFazaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PopisFazaForm.Designer.cs">
       <DependentUpon>PopisFazaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopisMaterijalaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopisMaterijalaForm.Designer.cs">
+      <DependentUpon>PopisMaterijalaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PopisProjektiForm.cs">
       <SubType>Form</SubType>
@@ -64,12 +112,36 @@
       <DependentUpon>PopisProjektiForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Projekt.cs">
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpravljanjeProjektimaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpravljanjeProjektimaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpravljanjeProjektimaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpravljanjeProjektimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpravljanjeProjektimaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpravljanjeProjektimaModel.edmx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="NovaFazaForm.resx">
+      <DependentUpon>NovaFazaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NoviProjektForm.resx">
       <DependentUpon>NoviProjektForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopisFazaForm.resx">
       <DependentUpon>PopisFazaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopisMaterijalaFOrm.resx">
+      <DependentUpon>PopisMaterijalaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopisProjektiForm.resx">
       <DependentUpon>PopisProjektiForm.cs</DependentUpon>
@@ -83,6 +155,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Faza.datasource" />
+    <None Include="Properties\DataSources\Faza_ima_materijal.datasource" />
+    <None Include="Properties\DataSources\Korisnik.datasource" />
+    <None Include="Properties\DataSources\Materijal.datasource" />
+    <None Include="Properties\DataSources\Partner.datasource" />
+    <None Include="Properties\DataSources\Projekt.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,9 +171,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="UpravljanjeProjektimaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UpravljanjeProjektimaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UpravljanjeProjektimaModel.edmx.diagram">
+      <DependentUpon>UpravljanjeProjektimaModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UpravljanjeProjektimaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpravljanjeProjektimaModel.Context.cs</LastGenOutput>
+      <DependentUpon>UpravljanjeProjektimaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="UpravljanjeProjektimaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UpravljanjeProjektimaModel.edmx</DependentUpon>
+      <LastGenOutput>UpravljanjeProjektimaModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

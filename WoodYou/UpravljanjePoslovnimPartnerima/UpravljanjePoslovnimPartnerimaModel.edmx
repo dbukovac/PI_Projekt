@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_partnera" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tip_partnera">
+          <Key>
+            <PropertyRef Name="kljuc" />
+          </Key>
+          <Property Name="kljuc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Partner_Tip_partnera">
+          <End Role="Tip_partnera" Type="Self.Tip_partnera" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_partnera">
+              <PropertyRef Name="kljuc" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="tip_partnera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_partnera" EntityType="Self.Tip_partnera" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Partner_Tip_partnera" Association="Self.FK_Partner_Tip_partnera">
+            <End Role="Tip_partnera" EntitySet="Tip_partnera" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="partnerId" />
+          </Key>
+          <Property Name="partnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tip_partnera" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tip_partnera1" Relationship="Self.FK_Partner_Tip_partnera" FromRole="Partner" ToRole="Tip_partnera" />
+        </EntityType>
+        <EntityType Name="Tip_partnera">
+          <Key>
+            <PropertyRef Name="kljuc" />
+          </Key>
+          <Property Name="kljuc" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK_Partner_Tip_partnera" FromRole="Tip_partnera" ToRole="Partner" />
+        </EntityType>
+        <Association Name="FK_Partner_Tip_partnera">
+          <End Role="Tip_partnera" Type="Self.Tip_partnera" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_partnera">
+              <PropertyRef Name="kljuc" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="tip_partnera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UpravljanjePoslovnimPartnerimaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Partner" EntityType="Self.Partner" />
+          <EntitySet Name="Tip_partnera" EntityType="Self.Tip_partnera" />
+          <AssociationSet Name="FK_Partner_Tip_partnera" Association="Self.FK_Partner_Tip_partnera">
+            <End Role="Tip_partnera" EntitySet="Tip_partnera" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="UpravljanjePoslovnimPartnerimaEntities">
+          <EntitySetMapping Name="Partner">
+            <EntityTypeMapping TypeName="DBModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="tip_partnera" ColumnName="tip_partnera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_partnera">
+            <EntityTypeMapping TypeName="DBModel.Tip_partnera">
+              <MappingFragment StoreEntitySet="Tip_partnera">
+                <ScalarProperty Name="kljuc" ColumnName="kljuc" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

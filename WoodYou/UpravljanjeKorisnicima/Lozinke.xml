@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<korisnici>
+  <korisnik korisnicko_ime="tjanes" lozinka="neki pass" />
+  <korisnik korisnicko_ime="neki korisnik" lozinka="loz" />
+  <korisnik korisnicko_ime="Fbertinovec" lozinka="mali" />
+</korisnici>
