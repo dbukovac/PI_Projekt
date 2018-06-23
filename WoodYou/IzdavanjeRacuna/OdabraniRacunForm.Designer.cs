@@ -58,9 +58,7 @@
             this.tboxBrojRacuna = new System.Windows.Forms.TextBox();
             this.izadiButton = new System.Windows.Forms.Button();
             this.printajButton = new System.Windows.Forms.Button();
-            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +66,10 @@
             this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materijalId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijena_stavke = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -87,7 +89,7 @@
             this.trajanjeDataGridViewTextBoxColumn,
             this.fazeprojektaDataGridViewTextBoxColumn});
             this.fazeDataGridView.DataSource = this.fazaBindingSource;
-            this.fazeDataGridView.Location = new System.Drawing.Point(63, 190);
+            this.fazeDataGridView.Location = new System.Drawing.Point(15, 190);
             this.fazeDataGridView.MultiSelect = false;
             this.fazeDataGridView.Name = "fazeDataGridView";
             this.fazeDataGridView.ReadOnly = true;
@@ -101,19 +103,21 @@
             this.materijalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.materijalDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.materijalIdDataGridViewTextBoxColumn,
-            this.kolicinaDataGridViewTextBoxColumn});
+            this.materijalId,
+            this.kolicinaDataGridViewTextBoxColumn,
+            this.cijena_stavke});
             this.materijalDataGridView.DataSource = this.fazaimamaterijalBindingSource;
-            this.materijalDataGridView.Location = new System.Drawing.Point(472, 190);
+            this.materijalDataGridView.Location = new System.Drawing.Point(414, 190);
             this.materijalDataGridView.MultiSelect = false;
             this.materijalDataGridView.Name = "materijalDataGridView";
             this.materijalDataGridView.ReadOnly = true;
-            this.materijalDataGridView.Size = new System.Drawing.Size(254, 150);
+            this.materijalDataGridView.Size = new System.Drawing.Size(349, 150);
             this.materijalDataGridView.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(469, 174);
+            this.label1.Location = new System.Drawing.Point(411, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 2;
@@ -122,7 +126,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 174);
+            this.label2.Location = new System.Drawing.Point(12, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 3;
@@ -366,29 +370,9 @@
             this.printajButton.UseVisualStyleBackColor = true;
             this.printajButton.Click += new System.EventHandler(this.printajButton_Click);
             // 
-            // materijalIdDataGridViewTextBoxColumn
-            // 
-            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn.DataSource = this.materijalBindingSource;
-            this.materijalIdDataGridViewTextBoxColumn.DisplayMember = "naziv";
-            this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
-            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
-            // 
             // materijalBindingSource
             // 
             this.materijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Materijal);
-            // 
-            // kolicinaDataGridViewTextBoxColumn
-            // 
-            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
-            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fazaimamaterijalBindingSource
             // 
@@ -434,6 +418,47 @@
             // fazaBindingSource
             // 
             this.fazaBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza);
+            // 
+            // materijalIdDataGridViewTextBoxColumn
+            // 
+            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn.DataSource = this.materijalBindingSource;
+            this.materijalIdDataGridViewTextBoxColumn.DisplayMember = "naziv";
+            this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "Naziv";
+            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
+            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
+            // 
+            // materijalId
+            // 
+            this.materijalId.DataPropertyName = "materijalId";
+            this.materijalId.DataSource = this.materijalBindingSource;
+            this.materijalId.DisplayMember = "cijena";
+            this.materijalId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materijalId.HeaderText = "Cijena";
+            this.materijalId.Name = "materijalId";
+            this.materijalId.ReadOnly = true;
+            this.materijalId.ValueMember = "materijalId";
+            this.materijalId.Width = 60;
+            // 
+            // kolicinaDataGridViewTextBoxColumn
+            // 
+            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
+            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.kolicinaDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // cijena_stavke
+            // 
+            this.cijena_stavke.DataPropertyName = "cijena_stavke";
+            this.cijena_stavke.HeaderText = "cijena_stavke";
+            this.cijena_stavke.Name = "cijena_stavke";
+            this.cijena_stavke.ReadOnly = true;
+            this.cijena_stavke.Width = 80;
             // 
             // OdabraniRacunForm
             // 
@@ -493,9 +518,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn trajanjeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fazeprojektaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fazaBindingSource;
-        private System.Windows.Forms.DataGridViewComboBoxColumn materijalIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource materijalBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kolicinaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fazaimamaterijalBindingSource;
         private System.Windows.Forms.Button izadiButton;
         private System.Windows.Forms.Label label13;
@@ -503,5 +526,9 @@
         private System.Windows.Forms.TextBox tboxKorisnik;
         private System.Windows.Forms.TextBox tboxPartner;
         private System.Windows.Forms.Button printajButton;
+        private System.Windows.Forms.DataGridViewComboBoxColumn materijalIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn materijalId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kolicinaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cijena_stavke;
     }
 }

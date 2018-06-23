@@ -17,6 +17,7 @@ namespace PrikazStatistike
         public int id { get; set; }
         public int materijalId { get; set; }
         public int kolicina { get; set; }
+        public Nullable<decimal> cijena_stavke { get; set; }
     
         public virtual Faze_projekta Faze_projekta { get; set; }
         public virtual Materijal Materijal { get; set; }

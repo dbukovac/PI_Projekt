@@ -25,9 +25,9 @@ namespace IzdavanjeRacuna
         public System.DateTime datum_pocetka { get; set; }
         public Nullable<int> potrebno_vrijeme { get; set; }
         public Nullable<System.DateTime> datum_zavrsetka { get; set; }
-        public Nullable<double> ukupna_cijena { get; set; }
-        public Nullable<double> cijena_bez_pdv { get; set; }
-        public Nullable<double> iznos_pdv { get; set; }
+        public Nullable<decimal> ukupna_cijena { get; set; }
+        public Nullable<decimal> cijena_bez_pdv { get; set; }
+        public Nullable<decimal> iznos_pdv { get; set; }
         public int korisnikId { get; set; }
         public int partnerId { get; set; }
         public byte gotovo { get; set; }
