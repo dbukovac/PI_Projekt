@@ -12,9 +12,11 @@ namespace UpravljanjeNarudzbama
 {
     public partial class NarudzbeForm : Form
     {
-        public NarudzbeForm()
+        private int tipKorisnika = 0;
+        public NarudzbeForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
         /// <summary>
         /// Metoda kojom se dohvaca lista narudzenice, 
@@ -68,6 +70,11 @@ namespace UpravljanjeNarudzbama
         private void NarudzbeForm_Load(object sender, EventArgs e)
         {
             PrikazNarudzbi();
+            if(tipKorisnika == 1)
+            {
+                obrisiNarudzbuButton.Enabled = true;
+                obrisiNarudzbuButton.Visible = true;
+            }
         }
         private void NarudzbeDataGridView_SelectionChanged(object sender, EventArgs e)
         {

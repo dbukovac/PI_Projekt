@@ -16,7 +16,6 @@ namespace UpravljanjePoslovnimPartnerima
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PoslovniPartneriForm());
         }
     }
 }

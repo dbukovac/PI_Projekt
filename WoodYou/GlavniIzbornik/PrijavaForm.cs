@@ -19,7 +19,7 @@ namespace GlavniIzbornik
             InitializeComponent();
         }
 
-        private void buttonPrijaviSe_Click(object sender, EventArgs e)
+        private void ButtonPrijaviSe_Click(object sender, EventArgs e)
         {
             Korisnik logirani_korisnik = null;
 

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UpravljanjeSkladistem
@@ -14,10 +9,12 @@ namespace UpravljanjeSkladistem
     {
         BindingList<Materijal> materijali = null;
         BindingList<Stavka_primke> stavke = null;
+        int tipKorisnika = 0;
 
-        public PrimkeForm()
+        public PrimkeForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void PrikazPrimki()
@@ -89,6 +86,11 @@ namespace UpravljanjeSkladistem
                 PrikazStavki(primka);
             }
             materijali = new BindingList<Materijal>();
+            if(tipKorisnika == 1)
+            {
+                brisiPrimkuButton.Enabled = true;
+                brisiPrimkuButton.Visible = true;
+            }
         }
 
         private void PrimkaDataGridView_SelectionChanged(object sender, EventArgs e)

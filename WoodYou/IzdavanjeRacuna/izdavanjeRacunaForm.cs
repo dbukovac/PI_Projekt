@@ -12,9 +12,11 @@ namespace IzdavanjeRacuna
 {
     public partial class IzdavanjeRacunaForm : Form
     {
-        public IzdavanjeRacunaForm()
+        private int tipKorisnika = 0;
+        public IzdavanjeRacunaForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void izdavanjeRacunaForm_Load(object sender, EventArgs e)
@@ -103,7 +105,7 @@ namespace IzdavanjeRacuna
 
         private void pregledRačunaButton_Click(object sender, EventArgs e)
         {
-            PregledRacunForm forma = new PregledRacunForm();
+            PregledRacunForm forma = new PregledRacunForm(tipKorisnika);
             forma.ShowDialog();
         }
 

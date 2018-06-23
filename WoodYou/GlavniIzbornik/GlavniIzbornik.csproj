@@ -42,6 +42,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\Hash.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -90,6 +108,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Tip_korisnika.cs">
       <DependentUpon>GlavniIzbornikModel.tt</DependentUpon>
     </Compile>
@@ -140,9 +159,52 @@
       <DependentUpon>GlavniIzbornikModel.edmx</DependentUpon>
       <LastGenOutput>GlavniIzbornikModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IzdavanjeRacuna\IzdavanjeRacuna.csproj">
+      <Project>{52b81a4c-4ecc-4901-9806-72cb4f2cdd7f}</Project>
+      <Name>IzdavanjeRacuna</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrikazStatistike\PrikazStatistike.csproj">
+      <Project>{1ce31ade-3427-4cb5-8663-09d3a00ebeb9}</Project>
+      <Name>PrikazStatistike</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpravljanjeKorisnicima\UpravljanjeKorisnicima.csproj">
+      <Project>{24a66a28-e957-4c5a-adbb-a5bb3f9d2d28}</Project>
+      <Name>UpravljanjeKorisnicima</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpravljanjeNarudzbama\UpravljanjeNarudzbama.csproj">
+      <Project>{e0fb687c-81e5-4f59-8a25-018e45633159}</Project>
+      <Name>UpravljanjeNarudzbama</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpravljanjePoslovnimPartnerima\UpravljanjePoslovnimPartnerima.csproj">
+      <Project>{e63f177d-3079-4176-8f36-82da7d6e06cf}</Project>
+      <Name>UpravljanjePoslovnimPartnerima</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpravljanjeProjektima\UpravljanjeProjektima.csproj">
+      <Project>{552c8ae7-b287-47b2-af64-1a01bc9bdcf5}</Project>
+      <Name>UpravljanjeProjektima</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpravljanjeSkladistem\UpravljanjeSkladistem.csproj">
+      <Project>{66461e57-65c1-48f4-a3cf-ad61d48df240}</Project>
+      <Name>UpravljanjeSkladistem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

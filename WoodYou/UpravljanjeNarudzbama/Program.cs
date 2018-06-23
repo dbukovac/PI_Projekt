@@ -16,7 +16,6 @@ namespace UpravljanjeNarudzbama
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NarudzbeForm());
         }
     }
 }

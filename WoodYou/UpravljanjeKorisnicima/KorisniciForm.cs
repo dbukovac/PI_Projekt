@@ -12,9 +12,11 @@ namespace UpravljanjeKorisnicima
 {
     public partial class KorisniciForm : Form
     {
-        public KorisniciForm()
+        private int tipKorisnika;
+        public KorisniciForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void KorisniciForm_Load(object sender, EventArgs e)

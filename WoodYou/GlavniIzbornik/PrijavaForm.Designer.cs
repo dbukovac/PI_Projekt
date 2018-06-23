@@ -43,7 +43,7 @@
             this.buttonPrijaviSe.TabIndex = 9;
             this.buttonPrijaviSe.Text = "Prijavi se";
             this.buttonPrijaviSe.UseVisualStyleBackColor = true;
-            this.buttonPrijaviSe.Click += new System.EventHandler(this.buttonPrijaviSe_Click);
+            this.buttonPrijaviSe.Click += new System.EventHandler(this.ButtonPrijaviSe_Click);
             // 
             // LabelaLozinka
             // 

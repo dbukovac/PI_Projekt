@@ -50,7 +50,7 @@
             // 
             // dodajMaterijalButton
             // 
-            this.dodajMaterijalButton.Location = new System.Drawing.Point(377, 128);
+            this.dodajMaterijalButton.Location = new System.Drawing.Point(505, 128);
             this.dodajMaterijalButton.Name = "dodajMaterijalButton";
             this.dodajMaterijalButton.Size = new System.Drawing.Size(107, 23);
             this.dodajMaterijalButton.TabIndex = 9;
@@ -69,6 +69,8 @@
             // 
             // materijalDataGridView
             // 
+            this.materijalDataGridView.AllowUserToAddRows = false;
+            this.materijalDataGridView.AllowUserToDeleteRows = false;
             this.materijalDataGridView.AutoGenerateColumns = false;
             this.materijalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.materijalDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -82,7 +84,7 @@
             this.materijalDataGridView.MultiSelect = false;
             this.materijalDataGridView.Name = "materijalDataGridView";
             this.materijalDataGridView.ReadOnly = true;
-            this.materijalDataGridView.Size = new System.Drawing.Size(356, 186);
+            this.materijalDataGridView.Size = new System.Drawing.Size(448, 186);
             this.materijalDataGridView.TabIndex = 6;
             // 
             // materijalBindingSource
@@ -92,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(374, 86);
+            this.label1.Location = new System.Drawing.Point(502, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 11;
@@ -100,7 +102,7 @@
             // 
             // odustaniButton
             // 
-            this.odustaniButton.Location = new System.Drawing.Point(377, 187);
+            this.odustaniButton.Location = new System.Drawing.Point(505, 187);
             this.odustaniButton.Name = "odustaniButton";
             this.odustaniButton.Size = new System.Drawing.Size(107, 23);
             this.odustaniButton.TabIndex = 12;
@@ -110,7 +112,7 @@
             // 
             // tboxPretrazi
             // 
-            this.tboxPretrazi.Location = new System.Drawing.Point(377, 38);
+            this.tboxPretrazi.Location = new System.Drawing.Point(505, 38);
             this.tboxPretrazi.Name = "tboxPretrazi";
             this.tboxPretrazi.Size = new System.Drawing.Size(117, 20);
             this.tboxPretrazi.TabIndex = 20;
@@ -119,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(374, 22);
+            this.label2.Location = new System.Drawing.Point(502, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 13);
             this.label2.TabIndex = 19;
@@ -127,7 +129,7 @@
             // 
             // numKolicina
             // 
-            this.numKolicina.Location = new System.Drawing.Point(377, 102);
+            this.numKolicina.Location = new System.Drawing.Point(505, 102);
             this.numKolicina.Name = "numKolicina";
             this.numKolicina.Size = new System.Drawing.Size(107, 20);
             this.numKolicina.TabIndex = 21;
@@ -143,21 +145,22 @@
             // nazivDataGridViewTextBoxColumn
             // 
             this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
-            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
+            this.nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
             this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
             this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nazivDataGridViewTextBoxColumn.Width = 150;
             // 
             // cijena
             // 
             this.cijena.DataPropertyName = "cijena";
-            this.cijena.HeaderText = "cijena";
+            this.cijena.HeaderText = "Cijena";
             this.cijena.Name = "cijena";
             this.cijena.ReadOnly = true;
             // 
             // kolicinaDataGridViewTextBoxColumn
             // 
             this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina na skladištu";
+            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "Količina";
             this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
             this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -173,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 220);
+            this.ClientSize = new System.Drawing.Size(639, 234);
             this.Controls.Add(this.numKolicina);
             this.Controls.Add(this.tboxPretrazi);
             this.Controls.Add(this.label2);

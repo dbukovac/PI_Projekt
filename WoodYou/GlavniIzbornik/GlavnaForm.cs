@@ -7,9 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpravljanjeSkladistem;
+using UpravljanjeNarudzbama;
+using UpravljanjeProjektima;
+using UpravljanjeKorisnicima;
+using UpravljanjePoslovnimPartnerima;
+using IzdavanjeRacuna;
+using PrikazStatistike;
+using System.Threading;
 
 namespace GlavniIzbornik
 {
+    delegate void ShowFormDelegate(Form form, Form parentForm);
+
     public partial class GlavnaForm : Form
     {
         private Korisnik logirani_korisnik = null;
@@ -18,6 +28,84 @@ namespace GlavniIzbornik
         {
             InitializeComponent();
             logirani_korisnik = kor;
+        }
+
+        private void GlavnaForm_Load(object sender, EventArgs e)
+        {
+            if (logirani_korisnik.tip_korisnikaId == 1)
+            {
+                korisniciToolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void ShowForm(Form form, Form parentForm)
+        {
+            if(form.InvokeRequired)
+            {
+                ShowFormDelegate showFormDelegate = new ShowFormDelegate(ShowForm);
+                form.BeginInvoke(showFormDelegate, form, parentForm);
+            }
+            else
+            {
+                form.MdiParent = parentForm;
+                parentForm.Size = new Size(form.Width+15, form.Height+25);
+                form.WindowState = FormWindowState.Maximized;
+                form.Show();
+            }
+        }
+
+        private void PrimkeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrimkeForm primkeForm = new PrimkeForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(primkeForm, this);
+        }
+
+        private void PregledSkladistaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SkladisteForm skladisteForm = new SkladisteForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(skladisteForm, this);
+        }
+
+        private void PregledNarudžbiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NarudzbeForm narudzbeForm = new NarudzbeForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(narudzbeForm, this);
+        }
+
+        private void PregledProjekataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PopisProjektiForm projektiForm = new PopisProjektiForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(projektiForm, this);
+        }
+
+        private void PregledRacunaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PregledRacunForm pregledRacunForm = new PregledRacunForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(pregledRacunForm, this);
+        }
+
+        private void IzdavanjeRacunaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IzdavanjeRacunaForm izdavanjeRacunaForm = new IzdavanjeRacunaForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(izdavanjeRacunaForm, this);
+        }
+
+        private void KorisniciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KorisniciForm korisniciForm  = new KorisniciForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(korisniciForm, this);
+        }
+
+        private void StatistikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            ShowForm(reportForm, this);
+        }
+
+        private void PoslovniPartneriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PoslovniPartneriForm partneriForm = new PoslovniPartneriForm(logirani_korisnik.tip_korisnikaId);
+            ShowForm(partneriForm, this);
         }
     }
 }

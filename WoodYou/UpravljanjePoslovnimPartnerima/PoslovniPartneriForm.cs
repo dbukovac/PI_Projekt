@@ -12,9 +12,11 @@ namespace UpravljanjePoslovnimPartnerima
 {
     public partial class PoslovniPartneriForm : Form
     {
-        public PoslovniPartneriForm()
+        private int tipKorisnika;
+        public PoslovniPartneriForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void PoslovniPartneriForm_Load(object sender, EventArgs e)

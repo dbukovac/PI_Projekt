@@ -12,9 +12,11 @@ namespace IzdavanjeRacuna
 {
     public partial class PregledRacunForm : Form
     {
-        public PregledRacunForm()
+        private int tipKorisnika = 0;
+        public PregledRacunForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void PregledRacunForm_Load(object sender, EventArgs e)

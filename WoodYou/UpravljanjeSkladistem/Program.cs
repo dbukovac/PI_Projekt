@@ -16,7 +16,6 @@ namespace UpravljanjeSkladistem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SkladisteForm());
         }
     }
 }

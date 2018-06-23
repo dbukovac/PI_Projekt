@@ -270,12 +270,14 @@
             // 
             // brisiPrimkuButton
             // 
+            this.brisiPrimkuButton.Enabled = false;
             this.brisiPrimkuButton.Location = new System.Drawing.Point(177, 321);
             this.brisiPrimkuButton.Name = "brisiPrimkuButton";
             this.brisiPrimkuButton.Size = new System.Drawing.Size(75, 23);
             this.brisiPrimkuButton.TabIndex = 5;
             this.brisiPrimkuButton.Text = "Briši primku";
             this.brisiPrimkuButton.UseVisualStyleBackColor = true;
+            this.brisiPrimkuButton.Visible = false;
             this.brisiPrimkuButton.Click += new System.EventHandler(this.BrisiPrimkuButton_Click);
             // 
             // urediPrimkuButton

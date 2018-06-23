@@ -12,9 +12,12 @@ namespace UpravljanjeProjektima
 {
     public partial class PopisProjektiForm : Form
     {
-        public PopisProjektiForm()
+        private int tipKorisnika = 0;
+
+        public PopisProjektiForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void PopisProjektiForm_Load(object sender, EventArgs e)

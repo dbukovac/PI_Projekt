@@ -12,9 +12,11 @@ namespace UpravljanjeSkladistem
 {
     public partial class SkladisteForm : Form
     {
-        public SkladisteForm()
+        private int tipKorisnika = 0;
+        public SkladisteForm(int tipKorisnika)
         {
             InitializeComponent();
+            this.tipKorisnika = tipKorisnika;
         }
 
         private void DohvatiMaterijale()
@@ -30,13 +32,11 @@ namespace UpravljanjeSkladistem
         private void SkladisteForm_Load(object sender, EventArgs e)
         {
             DohvatiMaterijale();
-        }
-
-        private void PrimkeButton_Click(object sender, EventArgs e)
-        {
-            PrimkeForm primkeForm = new PrimkeForm();
-            primkeForm.ShowDialog(this);
-            DohvatiMaterijale();
+            if(tipKorisnika == 1)
+            {
+                urediMaterijalButton.Enabled = true;
+                urediMaterijalButton.Visible = true;
+            }
         }
 
         private void NoviMaterijalButton_Click(object sender, EventArgs e)

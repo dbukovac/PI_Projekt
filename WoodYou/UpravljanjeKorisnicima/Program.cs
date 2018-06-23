@@ -16,7 +16,6 @@ namespace UpravljanjeKorisnicima
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KorisniciForm());
         }
     }
 }
