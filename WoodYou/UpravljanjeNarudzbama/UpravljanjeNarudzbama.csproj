@@ -75,6 +75,12 @@
     <Compile Include="Narudzbenica.cs">
       <DependentUpon>UpravljanjeNarudzbamaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NarudzbeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NarudzbeReportForm.Designer.cs">
+      <DependentUpon>NarudzbeReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NovaNarudzbenicaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,10 @@
     </Compile>
     <EmbeddedResource Include="NarudzbeForm.resx">
       <DependentUpon>NarudzbeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NarudzbenicaReport.rdlc" />
+    <EmbeddedResource Include="NarudzbeReportForm.resx">
+      <DependentUpon>NarudzbeReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NovaNarudzbenicaForm.resx">
       <DependentUpon>NovaNarudzbenicaForm.cs</DependentUpon>

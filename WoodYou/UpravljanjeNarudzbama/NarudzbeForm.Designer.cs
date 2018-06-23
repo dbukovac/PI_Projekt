@@ -54,6 +54,7 @@
             this.stavkanarudzbeniceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.narudzbenicaLabel = new System.Windows.Forms.Label();
             this.stavkeNarudzbeniceLabel = new System.Windows.Forms.Label();
+            this.ispisNarudzbeniceButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbenicaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -65,7 +66,7 @@
             // 
             // novaNarudzbaButton
             // 
-            this.novaNarudzbaButton.Location = new System.Drawing.Point(83, 426);
+            this.novaNarudzbaButton.Location = new System.Drawing.Point(12, 426);
             this.novaNarudzbaButton.Name = "novaNarudzbaButton";
             this.novaNarudzbaButton.Size = new System.Drawing.Size(103, 23);
             this.novaNarudzbaButton.TabIndex = 4;
@@ -75,7 +76,7 @@
             // 
             // urediNarudzbuButton
             // 
-            this.urediNarudzbuButton.Location = new System.Drawing.Point(192, 426);
+            this.urediNarudzbuButton.Location = new System.Drawing.Point(121, 426);
             this.urediNarudzbuButton.Name = "urediNarudzbuButton";
             this.urediNarudzbuButton.Size = new System.Drawing.Size(103, 23);
             this.urediNarudzbuButton.TabIndex = 5;
@@ -85,7 +86,7 @@
             // 
             // obrisiNarudzbuButton
             // 
-            this.obrisiNarudzbuButton.Location = new System.Drawing.Point(301, 426);
+            this.obrisiNarudzbuButton.Location = new System.Drawing.Point(230, 426);
             this.obrisiNarudzbuButton.Name = "obrisiNarudzbuButton";
             this.obrisiNarudzbuButton.Size = new System.Drawing.Size(103, 23);
             this.obrisiNarudzbuButton.TabIndex = 6;
@@ -95,7 +96,7 @@
             // 
             // obrisiStavkuButton
             // 
-            this.obrisiStavkuButton.Location = new System.Drawing.Point(663, 426);
+            this.obrisiStavkuButton.Location = new System.Drawing.Point(677, 426);
             this.obrisiStavkuButton.Name = "obrisiStavkuButton";
             this.obrisiStavkuButton.Size = new System.Drawing.Size(103, 23);
             this.obrisiStavkuButton.TabIndex = 9;
@@ -105,7 +106,7 @@
             // 
             // novaStavkaButton
             // 
-            this.novaStavkaButton.Location = new System.Drawing.Point(554, 426);
+            this.novaStavkaButton.Location = new System.Drawing.Point(568, 426);
             this.novaStavkaButton.Name = "novaStavkaButton";
             this.novaStavkaButton.Size = new System.Drawing.Size(103, 23);
             this.novaStavkaButton.TabIndex = 7;
@@ -134,7 +135,7 @@
             this.narudzbenicaDataGridView.Name = "narudzbenicaDataGridView";
             this.narudzbenicaDataGridView.ReadOnly = true;
             this.narudzbenicaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.narudzbenicaDataGridView.Size = new System.Drawing.Size(392, 392);
+            this.narudzbenicaDataGridView.Size = new System.Drawing.Size(402, 392);
             this.narudzbenicaDataGridView.TabIndex = 10;
             this.narudzbenicaDataGridView.SelectionChanged += new System.EventHandler(this.NarudzbeDataGridView_SelectionChanged);
             // 
@@ -220,7 +221,7 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13});
             this.stavka_narudzbeniceDataGridView.DataSource = this.stavkanarudzbeniceBindingSource;
-            this.stavka_narudzbeniceDataGridView.Location = new System.Drawing.Point(410, 28);
+            this.stavka_narudzbeniceDataGridView.Location = new System.Drawing.Point(424, 28);
             this.stavka_narudzbeniceDataGridView.Name = "stavka_narudzbeniceDataGridView";
             this.stavka_narudzbeniceDataGridView.ReadOnly = true;
             this.stavka_narudzbeniceDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -292,17 +293,28 @@
             // stavkeNarudzbeniceLabel
             // 
             this.stavkeNarudzbeniceLabel.AutoSize = true;
-            this.stavkeNarudzbeniceLabel.Location = new System.Drawing.Point(407, 12);
+            this.stavkeNarudzbeniceLabel.Location = new System.Drawing.Point(421, 12);
             this.stavkeNarudzbeniceLabel.Name = "stavkeNarudzbeniceLabel";
             this.stavkeNarudzbeniceLabel.Size = new System.Drawing.Size(108, 13);
             this.stavkeNarudzbeniceLabel.TabIndex = 12;
             this.stavkeNarudzbeniceLabel.Text = "Stavke narudžbenice";
+            // 
+            // ispisNarudzbeniceButton
+            // 
+            this.ispisNarudzbeniceButton.Location = new System.Drawing.Point(339, 426);
+            this.ispisNarudzbeniceButton.Name = "ispisNarudzbeniceButton";
+            this.ispisNarudzbeniceButton.Size = new System.Drawing.Size(75, 23);
+            this.ispisNarudzbeniceButton.TabIndex = 13;
+            this.ispisNarudzbeniceButton.Text = "Ispiši";
+            this.ispisNarudzbeniceButton.UseVisualStyleBackColor = true;
+            this.ispisNarudzbeniceButton.Click += new System.EventHandler(this.IspisNarudzbeniceButton_Click);
             // 
             // NarudzbeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 457);
+            this.Controls.Add(this.ispisNarudzbeniceButton);
             this.Controls.Add(this.stavkeNarudzbeniceLabel);
             this.Controls.Add(this.narudzbenicaLabel);
             this.Controls.Add(this.stavka_narudzbeniceDataGridView);
@@ -353,6 +365,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Button ispisNarudzbeniceButton;
     }
 }
 

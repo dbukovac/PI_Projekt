@@ -141,5 +141,15 @@ namespace UpravljanjeNarudzbama
                 }
             }
         }
+
+        private void IspisNarudzbeniceButton_Click(object sender, EventArgs e)
+        {
+            Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
+            if(narudzbenica != null)
+            {
+                NarudzbeReportForm reportForm = new NarudzbeReportForm(narudzbenica);
+                reportForm.ShowDialog(this);
+            }
+        }
     }
 }
