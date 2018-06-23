@@ -32,46 +32,29 @@ namespace UpravljanjeSkladistem
             DohvatiMaterijale();
         }
 
-        private void BrisiMaterijalButton_Click(object sender, EventArgs e)
-        {
-            Materijal materijal = materijalBindingSource.Current as Materijal;
-            if(materijal != null)
-            {
-                if (MessageBox.Show("Želite li zaista izbrisati materijal?", "Upozorenje!", MessageBoxButtons.YesNo)
-                    == System.Windows.Forms.DialogResult.Yes)
-                {
-                    using (var db = new UpraljanjeSkladistemEntities())
-                    {
-                        db.Materijal.Attach(materijal);
-                        db.Materijal.Remove(materijal);
-                        db.SaveChanges();
-                    }
-                    DohvatiMaterijale();
-                }
-            }
-        }
-
-        private void SmanjiKolicinuButton_Click(object sender, EventArgs e)
-        {
-            Materijal materijal = materijalBindingSource.Current as Materijal;
-            if (materijal != null)
-            {
-                using (var db = new UpraljanjeSkladistemEntities())
-                {
-                    db.Materijal.Attach(materijal);
-                    materijal.kolicina -= (int)kolicinaNumericUpDown.Value;
-                    db.SaveChanges();
-                }
-                kolicinaNumericUpDown.Value = 0;
-                DohvatiMaterijale();
-            }
-        }
-
         private void PrimkeButton_Click(object sender, EventArgs e)
         {
             PrimkeForm primkeForm = new PrimkeForm();
             primkeForm.ShowDialog(this);
             DohvatiMaterijale();
+        }
+
+        private void NoviMaterijalButton_Click(object sender, EventArgs e)
+        {
+            NoviMaterijalForm materijalForm = new NoviMaterijalForm();
+            materijalForm.ShowDialog(this);
+            DohvatiMaterijale();
+        }
+
+        private void UrediMaterijalButton_Click(object sender, EventArgs e)
+        {
+            Materijal trenutniMaterijal = materijalBindingSource.Current as Materijal;
+            if(trenutniMaterijal != null)
+            {
+                NoviMaterijalForm materijalForm = new NoviMaterijalForm(trenutniMaterijal);
+                materijalForm.ShowDialog(this);
+                DohvatiMaterijale();
+            }
         }
     }
 }

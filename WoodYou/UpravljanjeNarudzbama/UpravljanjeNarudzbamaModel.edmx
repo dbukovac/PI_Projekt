@@ -13,7 +13,7 @@
           <Property Name="korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="tip_korisnikaId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materijal">
@@ -23,6 +23,7 @@
           <Property Name="materijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="cijena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Narudzbenica">
           <Key>
@@ -39,7 +40,7 @@
           </Key>
           <Property Name="partnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="OIB" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tip_partnera" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
@@ -197,7 +198,7 @@
           <Property Name="korisnicko_ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lozinka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lozinka" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="tip_korisnikaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tip_korisnika" Relationship="DBModel.FK_Korisnik_Tip_korisnika" FromRole="Korisnik" ToRole="Tip_korisnika" />
           <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Narudzbenica_Korisnik" FromRole="Korisnik" ToRole="Narudzbenica" />
@@ -210,6 +211,7 @@
           <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="kolicina" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Stavka_narudzbenice" Relationship="DBModel.FK_Stavka_narudzbenice_Materijal" FromRole="Materijal" ToRole="Stavka_narudzbenice" />
+          <Property Name="cijena" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Narudzbenica">
           <Key>
@@ -304,7 +306,7 @@
           </Key>
           <Property Name="partnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="OIB" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="adresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tip_partnera" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Narudzbenica" Relationship="DBModel.FK_Narudzbenica_Partner" FromRole="Partner" ToRole="Narudzbenica" />
@@ -344,6 +346,7 @@
           <EntitySetMapping Name="Materijal">
             <EntityTypeMapping TypeName="DBModel.Materijal">
               <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
                 <ScalarProperty Name="kolicina" ColumnName="kolicina" />
                 <ScalarProperty Name="naziv" ColumnName="naziv" />
                 <ScalarProperty Name="materijalId" ColumnName="materijalId" />

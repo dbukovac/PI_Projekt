@@ -33,16 +33,15 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.brisiMaterijalButton = new System.Windows.Forms.Button();
             this.primkeButton = new System.Windows.Forms.Button();
             this.materijalLabel = new System.Windows.Forms.Label();
-            this.smanjiKolicinuButton = new System.Windows.Forms.Button();
-            this.kolicinaNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.noviMaterijalButton = new System.Windows.Forms.Button();
+            this.urediMaterijalButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // materijalDataGridView
@@ -55,12 +54,13 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
+            this.cijena,
             this.dataGridViewTextBoxColumn4});
             this.materijalDataGridView.DataSource = this.materijalBindingSource;
             this.materijalDataGridView.Location = new System.Drawing.Point(15, 25);
             this.materijalDataGridView.Name = "materijalDataGridView";
             this.materijalDataGridView.ReadOnly = true;
-            this.materijalDataGridView.Size = new System.Drawing.Size(295, 394);
+            this.materijalDataGridView.Size = new System.Drawing.Size(519, 394);
             this.materijalDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -86,6 +86,13 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // cijena
+            // 
+            this.cijena.DataPropertyName = "cijena";
+            this.cijena.HeaderText = "Cijena";
+            this.cijena.Name = "cijena";
+            this.cijena.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Stavka_primke";
@@ -97,16 +104,6 @@
             // materijalBindingSource
             // 
             this.materijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
-            // 
-            // brisiMaterijalButton
-            // 
-            this.brisiMaterijalButton.Location = new System.Drawing.Point(93, 425);
-            this.brisiMaterijalButton.Name = "brisiMaterijalButton";
-            this.brisiMaterijalButton.Size = new System.Drawing.Size(75, 23);
-            this.brisiMaterijalButton.TabIndex = 1;
-            this.brisiMaterijalButton.Text = "Briši materijal";
-            this.brisiMaterijalButton.UseVisualStyleBackColor = true;
-            this.brisiMaterijalButton.Click += new System.EventHandler(this.BrisiMaterijalButton_Click);
             // 
             // primkeButton
             // 
@@ -127,40 +124,41 @@
             this.materijalLabel.TabIndex = 3;
             this.materijalLabel.Text = "Materijal";
             // 
-            // smanjiKolicinuButton
+            // noviMaterijalButton
             // 
-            this.smanjiKolicinuButton.Location = new System.Drawing.Point(224, 425);
-            this.smanjiKolicinuButton.Name = "smanjiKolicinuButton";
-            this.smanjiKolicinuButton.Size = new System.Drawing.Size(75, 23);
-            this.smanjiKolicinuButton.TabIndex = 4;
-            this.smanjiKolicinuButton.Text = "Oduzmi";
-            this.smanjiKolicinuButton.UseVisualStyleBackColor = true;
-            this.smanjiKolicinuButton.Click += new System.EventHandler(this.SmanjiKolicinuButton_Click);
+            this.noviMaterijalButton.Location = new System.Drawing.Point(361, 425);
+            this.noviMaterijalButton.Name = "noviMaterijalButton";
+            this.noviMaterijalButton.Size = new System.Drawing.Size(82, 23);
+            this.noviMaterijalButton.TabIndex = 6;
+            this.noviMaterijalButton.Text = "Novi materijal";
+            this.noviMaterijalButton.UseVisualStyleBackColor = true;
+            this.noviMaterijalButton.Click += new System.EventHandler(this.NoviMaterijalButton_Click);
             // 
-            // kolicinaNumericUpDown
+            // urediMaterijalButton
             // 
-            this.kolicinaNumericUpDown.Location = new System.Drawing.Point(174, 426);
-            this.kolicinaNumericUpDown.Name = "kolicinaNumericUpDown";
-            this.kolicinaNumericUpDown.Size = new System.Drawing.Size(44, 20);
-            this.kolicinaNumericUpDown.TabIndex = 5;
+            this.urediMaterijalButton.Location = new System.Drawing.Point(449, 425);
+            this.urediMaterijalButton.Name = "urediMaterijalButton";
+            this.urediMaterijalButton.Size = new System.Drawing.Size(85, 23);
+            this.urediMaterijalButton.TabIndex = 7;
+            this.urediMaterijalButton.Text = "Uredi materijal";
+            this.urediMaterijalButton.UseVisualStyleBackColor = true;
+            this.urediMaterijalButton.Click += new System.EventHandler(this.UrediMaterijalButton_Click);
             // 
             // SkladisteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 456);
-            this.Controls.Add(this.kolicinaNumericUpDown);
-            this.Controls.Add(this.smanjiKolicinuButton);
+            this.ClientSize = new System.Drawing.Size(548, 456);
+            this.Controls.Add(this.urediMaterijalButton);
+            this.Controls.Add(this.noviMaterijalButton);
             this.Controls.Add(this.materijalLabel);
             this.Controls.Add(this.primkeButton);
-            this.Controls.Add(this.brisiMaterijalButton);
             this.Controls.Add(this.materijalDataGridView);
             this.Name = "SkladisteForm";
             this.Text = "Stanje na skladištu";
             this.Load += new System.EventHandler(this.SkladisteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,15 +168,15 @@
 
         private System.Windows.Forms.BindingSource materijalBindingSource;
         private System.Windows.Forms.DataGridView materijalDataGridView;
+        private System.Windows.Forms.Button primkeButton;
+        private System.Windows.Forms.Label materijalLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Button brisiMaterijalButton;
-        private System.Windows.Forms.Button primkeButton;
-        private System.Windows.Forms.Label materijalLabel;
-        private System.Windows.Forms.Button smanjiKolicinuButton;
-        private System.Windows.Forms.NumericUpDown kolicinaNumericUpDown;
+        private System.Windows.Forms.Button noviMaterijalButton;
+        private System.Windows.Forms.Button urediMaterijalButton;
     }
 }
 

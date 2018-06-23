@@ -23,6 +23,7 @@ namespace UpravljanjeSkladistem
         public int materijalId { get; set; }
         public string naziv { get; set; }
         public int kolicina { get; set; }
+        public decimal cijena { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka_primke> Stavka_primke { get; set; }

@@ -72,6 +72,12 @@
     <Compile Include="NovaStavkaPrimkeForm.Designer.cs">
       <DependentUpon>NovaStavkaPrimkeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NoviMaterijalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoviMaterijalForm.Designer.cs">
+      <DependentUpon>NoviMaterijalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partner.cs">
       <DependentUpon>UpravljanjeSkladistemModel.tt</DependentUpon>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NovaStavkaPrimkeForm.resx">
       <DependentUpon>NovaStavkaPrimkeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoviMaterijalForm.resx">
+      <DependentUpon>NoviMaterijalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrimkeForm.resx">
       <DependentUpon>PrimkeForm.cs</DependentUpon>
