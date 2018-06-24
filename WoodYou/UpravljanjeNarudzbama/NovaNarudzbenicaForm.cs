@@ -13,15 +13,33 @@ namespace UpravljanjeNarudzbama
     public partial class NovaNarudzbenicaForm : Form
     {
         private Narudzbenica trenutnaNarudzbenica = null;
-        public NovaNarudzbenicaForm()
+        private int idKorisnik;
+        /// <summary>
+        /// Konstruktor forme
+        /// Postavlja ID trenutnog korisnika
+        /// </summary>
+        /// <param name="idKorisnik">ID korisnika</param>
+        public NovaNarudzbenicaForm(int idKorisnik)
         {
             InitializeComponent();
+            this.idKorisnik = idKorisnik;
         }
+        /// <summary>
+        /// Konstruktor forme za otvaranje forme u modu za ažuriranje
+        /// </summary>
+        /// <param name="narudzbenica">Trenutna narudzbenica</param>
         public NovaNarudzbenicaForm(Narudzbenica narudzbenica)
         {
             InitializeComponent();
             this.trenutnaNarudzbenica = narudzbenica;
         }
+        /// <summary>
+        /// Metoda koja se poziva na učitavanje forme.
+        /// Poziva metodu za dohvaćanje partnera.
+        /// Ako je u modu za uređivanje postavlja podatke o narudžbenici
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaNarudzbenicaForm_Load(object sender, EventArgs e)
         {
             DohvatiPartnere();
@@ -38,7 +56,9 @@ namespace UpravljanjeNarudzbama
                 partnerComboBox.SelectedValue = trenutnaNarudzbenica.partnerId;
             }
         }
-
+        /// <summary>
+        /// Metoda koja dohvaća listu partnera iz baze i dodjeljuje ju kao DataSource ComboBox-a
+        /// </summary>
         private void DohvatiPartnere()
         {
             BindingList<Partner> partneri = null;
@@ -48,7 +68,13 @@ namespace UpravljanjeNarudzbama
             }
             partnerBindingSource.DataSource = partneri;
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na tipku spremiNarudzbuButton
+        /// Sprema novu narudzbenicu u bazu, odnosno sprema promjene nastale
+        /// na staroj narudzbenici.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SpremiNarudzbuButton_Click(object sender, EventArgs e)
         {
 
@@ -58,7 +84,7 @@ namespace UpravljanjeNarudzbama
                 {
                     Narudzbenica narudzbenica = new Narudzbenica
                     {
-                        korisnikId = 2,
+                        korisnikId = idKorisnik,
                         partnerId = int.Parse(partnerComboBox.SelectedValue.ToString()),
                         datum_slanja = datumSlanjaDateTimePicker.Value
                     };

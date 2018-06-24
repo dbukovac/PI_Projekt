@@ -14,13 +14,19 @@ namespace UpravljanjeSkladistem
     {
         Primka trenutnaPrimka = null;
         BindingList<Materijal> materijali = null;
-
+        /// <summary>
+        /// Konstruktor forme.
+        /// Postavlja trenutnu primku.
+        /// </summary>
+        /// <param name="primka"></param>
         public NovaStavkaPrimkeForm(Primka primka)
         {
             InitializeComponent();
             trenutnaPrimka = primka;
         }
-
+        /// <summary>
+        /// Dohvaća materijale dostupne u sustavu
+        /// </summary>
         private void DohvatiMaterijale()
         {
             materijali = new BindingList<Materijal>();
@@ -30,7 +36,9 @@ namespace UpravljanjeSkladistem
             }
             materijalBindingSource.DataSource = materijali;
         }
-
+        /// <summary>
+        /// Dohvaća stavke već dodane na primku.
+        /// </summary>
         private void DohvatiStavke()
         {
             BindingList<Stavka_primke> stavke = null;
@@ -42,7 +50,13 @@ namespace UpravljanjeSkladistem
             }
             stavkaprimkeBindingSource.DataSource = stavke;
         }
-
+        /// <summary>
+        /// Provjerava ima li dovoljno materijala na skladištu za skinuti.
+        /// Služi kako ne bi stanje materijala na skladištu palo ispod 0,
+        /// prilikom brisanja primke.
+        /// </summary>
+        /// <param name="stavka">Stavka koja se provjerava</param>
+        /// <returns>Vraća true ako ima dovoljno materijala, false ako nema.</returns>
         private bool ProvjeraSkladista(Stavka_primke stavka)
         {
             DohvatiMaterijale();
@@ -56,7 +70,13 @@ namespace UpravljanjeSkladistem
             }
             return false;
         }
-
+        /// <summary>
+        /// Metoda koja se poziva klikom na tipku dodajMaterijalButton.
+        /// Provjerava ima li dodanog materijala već na primci, ako nema
+        /// dodaje ga na primku, ako da onda ispisuje ogovarajuću poruku
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DodajMaterijalButton_Click(object sender, EventArgs e)
         {
             Materijal trenutniMaterijal = materijalBindingSource.Current as Materijal;
@@ -97,7 +117,13 @@ namespace UpravljanjeSkladistem
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke brisiMaterijalButton
+        /// Poziva metodu za provjeru skladista.
+        /// Brise materijal sa primke ako može
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BrisiMaterijalButton_Click(object sender, EventArgs e)
         {
             Stavka_primke trenutnaStavka = stavkaprimkeBindingSource.Current as Stavka_primke;
@@ -123,12 +149,22 @@ namespace UpravljanjeSkladistem
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda koja se pozica na ureduButton
+        /// Zatvara formu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UreduButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        /// <summary>
+        /// Poziva se na učitavanje forme.
+        /// Poziva metodu za dohvaćanje materijala i stavki
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaStavkaPrimkeForm_Load(object sender, EventArgs e)
         {
             DohvatiMaterijale();

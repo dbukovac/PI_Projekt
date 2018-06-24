@@ -10,13 +10,22 @@ namespace UpravljanjeSkladistem
         BindingList<Materijal> materijali = null;
         BindingList<Stavka_primke> stavke = null;
         int tipKorisnika = 0;
-
-        public PrimkeForm(int tipKorisnika)
+        int idKorisnika = 0;
+        /// <summary>
+        /// Konstruktor forme PrimkeForm. Postavlja tip i ID prijavljenog korisnika.
+        /// </summary>
+        /// <param name="tipKorisnika">Tip ulogiranog korisnika</param>
+        /// <param name="idKorisnika">ID ulogiranog korisnika</param>
+        public PrimkeForm(int tipKorisnika, int idKorisnika)
         {
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
+            this.idKorisnika = idKorisnika;
         }
-
+        /// <summary>
+        /// Metoda koja dohvaća primke i, korisnike i partnere vezane uz primku.
+        /// Postavlja DataSource-ove za prikaz podataka.
+        /// </summary>
         private void PrikazPrimki()
         {
             BindingList<Primka> primke = null;
@@ -37,7 +46,11 @@ namespace UpravljanjeSkladistem
             partnerBindingSource.DataSource = partneri;
             primkaBindingSource.DataSource = primke;
         }
-        
+        /// <summary>
+        /// Dohvaća sve stavke za određenu primku, te dohvaća materijale vezane uz stavke.
+        /// Postavlja DataSource-ove za prikaz podataka.
+        /// </summary>
+        /// <param name="primka">Primka za koju ispisujemo stavke</param>
         private void PrikazStavki(Primka primka)
         {
             using(var db = new UpraljanjeSkladistemEntities())
@@ -53,16 +66,23 @@ namespace UpravljanjeSkladistem
             stavka_primkeBindingSource.DataSource = stavke;
             materijalBindingSource.DataSource = materijali;
         }
-
+        /// <summary>
+        /// Dohvaća sve listu svih materijala na skladištu za provjeru količine.
+        /// </summary>
         private void DohvatiMaterijale()
         {
-            
             using (var db = new UpraljanjeSkladistemEntities())
             {
                 materijali = new BindingList<Materijal>(db.Materijal.ToList());
             }
         }
-
+        /// <summary>
+        /// Provjerava ima li dovoljno materijala na skladištu za skinuti.
+        /// Služi kako ne bi stanje materijala na skladištu palo ispod 0,
+        /// prilikom brisanja primke.
+        /// </summary>
+        /// <param name="stavka">Stavka koja se provjerava</param>
+        /// <returns>Vraća true ako ima dovoljno materijala, false ako nema.</returns>
         private bool ProvjeraSkladista(Stavka_primke stavka)
         {
             DohvatiMaterijale();
@@ -76,7 +96,13 @@ namespace UpravljanjeSkladistem
             }
             return false;
         }
-
+        /// <summary>
+        /// Metoda koja se poziva prilikom učitavanja forme.
+        /// Poziva funkciju za prikaz primki i prikaz stavki za označenu primku
+        /// Omogućuje tipku za brisanje primki ako je tip korisnika administrator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PrimkeForm_Load(object sender, EventArgs e)
         {
             PrikazPrimki();
@@ -92,7 +118,12 @@ namespace UpravljanjeSkladistem
                 brisiPrimkuButton.Visible = true;
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva kada se označi neka druga primka.
+        /// Poziva se metoda za prikaz stavki za označenu primku
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PrimkaDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             Primka primka = primkaBindingSource.Current as Primka;
@@ -101,7 +132,14 @@ namespace UpravljanjeSkladistem
                 PrikazStavki(primka);
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke brisiPrimkuButton,
+        /// koja služi za brisanje primki.
+        /// Provjerava ima li stavki na primci, te ako nema dozvoljava
+        /// brisanje primke, ako ne onda prikazuje odgovrajuću poruku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BrisiPrimkuButton_Click(object sender, EventArgs e)
         {
             Primka primka = primkaBindingSource.Current as Primka;
@@ -133,14 +171,25 @@ namespace UpravljanjeSkladistem
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke novaPrimkaButton,
+        /// koja služi za otvaranje forme za unos nove primke.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaPrimkaButton_Click(object sender, EventArgs e)
         {
-            NovaPrimkaForm novaPrimkaForm = new NovaPrimkaForm();
+            NovaPrimkaForm novaPrimkaForm = new NovaPrimkaForm(idKorisnika);
             novaPrimkaForm.ShowDialog(this);
             PrikazPrimki();
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke urediPrimkuButton,
+        /// koja služi za uređivanje primki.
+        /// Otvara formu za novu primku u modu za uređivanje.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UrediPrimkuButton_Click(object sender, EventArgs e)
         {
             Primka trenutnaPrimka = primkaBindingSource.Current as Primka;
@@ -148,7 +197,13 @@ namespace UpravljanjeSkladistem
             novaPrimkaForm.ShowDialog(this);
             PrikazPrimki();
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke novaStavkaButton,
+        /// koja služi za dodavanje stavki na primku.
+        /// Otvara formu za dodavanje stavki na primku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaStavkaButton_Click(object sender, EventArgs e)
         {
             Primka trenutnaPrimka = primkaBindingSource.Current as Primka;
@@ -156,7 +211,13 @@ namespace UpravljanjeSkladistem
             novaStavkaPrimkeForm.ShowDialog(this);
             PrikazPrimki();
         }
-
+        /// <summary>
+        /// Metoda kojom se mogu brisati stavke primke.
+        /// Poziva metodu za provjeru skladišta te ako je
+        /// moguće briše se stavka primke.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BrisiStavkuButton_Click(object sender, EventArgs e)
         {
             Stavka_primke trenutnaStavka = stavka_primkeBindingSource.Current as Stavka_primke;

@@ -13,11 +13,13 @@ namespace UpravljanjeProjektima
     public partial class PopisProjektiForm : Form
     {
         private int tipKorisnika = 0;
+        private int idKorisnika = 0;
 
-        public PopisProjektiForm(int tipKorisnika)
+        public PopisProjektiForm(int tipKorisnika, int idKorisnika)
         {
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
+            this.idKorisnika = idKorisnika;
         }
 
         private void PopisProjektiForm_Load(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace UpravljanjeProjektima
 
         private void noviProjektButton_Click(object sender, EventArgs e)
         {
-            NoviProjektForm noviProjektforma = new NoviProjektForm();
+            NoviProjektForm noviProjektforma = new NoviProjektForm(idKorisnika);
             noviProjektforma.ShowDialog();
             PrikaziProjekte();
         }

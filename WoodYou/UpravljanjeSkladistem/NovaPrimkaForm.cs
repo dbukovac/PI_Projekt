@@ -13,17 +13,28 @@ namespace UpravljanjeSkladistem
     public partial class NovaPrimkaForm : Form
     {
         Primka trenutnaPrimka = null;
-        public NovaPrimkaForm()
+        private int idKorisnika;
+        /// <summary>
+        /// Konstruktor forme NovaPrimkaForm
+        /// </summary>
+        /// <param name="idKorisnika">ID korisnika koji je ulogiran</param>
+        public NovaPrimkaForm(int idKorisnika)
         {
             InitializeComponent();
+            this.idKorisnika = idKorisnika;
         }
-
+        /// <summary>
+        /// Konstruktor forme NovaPrimkaForm za rad u modu za ažuriranje
+        /// </summary>
+        /// <param name="primka">Objekt tipa Primka, primka koja se ažurira</param>
         public NovaPrimkaForm(Primka primka)
         {
             InitializeComponent();
             trenutnaPrimka = primka;
         }
-
+        /// <summary>
+        /// Metoda koja dohvaća listu partnera iz baze i dodjeljuje ju kao DataSource ComboBox-a
+        /// </summary>
         private void DohvatiPartnere()
         {
             BindingList<Partner> partneri = null;
@@ -33,17 +44,30 @@ namespace UpravljanjeSkladistem
             }
             partnerBindingSource.DataSource = partneri;
         }
-
+        /// <summary>
+        /// Metoda koja se poziva prilikom pokretanja forme.
+        /// Poziva metodu za dohvaćanje partnera, te ako je u modu za ažuriranje,
+        /// postavlja partnera i datum za primku koja se ažurira.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaPrimkaForm_Load(object sender, EventArgs e)
         {
             DohvatiPartnere();
             if (trenutnaPrimka != null)
             {
+                datumPrimitkaDateTimePicker.Value = trenutnaPrimka.datumPrimitka;
                 partnerComboBox.SelectedValue = trenutnaPrimka.partnerId;
             }
 
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na tipku ureduButton ("U redu").
+        /// Sprema novu primku u bazu, odnosno sprema promjene nastale
+        /// na staroj primci.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UreduButton_Click(object sender, EventArgs e)
         {
             using (var db = new UpraljanjeSkladistemEntities())
@@ -53,7 +77,7 @@ namespace UpravljanjeSkladistem
                     Primka novaPrimka = new Primka
                     {
                         datumPrimitka = datumPrimitkaDateTimePicker.Value,
-                        korisnikId = 2,
+                        korisnikId = idKorisnika,
                         partnerId = int.Parse(partnerComboBox.SelectedValue.ToString())
                     };
                     db.Primka.Add(novaPrimka);

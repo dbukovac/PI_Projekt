@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label datumPrimitkaLabel;
-            System.Windows.Forms.Label korisnikIdLabel;
             System.Windows.Forms.Label partnerIdLabel;
             this.datumPrimitkaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.primkaBindingSource = new System.Windows.Forms.BindingSource();
+            this.primkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partnerComboBox = new System.Windows.Forms.ComboBox();
-            this.partnerBindingSource = new System.Windows.Forms.BindingSource();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource();
-            this.korisnikTextBox = new System.Windows.Forms.TextBox();
-            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource();
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ureduButton = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             datumPrimitkaLabel = new System.Windows.Forms.Label();
-            korisnikIdLabel = new System.Windows.Forms.Label();
             partnerIdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.primkaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -58,19 +56,10 @@
             datumPrimitkaLabel.TabIndex = 1;
             datumPrimitkaLabel.Text = "Datum primitka:";
             // 
-            // korisnikIdLabel
-            // 
-            korisnikIdLabel.AutoSize = true;
-            korisnikIdLabel.Location = new System.Drawing.Point(12, 47);
-            korisnikIdLabel.Name = "korisnikIdLabel";
-            korisnikIdLabel.Size = new System.Drawing.Size(47, 13);
-            korisnikIdLabel.TabIndex = 3;
-            korisnikIdLabel.Text = "Korisnik:";
-            // 
             // partnerIdLabel
             // 
             partnerIdLabel.AutoSize = true;
-            partnerIdLabel.Location = new System.Drawing.Point(12, 73);
+            partnerIdLabel.Location = new System.Drawing.Point(12, 47);
             partnerIdLabel.Name = "partnerIdLabel";
             partnerIdLabel.Size = new System.Drawing.Size(44, 13);
             partnerIdLabel.TabIndex = 5;
@@ -94,7 +83,7 @@
             this.partnerComboBox.DataSource = this.partnerBindingSource;
             this.partnerComboBox.DisplayMember = "ime";
             this.partnerComboBox.FormattingEnabled = true;
-            this.partnerComboBox.Location = new System.Drawing.Point(97, 69);
+            this.partnerComboBox.Location = new System.Drawing.Point(97, 43);
             this.partnerComboBox.Name = "partnerComboBox";
             this.partnerComboBox.Size = new System.Drawing.Size(133, 21);
             this.partnerComboBox.TabIndex = 7;
@@ -108,21 +97,13 @@
             // 
             this.materijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
             // 
-            // korisnikTextBox
-            // 
-            this.korisnikTextBox.Location = new System.Drawing.Point(97, 43);
-            this.korisnikTextBox.Name = "korisnikTextBox";
-            this.korisnikTextBox.ReadOnly = true;
-            this.korisnikTextBox.Size = new System.Drawing.Size(133, 20);
-            this.korisnikTextBox.TabIndex = 8;
-            // 
             // dodaniMaterijalBindingSource
             // 
             this.dodaniMaterijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
             // 
             // ureduButton
             // 
-            this.ureduButton.Location = new System.Drawing.Point(172, 97);
+            this.ureduButton.Location = new System.Drawing.Point(172, 71);
             this.ureduButton.Name = "ureduButton";
             this.ureduButton.Size = new System.Drawing.Size(75, 23);
             this.ureduButton.TabIndex = 12;
@@ -138,19 +119,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 132);
+            this.ClientSize = new System.Drawing.Size(259, 104);
             this.Controls.Add(this.ureduButton);
-            this.Controls.Add(this.korisnikTextBox);
             this.Controls.Add(this.partnerComboBox);
             this.Controls.Add(datumPrimitkaLabel);
             this.Controls.Add(this.datumPrimitkaDateTimePicker);
-            this.Controls.Add(korisnikIdLabel);
             this.Controls.Add(partnerIdLabel);
             this.helpProvider1.SetHelpKeyword(this, "NovaPrimkaForm");
             this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NovaPrimkaForm";
             this.helpProvider1.SetShowHelp(this, true);
-            this.Text = "NovaPrimkaForm";
+            this.Text = "Nova primka";
             this.Load += new System.EventHandler(this.NovaPrimkaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.primkaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
@@ -167,7 +146,6 @@
         private System.Windows.Forms.DateTimePicker datumPrimitkaDateTimePicker;
         private System.Windows.Forms.ComboBox partnerComboBox;
         private System.Windows.Forms.BindingSource materijalBindingSource;
-        private System.Windows.Forms.TextBox korisnikTextBox;
         private System.Windows.Forms.BindingSource partnerBindingSource;
         private System.Windows.Forms.BindingSource dodaniMaterijalBindingSource;
         private System.Windows.Forms.Button ureduButton;

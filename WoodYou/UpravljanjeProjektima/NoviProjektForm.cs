@@ -13,10 +13,11 @@ namespace UpravljanjeProjektima
     public partial class NoviProjektForm : Form
     {
         private Projekt odabraniProjekt = null;
-
-        public NoviProjektForm()
+        private int idKorisnik;
+        public NoviProjektForm(int idKorisnik)
         {
             InitializeComponent();
+            this.idKorisnik = idKorisnik;
         }
         public NoviProjektForm(Projekt projekt)
         {
@@ -70,7 +71,7 @@ namespace UpravljanjeProjektima
                         cijena_bez_pdv = 0,
                         iznos_pdv = 0,
                         datum_zavrsetka = null,
-                        korisnikId = 3,
+                        korisnikId = idKorisnik,
                         potrebno_vrijeme = 0,
                         kod = GenerirajKod(6),
                     };

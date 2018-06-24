@@ -13,10 +13,12 @@ namespace UpravljanjeNarudzbama
     public partial class NarudzbeForm : Form
     {
         private int tipKorisnika = 0;
-        public NarudzbeForm(int tipKorisnika)
+        private int idKorisnika = 0;
+        public NarudzbeForm(int tipKorisnika, int idKorisnika)
         {
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
+            this.idKorisnika = idKorisnika;
         }
         /// <summary>
         /// Metoda kojom se dohvaca lista narudzenice, 
@@ -67,6 +69,14 @@ namespace UpravljanjeNarudzbama
             stavkanarudzbeniceBindingSource.DataSource = stavke;
             materijalBindingSource.DataSource = materijali;
         }
+        /// <summary>
+        /// Metoda koja se poziva na učitavanje forme.
+        /// Poziva metodu za prikaz narudžbi.
+        /// Provjerava je li tip korisnika administrator,
+        /// ako je omogućuje tipku za brisanje narudzbenice.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NarudzbeForm_Load(object sender, EventArgs e)
         {
             PrikazNarudzbi();
@@ -76,6 +86,12 @@ namespace UpravljanjeNarudzbama
                 obrisiNarudzbuButton.Visible = true;
             }
         }
+        /// <summary>
+        /// Metoda koja se poziva na promjenu izbora narudžbe.
+        /// Poziva metodu za prikazivanje stavke trenutne narudzbenice.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NarudzbeDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
@@ -84,12 +100,26 @@ namespace UpravljanjeNarudzbama
                 PrikazStavki(narudzbenica);
             }
         }
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke novaNarudzbaButton.
+        /// Otvara formu NovaNarudzbaForm
+        /// Poziva metodu za prikaz narudzbi.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaNarudzbaButton_Click(object sender, EventArgs e)
         {
-            NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm();
+            NovaNarudzbenicaForm novaNarudzbenicaForm = new NovaNarudzbenicaForm(idKorisnika);
             novaNarudzbenicaForm.ShowDialog(this);
             PrikazNarudzbi();
         }
+        /// <summary>
+        /// Metoda koja se poziva na pritisak tipke urediNarudzbzbuButton
+        /// Otvara formu NovaNarudzbaForm u modu za uređivanje
+        /// Poziva metodu za dohvaćanje narudžbi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UrediNarudzbuButton_Click(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
@@ -100,6 +130,13 @@ namespace UpravljanjeNarudzbama
                 PrikazNarudzbi();
             }
         }
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke novaStavkaButton
+        /// Otvara formu NovaStavkaNarudzbeniceForm
+        /// Poziva metodu za prikazivanje narudzbe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaStavkaButton_Click(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
@@ -110,7 +147,13 @@ namespace UpravljanjeNarudzbama
                 PrikazNarudzbi();
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke obrisiNarudzbuButton.
+        /// Prikazuje odgovarajuću poruku te ako se odgovori potvrdno
+        /// briše se narudžbenica
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ObrisiNarudzbuButton_Click(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
@@ -129,6 +172,13 @@ namespace UpravljanjeNarudzbama
                 }
             }
         }
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke obrisiStavkuButton.
+        /// Prikazuje odgovarajuću poruku te ako se odgovori potvrdno
+        /// briše se stavka
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ObrisiStavkuButton_Click(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;
@@ -148,7 +198,12 @@ namespace UpravljanjeNarudzbama
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke ispisNarudzbeniceButton.
+        /// Prikazuje formu za prikaz dokumenta narudžbenice
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IspisNarudzbeniceButton_Click(object sender, EventArgs e)
         {
             Narudzbenica narudzbenica = narudzbenicaBindingSource.Current as Narudzbenica;

@@ -13,18 +13,28 @@ namespace UpravljanjeSkladistem
     public partial class NoviMaterijalForm : Form
     {
         private Materijal materijal=null;
-
+        /// <summary>
+        /// Konstruktor forme
+        /// </summary>
         public NoviMaterijalForm()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Konstruktor forme za otvaranje forme u modu za uređivanje
+        /// </summary>
+        /// <param name="materijal">Materijal koji se ažurira</param>
         public NoviMaterijalForm(Materijal materijal)
         {
             InitializeComponent();
             this.materijal = materijal;
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke spremiButton
+        /// Sprema nastale promjene na materijalu ili unosi novi materijal u sustav.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SpremiButton_Click(object sender, EventArgs e)
         {
             using (var db = new UpraljanjeSkladistemEntities())
@@ -51,7 +61,13 @@ namespace UpravljanjeSkladistem
                 Close();
             }
         }
-
+        /// <summary>
+        /// Metoda koja se poziva kada se forma učita.
+        /// Ako je u modu za uređivanje postavlja podatke
+        /// o materijalu u odgovarajuće kontrole.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NoviMaterijalForm_Load(object sender, EventArgs e)
         {
             if(materijal != null) {

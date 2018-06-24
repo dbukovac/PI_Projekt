@@ -56,7 +56,7 @@ namespace GlavniIzbornik
 
         private void PrimkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrimkeForm primkeForm = new PrimkeForm(logirani_korisnik.tip_korisnikaId);
+            PrimkeForm primkeForm = new PrimkeForm(logirani_korisnik.tip_korisnikaId, logirani_korisnik.korisnikId);
             ShowForm(primkeForm, this);
         }
 
@@ -68,13 +68,13 @@ namespace GlavniIzbornik
 
         private void PregledNarudžbiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NarudzbeForm narudzbeForm = new NarudzbeForm(logirani_korisnik.tip_korisnikaId);
+            NarudzbeForm narudzbeForm = new NarudzbeForm(logirani_korisnik.tip_korisnikaId, logirani_korisnik.korisnikId);
             ShowForm(narudzbeForm, this);
         }
 
         private void PregledProjekataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PopisProjektiForm projektiForm = new PopisProjektiForm(logirani_korisnik.tip_korisnikaId);
+            PopisProjektiForm projektiForm = new PopisProjektiForm(logirani_korisnik.tip_korisnikaId, logirani_korisnik.korisnikId);
             ShowForm(projektiForm, this);
         }
 
