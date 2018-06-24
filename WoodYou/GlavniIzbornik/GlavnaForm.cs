@@ -29,7 +29,12 @@ namespace GlavniIzbornik
             InitializeComponent();
             logirani_korisnik = kor;
         }
-
+        /// <summary>
+        /// Prilikom učitavanja forme provjerava se ako je korisnik admin 
+        /// da mu se prikaže opcija za upravljanje korisnicima
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GlavnaForm_Load(object sender, EventArgs e)
         {
             if (logirani_korisnik.tip_korisnikaId == 1)
@@ -37,7 +42,11 @@ namespace GlavniIzbornik
                 korisniciToolStripMenuItem.Visible = true;
             }
         }
-
+        /// <summary>
+        /// Metoda za prikazivanje forme korištenjem delegata kako bi se smanjio teret na glavnoj dretvi
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="parentForm"></param>
         private void ShowForm(Form form, Form parentForm)
         {
             if(form.InvokeRequired)
@@ -53,7 +62,12 @@ namespace GlavniIzbornik
                 form.Show();
             }
         }
-
+        /// <summary>
+        /// Metode za obradu klika na izbonik na vrhu stranice,
+        /// na klik otvaraju formu istog imena, te prosljeđuju tip korisnika i id korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PrimkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrimkeForm primkeForm = new PrimkeForm(logirani_korisnik.tip_korisnikaId, logirani_korisnik.korisnikId);
@@ -77,7 +91,12 @@ namespace GlavniIzbornik
             PopisProjektiForm projektiForm = new PopisProjektiForm(logirani_korisnik.tip_korisnikaId, logirani_korisnik.korisnikId);
             ShowForm(projektiForm, this);
         }
-
+        /// <summary>
+        /// Metode za obradu klika na izbonik na vrhu stranice,
+        /// na klik otvaraju formu istog imena, te prosljeđuju samo tip korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PregledRacunaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PregledRacunForm pregledRacunForm = new PregledRacunForm(logirani_korisnik.tip_korisnikaId);

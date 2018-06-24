@@ -18,12 +18,20 @@ namespace IzdavanjeRacuna
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
         }
-
+        /// <summary>
+        /// Prilikom učitavanja forme poziva se metoda za prikaz projekata
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void izdavanjeRacunaForm_Load(object sender, EventArgs e)
         {
             PrikaziRacune();
         }
-
+        /// <summary>
+        /// Metoda za generiranje praznog korisnika koja se koristi
+        /// kako se nebi javljala greška ukoliko nema računa za ispisati
+        /// </summary>
+        /// <param name="lista"></param>
         private void generirajPrazniKorisnik(BindingList<Korisnik> lista)
         {
             Korisnik prazniKorisnik = new Korisnik
@@ -34,7 +42,11 @@ namespace IzdavanjeRacuna
             lista.Add(prazniKorisnik);
             korisnikBindingSource.DataSource = lista;
         }
-
+        /// <summary>
+        /// Metoda za generiranje praznog partnera koja se koristi
+        /// kako se nebi javljala greška ukoliko nema računa za ispisati
+        /// </summary>
+        /// <param name="lista"></param>
         private void generirajPrazniPartner(BindingList<Partner> lista)
         {
             Partner prazniPartner = new Partner
@@ -45,7 +57,11 @@ namespace IzdavanjeRacuna
             lista.Add(prazniPartner);
             partnerBindingSource.DataSource = lista;
         }
-
+        /// <summary>
+        /// Metoda za provjeru ako su sve faze prosljeđenog projekta zaključane(gotove)
+        /// </summary>
+        /// <param name="projekt"></param>
+        /// <returns></returns>
         private bool ProvjeriZavrsenostFaza(Projekt projekt)
         {
             List<Faze_projekta> listaFaza = null;
@@ -60,7 +76,13 @@ namespace IzdavanjeRacuna
             }
             return zavrseno;
         }
-
+        /// <summary>
+        /// Metoda za prikaz svih projekata koji su aktivni, za koje nije izdan račun i
+        /// kojima su sve faze završene. Ukoliko ne postoji niti jedan takav pozivaju se 
+        /// metode za generiranje praznih polja. Dohvaćaju se podaci za korisnike i partnere,
+        /// kako bi se prikazali nazivi umjesto id-eva
+        /// </summary>
+        /// <returns></returns>
         private BindingList<Projekt> PrikaziRacune()
         {
             BindingList<Projekt> Projekti = null;
@@ -102,13 +124,23 @@ namespace IzdavanjeRacuna
             }
             return listaProjekta;
         }
-
+        /// <summary>
+        /// Pritiskom na tipku otvara se forma PregledRacuna i prosljeđuje se tip korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pregledRačunaButton_Click(object sender, EventArgs e)
         {
             PregledRacunForm forma = new PregledRacunForm(tipKorisnika);
             forma.ShowDialog();
         }
-
+        /// <summary>
+        /// Pritiskom na tipku provjerava se ako je označen projekt, ako je
+        /// javlja se poruka upozorenja čijom se potvrdom onda izdaje račun i zapisuje vrijeme izdaje računa.
+        /// Osvježava se datagridview sa računima
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void izdajRacunButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -130,7 +162,13 @@ namespace IzdavanjeRacuna
                 PrikaziRacune();
             }
         }
-
+        /// <summary>
+        /// Metoda koja se aktivira na promjenu teksta u polju za pretraživanje,
+        /// pretražuje se prema istim uvjetima kao i kod učitavanja, ali se još provjerava
+        /// postojanja dijela teksta u nazivu projekta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingList<Projekt> Projekti = null;
@@ -142,14 +180,11 @@ namespace IzdavanjeRacuna
                 Projekti = new BindingList<Projekt>(db.Projekt.ToList());
                 foreach (Projekt p in Projekti)
                 {
-                    if (p.datum_zavrsetka != null)
+                    if (p.aktivan == 1 && p.gotovo == 0 && ProvjeriZavrsenostFaza(p) == true)
                     {
-                        if (p.aktivan == 1 && p.datum_zavrsetka < DateTime.Now && p.gotovo == 0)
+                        if(p.ime.ToLower().Contains(tboxPretrazi.Text))
                         {
-                            if(p.ime.ToLower().Contains(tboxPretrazi.Text))
-                            {
-                                listaProjekta.Add(p);
-                            }
+                            listaProjekta.Add(p);
                         }
                     }
                 }
@@ -163,7 +198,12 @@ namespace IzdavanjeRacuna
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
         }
-
+        /// <summary>
+        /// Pritiskom na tipku poziva se forma sa reportom za račun tj. predračun i prosljeđuje se 
+        /// projekt koji se želi prikazati
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void predracunButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -173,7 +213,10 @@ namespace IzdavanjeRacuna
                 forma.ShowDialog();
             }
         }
-
+        /// <summary>
+        /// Metoda za dohvaćanje i spremanje u data sourceove one projekte
+        /// čiji se datum početka slaže sa odabranim datumima na 2 datetime pickera
+        /// </summary>
         private void PretraziPoDatumu()
         {
             ProjektidataGridView.Rows.Clear();
@@ -194,7 +237,11 @@ namespace IzdavanjeRacuna
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
         }
-
+        /// <summary>
+        /// Na promjenu datetime pickera poziva se metoda za dohvaćanje projekata
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtProjekti1_ValueChanged(object sender, EventArgs e)
         {
             PretraziPoDatumu();
@@ -204,7 +251,11 @@ namespace IzdavanjeRacuna
         {
             PretraziPoDatumu();
         }
-
+        /// <summary>
+        /// Pritiskom na tipku Reset učitavaju se projekti koji ne ovise o filterima datuma i naziva
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void resetButton_Click(object sender, EventArgs e)
         {
             PrikaziRacune();

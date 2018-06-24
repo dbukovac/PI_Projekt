@@ -15,6 +15,9 @@ namespace PrikazStatistike
 {
     public partial class ReportForm : Form
     {
+        /// <summary>
+        /// deklariranje lista za korištenje u svim metodama
+        /// </summary>
         public BindingList<Projekt> listaProjekta = null;
         public BindingList<Faza> listaFaza = null;
         public BindingList<Materijal> listaMaterijala = null;
@@ -27,14 +30,23 @@ namespace PrikazStatistike
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Prilikom učitavanja forme poziva se metoda za popunjevanje svih lista
+        /// sa podacima i osvježava se report viewer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReportForm_Load(object sender, EventArgs e)
         {
             PopuniListe();
             this.reportViewer.RefreshReport();
-            this.reportViewer.RefreshReport();
         }
-
+        /// <summary>
+        /// Metoda za stavljanje svih data source-a na null
+        /// kako bi se mogla koristit jedna forma za sve reportove
+        /// da ove metode nema podaci bi se duplirali ili bi bili krivi za
+        /// pojedine reportove
+        /// </summary>
         private void ZatvoriSve()
         {
             fazaBindingSource.DataSource = null;
@@ -48,7 +60,9 @@ namespace PrikazStatistike
             stavkanarudzbeniceBindingSource.DataSource = null;
             stavkaprimkeBindingSource.DataSource = null;
         }
-
+        /// <summary>
+        /// Metoda koja puni sve liste sa podacima iz baze i za neke uključuje podatke navigacijskih svojstva
+        /// </summary>
         private void PopuniListe()
         {
             using (var db = new PrikazStatistikeEntities())
@@ -62,7 +76,14 @@ namespace PrikazStatistike
                 listaPartnera = new BindingList<Partner>(db.Partner.Include(x => x.Tip_partnera1).ToList());
             }
         }
-
+        /// <summary>
+        /// Velika metoda koja prema već zadanim vrijednostima padajućeg izbornika
+        /// prikazuje reportove za izabranu tablicu. Unutar if petlje dohvaćaju se potrebni detalji vezani za glavnu tablicu
+        /// koji se dodijeljuju svojim data sourcevima, te poziva se odgovarajuća report datoteka.
+        /// Za svaki izbor iz padajućeg izbornika postoji report.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboxIzbor_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboxIzbor.Text == "Projekti")

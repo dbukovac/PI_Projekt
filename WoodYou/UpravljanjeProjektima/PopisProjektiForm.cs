@@ -21,14 +21,23 @@ namespace UpravljanjeProjektima
             this.tipKorisnika = tipKorisnika;
             this.idKorisnika = idKorisnika;
         }
-
+        /// <summary>
+        /// Pozivaju se metoda za prikaz svih projekata, 
+        /// faza i materijala označenog (prvog na listi) projekta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PopisProjektiForm_Load(object sender, EventArgs e)
         {
             PrikaziProjekte();
             PrikaziFaze(projektBindingSource.Current as Projekt);
             PrikaziMaterijal();
         }
-
+        /// <summary>
+        /// Metoda za prikazivanje materijala na datagridviewu prema označenom projektu i fazi
+        /// koristi metodu vratifazuProjekta za dohvaćanje faze_projekta i preko toga dohvaća faza_ima_materijal
+        /// i pripadajući materijal
+        /// </summary>
         private void PrikaziMaterijal()
         {
             materijalDataGridView.Rows.Clear();
@@ -50,7 +59,11 @@ namespace UpravljanjeProjektima
                 materijalBindingSource.DataSource = listaMaterijalId;
             }
         }
-
+        /// <summary>
+        /// Metoda za prikazivanje svih projekata na datagridviewu
+        /// dohvaća se iz korisnici i partneri za prikazivanje naziva
+        /// umjesto id-eva
+        /// </summary>
         private void PrikaziProjekte()
         {
             projektiDataGridView.Rows.Clear();
@@ -71,7 +84,10 @@ namespace UpravljanjeProjektima
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
         }
-
+        /// <summary>
+        /// Mateoda za prikazivanje faza označenog projekta, radi se preko faza_projekta(veza između projekta i faze)
+        /// </summary>
+        /// <param name="projekt"></param>
         private void PrikaziFaze(Projekt projekt)
         {
             fazeDataGridView.Rows.Clear();
@@ -92,14 +108,23 @@ namespace UpravljanjeProjektima
                 fazaBindingSource.DataSource = listaFaza;
             }
         }
-
+        /// <summary>
+        /// Otvara novu formu za unos projekta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void noviProjektButton_Click(object sender, EventArgs e)
         {
             NoviProjektForm noviProjektforma = new NoviProjektForm(idKorisnika);
             noviProjektforma.ShowDialog();
             PrikaziProjekte();
         }
-
+        /// <summary>
+        /// Otvara novu formu za izmjenu projekta i prosljeđuje
+        /// označeni projekt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void izmjeniProjektButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -110,7 +135,13 @@ namespace UpravljanjeProjektima
                 PrikaziProjekte();
             }
         }
-
+        /// <summary>
+        /// Ako se potvri poruka pokreće se projekt, postavlja se datum početka na trenutni datum,
+        /// ažurira se datum završetka prema potrebnom vremenu i datumu početka, postavlja se aktivan na 1
+        /// Projekt se neć pokrenuti ako nema faza na sebi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pokreniProjektButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -138,13 +169,21 @@ namespace UpravljanjeProjektima
                 }
             }
         }
-
+        /// <summary>
+        /// Prema označenom projektu zovu se metode za priakzivanje njegovih fza i materijala
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void projektiDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             PrikaziFaze(projektBindingSource.Current as Projekt);
             PrikaziMaterijal();
         }
-
+        /// <summary>
+        /// Briše se projekt ako nema dodijeljenih faza, osvježavaju se datagridview-ovi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void brisiProjektButton_Click(object sender, EventArgs e)
         {
@@ -171,7 +210,12 @@ namespace UpravljanjeProjektima
                 }
             }
         }
-
+        /// <summary>
+        /// Otvara se forma s izbornikom faza, prosljeđuje se odabrani projekt i lista njegovih faza,
+        /// zatvaranjem otvorene forme osvježavaju se datagridview-ovi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dodajFazuButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -184,7 +228,17 @@ namespace UpravljanjeProjektima
                 PrikaziProjekte();
             }
         }
-
+        /// <summary>
+        /// Metoda koja vraća fazu_projekta prema označenom projektu i fazi
+        /// koristi parametar za kontrolu povratne informacije, 1 vraća prvi pronađeni element
+        /// 0 vraća zadnji pronađeni element. Koriste se lista faza_projekta dobivenih iz
+        /// navigacijskog svojstva projekta i lista od navigacijskog od faze
+        /// traže se zajedničke faze_projekta, a važno je koja se vraća zbog
+        /// mogućnosti postojanja istih faza na jednom projektu,
+        /// ako se briše šalje se 0, a ako se dodaje i prikazuje materijal 1
+        /// </summary>
+        /// <param name="kontroler"></param>
+        /// <returns></returns>
         private Faze_projekta vratiFazuProjekta(int kontroler)
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
@@ -218,7 +272,11 @@ namespace UpravljanjeProjektima
             }
             return vrati;
         }
-
+        /// <summary>
+        /// Briše se faza samo ako nije zaključana i ako za projekt nije izdan račun
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void brisiFazuButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -249,7 +307,12 @@ namespace UpravljanjeProjektima
                 }
             }
         }
-
+        /// <summary>
+        /// Otvara se nova forma za unos novog materijala samo ako nije izdan račun za projekt,
+        /// prosljeđuje se odabrana faza i lista već dodanog materijala
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dodajMaterijalButton_Click(object sender, EventArgs e)
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
@@ -270,7 +333,12 @@ namespace UpravljanjeProjektima
                 MessageBox.Show("Projekt je završen!");
             }
         }
-
+        /// <summary>
+        /// Briše se materijal sa odabrane faze odabranog projekta ako ta faza nije zaključana ili
+        /// ako za projekt nije izdan račun
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void brisiMaterijalButton_Click(object sender, EventArgs e)
         {
             Faza_ima_materijal selektiranaFazaImaMaterijal = fazaimamaterijalBindingSource.Current as Faza_ima_materijal;
@@ -300,12 +368,20 @@ namespace UpravljanjeProjektima
                 MessageBox.Show("Projekt je završen!");
             }
         }
-
+        /// <summary>
+        /// Prikazuje se materijal prema označenoj fazi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fazeDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             PrikaziMaterijal();
         }
-
+        /// <summary>
+        /// Pretražuju se projekti prema nazivu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tboxPretrazi_TextChanged(object sender, EventArgs e)
         {
             projektiDataGridView.Rows.Clear();
@@ -331,7 +407,9 @@ namespace UpravljanjeProjektima
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
         }
-
+        /// <summary>
+        /// Pretražuju se projekti prema datumu početka
+        /// </summary>
         private void PretraziPoDatumu()
         {
             projektiDataGridView.Rows.Clear();
@@ -357,7 +435,11 @@ namespace UpravljanjeProjektima
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
         }
-
+        /// <summary>
+        /// Poziva se metoda za filtriranje prema datumu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtProjekti1_ValueChanged(object sender, EventArgs e)
         {
             PretraziPoDatumu();
@@ -367,7 +449,11 @@ namespace UpravljanjeProjektima
         {
             PretraziPoDatumu();
         }
-
+        /// <summary>
+        /// Resetira se filtriranje i prikazuju se svi projekti
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void resetButton_Click(object sender, EventArgs e)
         {
             PrikaziProjekte();

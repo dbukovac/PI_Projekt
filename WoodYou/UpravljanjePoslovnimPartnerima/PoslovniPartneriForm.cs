@@ -18,12 +18,18 @@ namespace UpravljanjePoslovnimPartnerima
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
         }
-
+        /// <summary>
+        /// Prilikom učitavanja forme poziva se metoda za priakzivanje partnera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PoslovniPartneriForm_Load(object sender, EventArgs e)
         {
             PrikaziPartnere();
         }
-
+        /// <summary>
+        /// Metoda koja dohvaća i puni data sourceove sa partnerima i tipovima partnera
+        /// </summary>
         private void PrikaziPartnere()
         {
             BindingList<Partner> listaPartnera = null;
@@ -39,14 +45,24 @@ namespace UpravljanjePoslovnimPartnerima
             partnerBindingSource.DataSource = listaPartnera;
             tippartneraBindingSource.DataSource = listaTipova;
         }
-
+        /// <summary>
+        /// Pritiskom na tipku otvara se forma za unos novog partnera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void noviPartnerbutton_Click(object sender, EventArgs e)
         {
             NoviPartnerForm forma = new NoviPartnerForm();
             forma.ShowDialog();
             PrikaziPartnere();
         }
-
+        /// <summary>
+        /// Pritiskom na tipku provjerava se ako je označen partnera u datagridviewu i ako je
+        /// izdaje se upozorenje i ako se potvrdi briše se partner ako referencijalni integritet baze to dopušta
+        /// Uz pomoć try catch-a hvata se iznimka koju vraća baza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void obrisiButton_Click(object sender, EventArgs e)
         {
             Partner selektiraniPartner = partnerBindingSource.Current as Partner;
@@ -72,7 +88,11 @@ namespace UpravljanjePoslovnimPartnerima
                 PrikaziPartnere();
             }
         }
-
+        /// <summary>
+        /// Pritskom na tipku otvara se forma za izmjenu partnera ukoliko je označen partner
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void urediButton_Click(object sender, EventArgs e)
         {
             Partner selekitraniPartner = partnerBindingSource.Current as Partner;
@@ -83,7 +103,12 @@ namespace UpravljanjePoslovnimPartnerima
                 PrikaziPartnere();
             }
         }
-
+        /// <summary>
+        /// Izmjenom teksta u polju za pretraživanje data source partnera puni se 
+        /// onim partnerima čije ime sadrži dio teksta iz polja
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingList<Partner> listaPartnera = null;

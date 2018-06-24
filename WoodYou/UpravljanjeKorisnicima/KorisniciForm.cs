@@ -18,12 +18,18 @@ namespace UpravljanjeKorisnicima
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
         }
-
+        /// <summary>
+        /// Prilikom učitavanja forme poziva se metoda za prikazivanje korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KorisniciForm_Load(object sender, EventArgs e)
         {
             PrikaziKorisnike();
         }
-
+        /// <summary>
+        /// Metoda za prikazivanje korisnika, dohvaća i tipove korisnika za prikazivanje imena umjesto id-a
+        /// </summary>
         private void PrikaziKorisnike()
         {
             BindingList<Korisnik> listaKorisnika = null;
@@ -39,7 +45,14 @@ namespace UpravljanjeKorisnicima
             korisnikBindingSource.DataSource = listaKorisnika;
             tipkorisnikaBindingSource.DataSource = listaTipova;
         }
-
+        /// <summary>
+        /// Provjerava se ako je označen korisnik, javlja se poruka upozorenja, briše se korisnik
+        /// ako referencijalni integritet baze to dopušta
+        /// uz try catch hvata se iznimka baze ako se ne može brisati
+        /// osvježava se datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void obrisiButton_Click(object sender, EventArgs e)
         {
             Korisnik selektiraniKorisnik = korisnikBindingSource.Current as Korisnik;
@@ -65,14 +78,22 @@ namespace UpravljanjeKorisnicima
                 }
             }
         }
-
+        /// <summary>
+        /// Otvara novu formu za unos korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void noviButton_Click(object sender, EventArgs e)
         {
             NoviKorisnikForm forma = new NoviKorisnikForm();
             forma.ShowDialog();
             PrikaziKorisnike();
         }
-
+        /// <summary>
+        /// Otvara formu za izmjenu korisnika i prosljeđuje označenog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void izmjeniButton_Click(object sender, EventArgs e)
         {
             Korisnik selektiraniKorisnik = korisnikBindingSource.Current as Korisnik;
@@ -83,7 +104,12 @@ namespace UpravljanjeKorisnicima
                 PrikaziKorisnike();
             }
         }
-
+        /// <summary>
+        /// Izmjenom teksta u polju za pretraživanje prikazuju se samo korisnici
+        /// čiji naziv paše pretrazi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tboxPretrazi_TextChanged(object sender, EventArgs e)
         {
             BindingList<Korisnik> listaKorisnika = null;

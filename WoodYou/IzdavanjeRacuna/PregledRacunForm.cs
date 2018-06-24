@@ -18,12 +18,20 @@ namespace IzdavanjeRacuna
             InitializeComponent();
             this.tipKorisnika = tipKorisnika;
         }
-
+        /// <summary>
+        /// Prilikom učitavanja forme poziva se metoda za prikazivanje svih izdanih računa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PregledRacunForm_Load(object sender, EventArgs e)
         {
             PrikaziRacune();
         }
-
+        /// <summary>
+        /// Metoda za gereriranje praznog korisnika kako bi se spriječilo pojavljivanje 
+        /// greške kad nema projekata za učitati
+        /// </summary>
+        /// <param name="lista"></param>
         private void generirajPrazniKorisnik(BindingList<Korisnik> lista)
         {
             Korisnik prazniKorisnik = new Korisnik
@@ -45,7 +53,12 @@ namespace IzdavanjeRacuna
             lista.Add(prazniPartner);
             partnerBindingSource.DataSource = lista;
         }
-
+        /// <summary>
+        /// Metoda za učitavanje projekata za koje je izdan račun u datagridview
+        /// dohvaćaju se odgovarajući korisnici i partneri kako bi se prikazali nazivi a ne id-evi
+        /// Ukoliko nema takvi projekta pozivaju se metoda za generiranje praznih podataka
+        /// </summary>
+        /// <returns></returns>
         private BindingList<Projekt> PrikaziRacune()
         {
             BindingList<Projekt> Projekti = null;
@@ -87,7 +100,12 @@ namespace IzdavanjeRacuna
             }
             return listaProjekta;
         }
-
+        /// <summary>
+        /// Pritiskom na tipku otvara se forma za prikaza detaljnih podataka jednog projekta
+        /// prosljeđuje se odabrani projekt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pregledRačunaButton_Click(object sender, EventArgs e)
         {
             Projekt selektiraniProjekt = projektBindingSource.Current as Projekt;
@@ -97,12 +115,23 @@ namespace IzdavanjeRacuna
                 forma.ShowDialog();
             }
         }
-
+        /// <summary>
+        /// Pritiskom na tipku forma se zatvara
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void odustaniButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        /// <summary>
+        /// Prilikom promjene teksta u polju za pretraživanje prema nazivu
+        /// učitavaju se u datagridview projekti i njihovi partneri i korisnici
+        /// gdje u nazivu projekta ima dio teksta u polju
+        /// Ukoliko nema takvih projekata pozivaju se metode za generiranje praznih podataka
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tboxPretrazi_TextChanged(object sender, EventArgs e)
         {
             BindingList<Projekt> Projekti = null;
@@ -146,7 +175,10 @@ namespace IzdavanjeRacuna
                 generirajPrazniPartner(listaPartnera);
             }
         }
-
+        /// <summary>
+        /// Metoda za dohvaćanje i spremanje u data sourceove one projekte
+        /// čiji se datum početka slaže sa odabranim datumima na 2 datetime pickera
+        /// </summary>
         private void PretraziPoDatumu()
         {
             ProjektidataGridView.Rows.Clear();
@@ -167,7 +199,11 @@ namespace IzdavanjeRacuna
             korisnikBindingSource.DataSource = listaKorisnika;
             partnerBindingSource.DataSource = listaPartnera;
         }
-
+        /// <summary>
+        /// Na promjenu datetime pickera poziva se metoda za dohvaćanje projekata
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtProjekti1_ValueChanged(object sender, EventArgs e)
         {
             PretraziPoDatumu();
@@ -177,7 +213,11 @@ namespace IzdavanjeRacuna
         {
             PretraziPoDatumu();
         }
-
+        /// <summary>
+        /// Pritiskom na tipku Reset učitavaju se projekti koji ne ovise o filterima datuma i naziva
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void resetButton_Click(object sender, EventArgs e)
         {
             PrikaziRacune();

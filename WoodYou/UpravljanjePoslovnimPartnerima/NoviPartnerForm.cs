@@ -13,7 +13,9 @@ namespace UpravljanjePoslovnimPartnerima
     public partial class NoviPartnerForm : Form
     {
         private Partner odabraniPartner = null;
-
+        /// <summary>
+        /// Postoje dva konstruktora, bez parametra za novog partnera i s konstruktorom za izmjenu partnera
+        /// </summary>
         public NoviPartnerForm()
         {
             InitializeComponent();
@@ -24,7 +26,12 @@ namespace UpravljanjePoslovnimPartnerima
             InitializeComponent();
             odabraniPartner = partner;
         }
-
+        /// <summary>
+        /// Učitava se tip partnera za prikaz u padajućem izborniku i pune se polja ukoliko se radi
+        /// o izmjeni partnera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NoviPartnerForm_Load(object sender, EventArgs e)
         {
             BindingList<Tip_partnera> listaTipova = null;
@@ -45,7 +52,12 @@ namespace UpravljanjePoslovnimPartnerima
                 }
             }
         }
-
+        /// <summary>
+        /// Radi se novi objekt partner ako se radi o novom unosu, posebno se provjerava ako je OIB broj
+        /// te se sprema u bazu podataka. Ako se radi o izmjeni podaci se ažuriraju i spremaju u bazu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void spremiButton_Click(object sender, EventArgs e)
         {
             if(odabraniPartner == null)

@@ -18,7 +18,14 @@ namespace GlavniIzbornik
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda koja se poziva na klik tipke prijavi se, 
+        /// iz liste korisnika uspoređuje prema korisničkom imenu, 
+        /// te nad pronađenom loznikom poziva funkciju za provjeru lozinke,
+        /// iz dll-a Hash.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonPrijaviSe_Click(object sender, EventArgs e)
         {
             Korisnik logirani_korisnik = null;
