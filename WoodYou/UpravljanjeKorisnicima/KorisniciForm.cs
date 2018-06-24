@@ -51,7 +51,14 @@ namespace UpravljanjeKorisnicima
                     {
                         db.Korisnik.Attach(selektiraniKorisnik);
                         db.Korisnik.Remove(selektiraniKorisnik);
-                        db.SaveChanges();
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch(Exception)
+                        {
+                            MessageBox.Show("Nije moguće obrisati korisnika koji se koristi");
+                        }
                     }
                     PrikaziKorisnike();
                     MessageBox.Show("Uspješno obrisan korisnik");

@@ -44,6 +44,7 @@
             this.urediButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.poslPartneriDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tippartneraBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -51,6 +52,8 @@
             // 
             // poslPartneriDataGrid
             // 
+            this.poslPartneriDataGrid.AllowUserToAddRows = false;
+            this.poslPartneriDataGrid.AllowUserToDeleteRows = false;
             this.poslPartneriDataGrid.AutoGenerateColumns = false;
             this.poslPartneriDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.poslPartneriDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -182,6 +185,10 @@
             this.tboxPretrazi.TabIndex = 6;
             this.tboxPretrazi.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // PoslovniPartneriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,7 +201,10 @@
             this.Controls.Add(this.noviPartnerbutton);
             this.Controls.Add(this.poslPartneriLabel);
             this.Controls.Add(this.poslPartneriDataGrid);
+            this.helpProvider1.SetHelpKeyword(this, "PoslovniPartneriForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "PoslovniPartneriForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Poslovni partneri";
             this.Load += new System.EventHandler(this.PoslovniPartneriForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.poslPartneriDataGrid)).EndInit();
@@ -222,6 +232,7 @@
         private System.Windows.Forms.BindingSource partnerBindingSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tboxPretrazi;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

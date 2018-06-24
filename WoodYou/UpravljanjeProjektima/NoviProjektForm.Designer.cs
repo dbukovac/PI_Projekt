@@ -38,6 +38,7 @@
             this.odustaniButton = new System.Windows.Forms.Button();
             this.cboxPartner = new System.Windows.Forms.ComboBox();
             this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +118,10 @@
             // 
             this.partnerBindingSource.DataSource = typeof(UpravljanjeProjektima.Partner);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // NoviProjektForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,7 +135,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.datumPocetkaLabel);
             this.Controls.Add(this.nazivLabel);
+            this.helpProvider1.SetHelpKeyword(this, "NoviProjektForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NoviProjektForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Unos novog projekta";
             this.Load += new System.EventHandler(this.NoviProjektForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).EndInit();
@@ -149,5 +157,6 @@
         private System.Windows.Forms.Button odustaniButton;
         private System.Windows.Forms.ComboBox cboxPartner;
         private System.Windows.Forms.BindingSource partnerBindingSource;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

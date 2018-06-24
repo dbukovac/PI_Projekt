@@ -55,6 +55,7 @@
             this.urediPrimkuButton = new System.Windows.Forms.Button();
             this.brisiStavkuButton = new System.Windows.Forms.Button();
             this.novaStavkaButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.primkaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -310,6 +311,10 @@
             this.novaStavkaButton.UseVisualStyleBackColor = true;
             this.novaStavkaButton.Click += new System.EventHandler(this.NovaStavkaButton_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // PrimkeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,7 +330,10 @@
             this.Controls.Add(this.stavka_primkeDataGridView);
             this.Controls.Add(this.primkeLabel);
             this.Controls.Add(this.primkaDataGridView);
+            this.helpProvider1.SetHelpKeyword(this, "PrimkeForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "PrimkeForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Prikaz primki";
             this.Load += new System.EventHandler(this.PrimkeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.primkaDataGridView)).EndInit();
@@ -368,5 +376,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Button brisiStavkuButton;
         private System.Windows.Forms.Button novaStavkaButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

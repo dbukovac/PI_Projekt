@@ -225,13 +225,20 @@ namespace UpravljanjeProjektima
                 if (selektiraniProjekt.gotovo != 1)
                 {
                     Faze_projekta selektiranaFazaProjekta = vratiFazuProjekta(0);
-                    using (var db = new UpravljanjeProjektimaEntities())
+                    if(selektiranaFazaProjekta.zakljucano == 0)
                     {
-                        db.Faze_projekta.Attach(selektiranaFazaProjekta);
-                        db.Faze_projekta.Remove(selektiranaFazaProjekta);
-                        db.SaveChanges();
+                        using (var db = new UpravljanjeProjektimaEntities())
+                        {
+                            db.Faze_projekta.Attach(selektiranaFazaProjekta);
+                            db.Faze_projekta.Remove(selektiranaFazaProjekta);
+                            db.SaveChanges();
+                        }
+                        MessageBox.Show("Uspješno obrisana faza");
                     }
-                    MessageBox.Show("Uspješno obrisana faza");
+                    else
+                    {
+                        MessageBox.Show("Faza je zaključana, nije moguće brisati zaključane faze");
+                    }
                     PrikaziFaze(projektBindingSource.Current as Projekt);
                 }
                 else
@@ -270,13 +277,20 @@ namespace UpravljanjeProjektima
             {
                 if (selektiranaFazaImaMaterijal != null)
                 {
-                    using (var db = new UpravljanjeProjektimaEntities())
+                    if(selektiranaFazaImaMaterijal.Faze_projekta.zakljucano == 0)
                     {
-                        db.Faza_ima_materijal.Attach(selektiranaFazaImaMaterijal);
-                        db.Faza_ima_materijal.Remove(selektiranaFazaImaMaterijal);
-                        db.SaveChanges();
+                        using (var db = new UpravljanjeProjektimaEntities())
+                        {
+                            db.Faza_ima_materijal.Attach(selektiranaFazaImaMaterijal);
+                            db.Faza_ima_materijal.Remove(selektiranaFazaImaMaterijal);
+                            db.SaveChanges();
+                        }
+                        PrikaziMaterijal();
                     }
-                    PrikaziMaterijal();
+                    else
+                    {
+                        MessageBox.Show("Materijal pripada zaključanoj fazi, nije moguće brisati");
+                    }
                 }
             }
             else

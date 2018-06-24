@@ -36,6 +36,7 @@
             this.nazivLabel = new System.Windows.Forms.Label();
             this.numTrajanje = new System.Windows.Forms.NumericUpDown();
             this.numCijena = new System.Windows.Forms.NumericUpDown();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.numTrajanje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
             this.SuspendLayout();
@@ -97,16 +98,31 @@
             // numTrajanje
             // 
             this.numTrajanje.Location = new System.Drawing.Point(101, 91);
+            this.numTrajanje.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.numTrajanje.Name = "numTrajanje";
             this.numTrajanje.Size = new System.Drawing.Size(135, 20);
             this.numTrajanje.TabIndex = 16;
             // 
             // numCijena
             // 
+            this.numCijena.DecimalPlaces = 2;
             this.numCijena.Location = new System.Drawing.Point(101, 65);
+            this.numCijena.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.numCijena.Name = "numCijena";
             this.numCijena.Size = new System.Drawing.Size(135, 20);
             this.numCijena.TabIndex = 17;
+            // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
             // 
             // NovaFazaForm
             // 
@@ -121,7 +137,10 @@
             this.Controls.Add(this.tboxNaziv);
             this.Controls.Add(this.odustaniButton);
             this.Controls.Add(this.dodajFazuButton);
+            this.helpProvider1.SetHelpKeyword(this, "NovaFazaForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NovaFazaForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "NovaFazaForm";
             this.Load += new System.EventHandler(this.NovaFazaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numTrajanje)).EndInit();
@@ -140,5 +159,6 @@
         private System.Windows.Forms.Label nazivLabel;
         private System.Windows.Forms.NumericUpDown numTrajanje;
         private System.Windows.Forms.NumericUpDown numCijena;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

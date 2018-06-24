@@ -41,7 +41,7 @@ namespace UpravljanjeProjektima
             BindingList<Partner> listaPartnera = null;
             using (var db = new UpravljanjeProjektimaEntities())
             {
-                listaPartnera = new BindingList<Partner>(db.Partner.ToList());
+                listaPartnera = new BindingList<Partner>(db.Partner.Where(x => x.tip_partnera == "k").ToList());
             }
             partnerBindingSource.DataSource = listaPartnera;
 

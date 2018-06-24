@@ -30,7 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.fazeDataGridView = new System.Windows.Forms.DataGridView();
+            this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
+            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materijalId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijena_stavke = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -58,24 +70,13 @@
             this.tboxBrojRacuna = new System.Windows.Forms.TextBox();
             this.izadiButton = new System.Windows.Forms.Button();
             this.printajButton = new System.Windows.Forms.Button();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materijalId = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cijena_stavke = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fazeDataGridView
@@ -97,6 +98,47 @@
             this.fazeDataGridView.TabIndex = 0;
             this.fazeDataGridView.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // fazaIdDataGridViewTextBoxColumn
+            // 
+            this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
+            this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
+            this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
+            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fazaIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nazivDataGridViewTextBoxColumn
+            // 
+            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
+            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
+            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cijenaDataGridViewTextBoxColumn
+            // 
+            this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
+            this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
+            this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
+            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // trajanjeDataGridViewTextBoxColumn
+            // 
+            this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
+            this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
+            this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
+            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fazeprojektaDataGridViewTextBoxColumn
+            // 
+            this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
+            this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
+            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // fazaBindingSource
+            // 
+            this.fazaBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza);
+            // 
             // materijalDataGridView
             // 
             this.materijalDataGridView.AutoGenerateColumns = false;
@@ -113,6 +155,55 @@
             this.materijalDataGridView.ReadOnly = true;
             this.materijalDataGridView.Size = new System.Drawing.Size(349, 150);
             this.materijalDataGridView.TabIndex = 1;
+            // 
+            // materijalIdDataGridViewTextBoxColumn
+            // 
+            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn.DataSource = this.materijalBindingSource;
+            this.materijalIdDataGridViewTextBoxColumn.DisplayMember = "naziv";
+            this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "Naziv";
+            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
+            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
+            // 
+            // materijalBindingSource
+            // 
+            this.materijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Materijal);
+            // 
+            // materijalId
+            // 
+            this.materijalId.DataPropertyName = "materijalId";
+            this.materijalId.DataSource = this.materijalBindingSource;
+            this.materijalId.DisplayMember = "cijena";
+            this.materijalId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materijalId.HeaderText = "Cijena";
+            this.materijalId.Name = "materijalId";
+            this.materijalId.ReadOnly = true;
+            this.materijalId.ValueMember = "materijalId";
+            this.materijalId.Width = 60;
+            // 
+            // kolicinaDataGridViewTextBoxColumn
+            // 
+            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
+            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.kolicinaDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // cijena_stavke
+            // 
+            this.cijena_stavke.DataPropertyName = "cijena_stavke";
+            this.cijena_stavke.HeaderText = "cijena_stavke";
+            this.cijena_stavke.Name = "cijena_stavke";
+            this.cijena_stavke.ReadOnly = true;
+            this.cijena_stavke.Width = 80;
+            // 
+            // fazaimamaterijalBindingSource
+            // 
+            this.fazaimamaterijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza_ima_materijal);
             // 
             // label1
             // 
@@ -362,103 +453,20 @@
             // 
             // printajButton
             // 
+            this.helpProvider1.SetHelpKeyword(this.printajButton, "OdabraniRacunForm");
+            this.helpProvider1.SetHelpNavigator(this.printajButton, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.printajButton.Location = new System.Drawing.Point(607, 364);
             this.printajButton.Name = "printajButton";
+            this.helpProvider1.SetShowHelp(this.printajButton, true);
             this.printajButton.Size = new System.Drawing.Size(75, 23);
             this.printajButton.TabIndex = 6;
             this.printajButton.Text = "Printaj";
             this.printajButton.UseVisualStyleBackColor = true;
             this.printajButton.Click += new System.EventHandler(this.printajButton_Click);
             // 
-            // materijalBindingSource
+            // helpProvider1
             // 
-            this.materijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Materijal);
-            // 
-            // fazaimamaterijalBindingSource
-            // 
-            this.fazaimamaterijalBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza_ima_materijal);
-            // 
-            // fazaIdDataGridViewTextBoxColumn
-            // 
-            this.fazaIdDataGridViewTextBoxColumn.DataPropertyName = "fazaId";
-            this.fazaIdDataGridViewTextBoxColumn.HeaderText = "fazaId";
-            this.fazaIdDataGridViewTextBoxColumn.Name = "fazaIdDataGridViewTextBoxColumn";
-            this.fazaIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fazaIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nazivDataGridViewTextBoxColumn
-            // 
-            this.nazivDataGridViewTextBoxColumn.DataPropertyName = "naziv";
-            this.nazivDataGridViewTextBoxColumn.HeaderText = "naziv";
-            this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
-            this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cijenaDataGridViewTextBoxColumn
-            // 
-            this.cijenaDataGridViewTextBoxColumn.DataPropertyName = "cijena";
-            this.cijenaDataGridViewTextBoxColumn.HeaderText = "cijena";
-            this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
-            this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // trajanjeDataGridViewTextBoxColumn
-            // 
-            this.trajanjeDataGridViewTextBoxColumn.DataPropertyName = "trajanje";
-            this.trajanjeDataGridViewTextBoxColumn.HeaderText = "trajanje";
-            this.trajanjeDataGridViewTextBoxColumn.Name = "trajanjeDataGridViewTextBoxColumn";
-            this.trajanjeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fazeprojektaDataGridViewTextBoxColumn
-            // 
-            this.fazeprojektaDataGridViewTextBoxColumn.DataPropertyName = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn.HeaderText = "Faze_projekta";
-            this.fazeprojektaDataGridViewTextBoxColumn.Name = "fazeprojektaDataGridViewTextBoxColumn";
-            this.fazeprojektaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fazeprojektaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // fazaBindingSource
-            // 
-            this.fazaBindingSource.DataSource = typeof(IzdavanjeRacuna.Faza);
-            // 
-            // materijalIdDataGridViewTextBoxColumn
-            // 
-            this.materijalIdDataGridViewTextBoxColumn.DataPropertyName = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn.DataSource = this.materijalBindingSource;
-            this.materijalIdDataGridViewTextBoxColumn.DisplayMember = "naziv";
-            this.materijalIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materijalIdDataGridViewTextBoxColumn.HeaderText = "Naziv";
-            this.materijalIdDataGridViewTextBoxColumn.Name = "materijalIdDataGridViewTextBoxColumn";
-            this.materijalIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.materijalIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materijalIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materijalIdDataGridViewTextBoxColumn.ValueMember = "materijalId";
-            // 
-            // materijalId
-            // 
-            this.materijalId.DataPropertyName = "materijalId";
-            this.materijalId.DataSource = this.materijalBindingSource;
-            this.materijalId.DisplayMember = "cijena";
-            this.materijalId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materijalId.HeaderText = "Cijena";
-            this.materijalId.Name = "materijalId";
-            this.materijalId.ReadOnly = true;
-            this.materijalId.ValueMember = "materijalId";
-            this.materijalId.Width = 60;
-            // 
-            // kolicinaDataGridViewTextBoxColumn
-            // 
-            this.kolicinaDataGridViewTextBoxColumn.DataPropertyName = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.HeaderText = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn.Name = "kolicinaDataGridViewTextBoxColumn";
-            this.kolicinaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.kolicinaDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // cijena_stavke
-            // 
-            this.cijena_stavke.DataPropertyName = "cijena_stavke";
-            this.cijena_stavke.HeaderText = "cijena_stavke";
-            this.cijena_stavke.Name = "cijena_stavke";
-            this.cijena_stavke.ReadOnly = true;
-            this.cijena_stavke.Width = 80;
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
             // 
             // OdabraniRacunForm
             // 
@@ -476,12 +484,12 @@
             this.Text = "OdabraniRacunForm";
             this.Load += new System.EventHandler(this.OdabraniRacunForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fazeDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaimamaterijalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,5 +538,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn materijalId;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolicinaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cijena_stavke;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

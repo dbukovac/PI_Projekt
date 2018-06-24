@@ -59,7 +59,14 @@ namespace UpravljanjePoslovnimPartnerima
                     {
                         db.Partner.Attach(selektiraniPartner);
                         db.Partner.Remove(selektiraniPartner);
-                        db.SaveChanges();
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch(Exception)
+                        {
+                            MessageBox.Show("Nije moguće obrisati partnera");
+                        }
                     }
                 }
                 PrikaziPartnere();

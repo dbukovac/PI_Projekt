@@ -29,25 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource16 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource17 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource18 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource19 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource20 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource21 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource22 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.cboxIzbor = new System.Windows.Forms.ComboBox();
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtProjekti2 = new System.Windows.Forms.DateTimePicker();
-            this.dtProjekti1 = new System.Windows.Forms.DateTimePicker();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -59,6 +51,15 @@
             this.narudzbenicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tippartneraBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cboxIzbor = new System.Windows.Forms.ComboBox();
+            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtProjekti2 = new System.Windows.Forms.DateTimePicker();
+            this.dtProjekti1 = new System.Windows.Forms.DateTimePicker();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.projektBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fazaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
@@ -71,6 +72,50 @@
             ((System.ComponentModel.ISupportInitialize)(this.tipkorisnikaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tippartneraBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // projektBindingSource
+            // 
+            this.projektBindingSource.DataSource = typeof(PrikazStatistike.Projekt);
+            // 
+            // fazaBindingSource
+            // 
+            this.fazaBindingSource.DataSource = typeof(PrikazStatistike.Faza);
+            // 
+            // korisnikBindingSource
+            // 
+            this.korisnikBindingSource.DataSource = typeof(PrikazStatistike.Korisnik);
+            // 
+            // partnerBindingSource
+            // 
+            this.partnerBindingSource.DataSource = typeof(PrikazStatistike.Partner);
+            // 
+            // materijalBindingSource
+            // 
+            this.materijalBindingSource.DataSource = typeof(PrikazStatistike.Materijal);
+            // 
+            // primkaBindingSource
+            // 
+            this.primkaBindingSource.DataSource = typeof(PrikazStatistike.Primka);
+            // 
+            // stavkaprimkeBindingSource
+            // 
+            this.stavkaprimkeBindingSource.DataSource = typeof(PrikazStatistike.Stavka_primke);
+            // 
+            // stavkanarudzbeniceBindingSource
+            // 
+            this.stavkanarudzbeniceBindingSource.DataSource = typeof(PrikazStatistike.Stavka_narudzbenice);
+            // 
+            // narudzbenicaBindingSource
+            // 
+            this.narudzbenicaBindingSource.DataSource = typeof(PrikazStatistike.Narudzbenica);
+            // 
+            // tipkorisnikaBindingSource
+            // 
+            this.tipkorisnikaBindingSource.DataSource = typeof(PrikazStatistike.Tip_korisnika);
+            // 
+            // tippartneraBindingSource
+            // 
+            this.tippartneraBindingSource.DataSource = typeof(PrikazStatistike.Tip_partnera);
             // 
             // cboxIzbor
             // 
@@ -91,39 +136,39 @@
             // 
             // reportViewer
             // 
-            reportDataSource12.Name = "DataSetProjekt";
-            reportDataSource12.Value = this.projektBindingSource;
-            reportDataSource13.Name = "DataSetFaze";
-            reportDataSource13.Value = this.fazaBindingSource;
-            reportDataSource14.Name = "DataSetKorisnici";
-            reportDataSource14.Value = this.korisnikBindingSource;
-            reportDataSource15.Name = "DataSetPartner";
-            reportDataSource15.Value = this.partnerBindingSource;
-            reportDataSource16.Name = "DataSetMaterijal";
-            reportDataSource16.Value = this.materijalBindingSource;
-            reportDataSource17.Name = "DataSetPrimka";
-            reportDataSource17.Value = this.primkaBindingSource;
-            reportDataSource18.Name = "DataSetStavkaPrimke";
-            reportDataSource18.Value = this.stavkaprimkeBindingSource;
-            reportDataSource19.Name = "DataSetStavkaNarudzbenice";
-            reportDataSource19.Value = this.stavkanarudzbeniceBindingSource;
-            reportDataSource20.Name = "DataSetNarudzbenica";
-            reportDataSource20.Value = this.narudzbenicaBindingSource;
-            reportDataSource21.Name = "DataSetTipKorisnika";
-            reportDataSource21.Value = this.tipkorisnikaBindingSource;
-            reportDataSource22.Name = "DataSetTipPartnera";
-            reportDataSource22.Value = this.tippartneraBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource12);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource13);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource14);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource15);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource16);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource17);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource18);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource19);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource20);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource21);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource22);
+            reportDataSource1.Name = "DataSetProjekt";
+            reportDataSource1.Value = this.projektBindingSource;
+            reportDataSource2.Name = "DataSetFaze";
+            reportDataSource2.Value = this.fazaBindingSource;
+            reportDataSource3.Name = "DataSetKorisnici";
+            reportDataSource3.Value = this.korisnikBindingSource;
+            reportDataSource4.Name = "DataSetPartner";
+            reportDataSource4.Value = this.partnerBindingSource;
+            reportDataSource5.Name = "DataSetMaterijal";
+            reportDataSource5.Value = this.materijalBindingSource;
+            reportDataSource6.Name = "DataSetPrimka";
+            reportDataSource6.Value = this.primkaBindingSource;
+            reportDataSource7.Name = "DataSetStavkaPrimke";
+            reportDataSource7.Value = this.stavkaprimkeBindingSource;
+            reportDataSource8.Name = "DataSetStavkaNarudzbenice";
+            reportDataSource8.Value = this.stavkanarudzbeniceBindingSource;
+            reportDataSource9.Name = "DataSetNarudzbenica";
+            reportDataSource9.Value = this.narudzbenicaBindingSource;
+            reportDataSource10.Name = "DataSetTipKorisnika";
+            reportDataSource10.Value = this.tipkorisnikaBindingSource;
+            reportDataSource11.Name = "DataSetTipPartnera";
+            reportDataSource11.Value = this.tippartneraBindingSource;
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource7);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource8);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource9);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource10);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource11);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "PrikazStatistike.ReportPrazni.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(12, 51);
             this.reportViewer.Name = "reportViewer";
@@ -181,49 +226,9 @@
             this.dtProjekti1.Size = new System.Drawing.Size(134, 20);
             this.dtProjekti1.TabIndex = 23;
             // 
-            // projektBindingSource
+            // helpProvider1
             // 
-            this.projektBindingSource.DataSource = typeof(PrikazStatistike.Projekt);
-            // 
-            // fazaBindingSource
-            // 
-            this.fazaBindingSource.DataSource = typeof(PrikazStatistike.Faza);
-            // 
-            // korisnikBindingSource
-            // 
-            this.korisnikBindingSource.DataSource = typeof(PrikazStatistike.Korisnik);
-            // 
-            // partnerBindingSource
-            // 
-            this.partnerBindingSource.DataSource = typeof(PrikazStatistike.Partner);
-            // 
-            // materijalBindingSource
-            // 
-            this.materijalBindingSource.DataSource = typeof(PrikazStatistike.Materijal);
-            // 
-            // primkaBindingSource
-            // 
-            this.primkaBindingSource.DataSource = typeof(PrikazStatistike.Primka);
-            // 
-            // stavkaprimkeBindingSource
-            // 
-            this.stavkaprimkeBindingSource.DataSource = typeof(PrikazStatistike.Stavka_primke);
-            // 
-            // stavkanarudzbeniceBindingSource
-            // 
-            this.stavkanarudzbeniceBindingSource.DataSource = typeof(PrikazStatistike.Stavka_narudzbenice);
-            // 
-            // narudzbenicaBindingSource
-            // 
-            this.narudzbenicaBindingSource.DataSource = typeof(PrikazStatistike.Narudzbenica);
-            // 
-            // tipkorisnikaBindingSource
-            // 
-            this.tipkorisnikaBindingSource.DataSource = typeof(PrikazStatistike.Tip_korisnika);
-            // 
-            // tippartneraBindingSource
-            // 
-            this.tippartneraBindingSource.DataSource = typeof(PrikazStatistike.Tip_partnera);
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
             // 
             // ReportForm
             // 
@@ -238,7 +243,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reportViewer);
             this.Controls.Add(this.cboxIzbor);
+            this.helpProvider1.SetHelpKeyword(this, "ReportForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "ReportForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.projektBindingSource)).EndInit();
@@ -277,6 +285,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtProjekti2;
         private System.Windows.Forms.DateTimePicker dtProjekti1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

@@ -49,6 +49,7 @@
             this.narudzbenicaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stavkanarudzbeniceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).BeginInit();
@@ -237,6 +238,10 @@
             // 
             this.dodaniMaterijalBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Materijal);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // NovaStavkaNarudzbeniceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,7 +255,10 @@
             this.Controls.Add(this.materijaliLabel);
             this.Controls.Add(this.dodajButton);
             this.Controls.Add(this.materijalDataGridView);
+            this.helpProvider1.SetHelpKeyword(this, "NovaStvakaNarudzbenica");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NovaStavkaNarudzbeniceForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Nova stavka narudžbenice";
             this.Load += new System.EventHandler(this.NovaStavkaNarudzbenice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
@@ -286,5 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn materijalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn narudzbenicaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource stavkanarudzbeniceBindingSource;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

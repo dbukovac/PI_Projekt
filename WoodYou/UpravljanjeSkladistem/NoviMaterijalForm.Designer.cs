@@ -38,6 +38,7 @@
             this.odustaniButton = new System.Windows.Forms.Button();
             this.kolicinaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.cijenaNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             cijenaLabel = new System.Windows.Forms.Label();
             kolicinaLabel = new System.Windows.Forms.Label();
             nazivLabel = new System.Windows.Forms.Label();
@@ -124,6 +125,10 @@
             this.cijenaNumericUpDown.Size = new System.Drawing.Size(100, 20);
             this.cijenaNumericUpDown.TabIndex = 12;
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // NoviMaterijalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,7 +142,10 @@
             this.Controls.Add(kolicinaLabel);
             this.Controls.Add(nazivLabel);
             this.Controls.Add(this.nazivTextBox);
+            this.helpProvider1.SetHelpKeyword(this, "NoviMaterijalForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NoviMaterijalForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Novi materijal";
             this.Load += new System.EventHandler(this.NoviMaterijalForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).EndInit();
@@ -156,5 +164,6 @@
         private System.Windows.Forms.Button odustaniButton;
         private System.Windows.Forms.NumericUpDown kolicinaNumericUpDown;
         private System.Windows.Forms.NumericUpDown cijenaNumericUpDown;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

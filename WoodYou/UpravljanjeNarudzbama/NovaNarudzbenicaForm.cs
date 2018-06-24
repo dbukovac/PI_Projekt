@@ -35,7 +35,6 @@ namespace UpravljanjeNarudzbama
             {
                 this.Text = "Uređivanje narudžbenice";
                 datumSlanjaDateTimePicker.Value = trenutnaNarudzbenica.datum_slanja;
-                korisnikTextBox.Text = trenutnaNarudzbenica.Korisnik.korisnicko_ime;
                 partnerComboBox.SelectedValue = trenutnaNarudzbenica.partnerId;
             }
         }

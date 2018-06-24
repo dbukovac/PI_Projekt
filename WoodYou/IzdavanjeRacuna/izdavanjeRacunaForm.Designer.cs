@@ -30,15 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ProjektidataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.izdajRacunButton = new System.Windows.Forms.Button();
-            this.pregledRačunaButton = new System.Windows.Forms.Button();
-            this.tboxPretrazi = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.predracunButton = new System.Windows.Forms.Button();
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.projektIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumpocetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,17 +39,27 @@
             this.cijenabezpdvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iznospdvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partnerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gotovoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aktivanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partnerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.izdajRacunButton = new System.Windows.Forms.Button();
+            this.pregledRačunaButton = new System.Windows.Forms.Button();
+            this.tboxPretrazi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.predracunButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dtProjekti2 = new System.Windows.Forms.DateTimePicker();
             this.dtProjekti1 = new System.Windows.Forms.DateTimePicker();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.ProjektidataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partnerBindingSource)).BeginInit();
@@ -67,6 +68,8 @@
             // 
             // ProjektidataGridView
             // 
+            this.ProjektidataGridView.AllowUserToAddRows = false;
+            this.ProjektidataGridView.AllowUserToDeleteRows = false;
             this.ProjektidataGridView.AutoGenerateColumns = false;
             this.ProjektidataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProjektidataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -91,74 +94,6 @@
             this.ProjektidataGridView.ReadOnly = true;
             this.ProjektidataGridView.Size = new System.Drawing.Size(787, 235);
             this.ProjektidataGridView.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Projekti:";
-            // 
-            // izdajRacunButton
-            // 
-            this.izdajRacunButton.Location = new System.Drawing.Point(591, 291);
-            this.izdajRacunButton.Name = "izdajRacunButton";
-            this.izdajRacunButton.Size = new System.Drawing.Size(75, 23);
-            this.izdajRacunButton.TabIndex = 2;
-            this.izdajRacunButton.Text = "Izdaj račun";
-            this.izdajRacunButton.UseVisualStyleBackColor = true;
-            this.izdajRacunButton.Click += new System.EventHandler(this.izdajRacunButton_Click);
-            // 
-            // pregledRačunaButton
-            // 
-            this.pregledRačunaButton.Location = new System.Drawing.Point(672, 291);
-            this.pregledRačunaButton.Name = "pregledRačunaButton";
-            this.pregledRačunaButton.Size = new System.Drawing.Size(127, 23);
-            this.pregledRačunaButton.TabIndex = 3;
-            this.pregledRačunaButton.Text = "Pregled izdanih računa";
-            this.pregledRačunaButton.UseVisualStyleBackColor = true;
-            this.pregledRačunaButton.Click += new System.EventHandler(this.pregledRačunaButton_Click);
-            // 
-            // tboxPretrazi
-            // 
-            this.tboxPretrazi.Location = new System.Drawing.Point(193, 17);
-            this.tboxPretrazi.Name = "tboxPretrazi";
-            this.tboxPretrazi.Size = new System.Drawing.Size(127, 20);
-            this.tboxPretrazi.TabIndex = 4;
-            this.tboxPretrazi.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(67, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Pretraživanje po nazivu:";
-            // 
-            // predracunButton
-            // 
-            this.predracunButton.Location = new System.Drawing.Point(510, 291);
-            this.predracunButton.Name = "predracunButton";
-            this.predracunButton.Size = new System.Drawing.Size(75, 23);
-            this.predracunButton.TabIndex = 6;
-            this.predracunButton.Text = "Predračun";
-            this.predracunButton.UseVisualStyleBackColor = true;
-            this.predracunButton.Click += new System.EventHandler(this.predracunButton_Click);
-            // 
-            // korisnikBindingSource
-            // 
-            this.korisnikBindingSource.DataSource = typeof(IzdavanjeRacuna.Korisnik);
-            // 
-            // partnerBindingSource
-            // 
-            this.partnerBindingSource.DataSource = typeof(IzdavanjeRacuna.Partner);
-            // 
-            // projektBindingSource
-            // 
-            this.projektBindingSource.DataSource = typeof(IzdavanjeRacuna.Projekt);
             // 
             // projektIdDataGridViewTextBoxColumn
             // 
@@ -231,6 +166,10 @@
             this.korisnikIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.korisnikIdDataGridViewTextBoxColumn.ValueMember = "korisnikId";
             // 
+            // korisnikBindingSource
+            // 
+            this.korisnikBindingSource.DataSource = typeof(IzdavanjeRacuna.Korisnik);
+            // 
             // partnerIdDataGridViewTextBoxColumn
             // 
             this.partnerIdDataGridViewTextBoxColumn.DataPropertyName = "partnerId";
@@ -243,6 +182,10 @@
             this.partnerIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.partnerIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.partnerIdDataGridViewTextBoxColumn.ValueMember = "partnerId";
+            // 
+            // partnerBindingSource
+            // 
+            this.partnerBindingSource.DataSource = typeof(IzdavanjeRacuna.Partner);
             // 
             // gotovoDataGridViewTextBoxColumn
             // 
@@ -275,6 +218,66 @@
             this.partnerDataGridViewTextBoxColumn.Name = "partnerDataGridViewTextBoxColumn";
             this.partnerDataGridViewTextBoxColumn.ReadOnly = true;
             this.partnerDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // projektBindingSource
+            // 
+            this.projektBindingSource.DataSource = typeof(IzdavanjeRacuna.Projekt);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Projekti:";
+            // 
+            // izdajRacunButton
+            // 
+            this.izdajRacunButton.Location = new System.Drawing.Point(591, 291);
+            this.izdajRacunButton.Name = "izdajRacunButton";
+            this.izdajRacunButton.Size = new System.Drawing.Size(75, 23);
+            this.izdajRacunButton.TabIndex = 2;
+            this.izdajRacunButton.Text = "Izdaj račun";
+            this.izdajRacunButton.UseVisualStyleBackColor = true;
+            this.izdajRacunButton.Click += new System.EventHandler(this.izdajRacunButton_Click);
+            // 
+            // pregledRačunaButton
+            // 
+            this.pregledRačunaButton.Location = new System.Drawing.Point(672, 291);
+            this.pregledRačunaButton.Name = "pregledRačunaButton";
+            this.pregledRačunaButton.Size = new System.Drawing.Size(127, 23);
+            this.pregledRačunaButton.TabIndex = 3;
+            this.pregledRačunaButton.Text = "Pregled izdanih računa";
+            this.pregledRačunaButton.UseVisualStyleBackColor = true;
+            this.pregledRačunaButton.Click += new System.EventHandler(this.pregledRačunaButton_Click);
+            // 
+            // tboxPretrazi
+            // 
+            this.tboxPretrazi.Location = new System.Drawing.Point(193, 17);
+            this.tboxPretrazi.Name = "tboxPretrazi";
+            this.tboxPretrazi.Size = new System.Drawing.Size(127, 20);
+            this.tboxPretrazi.TabIndex = 4;
+            this.tboxPretrazi.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(67, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Pretraživanje po nazivu:";
+            // 
+            // predracunButton
+            // 
+            this.predracunButton.Location = new System.Drawing.Point(510, 291);
+            this.predracunButton.Name = "predracunButton";
+            this.predracunButton.Size = new System.Drawing.Size(75, 23);
+            this.predracunButton.TabIndex = 6;
+            this.predracunButton.Text = "Predračun";
+            this.predracunButton.UseVisualStyleBackColor = true;
+            this.predracunButton.Click += new System.EventHandler(this.predracunButton_Click);
             // 
             // resetButton
             // 
@@ -326,6 +329,10 @@
             this.dtProjekti1.Size = new System.Drawing.Size(134, 20);
             this.dtProjekti1.TabIndex = 23;
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // IzdavanjeRacunaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,7 +351,10 @@
             this.Controls.Add(this.izdajRacunButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProjektidataGridView);
+            this.helpProvider1.SetHelpKeyword(this, "IzdavanjeRacunaForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "IzdavanjeRacunaForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Izdavanje Računa";
             this.Load += new System.EventHandler(this.izdavanjeRacunaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProjektidataGridView)).EndInit();
@@ -388,6 +398,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtProjekti2;
         private System.Windows.Forms.DateTimePicker dtProjekti1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

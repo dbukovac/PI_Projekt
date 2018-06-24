@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.ureduButton = new System.Windows.Forms.Button();
             this.kolicinaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.brisiMaterijalButton = new System.Windows.Forms.Button();
             this.dodajMaterijalPrimka = new System.Windows.Forms.Button();
             this.dodaniMaterijalDataGridView = new System.Windows.Forms.DataGridView();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stavkaprimkeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.primkaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materijalIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource();
+            this.kolicinaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.primkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stavkaprimkeBindingSource = new System.Windows.Forms.BindingSource();
+            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource();
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
             this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,11 +48,7 @@
             this.stavkaprimkeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalLabel = new System.Windows.Forms.Label();
             this.dodaniMaterijalLabel = new System.Windows.Forms.Label();
-            this.primkaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materijalIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.kolicinaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.primkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dodaniMaterijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
@@ -113,9 +113,54 @@
             this.dodaniMaterijalDataGridView.Size = new System.Drawing.Size(294, 220);
             this.dodaniMaterijalDataGridView.TabIndex = 14;
             // 
+            // primkaIdDataGridViewTextBoxColumn
+            // 
+            this.primkaIdDataGridViewTextBoxColumn.DataPropertyName = "primkaId";
+            this.primkaIdDataGridViewTextBoxColumn.HeaderText = "primkaId";
+            this.primkaIdDataGridViewTextBoxColumn.Name = "primkaIdDataGridViewTextBoxColumn";
+            this.primkaIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.primkaIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // materijalIdDataGridViewTextBoxColumn1
+            // 
+            this.materijalIdDataGridViewTextBoxColumn1.DataPropertyName = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn1.DataSource = this.materijalBindingSource;
+            this.materijalIdDataGridViewTextBoxColumn1.DisplayMember = "naziv";
+            this.materijalIdDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materijalIdDataGridViewTextBoxColumn1.HeaderText = "Materijal";
+            this.materijalIdDataGridViewTextBoxColumn1.Name = "materijalIdDataGridViewTextBoxColumn1";
+            this.materijalIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.materijalIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materijalIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materijalIdDataGridViewTextBoxColumn1.ValueMember = "materijalId";
+            this.materijalIdDataGridViewTextBoxColumn1.Width = 150;
+            // 
             // materijalBindingSource
             // 
             this.materijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
+            // 
+            // kolicinaDataGridViewTextBoxColumn1
+            // 
+            this.kolicinaDataGridViewTextBoxColumn1.DataPropertyName = "kolicina";
+            this.kolicinaDataGridViewTextBoxColumn1.HeaderText = "Količina";
+            this.kolicinaDataGridViewTextBoxColumn1.Name = "kolicinaDataGridViewTextBoxColumn1";
+            this.kolicinaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // materijalDataGridViewTextBoxColumn
+            // 
+            this.materijalDataGridViewTextBoxColumn.DataPropertyName = "Materijal";
+            this.materijalDataGridViewTextBoxColumn.HeaderText = "Materijal";
+            this.materijalDataGridViewTextBoxColumn.Name = "materijalDataGridViewTextBoxColumn";
+            this.materijalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.materijalDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // primkaDataGridViewTextBoxColumn
+            // 
+            this.primkaDataGridViewTextBoxColumn.DataPropertyName = "Primka";
+            this.primkaDataGridViewTextBoxColumn.HeaderText = "Primka";
+            this.primkaDataGridViewTextBoxColumn.Name = "primkaDataGridViewTextBoxColumn";
+            this.primkaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.primkaDataGridViewTextBoxColumn.Visible = false;
             // 
             // stavkaprimkeBindingSource
             // 
@@ -192,50 +237,9 @@
             this.dodaniMaterijalLabel.TabIndex = 20;
             this.dodaniMaterijalLabel.Text = "Dodani materijal";
             // 
-            // primkaIdDataGridViewTextBoxColumn
+            // helpProvider1
             // 
-            this.primkaIdDataGridViewTextBoxColumn.DataPropertyName = "primkaId";
-            this.primkaIdDataGridViewTextBoxColumn.HeaderText = "primkaId";
-            this.primkaIdDataGridViewTextBoxColumn.Name = "primkaIdDataGridViewTextBoxColumn";
-            this.primkaIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.primkaIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // materijalIdDataGridViewTextBoxColumn1
-            // 
-            this.materijalIdDataGridViewTextBoxColumn1.DataPropertyName = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn1.DataSource = this.materijalBindingSource;
-            this.materijalIdDataGridViewTextBoxColumn1.DisplayMember = "naziv";
-            this.materijalIdDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materijalIdDataGridViewTextBoxColumn1.HeaderText = "Materijal";
-            this.materijalIdDataGridViewTextBoxColumn1.Name = "materijalIdDataGridViewTextBoxColumn1";
-            this.materijalIdDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.materijalIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materijalIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materijalIdDataGridViewTextBoxColumn1.ValueMember = "materijalId";
-            this.materijalIdDataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // kolicinaDataGridViewTextBoxColumn1
-            // 
-            this.kolicinaDataGridViewTextBoxColumn1.DataPropertyName = "kolicina";
-            this.kolicinaDataGridViewTextBoxColumn1.HeaderText = "Količina";
-            this.kolicinaDataGridViewTextBoxColumn1.Name = "kolicinaDataGridViewTextBoxColumn1";
-            this.kolicinaDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // materijalDataGridViewTextBoxColumn
-            // 
-            this.materijalDataGridViewTextBoxColumn.DataPropertyName = "Materijal";
-            this.materijalDataGridViewTextBoxColumn.HeaderText = "Materijal";
-            this.materijalDataGridViewTextBoxColumn.Name = "materijalDataGridViewTextBoxColumn";
-            this.materijalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.materijalDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // primkaDataGridViewTextBoxColumn
-            // 
-            this.primkaDataGridViewTextBoxColumn.DataPropertyName = "Primka";
-            this.primkaDataGridViewTextBoxColumn.HeaderText = "Primka";
-            this.primkaDataGridViewTextBoxColumn.Name = "primkaDataGridViewTextBoxColumn";
-            this.primkaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.primkaDataGridViewTextBoxColumn.Visible = false;
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
             // 
             // NovaStavkaPrimkeForm
             // 
@@ -250,7 +254,10 @@
             this.Controls.Add(this.dodajMaterijalPrimka);
             this.Controls.Add(this.dodaniMaterijalDataGridView);
             this.Controls.Add(this.materijalDataGridView);
+            this.helpProvider1.SetHelpKeyword(this, "NovaStavkaPrimkeForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NovaStavkaPrimkeForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Nova stavka primke";
             this.Load += new System.EventHandler(this.NovaStavkaPrimkeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNumericUpDown)).EndInit();
@@ -286,5 +293,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kolicinaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn materijalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn primkaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

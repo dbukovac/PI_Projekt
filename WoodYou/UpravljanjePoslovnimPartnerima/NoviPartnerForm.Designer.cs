@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tboxIme = new System.Windows.Forms.TextBox();
             this.cboxTip = new System.Windows.Forms.ComboBox();
-            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource();
             this.spremiButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tboxOIB = new System.Windows.Forms.TextBox();
             this.odustaniButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.tippartneraBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,6 +135,10 @@
             this.odustaniButton.UseVisualStyleBackColor = true;
             this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // NoviPartnerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,7 +154,10 @@
             this.Controls.Add(this.spremiButton);
             this.Controls.Add(this.cboxTip);
             this.Controls.Add(this.tboxIme);
+            this.helpProvider1.SetHelpKeyword(this, "NoviPartnerForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NoviPartnerForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "NoviPartnerForm";
             this.Load += new System.EventHandler(this.NoviPartnerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tippartneraBindingSource)).EndInit();
@@ -172,5 +179,6 @@
         private System.Windows.Forms.TextBox tboxOIB;
         private System.Windows.Forms.BindingSource tippartneraBindingSource;
         private System.Windows.Forms.Button odustaniButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

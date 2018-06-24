@@ -47,13 +47,13 @@ namespace UpravljanjeProjektima
             Close();
         }
 
-        private void generirajQRKod(string naziv)
+        private void generirajQRKod(string sifra)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(naziv, QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(sifra, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
-            qrCodeImage.Save(naziv + ".jpeg", ImageFormat.Jpeg);
+            qrCodeImage.Save(sifra + ".jpeg", ImageFormat.Jpeg);
             MessageBox.Show("Generiran novi QR kod");
         }
 
@@ -71,6 +71,7 @@ namespace UpravljanjeProjektima
         {
             if(odabranaFaza == null)
             {
+                string sifra;
                 using(var db = new UpravljanjeProjektimaEntities())
                 {
                     Faza novaFaza = new Faza
@@ -81,8 +82,10 @@ namespace UpravljanjeProjektima
                     };
                     db.Faza.Add(novaFaza);
                     db.SaveChanges();
+
+                    sifra = novaFaza.fazaId.ToString();
                 }
-                generirajQRKod(tboxNaziv.Text);
+                generirajQRKod(sifra);
             }
             else
             {
@@ -94,12 +97,6 @@ namespace UpravljanjeProjektima
                     odabranaFaza.trajanje = (int)numTrajanje.Value;
                     db.SaveChanges();
                 }
-
-                if(tboxNaziv.Text != staroImeFaze)
-                {
-                    zamijeniQRKod(tboxNaziv.Text);
-                }
-
                 Close();
             }
         }

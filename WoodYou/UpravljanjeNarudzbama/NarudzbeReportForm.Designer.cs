@@ -32,14 +32,27 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.NarudzbenicaReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.MaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Stavka_narudzbeniceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NarudzbenicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NarudzbenicaReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.MaterijalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stavka_narudzbeniceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NarudzbenicaBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // MaterijalBindingSource
+            // 
+            this.MaterijalBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Materijal);
+            // 
+            // Stavka_narudzbeniceBindingSource
+            // 
+            this.Stavka_narudzbeniceBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Stavka_narudzbenice);
+            // 
+            // NarudzbenicaBindingSource
+            // 
+            this.NarudzbenicaBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Narudzbenica);
             // 
             // NarudzbenicaReportViewer
             // 
@@ -60,17 +73,9 @@
             this.NarudzbenicaReportViewer.Size = new System.Drawing.Size(855, 529);
             this.NarudzbenicaReportViewer.TabIndex = 0;
             // 
-            // MaterijalBindingSource
+            // helpProvider1
             // 
-            this.MaterijalBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Materijal);
-            // 
-            // Stavka_narudzbeniceBindingSource
-            // 
-            this.Stavka_narudzbeniceBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Stavka_narudzbenice);
-            // 
-            // NarudzbenicaBindingSource
-            // 
-            this.NarudzbenicaBindingSource.DataSource = typeof(UpravljanjeNarudzbama.Narudzbenica);
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
             // 
             // NarudzbeReportForm
             // 
@@ -78,7 +83,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 529);
             this.Controls.Add(this.NarudzbenicaReportViewer);
+            this.helpProvider1.SetHelpKeyword(this, "NarudzbaReport");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NarudzbeReportForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Narudžba";
             this.Load += new System.EventHandler(this.NarudzbeReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MaterijalBindingSource)).EndInit();
@@ -94,5 +102,6 @@
         private System.Windows.Forms.BindingSource MaterijalBindingSource;
         private System.Windows.Forms.BindingSource Stavka_narudzbeniceBindingSource;
         private System.Windows.Forms.BindingSource NarudzbenicaBindingSource;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

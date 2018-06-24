@@ -42,6 +42,7 @@
             this.tboxLozinka = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.odustaniButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.tipkorisnikaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,6 +155,10 @@
             this.odustaniButton.UseVisualStyleBackColor = true;
             this.odustaniButton.Click += new System.EventHandler(this.odustaniButton_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            // 
             // NoviKorisnikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,7 +176,10 @@
             this.Controls.Add(this.spremiButton);
             this.Controls.Add(this.cboxTip);
             this.Controls.Add(this.tboxKorime);
+            this.helpProvider1.SetHelpKeyword(this, "NoviKorisnikForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "NoviKorisnikForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "NoviKorisnikForm";
             this.Load += new System.EventHandler(this.NoviKorisnikForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tipkorisnikaBindingSource)).EndInit();
@@ -195,5 +203,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button odustaniButton;
         private System.Windows.Forms.BindingSource tipkorisnikaBindingSource;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

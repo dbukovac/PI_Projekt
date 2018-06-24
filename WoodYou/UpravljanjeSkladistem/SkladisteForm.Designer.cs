@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
-            this.cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materijalLabel = new System.Windows.Forms.Label();
-            this.noviMaterijalButton = new System.Windows.Forms.Button();
-            this.urediMaterijalButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materijalLabel = new System.Windows.Forms.Label();
+            this.noviMaterijalButton = new System.Windows.Forms.Button();
+            this.urediMaterijalButton = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materijalBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,12 +63,47 @@
             this.materijalDataGridView.Size = new System.Drawing.Size(519, 394);
             this.materijalDataGridView.TabIndex = 0;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "materijalId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "materijalId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "naziv";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Naziv";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "kolicina";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Količina";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
             // cijena
             // 
             this.cijena.DataPropertyName = "cijena";
             this.cijena.HeaderText = "Cijena";
             this.cijena.Name = "cijena";
             this.cijena.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Stavka_primke";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Stavka_primke";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // materijalBindingSource
+            // 
+            this.materijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
             // 
             // materijalLabel
             // 
@@ -100,40 +136,9 @@
             this.urediMaterijalButton.Visible = false;
             this.urediMaterijalButton.Click += new System.EventHandler(this.UrediMaterijalButton_Click);
             // 
-            // dataGridViewTextBoxColumn1
+            // helpProvider1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "materijalId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "materijalId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "naziv";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Naziv";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "kolicina";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Količina";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Stavka_primke";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Stavka_primke";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // materijalBindingSource
-            // 
-            this.materijalBindingSource.DataSource = typeof(UpravljanjeSkladistem.Materijal);
+            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
             // 
             // SkladisteForm
             // 
@@ -144,7 +149,10 @@
             this.Controls.Add(this.noviMaterijalButton);
             this.Controls.Add(this.materijalLabel);
             this.Controls.Add(this.materijalDataGridView);
+            this.helpProvider1.SetHelpKeyword(this, "SkladišteForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "SkladisteForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Stanje na skladištu";
             this.Load += new System.EventHandler(this.SkladisteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.materijalDataGridView)).EndInit();
@@ -166,6 +174,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button noviMaterijalButton;
         private System.Windows.Forms.Button urediMaterijalButton;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

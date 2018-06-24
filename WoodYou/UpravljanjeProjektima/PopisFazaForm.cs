@@ -93,7 +93,14 @@ namespace UpravljanjeProjektima
                     {
                         db.Faza.Attach(selektiranaFaza);
                         db.Faza.Remove(selektiranaFaza);
-                        db.SaveChanges();
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch(Exception)
+                        {
+                            MessageBox.Show("Nije moguće izbrisati fazu koja se koristis");
+                        }
                     }
                     PrikaziFaze();
                 }
