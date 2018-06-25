@@ -109,7 +109,7 @@ namespace PrikazStatistike
                 //RDC.Name = "DataSetProjekt";
                 //RDC.Value = this.projektBindingSource;
                 //this.reportViewer.LocalReport.DataSources.Add(RDC);
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportProjekti.rdlc";                
+                this.reportViewer.LocalReport.ReportPath = "./ReportProjekti.rdlc";                
                 //this.reportViewer.LocalReport.ReportEmbeddedResource = "C:/Users/Danko/Git/WoodYou/PrikazStatistike/Report.rdlc";
                 //this.reportViewer.RefreshReport();
             }
@@ -117,13 +117,13 @@ namespace PrikazStatistike
             {
                 ZatvoriSve();
                 fazaBindingSource.DataSource = listaFaza;
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportFaze.rdlc";
+                this.reportViewer.LocalReport.ReportPath = "./PrikazStatistike/ReportFaze.rdlc";
             }
             if (cboxIzbor.Text == "Materijal")
             {
                 ZatvoriSve();
                 materijalBindingSource.DataSource = listaMaterijala;
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportMaterijal.rdlc";
+                this.reportViewer.LocalReport.ReportPath = "./PrikazStatistike/ReportMaterijal.rdlc";
             }
             if (cboxIzbor.Text == "Primke")
             {
@@ -149,7 +149,7 @@ namespace PrikazStatistike
                 partnerBindingSource.DataSource = partners;
                 materijalBindingSource.DataSource = materijals;
                 primkaBindingSource.DataSource = primkas;
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportPrimke.rdlc";
+                this.reportViewer.LocalReport.ReportPath = "./PrikazStatistike/ReportPrimke.rdlc";
             }
             if (cboxIzbor.Text == "Narudzbenice")
             {
@@ -175,7 +175,7 @@ namespace PrikazStatistike
                 partnerBindingSource.DataSource = partners;
                 materijalBindingSource.DataSource = materijals;
                 narudzbenicaBindingSource.DataSource = narudzbenicas;
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportNarudzbenice.rdlc";
+                this.reportViewer.LocalReport.ReportPath = "./PrikazStatistike/ReportNarudzbenice.rdlc";
             }
             if (cboxIzbor.Text == "Korisnici")
             {
@@ -187,7 +187,7 @@ namespace PrikazStatistike
                     tipovi.Add(P.Tip_korisnika);
                 }
                 tipkorisnikaBindingSource.DataSource = tipovi;
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportKorisnici.rdlc";
+                this.reportViewer.LocalReport.ReportPath = "./PrikazStatistike/ReportKorisnici.rdlc";
             }
             if (cboxIzbor.Text == "Poslovni partneri")
             {
@@ -199,7 +199,7 @@ namespace PrikazStatistike
                     tipovi.Add(P.Tip_partnera1);
                 }
                 tippartneraBindingSource.DataSource = tipovi;
-                this.reportViewer.LocalReport.ReportPath = "../../../PrikazStatistike/ReportPartneri.rdlc";
+                this.reportViewer.LocalReport.ReportPath = "./PrikazStatistike/ReportPartneri.rdlc";
             }
             this.reportViewer.RefreshReport();
         }
