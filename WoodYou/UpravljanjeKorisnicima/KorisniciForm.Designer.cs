@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.korisnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnickoimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,15 +35,16 @@
             this.prezimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lozinkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipkorisnikaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource();
             this.tipkorisnikaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource();
             this.label1 = new System.Windows.Forms.Label();
             this.noviButton = new System.Windows.Forms.Button();
             this.izmjeniButton = new System.Windows.Forms.Button();
             this.obrisiButton = new System.Windows.Forms.Button();
             this.tboxPretrazi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipkorisnikaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.korisnikBindingSource)).BeginInit();
@@ -192,6 +192,10 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Pretraživanje po nazivu:";
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
+            // 
             // KorisniciForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,7 +208,10 @@
             this.Controls.Add(this.noviButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.helpProvider1.SetHelpKeyword(this, "KorisniciForm");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TableOfContents);
             this.Name = "KorisniciForm";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Korisnici";
             this.Load += new System.EventHandler(this.KorisniciForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -233,6 +240,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipkorisnikaDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox tboxPretrazi;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

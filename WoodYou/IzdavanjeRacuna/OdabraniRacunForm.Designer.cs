@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.fazeDataGridView = new System.Windows.Forms.DataGridView();
             this.fazaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trajanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fazeprojektaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fazaBindingSource = new System.Windows.Forms.BindingSource();
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
             this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource();
             this.materijalId = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.kolicinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cijena_stavke = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fazaimamaterijalBindingSource = new System.Windows.Forms.BindingSource();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -466,7 +465,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // OdabraniRacunForm
             // 

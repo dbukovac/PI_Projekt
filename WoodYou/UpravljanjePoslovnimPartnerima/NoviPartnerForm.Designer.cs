@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tboxIme = new System.Windows.Forms.TextBox();
             this.cboxTip = new System.Windows.Forms.ComboBox();
-            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource();
+            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.spremiButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -137,7 +138,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // NoviPartnerForm
             // 

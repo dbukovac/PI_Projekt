@@ -134,6 +134,9 @@
     <None Include="GlavniIzbornikModel.edmx.diagram">
       <DependentUpon>GlavniIzbornikModel.edmx</DependentUpon>
     </None>
+    <None Include="help.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

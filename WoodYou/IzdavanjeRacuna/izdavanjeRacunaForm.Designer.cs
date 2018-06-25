@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.ProjektidataGridView = new System.Windows.Forms.DataGridView();
             this.projektIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,14 +38,14 @@
             this.cijenabezpdvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iznospdvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource();
             this.partnerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource();
             this.gotovoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aktivanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partnerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projektBindingSource = new System.Windows.Forms.BindingSource();
             this.label1 = new System.Windows.Forms.Label();
             this.izdajRacunButton = new System.Windows.Forms.Button();
             this.pregledRačunaButton = new System.Windows.Forms.Button();
@@ -331,7 +330,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // IzdavanjeRacunaForm
             // 

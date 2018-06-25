@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ureduButton = new System.Windows.Forms.Button();
             this.kolicinaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.brisiMaterijalButton = new System.Windows.Forms.Button();
@@ -35,12 +36,12 @@
             this.dodaniMaterijalDataGridView = new System.Windows.Forms.DataGridView();
             this.primkaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kolicinaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materijalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.primkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stavkaprimkeBindingSource = new System.Windows.Forms.BindingSource();
-            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource();
+            this.stavkaprimkeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dodaniMaterijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materijalDataGridView = new System.Windows.Forms.DataGridView();
             this.materijalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -239,7 +240,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // NovaStavkaPrimkeForm
             // 

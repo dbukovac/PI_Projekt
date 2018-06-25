@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.ProjektBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Faza_ima_materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -71,21 +71,21 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource6.Name = "DataSetProjekt";
-            reportDataSource6.Value = this.ProjektBindingSource;
-            reportDataSource7.Name = "DataSetFaza";
-            reportDataSource7.Value = this.FazaBindingSource;
-            reportDataSource8.Name = "DataSetFazaMaterijal";
-            reportDataSource8.Value = this.Faza_ima_materijalBindingSource;
-            reportDataSource9.Name = "DataSetMaterijal";
-            reportDataSource9.Value = this.materijalBindingSource;
-            reportDataSource10.Name = "DataSetFazeProjekta";
-            reportDataSource10.Value = this.fazeprojektaBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource10);
+            reportDataSource1.Name = "DataSetProjekt";
+            reportDataSource1.Value = this.ProjektBindingSource;
+            reportDataSource2.Name = "DataSetFaza";
+            reportDataSource2.Value = this.FazaBindingSource;
+            reportDataSource3.Name = "DataSetFazaMaterijal";
+            reportDataSource3.Value = this.Faza_ima_materijalBindingSource;
+            reportDataSource4.Name = "DataSetMaterijal";
+            reportDataSource4.Value = this.materijalBindingSource;
+            reportDataSource5.Name = "DataSetFazeProjekta";
+            reportDataSource5.Value = this.fazeprojektaBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "IzdavanjeRacuna.RacunReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -95,7 +95,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // RacunReportForm
             // 

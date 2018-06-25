@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.poslPartneriDataGrid = new System.Windows.Forms.DataGridView();
             this.partnerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.oIBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tippartneraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource();
             this.tippartnera1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource();
             this.poslPartneriLabel = new System.Windows.Forms.Label();
             this.noviPartnerbutton = new System.Windows.Forms.Button();
             this.obrisiButton = new System.Windows.Forms.Button();
@@ -188,7 +187,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // PoslovniPartneriForm
             // 

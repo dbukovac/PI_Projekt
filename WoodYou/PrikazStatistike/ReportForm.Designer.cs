@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -40,17 +39,17 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.projektBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fazaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.korisnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.partnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.materijalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.primkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stavkaprimkeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stavkanarudzbeniceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.narudzbenicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projektBindingSource = new System.Windows.Forms.BindingSource();
+            this.fazaBindingSource = new System.Windows.Forms.BindingSource();
+            this.korisnikBindingSource = new System.Windows.Forms.BindingSource();
+            this.partnerBindingSource = new System.Windows.Forms.BindingSource();
+            this.materijalBindingSource = new System.Windows.Forms.BindingSource();
+            this.primkaBindingSource = new System.Windows.Forms.BindingSource();
+            this.stavkaprimkeBindingSource = new System.Windows.Forms.BindingSource();
+            this.stavkanarudzbeniceBindingSource = new System.Windows.Forms.BindingSource();
+            this.narudzbenicaBindingSource = new System.Windows.Forms.BindingSource();
+            this.tipkorisnikaBindingSource = new System.Windows.Forms.BindingSource();
+            this.tippartneraBindingSource = new System.Windows.Forms.BindingSource();
             this.cboxIzbor = new System.Windows.Forms.ComboBox();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
@@ -228,7 +227,7 @@
             // 
             // helpProvider1
             // 
-            this.helpProvider1.HelpNamespace = "..\\..\\..\\packages\\HTML help\\help.chm";
+            this.helpProvider1.HelpNamespace = ".\\help.chm";
             // 
             // ReportForm
             // 
