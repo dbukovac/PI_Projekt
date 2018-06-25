@@ -126,5 +126,10 @@ namespace GlavniIzbornik
             PoslovniPartneriForm partneriForm = new PoslovniPartneriForm(logirani_korisnik.tip_korisnikaId);
             ShowForm(partneriForm, this);
         }
+
+        private void OdjavaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

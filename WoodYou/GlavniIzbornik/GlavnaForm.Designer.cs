@@ -166,6 +166,7 @@
             this.odjavaToolStripMenuItem.Name = "odjavaToolStripMenuItem";
             this.odjavaToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.odjavaToolStripMenuItem.Text = "Odjava";
+            this.odjavaToolStripMenuItem.Click += new System.EventHandler(this.OdjavaToolStripMenuItem_Click);
             // 
             // GlavnaForm
             // 

@@ -50,7 +50,7 @@ namespace GlavniIzbornik
                 GlavnaForm forma = new GlavnaForm(logirani_korisnik);
                 this.Hide();
                 forma.ShowDialog();
-                this.Close();
+                this.Show();
             }
             else
             {
