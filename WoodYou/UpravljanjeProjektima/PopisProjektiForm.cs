@@ -24,11 +24,16 @@ namespace UpravljanjeProjektima
         /// <summary>
         /// Pozivaju se metoda za prikaz svih projekata, 
         /// faza i materijala označenog (prvog na listi) projekta
+        /// Provjerava se tip korisnika, ako je admin pokazuje se tipka za brisanje projekta
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PopisProjektiForm_Load(object sender, EventArgs e)
         {
+            if(tipKorisnika == 1)
+            {
+                brisiProjektButton.Visible = true;
+            }
             PrikaziProjekte();
             PrikaziFaze(projektBindingSource.Current as Projekt);
             PrikaziMaterijal();
@@ -222,7 +227,7 @@ namespace UpravljanjeProjektima
             BindingList<Faza> listaFaza = (BindingList<Faza>)fazaBindingSource.DataSource;
             if(selektiraniProjekt != null)
             {
-                PopisFazaForm popisFazaforma = new PopisFazaForm(selektiraniProjekt, listaFaza);
+                PopisFazaForm popisFazaforma = new PopisFazaForm(selektiraniProjekt, listaFaza, tipKorisnika);
                 popisFazaforma.ShowDialog();
                 PrikaziFaze(selektiraniProjekt);
                 PrikaziProjekte();

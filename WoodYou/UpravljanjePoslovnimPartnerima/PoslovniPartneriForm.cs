@@ -20,11 +20,16 @@ namespace UpravljanjePoslovnimPartnerima
         }
         /// <summary>
         /// Prilikom učitavanja forme poziva se metoda za priakzivanje partnera
+        /// prikazuje se tipka ako je korisnik admin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PoslovniPartneriForm_Load(object sender, EventArgs e)
         {
+            if(tipKorisnika == 1)
+            {
+                obrisiButton.Visible = true;
+            }
             PrikaziPartnere();
         }
         /// <summary>

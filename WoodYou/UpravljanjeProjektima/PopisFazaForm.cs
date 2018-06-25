@@ -14,19 +14,34 @@ namespace UpravljanjeProjektima
     {
         private Projekt odabraniProjekt = null;
         private BindingList<Faza> listaFaza = null;
+        private int tipKorisnika;
 
-        public PopisFazaForm(Projekt projekt, BindingList<Faza> lista)
+        public PopisFazaForm(Projekt projekt, BindingList<Faza> lista, int id)
         {
             InitializeComponent();
             odabraniProjekt = projekt;
             listaFaza = lista;
+            tipKorisnika = id;
         }
-
+        /// <summary>
+        /// Provjerava se tip korisnika i ako je admin prikazuju se tipke za njegove akcije
+        /// Poziva se metoda za prikaz faza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PopisFazaForm_Load(object sender, EventArgs e)
         {
+            if(tipKorisnika == 1)
+            {
+                obrisiFazuButton.Visible = true;
+                dodajFazuButton.Visible = true;
+                izmjeniFazuButton.Visible = true;
+            }
             PrikaziFaze();
         }
-
+        /// <summary>
+        /// Metoda za prikaz svih faza
+        /// </summary>
         private void PrikaziFaze()
         {
             BindingList<Faza> listaFaza = null;
@@ -36,7 +51,12 @@ namespace UpravljanjeProjektima
             }
             fazaBindingSource.DataSource = listaFaza;
         }
-
+        /// <summary>
+        /// Dodaje se faza na prosljeđeni projekt ako za projekt nije izdan račun
+        /// stvara se novi objekt faza_projekta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dodajFazuButton_Click(object sender, EventArgs e)
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
@@ -67,21 +87,34 @@ namespace UpravljanjeProjektima
         {
             Close();
         }
-
+        /// <summary>
+        /// Otvara formu za unos nove faze
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void novaFazaButton_Click(object sender, EventArgs e)
         {
             NovaFazaForm novaFazaforma = new NovaFazaForm();
             novaFazaforma.ShowDialog();
             PrikaziFaze();
         }
-
+        /// <summary>
+        /// Otvara formu za izmjenu faze
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void izmjeniFazuButton_Click(object sender, EventArgs e)
         {
             NovaFazaForm novaFazaforma = new NovaFazaForm(fazaBindingSource.Current as Faza);
             novaFazaforma.ShowDialog();
             PrikaziFaze();
         }
-
+        /// <summary>
+        /// Briše se odabrana faza ako se potvrdi poruka i ako baza ne vrati iznimku
+        /// zbog referencijalnog integriteta koja se obrađuje sa try catch
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void obrisiFazuButton_Click(object sender, EventArgs e)
         {
             Faza selektiranaFaza = fazaBindingSource.Current as Faza;
@@ -106,7 +139,11 @@ namespace UpravljanjeProjektima
                 }
             }
         }
-
+        /// <summary>
+        /// Pretraživanje faza prema nazivu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tboxPretrazi_TextChanged(object sender, EventArgs e)
         {
             BindingList<Faza> listaFaza = null;

@@ -14,17 +14,28 @@ namespace UpravljanjeProjektima
     {
         private Projekt odabraniProjekt = null;
         private int idKorisnik;
+        /// <summary>
+        /// Dva su konstruktora, onaj s parametrom je za izmjenu projekta, a bez 
+        /// je za novi proejkt
+        /// </summary>
+        /// <param name="idKorisnik"></param>
         public NoviProjektForm(int idKorisnik)
         {
             InitializeComponent();
             this.idKorisnik = idKorisnik;
         }
+
         public NoviProjektForm(Projekt projekt)
         {
             InitializeComponent();
             odabraniProjekt = projekt;
         }
-
+        /// <summary>
+        /// Metoda za generiranje referentnog koda za korisnika
+        /// nasumične brojeve i slova slaže u string prosljeđene duljine
+        /// </summary>
+        /// <param name="duzina"></param>
+        /// <returns></returns>
         public string GenerirajKod(int duzina)
         {
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -36,7 +47,12 @@ namespace UpravljanjeProjektima
             }
             return res.ToString();
         }
-
+        /// <summary>
+        /// Dohvaćaju se partneri koji su tipa klijent za ispis u padajućem izborniku
+        /// ako se radi o izmjeni projekta ispinjuju se polja podacima projekta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NoviProjektForm_Load(object sender, EventArgs e)
         {
             BindingList<Partner> listaPartnera = null;
@@ -53,7 +69,12 @@ namespace UpravljanjeProjektima
                 cboxPartner.Text = odabraniProjekt.Partner.ime;
             }
         }
-
+        /// <summary>
+        /// Ako je novi projekt, stvara se objekt i dodaijeljuju se početne vrijednosti
+        /// ako je izmjena mijenjaju se samo vrijednosti za koje postoje kontrole na formi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void spremiButton_Click(object sender, EventArgs e)
         {
             if(odabraniProjekt == null)

@@ -156,6 +156,7 @@
             this.obrisiButton.TabIndex = 3;
             this.obrisiButton.Text = "Obrisi";
             this.obrisiButton.UseVisualStyleBackColor = true;
+            this.obrisiButton.Visible = false;
             this.obrisiButton.Click += new System.EventHandler(this.obrisiButton_Click);
             // 
             // urediButton

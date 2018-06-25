@@ -127,6 +127,7 @@
             this.novaFazaButton.TabIndex = 2;
             this.novaFazaButton.Text = "Kreiraj fazu";
             this.novaFazaButton.UseVisualStyleBackColor = true;
+            this.novaFazaButton.Visible = false;
             this.novaFazaButton.Click += new System.EventHandler(this.novaFazaButton_Click);
             // 
             // dodajFazuButton
@@ -157,6 +158,7 @@
             this.izmjeniFazuButton.TabIndex = 7;
             this.izmjeniFazuButton.Text = "Izmjeni fazu";
             this.izmjeniFazuButton.UseVisualStyleBackColor = true;
+            this.izmjeniFazuButton.Visible = false;
             this.izmjeniFazuButton.Click += new System.EventHandler(this.izmjeniFazuButton_Click);
             // 
             // obrisiFazuButton
@@ -167,6 +169,7 @@
             this.obrisiFazuButton.TabIndex = 8;
             this.obrisiFazuButton.Text = "Obriši fazu";
             this.obrisiFazuButton.UseVisualStyleBackColor = true;
+            this.obrisiFazuButton.Visible = false;
             this.obrisiFazuButton.Click += new System.EventHandler(this.obrisiFazuButton_Click);
             // 
             // tboxPretrazi

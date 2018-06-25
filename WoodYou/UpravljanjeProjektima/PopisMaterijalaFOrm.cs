@@ -14,14 +14,20 @@ namespace UpravljanjeProjektima
     {
         Faze_projekta odabranaFazaProjekta = null;
         BindingList<Materijal> listaM = null;
-
+        /// <summary>
+        /// Prima se prosljeđena faza_projekta i lista već dodanog materijala
+        /// </summary>
+        /// <param name="faze_Projekta"></param>
+        /// <param name="lista"></param>
         public PopisMaterijalaForm(Faze_projekta faze_Projekta, BindingList<Materijal> lista)
         {
             InitializeComponent();
             odabranaFazaProjekta = faze_Projekta;
             listaM = lista;
         }
-
+        /// <summary>
+        /// Metoda za prikazivanje svih materijala
+        /// </summary>
         private void PrikaziMaterijal()
         {
             BindingList<Materijal> listaMaterijala = null;
@@ -31,20 +37,30 @@ namespace UpravljanjeProjektima
             }
             materijalBindingSource.DataSource = listaMaterijala;
         }
-
+        /// <summary>
+        /// Poziva se metoda za prikazivanje materijala
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PopisMaterijalaForm_Load(object sender, EventArgs e)
         {
             PrikaziMaterijal();
         }
-
+        /// <summary>
+        /// Provjerava se ako označeni materijal nije u listi već dodanog materijala
+        /// dodaje se u listu materijala faze(kako se opet ne bi mogao dodati) i 
+        /// ako je odabrana količina manja od one na skladištu stvara se stavka materijala
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dodajMaterijalButton_Click(object sender, EventArgs e)
         {
             Materijal selektiranMaterijal = materijalBindingSource.Current as Materijal;
             if(selektiranMaterijal != null && listaM.SingleOrDefault(x => x.materijalId == selektiranMaterijal.materijalId)==null)
             {
-                listaM.Add(selektiranMaterijal);
                 if(selektiranMaterijal.kolicina > (int)numKolicina.Value)
                 {
+                    listaM.Add(selektiranMaterijal);
                     using (var db = new UpravljanjeProjektimaEntities())
                     {
                         Faza_ima_materijal noviMaterijalFaza = new Faza_ima_materijal
@@ -69,12 +85,20 @@ namespace UpravljanjeProjektima
             }
             PrikaziMaterijal();
         }
-
+        /// <summary>
+        /// Zatvara se forma
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void odustaniButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        /// <summary>
+        /// Pretraživanje materijala prema nazivu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tboxPretrazi_TextChanged(object sender, EventArgs e)
         {
             BindingList<Materijal> listaMaterijala = null;

@@ -29,7 +29,11 @@ namespace UpravljanjeProjektima
             InitializeComponent();
             odabranaFaza = faza;
         }
-
+        /// <summary>
+        /// Popunjavaju se polja ako se radi o izmjeni
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NovaFazaForm_Load(object sender, EventArgs e)
         {
             if(odabranaFaza != null)
@@ -46,7 +50,11 @@ namespace UpravljanjeProjektima
         {
             Close();
         }
-
+        /// <summary>
+        /// Metoda za generiranje QR koda koja koristi QRCodeGenerator dll
+        /// generira se prema šifri faze i sprema se u output folder
+        /// </summary>
+        /// <param name="sifra"></param>
         private void generirajQRKod(string sifra)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
@@ -57,16 +65,22 @@ namespace UpravljanjeProjektima
             MessageBox.Show("Generiran novi QR kod");
         }
 
-        private void zamijeniQRKod(string naziv)
-        {
-            generirajQRKod(naziv);
+        //private void zamijeniQRKod(string sifra)
+        //{
+        //    generirajQRKod(sifra);
 
-            if (File.Exists(staroImeFaze + ".jpeg"))
-            {
-                File.Delete(staroImeFaze + ".jpeg");
-            }
-        }
+        //    if (File.Exists(staroImeFaze + ".jpeg"))
+        //    {
+        //        File.Delete(staroImeFaze + ".jpeg");
+        //    }
+        //}
 
+        /// <summary>
+        /// Ako je novi unos onda se stvara novi objekt i generira se QR kod,
+        /// ako je izmjena onda se mijenjaju podaci
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dodajFazuButton_Click(object sender, EventArgs e)
         {
             if(odabranaFaza == null)
