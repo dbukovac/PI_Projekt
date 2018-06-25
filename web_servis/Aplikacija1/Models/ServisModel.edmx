@@ -33,9 +33,9 @@
           <Property Name="potrebno_vrijeme" Type="int" />
           <Property Name="datum_zavrsetka" Type="date" />
           <Property Name="datum_izdavanja_racuna" Type="date" />
-          <Property Name="ukupna_cijena" Type="float" />
-          <Property Name="cijena_bez_pdv" Type="float" />
-          <Property Name="iznos_pdv" Type="float" />
+          <Property Name="ukupna_cijena" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cijena_bez_pdv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="iznos_pdv" Type="decimal" Precision="18" Scale="2" />
           <Property Name="korisnikId" Type="int" Nullable="false" />
           <Property Name="partnerId" Type="int" Nullable="false" />
           <Property Name="gotovo" Type="tinyint" Nullable="false" />
@@ -57,9 +57,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Projekt_ima_fazu_Projekt">
-          <End Role="Projekt" Type="Self.Projekt" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="1" />
           <End Role="Faze_projekta" Type="Self.Faze_projekta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Projekt">
@@ -118,9 +116,9 @@
           <Property Name="potrebno_vrijeme" Type="Int32" />
           <Property Name="datum_zavrsetka" Type="DateTime" Precision="0" />
           <Property Name="datum_izdavanja_racuna" Type="DateTime" Precision="0" />
-          <Property Name="ukupna_cijena" Type="Double" />
-          <Property Name="cijena_bez_pdv" Type="Double" />
-          <Property Name="iznos_pdv" Type="Double" />
+          <Property Name="ukupna_cijena" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cijena_bez_pdv" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="iznos_pdv" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="korisnikId" Type="Int32" Nullable="false" />
           <Property Name="partnerId" Type="Int32" Nullable="false" />
           <Property Name="gotovo" Type="Byte" Nullable="false" />
