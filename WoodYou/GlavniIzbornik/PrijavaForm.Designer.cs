@@ -67,6 +67,7 @@
             // 
             this.textBoxLozinka.Location = new System.Drawing.Point(78, 120);
             this.textBoxLozinka.Name = "textBoxLozinka";
+            this.textBoxLozinka.PasswordChar = '*';
             this.textBoxLozinka.Size = new System.Drawing.Size(125, 20);
             this.textBoxLozinka.TabIndex = 6;
             // 
